@@ -1,0 +1,51 @@
+apiVersion: v1alpha1
+kind: "Role"
+metadata:
+  name: role-template-manage-attachments
+  labels:
+    nebulacms.io/role-template: "true"
+  annotations:
+    rbac.authorization.nebulacms.io/dependencies: "[ \"role-template-view-attachments\" ]"
+    rbac.authorization.nebulacms.io/module: "Attachments Management"
+    rbac.authorization.nebulacms.io/display-name: "Attachment Manage"
+    rbac.authorization.nebulacms.io/ui-permissions: |
+      ["system:attachments:manage"]
+rules:
+  - apiGroups: [ "storage.nebulacms.io" ]
+    resources: [ "attachments", "policies", "policytemplates", "groups" ]
+    verbs: [ "*" ]
+  - apiGroups: [ "api.console.nebulacms.io" ]
+    resources: [ "attachments" ]
+    verbs: [ "*" ]
+  - apiGroups: [ "api.console.nebulacms.io" ]
+    resources: [ "attachments/upload-from-url" ]
+    verbs: [ "create" ]
+  - apiGroups: [ "" ]
+    resources: [ "settings" ]
+    verbs: [ "get" ]
+  - nonResourceURLs: [
+      "/apis/api.console.nebulacms.io/v1alpha1/attachments/upload"
+    ]
+    verbs: [ "create" ]
+  - apiGroups: [ "console.api.storage.nebulacms.io" ]
+    resources: [ "attachments/upload" ]
+    verbs: [ "create" ]
+---
+apiVersion: v1alpha1
+kind: "Role"
+metadata:
+  name: role-template-view-attachments
+  labels:
+    nebulacms.io/role-template: "true"
+  annotations:
+    rbac.authorization.nebulacms.io/module: "Attachments Management"
+    rbac.authorization.nebulacms.io/display-name: "Attachment View"
+    rbac.authorization.nebulacms.io/ui-permissions: |
+      ["system:attachments:view"]
+rules:
+  - apiGroups: [ "storage.nebulacms.io" ]
+    resources: [ "attachments", "policies", "policytemplates", "groups" ]
+    verbs: [ "get", "list" ]
+  - apiGroups: [ "api.console.nebulacms.io" ]
+    resources: [ "attachments" ]
+    verbs: [ "get", "list" ]

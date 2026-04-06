@@ -1,0 +1,60 @@
+import { defaultConfig, plugin as FormKit } from "@formkit/vue";
+import { vClosePopper, VLoading, vTooltip } from "@nebula-labs/components";
+import { defineAsyncComponent, type App } from "vue";
+import VueGridLayout from "vue-grid-layout";
+import FilterCleanButton from "@/components/filter/FilterCleanButton.vue";
+import FilterDropdown from "@/components/filter/FilterDropdown.vue";
+import AnnotationsForm from "@/components/form/AnnotationsForm.vue";
+import SearchInput from "@/components/input/SearchInput.vue";
+import HasPermission from "@/components/permission/HasPermission.vue";
+import FormKitConfig from "@/formkit/formkit.config";
+
+export function setupComponents(app: App) {
+  app.use(VueGridLayout);
+  app.use(
+    FormKit,
+    defaultConfig({
+      ...FormKitConfig,
+    })
+  );
+
+  app.directive("tooltip", vTooltip);
+  app.directive("close-popper", vClosePopper);
+  app.component(
+    "VCodemirror",
+    defineAsyncComponent(() => import("@/components/codemirror/Codemirror.vue"))
+  );
+
+  // Console components
+  app.component("FilterDropdown", FilterDropdown);
+  app.component("FilterCleanButton", FilterCleanButton);
+  app.component("SearchInput", SearchInput);
+  app.component("AnnotationsForm", AnnotationsForm);
+  app.component(
+    "AttachmentFileTypeIcon",
+    defineAsyncComponent(
+      () => import("@/components/icon/AttachmentFileTypeIcon.vue")
+    )
+  );
+  app.component("HasPermission", HasPermission);
+  app.component(
+    "UppyUpload",
+    defineAsyncComponent({
+      loader: () => import("@/components/upload/UppyUpload.vue"),
+      loadingComponent: VLoading,
+    })
+  );
+}
+
+declare module "vue" {
+  interface GlobalComponents {
+    VCodemirror: (typeof import("@/components/codemirror/Codemirror.vue"))["default"];
+    FilterDropdown: (typeof import("@/components/filter/FilterDropdown.vue"))["default"];
+    FilterCleanButton: (typeof import("@/components/filter/FilterCleanButton.vue"))["default"];
+    SearchInput: (typeof import("@/components/input/SearchInput.vue"))["default"];
+    AnnotationsForm: (typeof import("@/components/form/AnnotationsForm.vue"))["default"];
+    AttachmentFileTypeIcon: (typeof import("@/components/icon/AttachmentFileTypeIcon.vue"))["default"];
+    HasPermission: (typeof import("@/components/permission/HasPermission.vue"))["default"];
+    UppyUpload: (typeof import("@/components/upload/UppyUpload.vue"))["default"];
+  }
+}

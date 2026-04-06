@@ -1,0 +1,49 @@
+import org.springframework.boot.gradle.plugin.SpringBootPlugin
+
+plugins {
+    id 'java-platform'
+    id 'nebulacms.publish'
+    alias(libs.plugins.spring.boot) apply false
+}
+
+group = 'io.nebulacms.tools.platform'
+description = 'Dependency platform BOM for NebulaCMS application modules.'
+
+javaPlatform {
+    allowDependencies()
+}
+
+dependencies {
+    api platform(SpringBootPlugin.BOM_COORDINATES)
+
+    constraints {
+        api libs.bundles.lucene
+        api libs.bundles.apache
+        api libs.bundles.therapi
+        api libs.springdoc.openapi
+        api libs.openapi.schema.validator
+        api libs.bouncycastle.bcpkix
+        api libs.encoding.base62
+        api libs.pf4j
+        api libs.guava
+        api libs.java.diff.utils
+        api libs.jsoup
+        api libs.json.patch
+        api libs.bundles.resilience4j
+        api libs.twofactor.auth
+        api libs.thumbnailator
+        api "org.springframework.integration:spring-integration-core"
+        api "org.thymeleaf.extras:thymeleaf-extras-springsecurity6"
+    }
+
+}
+
+publishing {
+    publications.named('mavenJava', MavenPublication) {
+        from components.javaPlatform
+        pom {
+            name = 'Application platform.'
+            description = "$project.description"
+        }
+    }
+}

@@ -1,0 +1,50 @@
+<script lang="ts" setup>
+import { vTooltip } from "@nebula-labs/components";
+
+withDefaults(
+  defineProps<{
+    tooltip?: string;
+    selected?: boolean;
+    disabled?: boolean;
+    isActive?: boolean;
+    visible?: boolean;
+  }>(),
+  {
+    tooltip: undefined,
+    selected: false,
+    disabled: false,
+    isActive: false,
+    visible: true,
+  }
+);
+</script>
+
+<template>
+  <button
+    v-if="visible"
+    v-tooltip="tooltip"
+    type="button"
+    class="editor-block__actions-button"
+    :class="{
+      'editor-block__actions-button--selected': selected,
+      'editor-block__actions-button--active': isActive,
+    }"
+    :disabled="disabled"
+  >
+    <slot name="icon" />
+  </button>
+</template>
+
+<style lang="scss">
+.editor-block__actions-button {
+  @apply inline-flex size-8 items-center justify-center rounded-md text-lg text-gray-600 hover:bg-gray-100 active:!bg-gray-200;
+
+  &--selected {
+    @apply bg-gray-200;
+  }
+
+  &--active {
+    @apply bg-gray-200;
+  }
+}
+</style>

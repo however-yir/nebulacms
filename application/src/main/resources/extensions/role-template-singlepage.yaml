@@ -1,0 +1,39 @@
+apiVersion: v1alpha1
+kind: "Role"
+metadata:
+  name: role-template-manage-singlepages
+  labels:
+    nebulacms.io/role-template: "true"
+  annotations:
+    rbac.authorization.nebulacms.io/dependencies: "[ \"role-template-view-singlepages\", \"role-template-manage-snapshots\" ]"
+    rbac.authorization.nebulacms.io/module: "SinglePages Management"
+    rbac.authorization.nebulacms.io/display-name: "SinglePage Manage"
+    rbac.authorization.nebulacms.io/ui-permissions: |
+      ["system:singlepages:manage"]
+rules:
+  - apiGroups: [ "content.nebulacms.io" ]
+    resources: [ "singlepages" ]
+    verbs: [ "*" ]
+  - apiGroups: [ "api.console.nebulacms.io" ]
+    resources: [ "singlepages", "singlepages/publish", "singlepages/content", "singlepages/revert-content" ]
+    verbs: [ "create", "patch", "update", "delete", "deletecollection" ]
+---
+apiVersion: v1alpha1
+kind: "Role"
+metadata:
+  name: role-template-view-singlepages
+  labels:
+    nebulacms.io/role-template: "true"
+  annotations:
+    rbac.authorization.nebulacms.io/dependencies: "[ \"role-template-view-snapshots\" ]"
+    rbac.authorization.nebulacms.io/module: "SinglePages Management"
+    rbac.authorization.nebulacms.io/display-name: "SinglePage View"
+    rbac.authorization.nebulacms.io/ui-permissions: |
+      ["system:singlepages:view"]
+rules:
+  - apiGroups: [ "content.nebulacms.io" ]
+    resources: [ "singlepages" ]
+    verbs: [ "get", "list" ]
+  - apiGroups: [ "api.console.nebulacms.io" ]
+    resources: [ "singlepages", "singlepages/head-content", "singlepages/release-content", "singlepages/snapshot", "singlepages/content" ]
+    verbs: [ "get", "list" ]

@@ -1,0 +1,97 @@
+package io.nebulacms.app.core.attachment.reconciler;
+
+import static io.nebulacms.app.extension.ExtensionUtil.addFinalizers;
+import static io.nebulacms.app.extension.ExtensionUtil.removeFinalizers;
+
+import java.net.URI;
+import java.time.Duration;
+import java.util.Set;
+import java.util.stream.Collectors;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.stereotype.Component;
+import io.nebulacms.app.core.attachment.AttachmentChangedEvent;
+import io.nebulacms.app.core.extension.attachment.Attachment;
+import io.nebulacms.app.core.extension.attachment.Attachment.AttachmentStatus;
+import io.nebulacms.app.core.extension.attachment.Constant;
+import io.nebulacms.app.core.extension.service.AttachmentService;
+import io.nebulacms.app.extension.ExtensionClient;
+import io.nebulacms.app.extension.ExtensionUtil;
+import io.nebulacms.app.extension.controller.Controller;
+import io.nebulacms.app.extension.controller.ControllerBuilder;
+import io.nebulacms.app.extension.controller.Reconciler;
+import io.nebulacms.app.extension.controller.Reconciler.Request;
+import io.nebulacms.app.extension.controller.RequeueException;
+
+@Slf4j
+@Component
+@RequiredArgsConstructor
+class AttachmentReconciler implements Reconciler<Request> {
+
+    private final ExtensionClient client;
+
+    private final AttachmentService attachmentService;
+
+    private final ApplicationEventPublisher eventPublisher;
+
+    @Override
+    public Result reconcile(Request request) {
+        return client.fetch(Attachment.class, request.name()).map(attachment -> {
+            if (ExtensionUtil.isDeleted(attachment)) {
+                if (removeFinalizers(attachment.getMetadata(),
+                    Set.of(Constant.FINALIZER_NAME))) {
+                    cleanUpResources(attachment);
+                    client.update(attachment);
+                    this.eventPublisher.publishEvent(new AttachmentChangedEvent(this, attachment));
+                }
+                return null;
+            }
+            // add finalizer
+            addFinalizers(attachment.getMetadata(), Set.of(Constant.FINALIZER_NAME));
+
+            if (attachment.getStatus() == null) {
+                attachment.setStatus(new AttachmentStatus());
+            }
+            var permalink = attachmentService.getPermalink(attachment)
+                .map(URI::toASCIIString)
+                .blockOptional(Duration.ofSeconds(10))
+                .orElseThrow(() -> new RequeueException(new Result(true, null),
+                    "Attachment handler is unavailable, requeue the request"
+                ));
+            log.debug("Set attachment permalink: {} for {}", permalink, request.name());
+            attachment.getStatus().setPermalink(permalink);
+            var thumbnails = attachmentService.getThumbnailLinks(attachment)
+                .map(map -> map.keySet()
+                    .stream()
+                    .collect(Collectors.toMap(Enum::name, k -> map.get(k).toString()))
+                )
+                .blockOptional(Duration.ofSeconds(10))
+                .orElse(null);
+            Result result = null;
+            if (thumbnails == null) {
+                log.warn("""
+                    Failed to get thumbnails for attachment: {}, \
+                    consider upgrading storage plugins""", request.name()
+                );
+                result = new Result(true, Duration.ofSeconds(10));
+            }
+            attachment.getStatus().setThumbnails(thumbnails);
+            log.debug("Set attachment thumbnails: {} for {}", thumbnails, request.name());
+            client.update(attachment);
+            this.eventPublisher.publishEvent(new AttachmentChangedEvent(this, attachment));
+            return result;
+        }).orElse(null);
+    }
+
+    @Override
+    public Controller setupWith(ControllerBuilder builder) {
+        return builder
+            .extension(new Attachment())
+            .build();
+    }
+
+    void cleanUpResources(Attachment attachment) {
+        attachmentService.delete(attachment).block(Duration.ofSeconds(20));
+    }
+}

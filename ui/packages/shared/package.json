@@ -1,0 +1,55 @@
+{
+  "name": "@nebula-labs/ui-shared",
+  "version": "2.24.0",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/nebula-labs/nebulacms/tree/main/ui/packages/shared#readme",
+  "bugs": {
+    "url": "https://github.com/nebula-labs/nebulacms/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "@nebula-labs",
+    "url": "https://github.com/nebula-labs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nebula-labs/nebulacms.git",
+    "directory": "ui/packages/shared"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "vp pack",
+    "dev": "vp pack --watch",
+    "typecheck": "tsc --noEmit -p tsconfig.app.json --composite false",
+    "prepublishOnly": "pnpm run build"
+  },
+  "dependencies": {
+    "@nebula-labs/api-client": "workspace:*",
+    "@nebula-labs/richtext-editor": "workspace:*",
+    "mitt": "^3.0.1"
+  },
+  "devDependencies": {
+    "dayjs": "^1.11.19",
+    "uuid": "^13.0.0"
+  },
+  "peerDependencies": {
+    "vue": "^3.5.x",
+    "vue-router": "^5.0.x"
+  },
+  "inlinedDependencies": {
+    "dayjs": "1.11.19",
+    "mitt": "3.0.1",
+    "uuid": "13.0.0"
+  }
+}

@@ -1,0 +1,48 @@
+import { mount } from "@vue/test-utils";
+import { describe, expect, it } from "vite-plus/test";
+import { VSpace } from "../index";
+import { SpaceSpacingSize } from "../types";
+
+describe("Space", () => {
+  it("should render", function () {
+    expect(VSpace).toBeDefined();
+  });
+
+  it("should work with spacing prop", function () {
+    Object.keys(SpaceSpacingSize).forEach((key: string) => {
+      const wrapper = mount(VSpace, {
+        propsData: {
+          spacing: key,
+        },
+      });
+      expect(wrapper.attributes()["style"]).toContain(
+        `gap: ${SpaceSpacingSize[key]}px`
+      );
+      wrapper.unmount();
+    });
+  });
+
+  it("should work with direction prop", function () {
+    ["row", "column"].forEach((direction: string) => {
+      const wrapper = mount(VSpace, {
+        propsData: {
+          direction: direction,
+        },
+      });
+      expect(wrapper.classes()).toContain(`space-direction-${direction}`);
+      wrapper.unmount();
+    });
+  });
+
+  it("should work with align prop", function () {
+    ["center", "start", "end", "stretch"].forEach((align: string) => {
+      const wrapper = mount(VSpace, {
+        propsData: {
+          align: align,
+        },
+      });
+      expect(wrapper.classes()).toContain(`space-align-${align}`);
+      wrapper.unmount();
+    });
+  });
+});

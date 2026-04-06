@@ -1,0 +1,96 @@
+package io.nebulacms.app.plugin;
+
+import static io.nebulacms.app.plugin.PluginConst.PLUGIN_NAME_LABEL_NAME;
+import static io.nebulacms.app.plugin.PluginExtensionLoaderUtils.isSetting;
+import static io.nebulacms.app.plugin.PluginExtensionLoaderUtils.lookupExtensions;
+
+import java.time.Duration;
+import java.util.HashMap;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.event.EventListener;
+import org.springframework.stereotype.Component;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+import io.nebulacms.app.core.extension.Plugin;
+import io.nebulacms.app.extension.ExtensionUtil;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.Unstructured;
+import io.nebulacms.app.infra.utils.YamlUnstructuredLoader;
+import io.nebulacms.app.plugin.event.HaloPluginStartedEvent;
+
+/**
+ * TODO Optimized Unstructured loading.
+ *
+ * @author guqing
+ * @since 2.0.0
+ */
+@Slf4j
+@Component
+class PluginStartedListener {
+
+    private static final Duration TIMEOUT = Duration.ofMinutes(1);
+
+    private final ReactiveExtensionClient client;
+
+    public PluginStartedListener(ReactiveExtensionClient extensionClient) {
+        this.client = extensionClient;
+    }
+
+    private Mono<Unstructured> createOrUpdate(Unstructured unstructured) {
+        var name = unstructured.getMetadata().getName();
+        return client.fetch(unstructured.groupVersionKind(), name)
+            .doOnNext(old -> unstructured.getMetadata().setVersion(old.getMetadata().getVersion()))
+            .map(ignored -> unstructured)
+            .flatMap(extension -> {
+                if (ExtensionUtil.hasDoNotOverwriteLabel(extension)) {
+                    log.debug("Skip updating extension {} due to do-not-overwrite label",
+                        extension.getMetadata().getName());
+                    return Mono.just(extension);
+                }
+                return client.update(extension);
+            })
+            .switchIfEmpty(Mono.defer(() -> client.create(unstructured)));
+    }
+
+    @EventListener
+    void onApplicationEvent(HaloPluginStartedEvent event) {
+        var pluginWrapper = event.getPlugin();
+        var p = pluginWrapper.getPlugin();
+        if (!(p instanceof SpringPlugin springPlugin)) {
+            return;
+        }
+        var applicationContext = springPlugin.getApplicationContext();
+        if (!(applicationContext instanceof PluginApplicationContext pluginApplicationContext)) {
+            return;
+        }
+        var pluginName = pluginWrapper.getPluginId();
+
+        client.get(Plugin.class, pluginName)
+            .flatMap(plugin -> Flux.fromStream(
+                    () -> {
+                        log.debug("Collecting extensions for plugin {}", pluginName);
+                        var resources = lookupExtensions(pluginWrapper.getPluginClassLoader());
+                        var loader = new YamlUnstructuredLoader(resources);
+                        var settingName = plugin.getSpec().getSettingName();
+                        // TODO The load method may be over memory consumption.
+                        return loader.load()
+                            .stream()
+                            .filter(isSetting(settingName).negate());
+                    })
+                .doOnNext(unstructured -> {
+                    var name = unstructured.getMetadata().getName();
+                    pluginApplicationContext
+                        .addExtensionMapping(unstructured.groupVersionKind(), name);
+                    var labels = unstructured.getMetadata().getLabels();
+                    if (labels == null) {
+                        labels = new HashMap<>();
+                        unstructured.getMetadata().setLabels(labels);
+                    }
+                    labels.put(PLUGIN_NAME_LABEL_NAME, plugin.getMetadata().getName());
+                })
+                .flatMap(this::createOrUpdate)
+                .then()
+            )
+            .block(TIMEOUT);
+    }
+}

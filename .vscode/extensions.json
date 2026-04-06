@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "editorconfig.editorconfig",
+    "oxc.oxc-vscode",
+    "vue.volar",
+    "bradlc.vscode-tailwindcss",
+    "VoidZero.vite-plus-extension-pack"
+  ]
+}

@@ -1,0 +1,32 @@
+<script lang="ts" setup>
+import { type Plugin } from "@nebula-labs/api-client";
+import { VEntityField, VTag } from "@nebula-labs/components";
+import { pluginLabels } from "@/constants/labels";
+
+withDefaults(
+  defineProps<{
+    plugin: Plugin;
+  }>(),
+  {}
+);
+</script>
+
+<template>
+  <VEntityField
+    :title="plugin.spec.displayName"
+    :description="plugin.spec.description"
+    :route="{
+      name: 'PluginDetail',
+      params: { name: plugin.metadata.name },
+    }"
+  >
+    <template
+      v-if="plugin.metadata.labels?.[pluginLabels.SYSTEM_RESERVED] === 'true'"
+      #extra
+    >
+      <VTag>
+        {{ $t("core.plugin.list.fields.system_reserved") }}
+      </VTag>
+    </template>
+  </VEntityField>
+</template>

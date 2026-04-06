@@ -1,0 +1,60 @@
+package io.nebulacms.app.security.authentication.rememberme;
+
+import static io.nebulacms.app.extension.index.query.Queries.and;
+import static io.nebulacms.app.extension.index.query.Queries.isNull;
+import static io.nebulacms.app.extension.index.query.Queries.lessThan;
+
+import java.time.Duration;
+import java.time.Instant;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+import io.nebulacms.app.core.extension.RememberMeToken;
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.router.selector.FieldSelector;
+import io.nebulacms.app.infra.ReactiveExtensionPaginatedOperator;
+import io.nebulacms.app.infra.utils.ReactiveUtils;
+
+/**
+ * A cleaner for remember me tokens that cleans up expired tokens periodically.
+ *
+ * @author guqing
+ * @since 2.17.0
+ */
+@Slf4j
+@Component
+@RequiredArgsConstructor
+public class RememberTokenCleaner {
+    private static final Duration BLOCKING_TIMEOUT = ReactiveUtils.DEFAULT_TIMEOUT;
+    private final ReactiveExtensionPaginatedOperator paginatedOperator;
+    private final RememberMeCookieResolver rememberMeCookieResolver;
+
+    /**
+     * Clean up expired tokens every day at 3:00 AM.
+     */
+    @Scheduled(cron = "0 0 3 * * ?")
+    public void cleanUpExpiredTokens() {
+        paginatedOperator.deleteInitialBatch(RememberMeToken.class, getExpiredTokensListOptions())
+            .then().block(BLOCKING_TIMEOUT);
+        log.info("Expired remember me tokens have been cleaned up.");
+    }
+
+    ListOptions getExpiredTokensListOptions() {
+        var listOptions = new ListOptions();
+        listOptions.setFieldSelector(FieldSelector.of(
+            and(isNull("metadata.deletionTimestamp"),
+                lessThan("metadata.creationTimestamp", getExpirationThreshold().toString())
+            )
+        ));
+        return listOptions;
+    }
+
+    protected Instant getExpirationThreshold() {
+        return Instant.now().minus(getTokenValidity());
+    }
+
+    protected Duration getTokenValidity() {
+        return rememberMeCookieResolver.getCookieMaxAge();
+    }
+}

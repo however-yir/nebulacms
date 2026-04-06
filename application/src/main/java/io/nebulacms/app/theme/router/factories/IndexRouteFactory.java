@@ -1,0 +1,94 @@
+package io.nebulacms.app.theme.router.factories;
+
+import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
+import static org.springframework.web.reactive.function.server.RequestPredicates.accept;
+import static io.nebulacms.app.theme.router.PageUrlUtils.totalPage;
+
+import java.time.Duration;
+import java.util.Map;
+import lombok.AllArgsConstructor;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Component;
+import org.springframework.web.reactive.function.server.HandlerFunction;
+import org.springframework.web.reactive.function.server.RouterFunction;
+import org.springframework.web.reactive.function.server.RouterFunctions;
+import org.springframework.web.reactive.function.server.ServerRequest;
+import org.springframework.web.reactive.function.server.ServerResponse;
+import org.springframework.web.server.i18n.LocaleContextResolver;
+import org.thymeleaf.context.LazyContextVariable;
+import reactor.core.publisher.Mono;
+import io.nebulacms.app.infra.SystemConfigFetcher;
+import io.nebulacms.app.infra.SystemSetting;
+import io.nebulacms.app.infra.utils.ReactiveUtils;
+import io.nebulacms.app.theme.DefaultTemplateEnum;
+import io.nebulacms.app.theme.finders.PostFinder;
+import io.nebulacms.app.theme.finders.vo.ListedPostVo;
+import io.nebulacms.app.theme.router.ModelConst;
+import io.nebulacms.app.theme.router.PageUrlUtils;
+import io.nebulacms.app.theme.router.TitleVisibilityIdentifyCalculator;
+import io.nebulacms.app.theme.router.UrlContextListResult;
+
+/**
+ * The {@link IndexRouteFactory} for generate {@link RouterFunction} specific to the template
+ * <code>index.html</code>.
+ *
+ * @author guqing
+ * @since 2.0.0
+ */
+@Component
+@AllArgsConstructor
+public class IndexRouteFactory implements RouteFactory {
+
+    private static final Duration BLOCKING_TIMEOUT = ReactiveUtils.DEFAULT_TIMEOUT;
+
+    private final PostFinder postFinder;
+    private final SystemConfigFetcher environmentFetcher;
+    private final TitleVisibilityIdentifyCalculator titleVisibilityIdentifyCalculator;
+    private final LocaleContextResolver localeContextResolver;
+
+    @Override
+    public RouterFunction<ServerResponse> create(String pattern) {
+        return RouterFunctions
+            .route(GET("/").or(GET("/page/{page:\\d+}")
+                .or(GET("/index")).or(GET("/index/page/{page:\\d+}"))
+                .and(accept(MediaType.TEXT_HTML))), handlerFunction());
+    }
+
+    HandlerFunction<ServerResponse> handlerFunction() {
+        return request -> Mono.deferContextual(contextView -> {
+            var posts = new LazyContextVariable<UrlContextListResult<ListedPostVo>>() {
+                @Override
+                protected UrlContextListResult<ListedPostVo> loadValue() {
+                    return postList(request).contextWrite(contextView).block(BLOCKING_TIMEOUT);
+                }
+            };
+            return ServerResponse.ok().render(DefaultTemplateEnum.INDEX.getValue(), Map.of(
+                "posts", posts,
+                ModelConst.TEMPLATE_ID, DefaultTemplateEnum.INDEX.getValue()
+            ));
+        });
+    }
+
+    private Mono<UrlContextListResult<ListedPostVo>> postList(ServerRequest request) {
+        String path = request.path();
+
+        return configuredPageSize(environmentFetcher, SystemSetting.Post::getPostPageSize)
+            .flatMap(pageSize -> postFinder.list(pageNumInPathVariable(request), pageSize))
+            .doOnNext(list -> list.getItems()
+                .forEach(listedPostVo -> listedPostVo.getSpec()
+                    .setTitle(titleVisibilityIdentifyCalculator.calculateTitle(
+                        listedPostVo.getSpec().getTitle(),
+                        listedPostVo.getSpec().getVisible(),
+                        localeContextResolver.resolveLocaleContext(request.exchange())
+                            .getLocale())
+                    )
+                )
+            )
+            .map(list -> new UrlContextListResult.Builder<ListedPostVo>()
+                .listResult(list)
+                .nextUrl(PageUrlUtils.nextPageUrl(path, totalPage(list)))
+                .prevUrl(PageUrlUtils.prevPageUrl(path))
+                .build()
+            );
+    }
+}

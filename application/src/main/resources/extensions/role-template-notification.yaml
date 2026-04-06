@@ -1,0 +1,21 @@
+apiVersion: v1alpha1
+kind: "Role"
+metadata:
+  name: role-template-notifier-config
+  labels:
+    nebulacms.io/role-template: "true"
+    nebulacms.io/hidden: "true"
+  annotations:
+    rbac.authorization.nebulacms.io/module: "Notification Configuration"
+    rbac.authorization.nebulacms.io/display-name: "Configure Notifier"
+rules:
+  - apiGroups: [ "notification.nebulacms.io" ]
+    resources: [ "notifierDescriptors" ]
+    verbs: [ "*" ]
+  - apiGroups: [ "api.console.nebulacms.io" ]
+    resources: [ "notifiers/sender-config" ]
+    verbs: [ "get", "update" ]
+  - apiGroups: [ "console.api.notification.nebulacms.io" ]
+    resources: [ "notifiers/verify-connection" ]
+    resourceNames: [ "default-email-notifier" ]
+    verbs: [ "create" ]

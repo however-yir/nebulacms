@@ -1,0 +1,47 @@
+{
+    "i18n-ally.localesPaths": [
+        "./ui/src/locales",
+        "./ui/packages/editor/src/locales"
+    ],
+    "i18n-ally.keystyle": "nested",
+    "prettier.enable": false,
+    "biome.enabled": false,
+    "oxc.fmt.configPath": "./ui/.oxfmtrc.json",
+    "oxc.path.oxfmt": "./ui/node_modules/.bin/oxfmt",
+    "editor.defaultFormatter": "oxc.oxc-vscode",
+    "editor.formatOnSave": true,
+    "[typescript]": {
+        "editor.defaultFormatter": "oxc.oxc-vscode"
+    },
+    "[vue]": {
+        "editor.defaultFormatter": "oxc.oxc-vscode"
+    },
+    "[css]": {
+        "editor.defaultFormatter": "oxc.oxc-vscode"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "oxc.oxc-vscode"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "oxc.oxc-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "oxc.oxc-vscode"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "oxc.oxc-vscode"
+    },
+    "[scss]": {
+        "editor.defaultFormatter": "oxc.oxc-vscode"
+    },
+    "[yaml]": {
+        "editor.defaultFormatter": "oxc.oxc-vscode"
+    },
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.patterns": {
+        "package.json": "pnpm-lock.yaml,pnpm-workspace.yaml",
+        "tsconfig.json": "tsconfig.node.json,tsconfig.vitest.json,tsconfig.app.json",
+        "vite.config.ts": "vite.uc.config.ts",
+        "tailwind.config.ts": "postcss.config.cjs"
+    }
+}

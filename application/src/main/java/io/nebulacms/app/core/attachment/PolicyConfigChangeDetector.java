@@ -1,0 +1,143 @@
+package io.nebulacms.app.core.attachment;
+
+import static io.nebulacms.app.extension.index.query.Queries.equal;
+
+import java.time.Duration;
+import java.time.Instant;
+import java.util.List;
+import lombok.RequiredArgsConstructor;
+import org.springframework.context.SmartLifecycle;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
+import io.nebulacms.app.core.extension.attachment.Attachment;
+import io.nebulacms.app.core.extension.attachment.Policy;
+import io.nebulacms.app.extension.ConfigMap;
+import io.nebulacms.app.extension.ExtensionClient;
+import io.nebulacms.app.extension.ExtensionMatcher;
+import io.nebulacms.app.extension.GroupVersionKind;
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.MetadataUtil;
+import io.nebulacms.app.extension.controller.Controller;
+import io.nebulacms.app.extension.controller.ControllerBuilder;
+import io.nebulacms.app.extension.controller.DefaultController;
+import io.nebulacms.app.extension.controller.DefaultQueue;
+import io.nebulacms.app.extension.controller.Reconciler;
+import io.nebulacms.app.extension.controller.RequestQueue;
+
+/**
+ * <p>Detects changes to {@link ConfigMap} that are referenced by {@link Policy} and updates the
+ * {@link Attachment} with the {@link Policy} reference to reflect the change.</p>
+ * <p>Without this, the link to the attachment corresponding to the storage policy configuration
+ * change may not be correctly updated and only the service can be restarted.</p>
+ *
+ * @author guqing
+ * @since 2.20.0
+ */
+@Component
+@RequiredArgsConstructor
+public class PolicyConfigChangeDetector implements Reconciler<Reconciler.Request> {
+    static final String POLICY_UPDATED_AT = "storage.nebulacms.io/policy-updated-at";
+    private final GroupVersionKind attachmentGvk = GroupVersionKind.fromExtension(Attachment.class);
+    private final ExtensionClient client;
+    private final AttachmentUpdateTrigger attachmentUpdateTrigger;
+
+    @Override
+    public Result reconcile(Request request) {
+        client.fetch(ConfigMap.class, request.name())
+            .ifPresent(configMap -> {
+                var labels = configMap.getMetadata().getLabels();
+                if (labels == null) {
+                    return;
+                }
+                var policyName = labels.get(Policy.POLICY_OWNER_LABEL);
+                if (StringUtils.hasText(policyName)) {
+                    var options = ListOptions.builder()
+                        .andQuery(equal("spec.policyName", policyName))
+                        .build();
+                    var attachmentNames =
+                        client.listAllNames(Attachment.class, options, Sort.unsorted());
+                    attachmentUpdateTrigger.addAll(attachmentNames);
+                }
+            });
+        return Result.doNotRetry();
+    }
+
+    @Override
+    public Controller setupWith(ControllerBuilder builder) {
+        ExtensionMatcher matcher = extension -> {
+            var configMap = (ConfigMap) extension;
+            var labels = configMap.getMetadata().getLabels();
+            return labels != null && labels.containsKey(Policy.POLICY_OWNER_LABEL);
+        };
+        return builder
+            .extension(new ConfigMap())
+            .syncAllOnStart(false)
+            .onAddMatcher(matcher)
+            .onUpdateMatcher(matcher)
+            .onDeleteMatcher(matcher)
+            .build();
+    }
+
+    @Component
+    static class AttachmentUpdateTrigger implements Reconciler<String>, SmartLifecycle {
+        private final RequestQueue<String> queue;
+
+        private final Controller controller;
+
+        private volatile boolean running = false;
+
+        private final ExtensionClient client;
+
+        public AttachmentUpdateTrigger(ExtensionClient client) {
+            this.client = client;
+            this.queue = new DefaultQueue<>(Instant::now);
+            this.controller = this.setupWith(null);
+        }
+
+        @Override
+        public Result reconcile(String name) {
+            client.fetch(Attachment.class, name).ifPresent(attachment -> {
+                var annotations = MetadataUtil.nullSafeAnnotations(attachment);
+                annotations.put(POLICY_UPDATED_AT, Instant.now().toString());
+                client.update(attachment);
+            });
+            return Result.doNotRetry();
+        }
+
+        void addAll(List<String> names) {
+            for (String name : names) {
+                queue.addImmediately(name);
+            }
+        }
+
+        @Override
+        public Controller setupWith(ControllerBuilder builder) {
+            return new DefaultController<>(
+                "PolicyChangeAttachmentUpdater",
+                this,
+                queue,
+                null,
+                Duration.ofMillis(100),
+                Duration.ofMinutes(10)
+            );
+        }
+
+        @Override
+        public void start() {
+            controller.start();
+            running = true;
+        }
+
+        @Override
+        public void stop() {
+            running = false;
+            controller.dispose();
+        }
+
+        @Override
+        public boolean isRunning() {
+            return running;
+        }
+    }
+}

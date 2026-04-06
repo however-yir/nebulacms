@@ -1,0 +1,49 @@
+server:
+  port: 8090
+
+spring:
+  output:
+    ansi:
+      enabled: always
+  thymeleaf:
+    cache: false
+  web:
+    resources:
+      cache:
+        cachecontrol:
+          no-cache: true
+        use-last-modified: false
+
+halo:
+  security:
+    basic-auth:
+      disabled: false
+  ui:
+    proxy:
+      endpoint: ${NEBULACMS_UI_PROXY_ENDPOINT:http://localhost:3000/}
+      enabled: true
+  plugin:
+    runtime-mode: development # development, deployment
+  work-dir: ${NEBULACMS_WORK_DIR:${user.home}/nebulacms-dev}
+logging:
+  level:
+    org.springframework.data.r2dbc: DEBUG
+    org.springframework.r2dbc: DEBUG
+    io.nebulacms: DEBUG
+    web: DEBUG
+    org.springframework.boot.autoconfigure.web.reactive.error.AbstractErrorWebExceptionHandler: DEBUG
+springdoc:
+  cache:
+    disabled: true
+  api-docs:
+    enabled: true
+    version: OPENAPI_3_0
+  swagger-ui:
+    enabled: true
+  show-actuator: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

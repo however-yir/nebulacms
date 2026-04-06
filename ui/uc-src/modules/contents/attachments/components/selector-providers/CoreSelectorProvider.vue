@@ -1,0 +1,454 @@
+<script setup lang="ts">
+import { ucApiClient, type Attachment } from "@nebula-labs/api-client";
+import {
+  IconArrowLeft,
+  IconArrowRight,
+  IconCheckboxCircle,
+  IconCheckboxFill,
+  IconClose,
+  IconEye,
+  IconGrid,
+  IconList,
+  IconRefreshLine,
+  IconUpload,
+  VButton,
+  VEmpty,
+  VEntityContainer,
+  VLoading,
+  VPagination,
+  VSpace,
+} from "@nebula-labs/components";
+import type { AttachmentLike } from "@nebula-labs/ui-shared";
+import { useQuery } from "@tanstack/vue-query";
+import type { SuccessResponse } from "@uppy/core";
+import { useLocalStorage } from "@vueuse/core";
+import { throttle } from "es-toolkit/compat";
+import { computed, nextTick, ref, watch } from "vue";
+import { useI18n } from "vue-i18n";
+import AttachmentGridListItem from "@/components/attachment/AttachmentGridListItem.vue";
+import { matchMediaTypes } from "@/utils/media-type";
+import AttachmentDetailModal from "../AttachmentDetailModal.vue";
+import AttachmentSelectorListItem from "./components/AttachmentSelectorListItem.vue";
+
+const { t } = useI18n();
+
+const props = withDefaults(
+  defineProps<{
+    selected?: AttachmentLike[];
+    accepts?: string[];
+    min?: number;
+    max?: number;
+  }>(),
+  {
+    selected: () => [],
+    accepts: () => ["*/*"],
+    min: undefined,
+    max: undefined,
+  }
+);
+
+const emit = defineEmits<{
+  (event: "update:selected", attachments: AttachmentLike[]): void;
+  (event: "change-provider", providerId: string): void;
+}>();
+
+const page = ref(1);
+const size = ref(60);
+const keyword = ref("");
+const selectedSort = ref();
+
+const hasFilters = computed(() => {
+  return selectedSort.value;
+});
+
+function handleClearFilters() {
+  selectedSort.value = undefined;
+}
+
+const {
+  data,
+  isFetching,
+  isLoading,
+  refetch: handleFetchAttachments,
+} = useQuery({
+  queryKey: [
+    "uc:attachments:my",
+    props.accepts,
+    page,
+    size,
+    keyword,
+    selectedSort,
+  ],
+  queryFn: async () => {
+    const { data } = await ucApiClient.storage.attachment.listMyAttachments({
+      accepts: props.accepts,
+      page: page.value,
+      size: size.value,
+      keyword: keyword.value,
+      sort: [selectedSort.value],
+    });
+    return data;
+  },
+});
+
+const throttledFetchAttachments = throttle(handleFetchAttachments, 1000, {
+  leading: false,
+  trailing: true,
+});
+
+// Upload
+const uploadVisible = ref(false);
+
+// Select
+const selectedAttachment = ref<Attachment>();
+const selectedAttachmentNames = ref<Set<string>>(new Set<string>());
+
+const selectedAttachments = computed(() => {
+  return data.value?.items.filter((attachment) =>
+    selectedAttachmentNames.value.has(attachment.metadata.name)
+  );
+});
+
+watch(
+  () => selectedAttachments.value,
+  (newValue) => {
+    emit("update:selected", newValue || []);
+  },
+  {
+    deep: true,
+  }
+);
+
+const isChecked = (attachment: Attachment) => {
+  return selectedAttachmentNames.value.has(attachment.metadata.name);
+};
+
+const isDisabled = (attachment: Attachment) => {
+  const isMatchMediaType = matchMediaTypes(
+    attachment.spec.mediaType || "*/*",
+    props.accepts
+  );
+
+  if (
+    props.max !== undefined &&
+    props.max <= selectedAttachmentNames.value.size &&
+    !isChecked(attachment)
+  ) {
+    return true;
+  }
+
+  return !isMatchMediaType;
+};
+
+const handleSelect = async (attachment: Attachment | undefined) => {
+  if (!attachment) return;
+  if (selectedAttachmentNames.value.has(attachment.metadata.name)) {
+    selectedAttachmentNames.value.delete(attachment.metadata.name);
+    return;
+  }
+  selectedAttachmentNames.value.add(attachment.metadata.name);
+};
+
+// View type
+const viewTypes = [
+  {
+    name: "list",
+    tooltip: t("core.uc_attachment.filters.view_type.items.list"),
+    icon: IconList,
+  },
+  {
+    name: "grid",
+    tooltip: t("core.uc_attachment.filters.view_type.items.grid"),
+    icon: IconGrid,
+  },
+];
+
+const viewType = useLocalStorage("attachment-selector-view-type", "grid");
+
+// Detail modal
+function handleOpenDetail(attachment: Attachment) {
+  selectedAttachment.value = attachment;
+}
+
+function onDetailModalClose() {
+  selectedAttachment.value = undefined;
+}
+
+const handleSelectPrevious = async () => {
+  if (!data.value) return;
+
+  const index = data.value.items.findIndex(
+    (attachment) =>
+      attachment.metadata.name === selectedAttachment.value?.metadata.name
+  );
+
+  if (index === undefined) return;
+
+  if (index > 0) {
+    selectedAttachment.value = data.value.items[index - 1];
+    return;
+  }
+
+  if (index === 0 && data.value.hasPrevious) {
+    page.value--;
+    await nextTick();
+    await handleFetchAttachments();
+    selectedAttachment.value = data.value.items[data.value.items.length - 1];
+  }
+};
+
+const handleSelectNext = async () => {
+  if (!data.value) return;
+
+  const index = data.value.items.findIndex(
+    (attachment) =>
+      attachment.metadata.name === selectedAttachment.value?.metadata.name
+  );
+
+  if (index === undefined) return;
+
+  if (index < data.value.items.length - 1) {
+    selectedAttachment.value = data.value.items[index + 1];
+    return;
+  }
+
+  if (index === data.value.items.length - 1 && data.value.hasNext) {
+    page.value++;
+    await nextTick();
+    await handleFetchAttachments();
+    selectedAttachment.value = data.value.items[0];
+  }
+};
+
+function onUploadDone() {
+  handleFetchAttachments();
+  uploadVisible.value = false;
+}
+
+function onUploaded(response: SuccessResponse) {
+  if (response.body) {
+    handleSelect(response.body as Attachment);
+    page.value = 1;
+    throttledFetchAttachments();
+  }
+}
+</script>
+<template>
+  <div class="mb-3 block w-full rounded bg-gray-50 px-3 py-2">
+    <div class="relative flex flex-col items-start sm:flex-row sm:items-center">
+      <div class="flex w-full flex-1 items-center sm:w-auto">
+        <SearchInput v-model="keyword" />
+      </div>
+      <div class="mt-4 flex sm:mt-0">
+        <VSpace spacing="lg">
+          <FilterCleanButton v-if="hasFilters" @click="handleClearFilters" />
+
+          <FilterDropdown
+            v-model="selectedSort"
+            :label="$t('core.common.filters.labels.sort')"
+            :items="[
+              {
+                label: t('core.common.filters.item_labels.default'),
+              },
+              {
+                label: t(
+                  'core.uc_attachment.filters.sort.items.create_time_desc'
+                ),
+                value: 'metadata.creationTimestamp,desc',
+              },
+              {
+                label: t(
+                  'core.uc_attachment.filters.sort.items.create_time_asc'
+                ),
+                value: 'metadata.creationTimestamp,asc',
+              },
+              {
+                label: t(
+                  'core.uc_attachment.filters.sort.items.display_name_desc'
+                ),
+                value: 'spec.displayName,desc',
+              },
+              {
+                label: t(
+                  'core.uc_attachment.filters.sort.items.display_name_asc'
+                ),
+                value: 'spec.displayName,asc',
+              },
+              {
+                label: t('core.uc_attachment.filters.sort.items.size_desc'),
+                value: 'spec.size,desc',
+              },
+              {
+                label: t('core.uc_attachment.filters.sort.items.size_asc'),
+                value: 'spec.size,asc',
+              },
+            ]"
+          />
+
+          <div class="flex flex-row gap-2">
+            <div
+              v-for="item in viewTypes"
+              :key="item.name"
+              v-tooltip="`${item.tooltip}`"
+              :class="{
+                'bg-gray-200 font-bold text-black': viewType === item.name,
+              }"
+              class="cursor-pointer rounded p-1 hover:bg-gray-200"
+              @click="viewType = item.name"
+            >
+              <component :is="item.icon" class="h-4 w-4" />
+            </div>
+          </div>
+
+          <div class="flex flex-row gap-2">
+            <div
+              class="group cursor-pointer rounded p-1 hover:bg-gray-200"
+              @click="handleFetchAttachments()"
+            >
+              <IconRefreshLine
+                v-tooltip="$t('core.common.buttons.refresh')"
+                :class="{ 'animate-spin text-gray-900': isFetching }"
+                class="h-4 w-4 text-gray-600 group-hover:text-gray-900"
+              />
+            </div>
+          </div>
+        </VSpace>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-5 space-y-3">
+    <VButton @click="uploadVisible = !uploadVisible">
+      <template #icon>
+        <IconUpload v-if="!uploadVisible" />
+        <IconClose v-else />
+      </template>
+      {{
+        uploadVisible
+          ? $t("core.common.buttons.cancel_upload")
+          : $t("core.common.buttons.upload")
+      }}
+    </VButton>
+    <Transition v-if="uploadVisible" appear name="fade">
+      <UppyUpload
+        endpoint="/apis/uc.api.storage.nebulacms.io/v1alpha1/attachments/-/upload"
+        width="100%"
+        :done-button-handler="onUploadDone"
+        @uploaded="onUploaded"
+      />
+    </Transition>
+  </div>
+
+  <VLoading v-if="isLoading" />
+
+  <VEmpty
+    v-else-if="!data?.total"
+    :message="$t('core.uc_attachment.empty.message')"
+    :title="$t('core.uc_attachment.empty.title')"
+  >
+    <template #actions>
+      <VSpace>
+        <VButton @click="handleFetchAttachments">
+          {{ $t("core.common.buttons.refresh") }}
+        </VButton>
+        <VButton type="secondary" @click="uploadVisible = true">
+          <template #icon>
+            <IconUpload />
+          </template>
+          {{ $t("core.uc_attachment.empty.actions.upload") }}
+        </VButton>
+      </VSpace>
+    </template>
+  </VEmpty>
+
+  <div v-else>
+    <Transition v-if="viewType === 'grid'" appear name="fade">
+      <div
+        class="mt-2 grid grid-cols-3 gap-x-2 gap-y-3 sm:grid-cols-3 md:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10"
+        role="list"
+      >
+        <AttachmentGridListItem
+          v-for="attachment in data.items"
+          :key="attachment.metadata.name"
+          :attachment="attachment"
+          :is-selected="isChecked(attachment)"
+          :is-disabled="isDisabled(attachment)"
+          @select="handleSelect(attachment)"
+          @click="handleSelect(attachment)"
+        >
+          <template #actions>
+            <IconEye
+              class="mr-1 mt-1 hidden h-6 w-6 cursor-pointer text-white transition-all hover:text-primary group-hover:block"
+              @click.stop="handleOpenDetail(attachment)"
+            />
+          </template>
+        </AttachmentGridListItem>
+      </div>
+    </Transition>
+    <Transition v-if="viewType === 'list'" appear name="fade">
+      <div class="overflow-hidden rounded-base border">
+        <VEntityContainer>
+          <AttachmentSelectorListItem
+            v-for="attachment in data.items"
+            :key="attachment.metadata.name"
+            :attachment="attachment"
+            :is-selected="isChecked(attachment)"
+            @select="handleSelect"
+            @open-detail="handleOpenDetail"
+          >
+            <template #checkbox>
+              <input
+                :checked="isChecked(attachment)"
+                :disabled="isDisabled(attachment)"
+                type="checkbox"
+                @click="handleSelect(attachment)"
+              />
+            </template>
+          </AttachmentSelectorListItem>
+        </VEntityContainer>
+      </div>
+    </Transition>
+  </div>
+
+  <div class="mt-4">
+    <VPagination
+      v-model:page="page"
+      v-model:size="size"
+      :page-label="$t('core.components.pagination.page_label')"
+      :size-label="$t('core.components.pagination.size_label')"
+      :total-label="
+        $t('core.components.pagination.total_label', {
+          total: data?.total || 0,
+        })
+      "
+      :total="data?.total || 0"
+      :size-options="[60, 120, 200]"
+    />
+  </div>
+
+  <AttachmentDetailModal
+    v-if="selectedAttachment"
+    :mount-to-body="true"
+    :attachment="selectedAttachment"
+    @close="onDetailModalClose"
+  >
+    <template #actions>
+      <span
+        v-if="isChecked(selectedAttachment)"
+        @click="handleSelect(selectedAttachment)"
+      >
+        <IconCheckboxFill />
+      </span>
+      <span v-else @click="handleSelect(selectedAttachment)">
+        <IconCheckboxCircle />
+      </span>
+
+      <span @click="handleSelectPrevious">
+        <IconArrowLeft />
+      </span>
+      <span @click="handleSelectNext">
+        <IconArrowRight />
+      </span>
+    </template>
+  </AttachmentDetailModal>
+</template>

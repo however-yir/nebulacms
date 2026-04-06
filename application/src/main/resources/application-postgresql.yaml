@@ -1,0 +1,9 @@
+spring:
+  r2dbc:
+    url: ${NEBULACMS_DB_URL:r2dbc:pool:postgresql://localhost:5432/nebulacms}
+    username: ${NEBULACMS_DB_USERNAME:postgres}
+    password: ${NEBULACMS_DB_PASSWORD:openpostgresql}
+  sql:
+    init:
+      mode: always
+      platform: postgresql

@@ -1,0 +1,33 @@
+apiVersion: v1alpha1
+kind: "Role"
+metadata:
+  name: role-template-manage-roles
+  labels:
+    nebulacms.io/role-template: "true"
+  annotations:
+    rbac.authorization.nebulacms.io/dependencies: |
+      [ "role-template-view-roles", "role-template-manage-permissions" ]
+    rbac.authorization.nebulacms.io/module: "Roles Management"
+    rbac.authorization.nebulacms.io/display-name: "Role Manage"
+    rbac.authorization.nebulacms.io/ui-permissions: |
+      ["system:roles:manage"]
+rules:
+  - apiGroups: [ "" ]
+    resources: [ "roles" ]
+    verbs: [ "create", "patch", "update", "delete", "deletecollection" ]
+---
+apiVersion: v1alpha1
+kind: "Role"
+metadata:
+  name: role-template-view-roles
+  labels:
+    nebulacms.io/role-template: "true"
+  annotations:
+    rbac.authorization.nebulacms.io/module: "Roles Management"
+    rbac.authorization.nebulacms.io/display-name: "Role View"
+    rbac.authorization.nebulacms.io/ui-permissions: |
+      ["system:roles:view"]
+rules:
+  - apiGroups: [ "" ]
+    resources: [ "roles" ]
+    verbs: [ "get", "list" ]

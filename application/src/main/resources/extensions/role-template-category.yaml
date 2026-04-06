@@ -1,0 +1,30 @@
+apiVersion: v1alpha1
+kind: "Role"
+metadata:
+  name: role-template-manage-categories
+  labels:
+    nebulacms.io/role-template: "true"
+    nebulacms.io/hidden: "true"
+  annotations:
+    rbac.authorization.nebulacms.io/dependencies: "[ \"role-template-view-categories\" ]"
+    rbac.authorization.nebulacms.io/ui-permissions: |
+      [ "system:categories:manage", "uc:categories:manage" ]
+rules:
+  - apiGroups: [ "content.nebulacms.io" ]
+    resources: [ "categories" ]
+    verbs: [ "*" ]
+---
+apiVersion: v1alpha1
+kind: "Role"
+metadata:
+  name: role-template-view-categories
+  labels:
+    nebulacms.io/role-template: "true"
+    nebulacms.io/hidden: "true"
+  annotations:
+    rbac.authorization.nebulacms.io/ui-permissions: |
+      [ "system:categories:view", "uc:categories:view" ]
+rules:
+  - apiGroups: [ "content.nebulacms.io" ]
+    resources: [ "categories" ]
+    verbs: [ "get", "list" ]

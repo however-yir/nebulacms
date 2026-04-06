@@ -1,0 +1,14 @@
+apiVersion: v1alpha1
+kind: "Role"
+metadata:
+  name: role-template-actuator
+  labels:
+    nebulacms.io/role-template: "true"
+  annotations:
+    rbac.authorization.nebulacms.io/module: "Actuator Management"
+    rbac.authorization.nebulacms.io/display-name: "Actuator Manage"
+    rbac.authorization.nebulacms.io/ui-permissions: |
+      ["system:actuator:manage"]
+rules:
+  - nonResourceURLs: [ "actuator", "/actuator/*" ]
+    verbs: [ "get" ]

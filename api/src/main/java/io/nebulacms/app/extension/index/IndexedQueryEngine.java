@@ -1,0 +1,49 @@
+package io.nebulacms.app.extension.index;
+
+import java.util.List;
+import org.springframework.data.domain.Sort;
+import io.nebulacms.app.extension.GroupVersionKind;
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.ListResult;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.PageRequest;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+
+/**
+ * <p>An interface for querying indexed object records from the index store.</p>
+ * <p>It provides a way to retrieve the object records by the given {@link GroupVersionKind} and
+ * {@link ListOptions}, the final result will be ordered by the index what {@link ListOptions}
+ * used and specified by the {@link PageRequest#getSort()}.</p>
+ *
+ * @author guqing
+ * @since 2.12.0
+ * @deprecated Use {@link ReactiveExtensionClient#listAllNames(Class, ListOptions, Sort)}
+ * or {@link ReactiveExtensionClient#countBy(Class, ListOptions)}
+ * or {@link ReactiveExtensionClient#listTopNames(Class, ListOptions, Sort, int)} instead
+ */
+@Deprecated(forRemoval = true, since = "2.22.0")
+public interface IndexedQueryEngine {
+
+    /**
+     * Page retrieve the object records by the given {@link GroupVersionKind} and
+     * {@link ListOptions}.
+     *
+     * @param type the type of the object must exist in
+     * {@link io.nebulacms.app.extension.SchemeManager}.
+     * @param options the list options to use for retrieving the object records.
+     * @param page which page to retrieve and how large the page should be.
+     * @return a collection of {@link Metadata#getName()} for the given page.
+     */
+    ListResult<String> retrieve(GroupVersionKind type, ListOptions options, PageRequest page);
+
+    /**
+     * Retrieve all the object records by the given {@link GroupVersionKind} and
+     * {@link ListOptions}.
+     *
+     * @param type the type of the object must exist in {@link io.nebulacms.app.extension.SchemeManager}
+     * @param options the list options to use for retrieving the object records
+     * @param sort the sort to use for retrieving the object records
+     * @return a collection of {@link Metadata#getName()}
+     */
+    List<String> retrieveAll(GroupVersionKind type, ListOptions options, Sort sort);
+}

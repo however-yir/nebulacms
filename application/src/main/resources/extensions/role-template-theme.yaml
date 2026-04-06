@@ -1,0 +1,42 @@
+apiVersion: v1alpha1
+kind: "Role"
+metadata:
+  name: role-template-manage-themes
+  labels:
+    nebulacms.io/role-template: "true"
+  annotations:
+    rbac.authorization.nebulacms.io/dependencies: "[ \"role-template-view-themes\" ]"
+    rbac.authorization.nebulacms.io/module: "Themes Management"
+    rbac.authorization.nebulacms.io/display-name: "Theme Manage"
+    rbac.authorization.nebulacms.io/ui-permissions: |
+      ["system:themes:manage"]
+rules:
+  - apiGroups: [ "theme.nebulacms.io" ]
+    resources: [ "themes" ]
+    verbs: [ "*" ]
+  - apiGroups: [ "api.console.nebulacms.io" ]
+    resources: [ "themes", "themes/reload", "themes/resetconfig", "themes/config", "themes/json-config",
+                 "themes/activation", "themes/install-from-uri", "themes/upgrade-from-uri", "themes/invalidate-cache" ]
+    verbs: [ "*" ]
+  - nonResourceURLs: [ "/apis/api.console.nebulacms.io/themes/install" ]
+    verbs: [ "create" ]
+---
+apiVersion: v1alpha1
+kind: "Role"
+metadata:
+  name: role-template-view-themes
+  labels:
+    nebulacms.io/role-template: "true"
+  annotations:
+    rbac.authorization.nebulacms.io/module: "Themes Management"
+    rbac.authorization.nebulacms.io/display-name: "Theme View"
+    rbac.authorization.nebulacms.io/ui-permissions: |
+      ["system:themes:view"]
+rules:
+  - apiGroups: [ "theme.nebulacms.io" ]
+    resources: [ "themes" ]
+    verbs: [ "get", "list" ]
+  - apiGroups: [ "api.console.nebulacms.io" ]
+    resources: [ "themes", "themes/activation", "themes/setting", "themes/config", "themes/json-config" ]
+    verbs: [ "get", "list" ]
+

@@ -1,0 +1,38 @@
+apiVersion: v1alpha1
+kind: "Role"
+metadata:
+  name: role-template-manage-comments
+  labels:
+    nebulacms.io/role-template: "true"
+  annotations:
+    rbac.authorization.nebulacms.io/dependencies: "[ \"role-template-view-comments\" ]"
+    rbac.authorization.nebulacms.io/module: "Comments Management"
+    rbac.authorization.nebulacms.io/display-name: "Comment Manage"
+    rbac.authorization.nebulacms.io/ui-permissions: |
+      ["system:comments:manage"]
+rules:
+  - apiGroups: [ "content.nebulacms.io" ]
+    resources: [ "comments", "replies" ]
+    verbs: [ "*" ]
+  - apiGroups: [ "api.console.nebulacms.io" ]
+    resources: [ "comments", "comments/reply", "replies" ]
+    verbs: [ "*" ]
+---
+apiVersion: v1alpha1
+kind: "Role"
+metadata:
+  name: role-template-view-comments
+  labels:
+    nebulacms.io/role-template: "true"
+  annotations:
+    rbac.authorization.nebulacms.io/module: "Comments Management"
+    rbac.authorization.nebulacms.io/display-name: "Comment View"
+    rbac.authorization.nebulacms.io/ui-permissions: |
+      ["system:comments:view"]
+rules:
+  - apiGroups: [ "content.nebulacms.io" ]
+    resources: [ "comments", "replies" ]
+    verbs: [ "get", "list" ]
+  - apiGroups: [ "api.console.nebulacms.io" ]
+    resources: [ "comments", "comments/reply", "replies" ]
+    verbs: [ "get", "list" ]

@@ -1,0 +1,13 @@
+repository:
+  name: nebulacms
+  description: "NebulaCMS - plugin-first open source content platform forked from Halo with independent namespace, branding, and deployment pipeline."
+  homepage: "https://github.com/nebula-labs/nebulacms"
+  topics:
+    - nebulacms
+    - cms
+    - spring-boot
+    - webflux
+    - vue
+    - r2dbc
+    - plugin-system
+    - self-hosted

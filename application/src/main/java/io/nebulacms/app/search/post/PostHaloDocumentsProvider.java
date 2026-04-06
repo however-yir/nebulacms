@@ -1,0 +1,81 @@
+package io.nebulacms.app.search.post;
+
+import org.springframework.stereotype.Component;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+import io.nebulacms.app.content.ContentWrapper;
+import io.nebulacms.app.content.PostService;
+import io.nebulacms.app.core.extension.content.Post;
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.index.query.Queries;
+import io.nebulacms.app.extension.router.selector.FieldSelector;
+import io.nebulacms.app.infra.ReactiveExtensionPaginatedOperator;
+import io.nebulacms.app.search.HaloDocument;
+import io.nebulacms.app.search.HaloDocumentsProvider;
+
+@Component
+public class PostHaloDocumentsProvider implements HaloDocumentsProvider {
+
+    public static final String POST_DOCUMENT_TYPE = "post.content.nebulacms.io";
+
+    private final ReactiveExtensionPaginatedOperator paginatedOperator;
+
+    private final PostService postService;
+
+    public PostHaloDocumentsProvider(ReactiveExtensionPaginatedOperator paginatedOperator,
+        PostService postService) {
+        this.paginatedOperator = paginatedOperator;
+        this.postService = postService;
+    }
+
+    @Override
+    public Flux<HaloDocument> fetchAll() {
+        // make sure the posts are published, public visible and not deleted.
+        var options = new ListOptions();
+        var noteDeleted = Queries.isNull("metadata.deletionTimestamp");
+        options.setFieldSelector(FieldSelector.of(noteDeleted));
+        // get content
+        return paginatedOperator.list(Post.class, options)
+            .flatMap(post -> postService.getReleaseContent(post)
+                .switchIfEmpty(Mono.fromSupplier(() -> ContentWrapper.builder()
+                    .content("")
+                    .raw("")
+                    .rawType("")
+                    .build()))
+                .map(contentWrapper -> convert(post, contentWrapper))
+            );
+    }
+
+    @Override
+    public String getType() {
+        return POST_DOCUMENT_TYPE;
+    }
+
+    /**
+     * Converts post to HaloDocument.
+     *
+     * @param post post detail
+     * @param content post content
+     * @return halo document
+     */
+    public static HaloDocument convert(Post post, ContentWrapper content) {
+        var haloDoc = new HaloDocument();
+        var spec = post.getSpec();
+        haloDoc.setMetadataName(post.getMetadata().getName());
+        haloDoc.setType(POST_DOCUMENT_TYPE);
+        haloDoc.setId(POST_DOCUMENT_TYPE + '-' + post.getMetadata().getName());
+        haloDoc.setTitle(spec.getTitle());
+        haloDoc.setDescription(post.getStatus().getExcerpt());
+        haloDoc.setPublished(Post.isPublished(post.getMetadata()));
+        haloDoc.setRecycled(Post.isRecycled(post.getMetadata()));
+        haloDoc.setExposed(Post.isPublic(spec));
+        haloDoc.setContent(content.getContent());
+        haloDoc.setTags(spec.getTags());
+        haloDoc.setCategories(spec.getCategories());
+        haloDoc.setOwnerName(spec.getOwner());
+        haloDoc.setUpdateTimestamp(spec.getPublishTime());
+        haloDoc.setCreationTimestamp(post.getMetadata().getCreationTimestamp());
+        haloDoc.setPermalink(post.getStatus().getPermalink());
+        return haloDoc;
+    }
+}

@@ -1,0 +1,9 @@
+spring:
+  r2dbc:
+    url: ${NEBULACMS_DB_URL:r2dbc:pool:mysql://localhost:3306/nebulacms}
+    username: ${NEBULACMS_DB_USERNAME:root}
+    password: ${NEBULACMS_DB_PASSWORD:openmysql}
+  sql:
+    init:
+      mode: always
+      platform: mysql

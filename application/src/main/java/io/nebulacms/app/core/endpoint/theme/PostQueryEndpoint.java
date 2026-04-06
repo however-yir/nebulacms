@@ -1,0 +1,112 @@
+package io.nebulacms.app.core.endpoint.theme;
+
+import static org.springdoc.core.fn.builders.apiresponse.Builder.responseBuilder;
+import static org.springdoc.core.fn.builders.parameter.Builder.parameterBuilder;
+
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
+import lombok.RequiredArgsConstructor;
+import org.springdoc.webflux.core.fn.SpringdocRouteBuilder;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Component;
+import org.springframework.web.reactive.function.server.RouterFunction;
+import org.springframework.web.reactive.function.server.ServerRequest;
+import org.springframework.web.reactive.function.server.ServerResponse;
+import reactor.core.publisher.Mono;
+import io.nebulacms.app.core.extension.content.Post;
+import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
+import io.nebulacms.app.extension.GroupVersion;
+import io.nebulacms.app.extension.ListResult;
+import io.nebulacms.app.infra.exception.NotFoundException;
+import io.nebulacms.app.theme.finders.PostFinder;
+import io.nebulacms.app.theme.finders.PostPublicQueryService;
+import io.nebulacms.app.theme.finders.vo.ListedPostVo;
+import io.nebulacms.app.theme.finders.vo.NavigationPostVo;
+import io.nebulacms.app.theme.finders.vo.PostVo;
+
+/**
+ * Endpoint for post query.
+ *
+ * @author guqing
+ * @since 2.5.0
+ */
+@Component
+@RequiredArgsConstructor
+public class PostQueryEndpoint implements CustomEndpoint {
+
+    private final PostFinder postFinder;
+    private final PostPublicQueryService postPublicQueryService;
+
+    @Override
+    public RouterFunction<ServerResponse> endpoint() {
+        var tag = "PostV1alpha1Public";
+        return SpringdocRouteBuilder.route()
+            .GET("posts", this::listPosts,
+                builder -> {
+                    builder.operationId("queryPosts")
+                        .description("Lists posts.")
+                        .tag(tag)
+                        .response(responseBuilder()
+                            .implementation(ListResult.generateGenericClass(ListedPostVo.class))
+                        );
+                    PostPublicQuery.buildParameters(builder);
+                }
+            )
+            .GET("posts/{name}", this::getPostByName,
+                builder -> builder.operationId("queryPostByName")
+                    .description("Gets a post by name.")
+                    .tag(tag)
+                    .parameter(parameterBuilder()
+                        .in(ParameterIn.PATH)
+                        .name("name")
+                        .description("Post name")
+                        .required(true)
+                    )
+                    .response(responseBuilder()
+                        .implementation(PostVo.class)
+                    )
+            )
+            .GET("posts/{name}/navigation", this::getPostNavigationByName,
+                builder -> builder.operationId("queryPostNavigationByName")
+                    .description("Gets a post navigation by name.")
+                    .tag(tag)
+                    .parameter(parameterBuilder()
+                        .in(ParameterIn.PATH)
+                        .name("name")
+                        .description("Post name")
+                        .required(true)
+                    )
+                    .response(responseBuilder()
+                        .implementation(NavigationPostVo.class)
+                    )
+            )
+            .build();
+    }
+
+    private Mono<ServerResponse> getPostNavigationByName(ServerRequest request) {
+        final var name = request.pathVariable("name");
+        return postFinder.cursor(name)
+            .flatMap(result -> ServerResponse.ok().bodyValue(result));
+    }
+
+    private Mono<ServerResponse> getPostByName(ServerRequest request) {
+        final var name = request.pathVariable("name");
+        return postFinder.getByName(name)
+            .switchIfEmpty(Mono.error(() -> new NotFoundException("Post not found")))
+            .flatMap(post -> ServerResponse.ok().contentType(MediaType.APPLICATION_JSON)
+                .bodyValue(post)
+            );
+    }
+
+    private Mono<ServerResponse> listPosts(ServerRequest request) {
+        PostPublicQuery query = new PostPublicQuery(request.exchange());
+        return postPublicQueryService.list(query.toListOptions(), query.toPageRequest())
+            .flatMap(result -> ServerResponse.ok().contentType(MediaType.APPLICATION_JSON)
+                .bodyValue(result)
+            );
+    }
+
+    @Override
+    public GroupVersion groupVersion() {
+        return PublicApiUtils.groupVersion(new Post());
+    }
+}

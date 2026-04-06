@@ -1,0 +1,13 @@
+apiVersion: plugin.nebulacms.io/v1alpha1
+kind: ReverseProxy
+metadata:
+  name: reverse-proxy-template
+  labels:
+    plugin.nebulacms.io/pluginName: io.github.guqing.apples
+rules:
+  - path: /static/**
+    file:
+      directory: static
+  - path: /admin/**
+    file:
+      directory: admin

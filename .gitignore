@@ -1,0 +1,103 @@
+### Maven
+target/
+logs/
+!.mvn/wrapper/maven-wrapper.jar
+
+### Gradle
+.gradle
+build/
+out/
+!gradle/wrapper/gradle-wrapper.jar
+bin/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+log/
+
+### NetBeans ###
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+### Mac
+.DS_Store
+*/.DS_Store
+
+### VS Code ###
+*.project
+*.factorypath
+
+### Compiled class file
+*.class
+
+### Log file
+*.log
+
+### BlueJ files
+*.ctxt
+
+### Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+### Package Files
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+### VSCode
+.vscode
+!.vscode/settings.json
+!.vscode/extensions.json
+
+### Local file
+application-local.yml
+application-local.yaml
+application-local.properties
+
+### Zip file for test
+!application/src/test/resources/themes/*.zip
+!application/src/main/resources/themes/*.zip
+application/src/main/resources/console/
+application/src/main/resources/uc/
+application/src/main/resources/presets/
+
+### Node
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+### Frontend
+dist
+coverage
+*.local
+
+### Cypress
+/cypress/videos/
+/cypress/screenshots/
+
+### Frontend build
+!src/build
+storybook-static
+tsconfig.tsbuildinfo
+.tgz

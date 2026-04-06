@@ -1,0 +1,11 @@
+import fs from "node:fs";
+import type { Plugin as HaloPlugin } from "@nebula-labs/api-client";
+import yaml from "js-yaml";
+
+export function getHaloPluginManifest(manifestPath: string) {
+  const manifest = yaml.load(
+    fs.readFileSync(manifestPath, "utf8")
+  ) as HaloPlugin;
+
+  return manifest;
+}

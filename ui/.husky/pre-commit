@@ -1,0 +1,1 @@
+cd ui && pnpm exec lint-staged

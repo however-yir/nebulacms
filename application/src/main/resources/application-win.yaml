@@ -1,0 +1,5 @@
+spring:
+  r2dbc:
+    url: r2dbc:h2:file:///~/nebulacms-dev/db/nebulacms?MODE=MySQL&DB_CLOSE_ON_EXIT=FALSE
+halo:
+  work-dir: ${NEBULACMS_WORK_DIR:${user.home}/nebulacms-dev}

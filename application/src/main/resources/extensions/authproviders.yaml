@@ -1,0 +1,18 @@
+apiVersion: auth.nebulacms.io/v1alpha1
+kind: AuthProvider
+metadata:
+  name: local
+  labels:
+    auth.nebulacms.io/auth-binding: "false"
+    auth.nebulacms.io/privileged: "true"
+  finalizers:
+    - system-protection
+spec:
+  displayName: Local
+  description: Built-in authentication for Halo.
+  logo: /images/login-methods/login-with-credentials.svg
+  website: https://www.nebulacms.io
+  authenticationUrl: /login
+  method: post
+  rememberMeSupport: true
+  authType: form

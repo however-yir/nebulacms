@@ -1,0 +1,16 @@
+apiVersion: v1alpha1
+kind: "Role"
+metadata:
+  name: role-template-manage-cache
+  deletionTimestamp: 2024-06-01T00:00:00Z
+  labels:
+    nebulacms.io/role-template: "true"
+  annotations:
+    rbac.authorization.nebulacms.io/module: "Cache Management"
+    rbac.authorization.nebulacms.io/display-name: "Cache Manage"
+    rbac.authorization.nebulacms.io/ui-permissions: |
+      ["system:caches:manage"]
+rules:
+  - apiGroups: ["api.console.nebulacms.io"]
+    resources: ["caches"]
+    verbs: ["delete"]

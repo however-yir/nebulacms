@@ -1,0 +1,28 @@
+apiVersion: v1alpha1
+kind: "Role"
+metadata:
+  name: role-template-manage-tags
+  labels:
+    nebulacms.io/role-template: "true"
+    nebulacms.io/hidden: "true"
+  annotations:
+    rbac.authorization.nebulacms.io/dependencies: "[ \"role-template-view-tags\" ]"
+rules:
+  - apiGroups: [ "content.nebulacms.io" ]
+    resources: [ "tags" ]
+    verbs: [ "*" ]
+---
+apiVersion: v1alpha1
+kind: "Role"
+metadata:
+  name: role-template-view-tags
+  labels:
+    nebulacms.io/role-template: "true"
+    nebulacms.io/hidden: "true"
+rules:
+  - apiGroups: [ "content.nebulacms.io" ]
+    resources: [ "tags" ]
+    verbs: [ "get", "list" ]
+  - apiGroups: [ "api.console.nebulacms.io" ]
+    resources: [ "tags" ]
+    verbs: [ "get", "list" ]

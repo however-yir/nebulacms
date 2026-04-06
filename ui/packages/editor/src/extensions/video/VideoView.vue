@@ -1,0 +1,242 @@
+<script lang="ts" setup>
+import { VButton } from "@nebula-labs/components";
+import { utils, type AttachmentSimple } from "@nebula-labs/ui-shared";
+import { computed, ref } from "vue";
+import MingcuteVideoLine from "~icons/mingcute/video-line";
+import { EditorLinkObtain } from "@/components";
+import { ResourceReplaceButton } from "@/components/upload";
+import { useExternalAssetsTransfer } from "@/composables/use-attachment";
+import { i18n } from "@/locales";
+import {
+  findParentNodeClosestToPos,
+  NodeViewWrapper,
+  type NodeViewProps,
+} from "@/tiptap";
+import { ExtensionFigure } from "../figure";
+
+const props = defineProps<NodeViewProps>();
+
+const src = computed({
+  get: () => {
+    return props.node?.attrs.src;
+  },
+  set: (src: string) => {
+    props.updateAttributes({ src: src });
+  },
+});
+
+const controls = computed(() => {
+  return props.node.attrs.controls;
+});
+
+const autoplay = computed(() => {
+  return props.node.attrs.autoplay;
+});
+
+const loop = computed(() => {
+  return props.node.attrs.loop;
+});
+
+const initialization = computed(() => {
+  return !src.value;
+});
+
+const editorLinkObtain = ref();
+
+const handleSetExternalLink = (attachment?: AttachmentSimple) => {
+  if (!attachment) return;
+  props.updateAttributes({
+    src: attachment.url,
+  });
+};
+
+const resetUpload = () => {
+  const { file } = props.node.attrs;
+  if (file) {
+    props.updateAttributes({
+      width: undefined,
+      height: undefined,
+      file: undefined,
+    });
+  }
+};
+
+const handleUploadRetry = () => {
+  editorLinkObtain.value?.reset();
+};
+
+const handleUploadAbort = () => {
+  editorLinkObtain.value?.abort();
+};
+
+const { isExternalAsset, transferring, handleTransfer } =
+  useExternalAssetsTransfer(src, handleSetExternalLink);
+
+const isPercentageWidth = computed(() => {
+  return props.node?.attrs.width?.includes("%");
+});
+
+// Get the align items of the image from the figure parent
+const alignItems = computed(() => {
+  const pos = props.getPos();
+  if (!pos) {
+    return "start";
+  }
+  const $pos = props.editor.state.doc.resolve(pos);
+  const figureParent = findParentNodeClosestToPos(
+    $pos,
+    (node) => node.type.name === ExtensionFigure.name
+  );
+
+  if (figureParent) {
+    return figureParent.node.attrs.alignItems;
+  }
+
+  return "start";
+});
+</script>
+
+<template>
+  <node-view-wrapper
+    as="div"
+    class="flex w-full"
+    :class="{
+      [`justify-${alignItems}`]: true,
+    }"
+  >
+    <div
+      class="relative inline-block h-full max-w-full overflow-hidden rounded-md text-center transition-all"
+      :class="{
+        'rounded ring-2': selected,
+      }"
+      :style="{
+        width: initialization ? '100%' : node.attrs.width,
+        height: initialization ? '100%' : node.attrs.height,
+      }"
+    >
+      <div v-if="src" class="group relative">
+        <video
+          :src="src"
+          :controls="controls"
+          :autoplay="autoplay"
+          :loop="loop"
+          playsinline
+          preload="metadata"
+          class="m-0 rounded-md"
+          :style="{
+            width: isPercentageWidth ? '100%' : node.attrs.width,
+            height: isPercentageWidth ? '100%' : node.attrs.height,
+          }"
+        ></video>
+        <div
+          v-if="src"
+          class="absolute left-0 top-0 hidden w-full cursor-pointer justify-end gap-2 bg-gradient-to-b from-gray-300 to-transparent p-2 ease-in-out group-hover:flex"
+        >
+          <VButton
+            v-if="
+              utils.permission.has([
+                'uc:attachments:manage',
+                'system:attachments:manage',
+              ]) && isExternalAsset
+            "
+            v-tooltip="
+              i18n.global.t(
+                'editor.extensions.upload.operations.transfer.tooltip'
+              )
+            "
+            :loading="transferring"
+            size="sm"
+            ghost
+            @click="handleTransfer"
+          >
+            {{
+              i18n.global.t(
+                "editor.extensions.upload.operations.transfer.button"
+              )
+            }}
+          </VButton>
+          <ResourceReplaceButton
+            accept="video/*"
+            :original-link="src"
+            :upload="extension.options.uploadVideo"
+            @change="handleSetExternalLink"
+          />
+        </div>
+      </div>
+      <div v-show="!src" class="relative">
+        <EditorLinkObtain
+          ref="editorLinkObtain"
+          :accept="'video/*'"
+          :editor="editor"
+          :upload-to-attachment-file="extension.options.uploadVideo"
+          :uploaded-file="node?.attrs.file"
+          @set-external-link="handleSetExternalLink"
+          @on-upload-finish="resetUpload"
+          @on-upload-abort="resetUpload"
+        >
+          <template #icon>
+            <MingcuteVideoLine class="text-xl text-primary" />
+          </template>
+          <template #uploading="{ progress }">
+            <div class="absolute top-0 size-full bg-black bg-opacity-20">
+              <div class="absolute top-[50%] w-full space-y-2 text-white">
+                <div class="px-10">
+                  <div
+                    class="relative h-4 w-full overflow-hidden rounded-full bg-gray-200"
+                  >
+                    <div
+                      class="h-full bg-primary"
+                      :style="{
+                        width: `${progress || 0}%`,
+                      }"
+                    ></div>
+                    <div
+                      class="absolute left-[50%] top-0 -translate-x-[50%] text-xs leading-4 text-white"
+                    >
+                      {{
+                        progress
+                          ? `${progress}%`
+                          : `${i18n.global.t("editor.extensions.upload.loading")}...`
+                      }}
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="inline-block cursor-pointer text-sm hover:opacity-70"
+                  @click="handleUploadAbort"
+                >
+                  {{ i18n.global.t("editor.common.button.cancel") }}
+                </div>
+              </div>
+            </div>
+          </template>
+          <template #error>
+            <div class="absolute top-0 size-full bg-black bg-opacity-20">
+              <div class="absolute top-[50%] w-full space-y-2 text-white">
+                <div class="px-10">
+                  <div
+                    class="relative h-4 w-full overflow-hidden rounded-full bg-gray-200"
+                  >
+                    <div class="size-full bg-red-600"></div>
+                    <div
+                      class="absolute left-[50%] top-0 -translate-x-[50%] text-xs leading-4 text-white"
+                    >
+                      {{ i18n.global.t("editor.extensions.upload.error") }}
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="inline-block cursor-pointer text-sm hover:opacity-70"
+                  @click="handleUploadRetry"
+                >
+                  {{ i18n.global.t("editor.extensions.upload.click_retry") }}
+                </div>
+              </div>
+            </div>
+          </template>
+        </EditorLinkObtain>
+      </div>
+    </div>
+  </node-view-wrapper>
+</template>

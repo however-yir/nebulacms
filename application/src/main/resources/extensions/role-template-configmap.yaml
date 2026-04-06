@@ -1,0 +1,32 @@
+apiVersion: v1alpha1
+kind: "Role"
+metadata:
+  name: role-template-manage-configmaps
+  labels:
+    nebulacms.io/role-template: "true"
+  annotations:
+    rbac.authorization.nebulacms.io/dependencies: "[ \"role-template-view-configmaps\" ]"
+    rbac.authorization.nebulacms.io/module: "ConfigMaps Management"
+    rbac.authorization.nebulacms.io/display-name: "ConfigMap Manage"
+    rbac.authorization.nebulacms.io/ui-permissions: |
+      ["system:configmaps:manage"]
+rules:
+  - apiGroups: [ "" ]
+    resources: [ "configmaps" ]
+    verbs: [ "create", "patch", "update", "delete", "deletecollection" ]
+---
+apiVersion: v1alpha1
+kind: "Role"
+metadata:
+  name: role-template-view-configmaps
+  labels:
+    nebulacms.io/role-template: "true"
+  annotations:
+    rbac.authorization.nebulacms.io/module: "ConfigMaps Management"
+    rbac.authorization.nebulacms.io/display-name: "ConfigMap View"
+    rbac.authorization.nebulacms.io/ui-permissions: |
+      ["system:configmaps:view"]
+rules:
+  - apiGroups: [ "" ]
+    resources: [ "configmaps" ]
+    verbs: [ "get", "list" ]

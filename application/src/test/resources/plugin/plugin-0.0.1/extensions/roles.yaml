@@ -1,0 +1,13 @@
+apiVersion: v1alpha1
+kind: Role
+metadata:
+  name: role-template-view-apples
+  labels:
+    nebulacms.io/role-template: "true"
+  annotations:
+    nebulacms.io/module: "Apples Management"
+    nebulacms.io/alias-name: "Apples View"
+rules:
+  - apiGroups: [ "apples.guqing.github.com" ]
+    resources: [ "apples" ]
+    verbs: [ "get", "list" ]

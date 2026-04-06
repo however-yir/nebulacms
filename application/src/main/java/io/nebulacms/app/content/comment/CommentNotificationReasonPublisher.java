@@ -1,0 +1,380 @@
+package io.nebulacms.app.content.comment;
+
+import static org.apache.commons.lang3.StringUtils.defaultIfBlank;
+import static io.nebulacms.app.content.comment.ReplyNotificationSubscriptionHelper.identityFrom;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import java.time.Duration;
+import java.util.Map;
+import java.util.Optional;
+import lombok.Builder;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.UtilityClass;
+import org.apache.commons.lang3.StringUtils;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.springframework.context.event.EventListener;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
+import io.nebulacms.app.content.NotificationReasonConst;
+import io.nebulacms.app.core.extension.User;
+import io.nebulacms.app.core.extension.content.Comment;
+import io.nebulacms.app.core.extension.content.Post;
+import io.nebulacms.app.core.extension.content.Reply;
+import io.nebulacms.app.core.extension.content.SinglePage;
+import io.nebulacms.app.core.extension.notification.Reason;
+import io.nebulacms.app.core.extension.notification.Subscription;
+import io.nebulacms.app.event.post.CommentCreatedEvent;
+import io.nebulacms.app.event.post.ReplyCreatedEvent;
+import io.nebulacms.app.extension.ExtensionClient;
+import io.nebulacms.app.extension.GroupVersionKind;
+import io.nebulacms.app.extension.Ref;
+import io.nebulacms.app.infra.ExternalLinkProcessor;
+import io.nebulacms.app.infra.utils.JsonUtils;
+import io.nebulacms.app.infra.utils.ReactiveUtils;
+import io.nebulacms.app.notification.NotificationReasonEmitter;
+import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
+
+/**
+ * Notification reason publisher for {@link Comment} and {@link Reply}.
+ *
+ * @author guqing
+ * @since 2.9.0
+ */
+@Component
+@RequiredArgsConstructor
+public class CommentNotificationReasonPublisher {
+    private static final Duration BLOCKING_TIMEOUT = ReactiveUtils.DEFAULT_TIMEOUT;
+    private static final GroupVersionKind POST_GVK = GroupVersionKind.fromExtension(Post.class);
+    private static final GroupVersionKind PAGE_GVK =
+        GroupVersionKind.fromExtension(SinglePage.class);
+
+    private final ExtensionClient client;
+    private final NewCommentOnPostReasonPublisher newCommentOnPostReasonPublisher;
+    private final NewCommentOnPageReasonPublisher newCommentOnPageReasonPublisher;
+    private final NewReplyReasonPublisher newReplyReasonPublisher;
+
+    /**
+     * On new comment.
+     */
+    @Async
+    @EventListener(CommentCreatedEvent.class)
+    public void onNewComment(CommentCreatedEvent event) {
+        Comment comment = event.getComment();
+        if (isPostComment(comment)) {
+            newCommentOnPostReasonPublisher.publishReasonBy(comment);
+        } else if (isPageComment(comment)) {
+            newCommentOnPageReasonPublisher.publishReasonBy(comment);
+        }
+    }
+
+    /**
+     * On new reply.
+     */
+    @Async
+    @EventListener(ReplyCreatedEvent.class)
+    public void onNewReply(ReplyCreatedEvent event) {
+        Reply reply = event.getReply();
+        var commentName = reply.getSpec().getCommentName();
+        client.fetch(Comment.class, commentName)
+            .ifPresent(comment -> newReplyReasonPublisher.publishReasonBy(reply, comment));
+    }
+
+    boolean isPostComment(Comment comment) {
+        return Ref.groupKindEquals(comment.getSpec().getSubjectRef(), POST_GVK);
+    }
+
+    boolean isPageComment(Comment comment) {
+        return Ref.groupKindEquals(comment.getSpec().getSubjectRef(), PAGE_GVK);
+    }
+
+    /**
+     * Comment content converter, convert relative links to absolute links.
+     */
+    @Component
+    @RequiredArgsConstructor
+    static class CommentContentConverter {
+        private final ExternalLinkProcessor externalLinkProcessor;
+
+        /**
+         * Convert relative links to absolute links.
+         *
+         * @param content the content to convert
+         * @return the converted content
+         */
+        public String convertRelativeLinks(String content) {
+            Document parse = Jsoup.parse(content);
+            parse.select("img").forEach(element -> {
+                var src = element.attr("src");
+                element.attr("src",  externalLinkProcessor.processLink(src));
+            });
+            return parse.body().html();
+        }
+    }
+
+    @Component
+    @RequiredArgsConstructor
+    static class NewCommentOnPostReasonPublisher {
+
+        private final ExtensionClient client;
+        private final NotificationReasonEmitter notificationReasonEmitter;
+        private final ExternalLinkProcessor externalLinkProcessor;
+        private final CommentContentConverter commentContentConverter;
+
+        public void publishReasonBy(Comment comment) {
+            Ref subjectRef = comment.getSpec().getSubjectRef();
+            Post post = client.fetch(Post.class, subjectRef.getName()).orElseThrow();
+            if (doNotEmitReason(comment, post)) {
+                return;
+            }
+
+            String postUrl =
+                externalLinkProcessor.processLink(post.getStatusOrDefault().getPermalink());
+            var reasonSubject = Reason.Subject.builder()
+                .apiVersion(post.getApiVersion())
+                .kind(post.getKind())
+                .name(subjectRef.getName())
+                .title(post.getSpec().getTitle())
+                .url(postUrl)
+                .build();
+            Comment.CommentOwner owner = comment.getSpec().getOwner();
+            notificationReasonEmitter.emit(NotificationReasonConst.NEW_COMMENT_ON_POST,
+                builder -> {
+                    var attributes = CommentOnPostReasonData.builder()
+                        .postName(subjectRef.getName())
+                        .postOwner(post.getSpec().getOwner())
+                        .postTitle(post.getSpec().getTitle())
+                        .postUrl(postUrl)
+                        .commenter(owner.getDisplayName())
+                        .content(commentContentConverter.convertRelativeLinks(
+                            comment.getSpec().getContent()))
+                        .commentName(comment.getMetadata().getName())
+                        .build();
+                    builder.attributes(ReasonDataConverter.toAttributeMap(attributes))
+                        .author(identityFrom(owner))
+                        .subject(reasonSubject);
+                }).block(BLOCKING_TIMEOUT);
+        }
+
+        boolean doNotEmitReason(Comment comment, Post post) {
+            Comment.CommentOwner commentOwner = comment.getSpec().getOwner();
+            return isPostOwner(post, commentOwner);
+        }
+
+        boolean isPostOwner(Post post, Comment.CommentOwner commentOwner) {
+            String kind = commentOwner.getKind();
+            String name = commentOwner.getName();
+            var postOwner = post.getSpec().getOwner();
+            if (Comment.CommentOwner.KIND_EMAIL.equals(kind)) {
+                return client.fetch(User.class, postOwner)
+                    .filter(user -> name.equals(user.getSpec().getEmail()))
+                    .isPresent();
+            }
+            return name.equals(postOwner);
+        }
+
+        @Builder
+        record CommentOnPostReasonData(String postName, String postOwner, String postTitle,
+                                       String postUrl, String commenter, String content,
+                                       String commentName) {
+        }
+    }
+
+    @Component
+    @RequiredArgsConstructor
+    static class NewCommentOnPageReasonPublisher {
+        private final ExtensionClient client;
+        private final NotificationReasonEmitter notificationReasonEmitter;
+        private final ExternalLinkProcessor externalLinkProcessor;
+        private final CommentContentConverter commentContentConverter;
+
+        public void publishReasonBy(Comment comment) {
+            Ref subjectRef = comment.getSpec().getSubjectRef();
+            var singlePage = client.fetch(SinglePage.class, subjectRef.getName()).orElseThrow();
+
+            if (doNotEmitReason(comment, singlePage)) {
+                return;
+            }
+
+            var pageUrl = externalLinkProcessor
+                .processLink(singlePage.getStatusOrDefault().getPermalink());
+
+            var reasonSubject = Reason.Subject.builder()
+                .apiVersion(singlePage.getApiVersion())
+                .kind(singlePage.getKind())
+                .name(subjectRef.getName())
+                .title(singlePage.getSpec().getTitle())
+                .url(pageUrl)
+                .build();
+
+            Comment.CommentOwner owner = comment.getSpec().getOwner();
+            notificationReasonEmitter.emit(NotificationReasonConst.NEW_COMMENT_ON_PAGE,
+                builder -> {
+                    var attributes = CommentOnPageReasonData.builder()
+                        .pageName(subjectRef.getName())
+                        .pageOwner(singlePage.getSpec().getOwner())
+                        .pageTitle(singlePage.getSpec().getTitle())
+                        .pageUrl(pageUrl)
+                        .commenter(defaultIfBlank(owner.getDisplayName(), owner.getName()))
+                        .content(commentContentConverter.convertRelativeLinks(
+                            comment.getSpec().getContent()))
+                        .commentName(comment.getMetadata().getName())
+                        .build();
+                    builder.attributes(ReasonDataConverter.toAttributeMap(attributes))
+                        .author(identityFrom(owner))
+                        .subject(reasonSubject);
+                }).block(BLOCKING_TIMEOUT);
+        }
+
+        public boolean doNotEmitReason(Comment comment, SinglePage page) {
+            Comment.CommentOwner commentOwner = comment.getSpec().getOwner();
+            return isPageOwner(page, commentOwner);
+        }
+
+        boolean isPageOwner(SinglePage page, Comment.CommentOwner commentOwner) {
+            String kind = commentOwner.getKind();
+            String name = commentOwner.getName();
+            var pageOwner = page.getSpec().getOwner();
+            if (Comment.CommentOwner.KIND_EMAIL.equals(kind)) {
+                return client.fetch(User.class, pageOwner)
+                    .filter(user -> name.equals(user.getSpec().getEmail()))
+                    .isPresent();
+            }
+            return name.equals(pageOwner);
+        }
+
+        @Builder
+        record CommentOnPageReasonData(String pageName, String pageOwner, String pageTitle,
+                                       String pageUrl, String commenter, String content,
+                                       String commentName) {
+        }
+    }
+
+    @UtilityClass
+    static class ReasonDataConverter {
+        public static <T> Map<String, Object> toAttributeMap(T data) {
+            Assert.notNull(data, "Reason attributes must not be null");
+            return JsonUtils.mapper().convertValue(data, new TypeReference<>() {
+            });
+        }
+    }
+
+    @Component
+    @RequiredArgsConstructor
+    static class NewReplyReasonPublisher {
+        private final ExtensionClient client;
+        private final NotificationReasonEmitter notificationReasonEmitter;
+        private final ExtensionGetter extensionGetter;
+        private final CommentContentConverter commentContentConverter;
+
+        public void publishReasonBy(Reply reply, Comment comment) {
+            boolean isQuoteReply = StringUtils.isNotBlank(reply.getSpec().getQuoteReply());
+
+            Optional<Reply> quoteReplyOptional = Optional.of(isQuoteReply)
+                .filter(Boolean::booleanValue)
+                .flatMap(isQuote -> client.fetch(Reply.class, reply.getSpec().getQuoteReply()));
+
+            if (doNotEmitReason(reply, quoteReplyOptional.orElse(null), comment)) {
+                return;
+            }
+
+            var reasonSubject = quoteReplyOptional
+                .map(quoteReply -> Subscription.ReasonSubject.builder()
+                    .apiVersion(quoteReply.getApiVersion())
+                    .kind(quoteReply.getKind())
+                    .name(quoteReply.getMetadata().getName())
+                    .build()
+                )
+                .orElseGet(() -> Subscription.ReasonSubject.builder()
+                    .apiVersion(comment.getApiVersion())
+                    .kind(comment.getKind())
+                    .name(comment.getMetadata().getName())
+                    .build()
+                );
+
+            var reasonSubjectTitle = quoteReplyOptional
+                .map(quoteReply -> quoteReply.getSpec().getContent())
+                .orElse(comment.getSpec().getContent());
+
+            var quoteReplyContent = quoteReplyOptional
+                .map(quoteReply -> commentContentConverter
+                    .convertRelativeLinks(quoteReply.getSpec().getContent()))
+                .orElse(null);
+            var replyOwner = reply.getSpec().getOwner();
+
+            var repliedOwner = quoteReplyOptional
+                .map(quoteReply -> quoteReply.getSpec().getOwner())
+                .orElseGet(() -> comment.getSpec().getOwner());
+
+            var reasonAttributesBuilder = NewReplyReasonData.builder()
+                .commentContent(
+                    commentContentConverter.convertRelativeLinks(comment.getSpec().getContent())
+                )
+                .isQuoteReply(isQuoteReply)
+                .quoteContent(quoteReplyContent)
+                .commentName(comment.getMetadata().getName())
+                .replier(defaultIfBlank(replyOwner.getDisplayName(), replyOwner.getName()))
+                .content(commentContentConverter.convertRelativeLinks(reply.getSpec().getContent()))
+                .replyName(reply.getMetadata().getName())
+                .replyOwner(identityFrom(replyOwner).name())
+                .repliedOwner(identityFrom(repliedOwner).name());
+
+            getCommentSubjectDisplay(comment.getSpec().getSubjectRef())
+                .ifPresent(subject -> {
+                    reasonAttributesBuilder.commentSubjectTitle(subject.title());
+                    reasonAttributesBuilder.commentSubjectUrl(subject.url());
+                });
+
+            notificationReasonEmitter.emit(NotificationReasonConst.SOMEONE_REPLIED_TO_YOU,
+                builder -> {
+                    var data = ReasonDataConverter.toAttributeMap(reasonAttributesBuilder.build());
+                    builder.attributes(data)
+                        .author(identityFrom(replyOwner))
+                        .subject(Reason.Subject.builder()
+                            .apiVersion(reasonSubject.getApiVersion())
+                            .kind(reasonSubject.getKind())
+                            .name(reasonSubject.getName())
+                            .title(reasonSubjectTitle)
+                            .build());
+                }).block(BLOCKING_TIMEOUT);
+        }
+
+        /**
+         * To be compatible with older versions, it may be empty, so use optional.
+         */
+        @SuppressWarnings("unchecked")
+        Optional<CommentSubject.SubjectDisplay> getCommentSubjectDisplay(Ref ref) {
+            return extensionGetter.getExtensions(CommentSubject.class)
+                .filter(commentSubject -> commentSubject.supports(ref))
+                .next()
+                .flatMap(subject -> subject.getSubjectDisplay(ref.getName()))
+                .blockOptional(BLOCKING_TIMEOUT);
+        }
+
+        boolean doNotEmitReason(Reply currentReply, Reply quoteReply, Comment comment) {
+            boolean isQuoteReply = StringUtils.isNotBlank(currentReply.getSpec().getQuoteReply());
+
+            if (isQuoteReply && quoteReply == null) {
+                throw new IllegalArgumentException(
+                    "quoteReply can not be null when currentReply is reply to quote");
+            }
+
+            Comment.CommentOwner commentOwner = isQuoteReply ? quoteReply.getSpec().getOwner()
+                : comment.getSpec().getOwner();
+
+            var currentReplyOwner = currentReply.getSpec().getOwner();
+            // reply to oneself do not emit reason
+            return currentReplyOwner.getKind().equals(commentOwner.getKind())
+                && currentReplyOwner.getName().equals(commentOwner.getName());
+        }
+
+        @Builder
+        record NewReplyReasonData(String commentContent, String commentSubjectTitle,
+                                  String commentSubjectUrl, boolean isQuoteReply,
+                                  String quoteContent,
+                                  String commentName, String replier, String content,
+                                  String replyName, String replyOwner, String repliedOwner) {
+        }
+    }
+}

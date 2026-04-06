@@ -1,0 +1,166 @@
+import type {
+  Tag,
+  TagV1alpha1ConsoleApiListPostTagsRequest,
+} from "@nebula-labs/api-client";
+import {
+  consoleApiClient,
+  coreApiClient,
+  paginate,
+} from "@nebula-labs/api-client";
+import { Dialog, Toast } from "@nebula-labs/components";
+import { useQuery, type QueryObserverResult } from "@tanstack/vue-query";
+import { ref, watch, type Ref } from "vue";
+import { useI18n } from "vue-i18n";
+
+interface usePostTagReturn {
+  tags: Ref<Tag[] | undefined>;
+  total: Ref<number>;
+  hasPrevious: Ref<boolean>;
+  hasNext: Ref<boolean>;
+  isLoading: Ref<boolean>;
+  isFetching: Ref<boolean>;
+  handleFetchTags: () => Promise<QueryObserverResult<Tag[], unknown>>;
+  handleDelete: (tag: Tag) => void;
+  handleDeleteInBatch: (tagNames: string[]) => Promise<void>;
+}
+
+export function usePostTag(filterOptions?: {
+  sort?: Ref<string | undefined>;
+  page?: Ref<number>;
+  size?: Ref<number>;
+  keyword?: Ref<string>;
+}): usePostTagReturn {
+  const { t } = useI18n();
+
+  const { sort, page, size, keyword } = filterOptions || {};
+
+  const total = ref(0);
+  const hasPrevious = ref(false);
+  const hasNext = ref(false);
+
+  const {
+    data: tags,
+    isLoading,
+    isFetching,
+    refetch,
+  } = useQuery({
+    queryKey: ["post-tags", sort, page, size, keyword],
+    queryFn: async () => {
+      const { data } = await consoleApiClient.content.tag.listPostTags({
+        page: page?.value || 0,
+        size: size?.value || 0,
+        sort: [sort?.value as string].filter(Boolean) || [
+          "metadata.creationTimestamp,desc",
+        ],
+        keyword: keyword?.value,
+      });
+
+      total.value = data.total;
+      hasPrevious.value = data.hasPrevious;
+      hasNext.value = data.hasNext;
+
+      return data.items;
+    },
+    refetchInterval(data) {
+      const hasAbnormalTag = data?.some(
+        (tag) => !!tag.metadata.deletionTimestamp || !tag.status?.permalink
+      );
+      return hasAbnormalTag ? 1000 : false;
+    },
+  });
+
+  const handleDelete = async (tag: Tag) => {
+    Dialog.warning({
+      title: t("core.post_tag.operations.delete.title"),
+      description: t("core.post_tag.operations.delete.description"),
+      confirmType: "danger",
+      confirmText: t("core.common.buttons.confirm"),
+      cancelText: t("core.common.buttons.cancel"),
+      onConfirm: async () => {
+        try {
+          await coreApiClient.content.tag.deleteTag({
+            name: tag.metadata.name,
+          });
+
+          Toast.success(t("core.common.toast.delete_success"));
+        } catch (e) {
+          console.error("Failed to delete tag", e);
+        } finally {
+          await refetch();
+        }
+      },
+    });
+  };
+
+  const handleDeleteInBatch = (tagNames: string[]) => {
+    return new Promise<void>((resolve) => {
+      Dialog.warning({
+        title: t("core.post_tag.operations.delete_in_batch.title"),
+        description: t("core.common.dialog.descriptions.cannot_be_recovered"),
+        confirmType: "danger",
+        confirmText: t("core.common.buttons.confirm"),
+        cancelText: t("core.common.buttons.cancel"),
+        onConfirm: async () => {
+          try {
+            await Promise.all(
+              tagNames.map((tagName) => {
+                coreApiClient.content.tag.deleteTag({
+                  name: tagName,
+                });
+              })
+            );
+
+            Toast.success(t("core.common.toast.delete_success"));
+            resolve();
+          } catch (e) {
+            console.error("Failed to delete tags in batch", e);
+          } finally {
+            await refetch();
+          }
+        },
+      });
+    });
+  };
+
+  watch(
+    () => [sort?.value, keyword?.value],
+    () => {
+      if (page?.value) {
+        page.value = 1;
+      }
+    }
+  );
+
+  return {
+    tags,
+    total,
+    hasPrevious,
+    hasNext,
+    isLoading,
+    isFetching,
+    handleFetchTags: refetch,
+    handleDelete,
+    handleDeleteInBatch,
+  };
+}
+
+export function useAllPostTagsQuery() {
+  return useQuery({
+    queryKey: ["core:post-tags:all"],
+    queryFn: async () => {
+      return await paginate<TagV1alpha1ConsoleApiListPostTagsRequest, Tag>(
+        (params) => consoleApiClient.content.tag.listPostTags(params),
+        {
+          sort: ["metadata.creationTimestamp,desc"],
+          size: 1000,
+        }
+      );
+    },
+    refetchInterval(data) {
+      const hasAbnormalTag = data?.some(
+        (tag) => !!tag.metadata.deletionTimestamp || !tag.status?.permalink
+      );
+      return hasAbnormalTag ? 1000 : false;
+    },
+  });
+}

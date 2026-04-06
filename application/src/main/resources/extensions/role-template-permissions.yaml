@@ -1,0 +1,32 @@
+apiVersion: v1alpha1
+kind: "Role"
+metadata:
+  name: role-template-manage-permissions
+  labels:
+    nebulacms.io/role-template: "true"
+  annotations:
+    rbac.authorization.nebulacms.io/dependencies: "[ \"role-template-view-permissions\" ]"
+    rbac.authorization.nebulacms.io/module: "Permissions Management"
+    rbac.authorization.nebulacms.io/display-name: "Permissions Manage"
+    rbac.authorization.nebulacms.io/ui-permissions: |
+      ["system:permissions:manage"]
+rules:
+  - apiGroups: [ "api.console.nebulacms.io" ]
+    resources: [ "users/permissions" ]
+    verbs: [ "create", "patch", "update", "delete", "deletecollection" ]
+---
+apiVersion: v1alpha1
+kind: "Role"
+metadata:
+  name: role-template-view-permissions
+  labels:
+    nebulacms.io/role-template: "true"
+  annotations:
+    rbac.authorization.nebulacms.io/module: "Permissions Management"
+    rbac.authorization.nebulacms.io/display-name: "Permissions View"
+    rbac.authorization.nebulacms.io/ui-permissions: |
+      ["system:permissions:view"]
+rules:
+  - apiGroups: [ "api.console.nebulacms.io" ]
+    resources: [ "users/permissions" ]
+    verbs: [ "get", "list" ]

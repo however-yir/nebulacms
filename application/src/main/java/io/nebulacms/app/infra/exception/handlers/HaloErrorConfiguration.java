@@ -1,0 +1,63 @@
+package io.nebulacms.app.infra.exception.handlers;
+
+import org.springframework.beans.factory.ObjectProvider;
+import org.springframework.boot.autoconfigure.web.WebProperties;
+import org.springframework.boot.webflux.autoconfigure.error.ErrorWebFluxAutoConfiguration;
+import org.springframework.boot.webflux.error.ErrorAttributes;
+import org.springframework.boot.webflux.error.ErrorWebExceptionHandler;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.MessageSource;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
+import org.springframework.http.codec.ServerCodecConfigurer;
+import org.springframework.web.reactive.result.view.ViewResolver;
+import org.springframework.web.server.WebExceptionHandler;
+
+/**
+ * Configuration to render errors via a WebFlux
+ * {@link WebExceptionHandler}.
+ * <br/>
+ * <br/>
+ * See
+ * {@link ErrorWebFluxAutoConfiguration}
+ * for more.
+ *
+ * @author guqing
+ * @author johnniang
+ * @since 2.1.0
+ */
+@Configuration
+public class HaloErrorConfiguration {
+
+    /**
+     * Customize the default {@link ErrorWebExceptionHandler}.
+     */
+    @Bean
+    @Order(-1)
+    ErrorWebExceptionHandler errorWebExceptionHandler(
+        ErrorAttributes errorAttributes,
+        WebProperties webProperties,
+        ObjectProvider<ViewResolver> viewResolvers,
+        ServerCodecConfigurer serverCodecConfigurer,
+        ApplicationContext applicationContext
+    ) {
+        var exceptionHandler = new HaloErrorWebExceptionHandler(
+            errorAttributes,
+            webProperties.getResources(),
+            webProperties.getError(),
+            applicationContext);
+        exceptionHandler.setViewResolvers(viewResolvers.orderedStream().toList());
+        exceptionHandler.setMessageWriters(serverCodecConfigurer.getWriters());
+        exceptionHandler.setMessageReaders(serverCodecConfigurer.getReaders());
+        return exceptionHandler;
+    }
+
+    /**
+     * Customize the default {@link ErrorAttributes}.
+     */
+    @Bean
+    ErrorAttributes errorAttributes(MessageSource messageSource) {
+        return new ProblemDetailErrorAttributes(messageSource);
+    }
+}

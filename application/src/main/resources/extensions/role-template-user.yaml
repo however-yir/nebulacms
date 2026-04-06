@@ -1,0 +1,54 @@
+apiVersion: v1alpha1
+kind: "Role"
+metadata:
+  name: role-template-manage-users
+  labels:
+    nebulacms.io/role-template: "true"
+  annotations:
+    rbac.authorization.nebulacms.io/dependencies: |
+      [ "role-template-view-users", "role-template-change-password" ]
+    rbac.authorization.nebulacms.io/module: "Users Management"
+    rbac.authorization.nebulacms.io/display-name: "User manage"
+    rbac.authorization.nebulacms.io/ui-permissions: |
+      ["system:users:manage"]
+rules:
+  - apiGroups: [ "" ]
+    resources: [ "users" ]
+    verbs: [ "create", "patch", "update", "delete", "deletecollection" ]
+  - apiGroups: [ "api.console.nebulacms.io" ]
+    resources: [ "users", "users/permissions", "users/password", "users/avatar" ]
+    verbs: [ "*" ]
+---
+apiVersion: v1alpha1
+kind: "Role"
+metadata:
+  name: role-template-view-users
+  labels:
+    nebulacms.io/role-template: "true"
+  annotations:
+    rbac.authorization.nebulacms.io/module: "Users Management"
+    rbac.authorization.nebulacms.io/display-name: "User View"
+    rbac.authorization.nebulacms.io/ui-permissions: |
+      ["system:users:view"]
+rules:
+  - apiGroups: [ "" ]
+    resources: [ "users" ]
+    verbs: [ "get", "list" ]
+  - apiGroups: [ "api.console.nebulacms.io" ]
+    resources: [ "users" ]
+    verbs: [ "get", "list" ]
+---
+apiVersion: v1alpha1
+kind: "Role"
+metadata:
+  name: role-template-change-password
+  labels:
+    nebulacms.io/role-template: "true"
+    nebulacms.io/hidden: "true"
+  annotations:
+    rbac.authorization.nebulacms.io/module: "Users Management"
+    rbac.authorization.nebulacms.io/display-name: "User Password Change"
+rules:
+  - apiGroups: [ "api.console.nebulacms.io" ]
+    resources: [ "users/password" ]
+    verbs: [ "update" ]

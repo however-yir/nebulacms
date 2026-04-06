@@ -1,0 +1,24 @@
+name: Release UI Packages
+
+on:
+  release:
+    types:
+      - published
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    if: github.repository == 'nebula-labs/nebulacms' && github.event.release.prerelease == false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Environment
+        uses: ./.github/actions/setup-env
+      - run: ./gradlew pnpmInstall
+      - name: Publish to NPM
+        run: cd ui && pnpm run publish:packages

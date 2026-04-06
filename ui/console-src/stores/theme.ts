@@ -1,0 +1,29 @@
+import type { Theme } from "@nebula-labs/api-client";
+import { consoleApiClient } from "@nebula-labs/api-client";
+import { utils } from "@nebula-labs/ui-shared";
+import { defineStore } from "pinia";
+import { ref } from "vue";
+
+export const useThemeStore = defineStore("theme", () => {
+  const activatedTheme = ref<Theme>();
+
+  async function fetchActivatedTheme() {
+    if (!utils.permission.has(["system:themes:view"])) {
+      return;
+    }
+
+    try {
+      const { data } = await consoleApiClient.theme.theme.fetchActivatedTheme({
+        mute: true,
+      });
+
+      if (data) {
+        activatedTheme.value = data;
+      }
+    } catch (e) {
+      console.error("Failed to fetch active theme", e);
+    }
+  }
+
+  return { activatedTheme, fetchActivatedTheme };
+});

@@ -1,0 +1,45 @@
+apiVersion: v1alpha1
+kind: "Role"
+metadata:
+  name: role-template-manage-plugins
+  labels:
+    nebulacms.io/role-template: "true"
+  annotations:
+    rbac.authorization.nebulacms.io/dependencies: |
+      [ "role-template-view-plugins" ]
+    rbac.authorization.nebulacms.io/module: "Plugins Management"
+    rbac.authorization.nebulacms.io/display-name: "Plugin Manage"
+    rbac.authorization.nebulacms.io/ui-permissions: |
+      ["system:plugins:manage"]
+rules:
+  - apiGroups: [ "plugin.nebulacms.io" ]
+    resources: [ "plugins" ]
+    verbs: [ "create", "patch", "update", "delete", "deletecollection" ]
+  - apiGroups: [ "api.console.nebulacms.io" ]
+    resources: [ "plugins/upgrade", "plugins/resetconfig", "plugins/config", "plugins/json-config",
+                 "plugins/reload", "plugins/install-from-uri", "plugins/upgrade-from-uri", "plugins/plugin-state" ]
+    verbs: [ "*" ]
+  - apiGroups: [ "api.console.nebulacms.io" ]
+    resources: [ "plugin-presets" ]
+    verbs: [ "list" ]
+  - nonResourceURLs: [ "/apis/api.console.nebulacms.io/v1alpha1/plugins/*" ]
+    verbs: [ "create" ]
+---
+apiVersion: v1alpha1
+kind: "Role"
+metadata:
+  name: role-template-view-plugins
+  labels:
+    nebulacms.io/role-template: "true"
+  annotations:
+    rbac.authorization.nebulacms.io/module: "Plugins Management"
+    rbac.authorization.nebulacms.io/display-name: "Plugin View"
+    rbac.authorization.nebulacms.io/ui-permissions: |
+      ["system:plugins:view"]
+rules:
+  - apiGroups: [ "plugin.nebulacms.io" ]
+    resources: [ "plugins" ]
+    verbs: [ "get", "list" ]
+  - apiGroups: [ "api.console.nebulacms.io" ]
+    resources: [ "plugins", "plugins/setting", "plugins/config", "plugins/json-config" ]
+    verbs: [ "get", "list" ]

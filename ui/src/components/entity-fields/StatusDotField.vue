@@ -1,0 +1,35 @@
+<script lang="ts" setup>
+import {
+  VEntityField,
+  VStatusDot,
+  type StatusDotState,
+} from "@nebula-labs/components";
+
+withDefaults(
+  defineProps<{
+    tooltip?: string;
+    state?: StatusDotState;
+    animate?: boolean;
+    text?: string;
+  }>(),
+  {
+    tooltip: undefined,
+    state: "default",
+    animate: false,
+    text: undefined,
+  }
+);
+</script>
+
+<template>
+  <VEntityField>
+    <template #description>
+      <VStatusDot
+        v-tooltip="tooltip"
+        :state="state"
+        :animate="animate"
+        :text="text"
+      />
+    </template>
+  </VEntityField>
+</template>

@@ -1,0 +1,38 @@
+apiVersion: v1alpha1
+kind: "Role"
+metadata:
+  name: role-template-manage-settings
+  labels:
+    nebulacms.io/role-template: "true"
+  annotations:
+    rbac.authorization.nebulacms.io/dependencies: "[ \"role-template-view-settings\", \"role-template-notifier-config\" ]"
+    rbac.authorization.nebulacms.io/module: "Settings Management"
+    rbac.authorization.nebulacms.io/display-name: "Setting Manage"
+    rbac.authorization.nebulacms.io/ui-permissions: |
+      ["system:settings:manage", "system:notifier:configuration"]
+rules:
+  - apiGroups: [ "" ]
+    resources: [ "settings" ]
+    verbs: [ "create", "patch", "update", "delete", "deletecollection" ]
+  - apiGroups: [ "api.console.nebulacms.io" ]
+    resources: [ "auth-providers/enable", "auth-providers/disable" ]
+    verbs: [ "update" ]
+---
+apiVersion: v1alpha1
+kind: "Role"
+metadata:
+  name: role-template-view-settings
+  labels:
+    nebulacms.io/role-template: "true"
+  annotations:
+    rbac.authorization.nebulacms.io/module: "Settings Management"
+    rbac.authorization.nebulacms.io/display-name: "Setting View"
+    rbac.authorization.nebulacms.io/ui-permissions: |
+      ["system:settings:view"]
+rules:
+  - apiGroups: [ "" ]
+    resources: [ "settings" ]
+    verbs: [ "get", "list" ]
+  - apiGroups: [ "api.console.nebulacms.io" ]
+    resources: [ "auth-providers" ]
+    verbs: [ "get", "list" ]

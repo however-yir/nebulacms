@@ -1,0 +1,40 @@
+apiVersion: v1alpha1
+kind: "Role"
+metadata:
+  name: role-template-manage-menus
+  labels:
+    nebulacms.io/role-template: "true"
+  annotations:
+    rbac.authorization.nebulacms.io/dependencies: "[ \"role-template-view-menus\" ]"
+    rbac.authorization.nebulacms.io/module: "Menus Management"
+    rbac.authorization.nebulacms.io/display-name: "Menu Manage"
+    rbac.authorization.nebulacms.io/ui-permissions: |
+      ["system:menus:manage"]
+rules:
+  - apiGroups: [ "" ]
+    resources: [ "menus", "menuitems" ]
+    verbs: [ "*" ]
+  - apiGroups: [ "console.api.nebulacms.io" ]
+    resources: [ "systemconfigs" ]
+    resourceNames: [ "menu" ]
+    verbs: [ "update" ]
+---
+apiVersion: v1alpha1
+kind: "Role"
+metadata:
+  name: role-template-view-menus
+  labels:
+    nebulacms.io/role-template: "true"
+  annotations:
+    rbac.authorization.nebulacms.io/module: "Menus Management"
+    rbac.authorization.nebulacms.io/display-name: "Menu View"
+    rbac.authorization.nebulacms.io/ui-permissions: |
+      ["system:menus:view"]
+rules:
+  - apiGroups: [ "" ]
+    resources: [ "menus", "menuitems" ]
+    verbs: [ "get", "list" ]
+  - apiGroups: [ "console.api.nebulacms.io" ]
+    resources: [ "systemconfigs" ]
+    resourceNames: [ "menu" ]
+    verbs: [ "get" ]

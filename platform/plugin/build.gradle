@@ -1,0 +1,30 @@
+plugins {
+    id 'java-platform'
+    id 'nebulacms.publish'
+}
+
+group = 'io.nebulacms.tools.platform'
+description = 'NebulaCMS plugin dependency platform for external plugin development.'
+
+javaPlatform {
+    allowDependencies()
+}
+
+dependencies {
+    api platform(project(':platform:application'))
+    constraints {
+        api project(':api')
+        // TODO other plugin API dependencies
+        // e.g.: api 'io.nebulacms.plugin:links-api:1.1.0'
+    }
+}
+
+publishing {
+    publications.named('mavenJava', MavenPublication) {
+        from components.javaPlatform
+        pom {
+            name = 'Plugin platform'
+            description = "$project.description"
+        }
+    }
+}

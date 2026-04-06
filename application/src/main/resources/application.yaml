@@ -1,0 +1,143 @@
+server:
+  port: 8090
+  forward-headers-strategy: native
+  compression:
+    enabled: true
+spring:
+  output:
+    ansi:
+      enabled: detect
+  r2dbc:
+    url: ${NEBULACMS_DB_URL:r2dbc:h2:file:///${halo.work-dir}/db/nebulacms?MODE=MySQL&DB_CLOSE_ON_EXIT=FALSE}
+    username: ${NEBULACMS_DB_USERNAME:admin}
+    password: ${NEBULACMS_DB_PASSWORD:123456}
+  sql:
+    init:
+      mode: always
+      platform: h2
+  http:
+    codecs:
+      max-in-memory-size: 10MB
+  messages:
+    basename: config.i18n.messages
+  web:
+    error:
+      whitelabel:
+        enabled: false
+    resources:
+      cache:
+        cachecontrol:
+          max-age: 365d
+  thymeleaf:
+    reactive:
+      maxChunkSize: 8KB
+  cache:
+    type: caffeine
+    caffeine:
+      spec: expireAfterAccess=1h, maximumSize=10000
+  data:
+    redis:
+      host: ${NEBULACMS_REDIS_HOST:localhost}
+      port: ${NEBULACMS_REDIS_PORT:6379}
+      username: ${NEBULACMS_REDIS_USERNAME:}
+      password: ${NEBULACMS_REDIS_PASSWORD:}
+      database: ${NEBULACMS_REDIS_DATABASE:0}
+      ssl:
+        enabled: ${NEBULACMS_REDIS_SSL:false}
+  threads:
+    virtual:
+      enabled: true
+
+halo:
+  work-dir: ${NEBULACMS_WORK_DIR:${HALO_WORK_DIR:${user.home}/.nebulacms}}
+  attachment:
+    resource-mappings:
+      - pathPattern: /upload/**
+        locations:
+          - migrate-from-1.x
+  security:
+    password-reset-methods:
+      - name: email
+        href: /password-reset/email
+        icon: /images/password-reset-methods/email.svg
+
+springdoc:
+  api-docs:
+    enabled: false
+  writer-with-order-by-keys: true
+
+logging:
+  level:
+    org.thymeleaf.TemplateEngine: OFF
+  file:
+    name: ${halo.work-dir}/logs/nebulacms.log
+  logback:
+    rollingpolicy:
+      max-file-size: 10MB
+      total-size-cap: 1GB
+      max-history: 0
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,info,prometheus"
+  endpoint:
+    shutdown:
+      access: unrestricted
+    heapdump:
+      access: unrestricted
+    health:
+      show-details: when-authorized
+      show-components: when-authorized
+      roles: super-role
+      probes:
+        enabled: true
+  info:
+    java:
+      enabled: true
+    os:
+      enabled: true
+
+resilience4j.ratelimiter:
+  configs:
+    authentication:
+      limitForPeriod: 3
+      limitRefreshPeriod: 1m
+      timeoutDuration: 0
+    comment-creation:
+      limitForPeriod: 10
+      limitRefreshPeriod: 1m
+      timeoutDuration: 0s
+    signup:
+      limitForPeriod: 3
+      limitRefreshPeriod: 1h
+      timeoutDuration: 0s
+    send-email-verification-code:
+      limitForPeriod: 1
+      limitRefreshPeriod: 1m
+      timeoutDuration: 0s
+    verify-email:
+      limitForPeriod: 3
+      limitRefreshPeriod: 1h
+      timeoutDuration: 0s
+    send-password-reset-email:
+      limitForPeriod: 10
+      limitRefreshPeriod: 1m
+      timeoutDuration: 0s
+    password-reset-verification:
+      limitForPeriod: 10
+      limitRefreshPeriod: 1m
+      timeoutDuration: 0s
+r2dbc:
+  migrate:
+    resources-path: classpath:/db/migration/${spring.sql.init.platform}/*.sql
+    dialect: ${spring.sql.init.platform}
+
+nebula:
+  ai:
+    ollama:
+      enabled: ${NEBULACMS_OLLAMA_ENABLED:false}
+      base-url: ${NEBULACMS_OLLAMA_BASE_URL:http://127.0.0.1:11434}
+      model: ${NEBULACMS_OLLAMA_MODEL:llama3.1}
+      timeout: ${NEBULACMS_OLLAMA_TIMEOUT:30s}

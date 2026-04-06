@@ -1,0 +1,44 @@
+import {
+  coreApiClient,
+  paginate,
+  type Role,
+  type RoleV1alpha1ApiListRoleRequest,
+} from "@nebula-labs/api-client";
+import { useQuery } from "@tanstack/vue-query";
+import { roleLabels } from "@/constants/labels";
+
+export function useFetchRoles() {
+  return useQuery({
+    queryKey: ["core:roles"],
+    queryFn: async () => {
+      return await paginate<RoleV1alpha1ApiListRoleRequest, Role>(
+        (params) => coreApiClient.role.listRole(params),
+        {
+          size: 1000,
+          labelSelector: [`!${roleLabels.TEMPLATE}`],
+        }
+      );
+    },
+    refetchInterval(data) {
+      const hasDeletingRole = data?.some(
+        (item) => !!item.metadata.deletionTimestamp
+      );
+      return hasDeletingRole ? 1000 : false;
+    },
+  });
+}
+
+export function useFetchRoleTemplates() {
+  return useQuery({
+    queryKey: ["core:role-templates"],
+    queryFn: async () => {
+      return await paginate<RoleV1alpha1ApiListRoleRequest, Role>(
+        (params) => coreApiClient.role.listRole(params),
+        {
+          size: 1000,
+          labelSelector: [`${roleLabels.TEMPLATE}=true`, "!nebulacms.io/hidden"],
+        }
+      );
+    },
+  });
+}

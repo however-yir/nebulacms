@@ -1,0 +1,169 @@
+package io.nebulacms.app.content.stats;
+
+import static org.apache.commons.lang3.ObjectUtils.defaultIfNull;
+import static io.nebulacms.app.extension.index.query.Queries.and;
+import static io.nebulacms.app.extension.index.query.Queries.equal;
+import static io.nebulacms.app.extension.index.query.Queries.greaterThan;
+import static io.nebulacms.app.extension.index.query.Queries.isNull;
+
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Optional;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.BooleanUtils;
+import org.springframework.context.SmartLifecycle;
+import org.springframework.context.event.EventListener;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Component;
+import io.nebulacms.app.core.extension.content.Comment;
+import io.nebulacms.app.core.extension.content.Reply;
+import io.nebulacms.app.event.post.CommentUnreadReplyCountChangedEvent;
+import io.nebulacms.app.event.post.ReplyEvent;
+import io.nebulacms.app.extension.ExtensionClient;
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.PageRequestImpl;
+import io.nebulacms.app.extension.controller.Controller;
+import io.nebulacms.app.extension.controller.ControllerBuilder;
+import io.nebulacms.app.extension.controller.DefaultController;
+import io.nebulacms.app.extension.controller.DefaultQueue;
+import io.nebulacms.app.extension.controller.Reconciler;
+import io.nebulacms.app.extension.controller.RequestQueue;
+import io.nebulacms.app.extension.index.query.Condition;
+import io.nebulacms.app.extension.router.selector.FieldSelector;
+import io.nebulacms.app.infra.InitializationPhase;
+
+/**
+ * Update the comment status after receiving the reply event.
+ *
+ * @author guqing
+ * @since 2.0.0
+ */
+@Slf4j
+@Component
+public class ReplyEventReconciler
+    implements Reconciler<ReplyEventReconciler.CommentName>, SmartLifecycle {
+    private volatile boolean running = false;
+
+    private final ExtensionClient client;
+    private final RequestQueue<CommentName> replyEventQueue;
+    private final Controller replyEventController;
+
+    public ReplyEventReconciler(ExtensionClient client) {
+        this.client = client;
+        replyEventQueue = new DefaultQueue<>(Instant::now);
+        replyEventController = this.setupWith(null);
+    }
+
+    @Override
+    public Result reconcile(CommentName request) {
+        String commentName = request.name();
+
+        client.fetch(Comment.class, commentName)
+            // if the comment has been deleted, then do nothing.
+            .filter(comment -> comment.getMetadata().getDeletionTimestamp() == null)
+            .ifPresent(comment -> {
+                // order by reply creation time desc to get first as last reply time
+                var baseQuery = and(
+                    equal("spec.commentName", commentName),
+                    isNull("metadata.deletionTimestamp")
+                );
+                var pageRequest = PageRequestImpl.ofSize(1).withSort(
+                    Sort.by("spec.creationTime", "metadata.name").descending()
+                );
+                final Comment.CommentStatus status = comment.getStatusOrDefault();
+
+                var replyPageResult =
+                    client.listBy(Reply.class, listOptionsWithFieldQuery(baseQuery), pageRequest);
+                // total reply count
+                status.setReplyCount((int) replyPageResult.getTotal());
+
+                // calculate last reply time from total replies(top 1)
+                Instant lastReplyTime = replyPageResult.get()
+                    .map(reply -> reply.getSpec().getCreationTime())
+                    .findFirst()
+                    .orElse(null);
+                status.setLastReplyTime(lastReplyTime);
+
+                // calculate visible reply count(only approved and not hidden)
+                var visibleReplyPageResult =
+                    client.listBy(Reply.class, listOptionsWithFieldQuery(and(
+                        baseQuery,
+                        equal("spec.approved", BooleanUtils.TRUE),
+                        equal("spec.hidden", BooleanUtils.FALSE)
+                    )), pageRequest);
+                status.setVisibleReplyCount((int) visibleReplyPageResult.getTotal());
+
+                // calculate unread reply count(after last read time)
+                var unReadQuery = Optional.ofNullable(comment.getSpec().getLastReadTime())
+                    .map(lastReadTime -> and(
+                        baseQuery,
+                        greaterThan("spec.creationTime", lastReadTime.toString())
+                    ))
+                    .orElse(baseQuery);
+                var unReadPageResult =
+                    client.listBy(Reply.class, listOptionsWithFieldQuery(unReadQuery), pageRequest);
+                status.setUnreadReplyCount((int) unReadPageResult.getTotal());
+
+                status.setHasNewReply(defaultIfNull(status.getUnreadReplyCount(), 0) > 0);
+
+                client.update(comment);
+            });
+        return new Result(false, null);
+    }
+
+    public record CommentName(String name) {
+        public static CommentName of(String name) {
+            return new CommentName(name);
+        }
+    }
+
+    static ListOptions listOptionsWithFieldQuery(Condition query) {
+        var listOptions = new ListOptions();
+        listOptions.setFieldSelector(FieldSelector.of(query));
+        return listOptions;
+    }
+
+    @Override
+    public Controller setupWith(ControllerBuilder builder) {
+        return new DefaultController<>(
+            this.getClass().getName(),
+            this,
+            replyEventQueue,
+            null,
+            Duration.ofMillis(300),
+            Duration.ofMinutes(5));
+    }
+
+    @Override
+    public void start() {
+        this.replyEventController.start();
+        this.running = true;
+    }
+
+    @Override
+    public void stop() {
+        this.running = false;
+        this.replyEventController.dispose();
+    }
+
+    @Override
+    public boolean isRunning() {
+        return this.running;
+    }
+
+    @Override
+    public int getPhase() {
+        return InitializationPhase.CONTROLLERS.getPhase();
+    }
+
+    @EventListener(ReplyEvent.class)
+    public void onReplyEvent(ReplyEvent replyEvent) {
+        var commentName = replyEvent.getReply().getSpec().getCommentName();
+        replyEventQueue.addImmediately(CommentName.of(commentName));
+    }
+
+    @EventListener(CommentUnreadReplyCountChangedEvent.class)
+    public void onUnreadReplyCountChangedEvent(CommentUnreadReplyCountChangedEvent event) {
+        replyEventQueue.addImmediately(CommentName.of(event.getCommentName()));
+    }
+}

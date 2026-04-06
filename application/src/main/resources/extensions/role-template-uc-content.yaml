@@ -1,0 +1,131 @@
+apiVersion: v1alpha1
+kind: "Role"
+metadata:
+  name: post-editor
+  labels:
+    rbac.authorization.nebulacms.io/system-reserved: "true"
+  annotations:
+    # Currently, yaml definition does not support i18n, please see https://github.com/nebula-labs/nebulacms/issues/3573
+    rbac.authorization.nebulacms.io/display-name: "文章管理员"
+    rbac.authorization.nebulacms.io/dependencies: |
+      ["role-template-manage-posts"]
+rules: [ ]
+
+---
+apiVersion: v1alpha1
+kind: "Role"
+metadata:
+  name: post-author
+  labels:
+    rbac.authorization.nebulacms.io/system-reserved: "true"
+  annotations:
+    # Currently, yaml definition does not support i18n, please see https://github.com/nebula-labs/nebulacms/issues/3573
+    rbac.authorization.nebulacms.io/display-name: "作者"
+    rbac.authorization.nebulacms.io/disallow-access-console: "true"
+    rbac.authorization.nebulacms.io/redirect-on-login: "/uc"
+    rbac.authorization.nebulacms.io/dependencies: |
+      [ "role-template-post-author" ]
+rules: [ ]
+
+---
+apiVersion: v1alpha1
+kind: "Role"
+metadata:
+  name: role-template-post-author
+  labels:
+    nebulacms.io/role-template: "true"
+  annotations:
+    rbac.authorization.nebulacms.io/module: "Posts Management"
+    # Currently, yaml definition does not support i18n, please see https://github.com/nebula-labs/nebulacms/issues/3573
+    rbac.authorization.nebulacms.io/display-name: "Post Author"
+    rbac.authorization.nebulacms.io/dependencies: |
+      [ "role-template-post-contributor", "role-template-post-publisher", "role-template-recycle-my-post",
+        "role-template-uc-attachment-manager" ]
+rules: [ ]
+
+---
+apiVersion: v1alpha1
+kind: "Role"
+metadata:
+  name: post-contributor
+  labels:
+    rbac.authorization.nebulacms.io/system-reserved: "true"
+  annotations:
+    # Currently, yaml definition does not support i18n, please see https://github.com/nebula-labs/nebulacms/issues/3573
+    rbac.authorization.nebulacms.io/display-name: "投稿者"
+    rbac.authorization.nebulacms.io/disallow-access-console: "true"
+    rbac.authorization.nebulacms.io/redirect-on-login: "/uc"
+    rbac.authorization.nebulacms.io/dependencies: |
+      [ "role-template-post-contributor" ]
+rules: [ ]
+
+---
+apiVersion: v1alpha1
+kind: "Role"
+metadata:
+  name: role-template-post-contributor
+  labels:
+    nebulacms.io/role-template: "true"
+  annotations:
+    rbac.authorization.nebulacms.io/module: "Posts Management"
+    # Currently, yaml definition does not support i18n, please see https://github.com/nebula-labs/nebulacms/issues/3573
+    rbac.authorization.nebulacms.io/display-name: "Post Contributor"
+    rbac.authorization.nebulacms.io/dependencies: |
+      [ "role-template-view-categories", "role-template-view-tags" ]
+    rbac.authorization.nebulacms.io/ui-permissions: |
+      [ "uc:posts:manage" ]
+rules:
+  - apiGroups: [ "uc.api.content.nebulacms.io" ]
+    resources: [ "posts" ]
+    verbs: [ "get", "list", "create", "update", "delete" ]
+  - apiGroups: [ "uc.api.content.nebulacms.io" ]
+    resources: [ "posts/draft" ]
+    verbs: [ "update", "get" ]
+
+---
+apiVersion: v1alpha1
+kind: Role
+metadata:
+  name: role-template-post-publisher
+  labels:
+    nebulacms.io/role-template: "true"
+  annotations:
+    rbac.authorization.nebulacms.io/module: "Posts Management"
+    rbac.authorization.nebulacms.io/display-name: "Post Publisher"
+    rbac.authorization.nebulacms.io/ui-permissions: |
+      [ "uc:posts:publish" ]
+rules:
+  - apiGroups: [ "uc.api.content.nebulacms.io" ]
+    resources: [ "posts/publish", "posts/unpublish" ]
+    verbs: [ "update" ]
+
+---
+# TODO remove this in next major version
+apiVersion: v1alpha1
+kind: Role
+metadata:
+  name: role-template-recycle-my-post
+  labels:
+    nebulacms.io/role-template: "true"
+  annotations:
+    rbac.authorization.nebulacms.io/module: "Posts Management"
+    rbac.authorization.nebulacms.io/display-name: "Recycle My Post"
+    rbac.authorization.nebulacms.io/ui-permissions: |
+      [ "uc:posts:recycle" ]
+rules:
+  - apiGroups: [ "uc.api.content.nebulacms.io" ]
+    resources: [ "posts/recycle" ]
+    verbs: [ "delete" ]
+
+---
+apiVersion: v1alpha1
+kind: Role
+metadata:
+  name: role-template-post-attachment-manager
+  deletionTimestamp: 2024-09-30T14:00:41.813954138Z
+  labels:
+    nebulacms.io/role-template: "true"
+  annotations:
+    rbac.authorization.nebulacms.io/module: "Posts Management"
+    rbac.authorization.nebulacms.io/display-name: "Post Attachment Manager"
+rules: [ ]

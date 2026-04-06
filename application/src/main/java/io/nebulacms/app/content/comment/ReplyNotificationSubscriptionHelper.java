@@ -1,0 +1,77 @@
+package io.nebulacms.app.content.comment;
+
+import io.micrometer.common.util.StringUtils;
+import java.time.Duration;
+import lombok.RequiredArgsConstructor;
+import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
+import io.nebulacms.app.content.NotificationReasonConst;
+import io.nebulacms.app.core.extension.content.Comment;
+import io.nebulacms.app.core.extension.content.Reply;
+import io.nebulacms.app.core.extension.notification.Subscription;
+import io.nebulacms.app.infra.utils.ReactiveUtils;
+import io.nebulacms.app.notification.NotificationCenter;
+import io.nebulacms.app.notification.UserIdentity;
+
+/**
+ * Reply notification subscription helper.
+ *
+ * @author guqing
+ * @since 2.9.0
+ */
+@Component
+@RequiredArgsConstructor
+public class ReplyNotificationSubscriptionHelper {
+
+    private static final Duration BLOCKING_TIMEOUT = ReactiveUtils.DEFAULT_TIMEOUT;
+
+    private final NotificationCenter notificationCenter;
+
+    /**
+     * Subscribe new reply reason for comment.
+     *
+     * @param comment comment
+     */
+    public void subscribeNewReplyReasonForComment(Comment comment) {
+        subscribeReply(identityFrom(comment.getSpec().getOwner()));
+    }
+
+    /**
+     * Subscribe new reply reason for reply.
+     *
+     * @param reply reply
+     */
+    public void subscribeNewReplyReasonForReply(Reply reply) {
+        var subjectOwner = reply.getSpec().getOwner();
+        subscribeReply(identityFrom(subjectOwner));
+    }
+
+    void subscribeReply(UserIdentity identity) {
+        var subscriber = createSubscriber(identity);
+        if (subscriber == null) {
+            return;
+        }
+        var interestReason = new Subscription.InterestReason();
+        interestReason.setReasonType(NotificationReasonConst.SOMEONE_REPLIED_TO_YOU);
+        interestReason.setExpression("props.repliedOwner == '%s'".formatted(identity.name()));
+        notificationCenter.subscribe(subscriber, interestReason).block(BLOCKING_TIMEOUT);
+    }
+
+    @Nullable
+    private Subscription.Subscriber createSubscriber(UserIdentity author) {
+        if (StringUtils.isBlank(author.name())) {
+            return null;
+        }
+
+        Subscription.Subscriber subscriber = new Subscription.Subscriber();
+        subscriber.setName(author.name());
+        return subscriber;
+    }
+
+    public static UserIdentity identityFrom(Comment.CommentOwner owner) {
+        if (Comment.CommentOwner.KIND_EMAIL.equals(owner.getKind())) {
+            return UserIdentity.anonymousWithEmail(owner.getName());
+        }
+        return UserIdentity.of(owner.getName());
+    }
+}

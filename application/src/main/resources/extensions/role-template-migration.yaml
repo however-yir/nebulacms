@@ -1,0 +1,24 @@
+apiVersion: v1alpha1
+kind: "Role"
+metadata:
+  name: role-template-manage-migration
+  labels:
+    nebulacms.io/role-template: "true"
+  annotations:
+    rbac.authorization.nebulacms.io/module: "Migration Management"
+    rbac.authorization.nebulacms.io/display-name: "Migration Manage"
+    rbac.authorization.nebulacms.io/ui-permissions: |
+      ["system:migrations:manage"]
+rules:
+  - apiGroups: [ "console.api.migration.nebulacms.io" ]
+    resources: [ "restorations" ]
+    verbs: [ "create" ]
+  - apiGroups: [ "console.api.migration.nebulacms.io" ]
+    resources: [ "backup-files" ]
+    verbs: [ "list" ]
+  - apiGroups: [ "console.api.migration.nebulacms.io" ]
+    resources: [ "backups/files" ]
+    verbs: [ "get" ]
+  - apiGroups: [ "migration.nebulacms.io" ]
+    resources: [ "backups" ]
+    verbs: [ "list", "get", "create", "update", "delete", "patch" ]

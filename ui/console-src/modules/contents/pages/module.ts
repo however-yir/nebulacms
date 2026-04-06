@@ -1,0 +1,64 @@
+import BasicLayout from "@console/layouts/BasicLayout.vue";
+import { IconPages } from "@nebula-labs/components";
+import { definePlugin } from "@nebula-labs/ui-shared";
+import { markRaw } from "vue";
+
+export default definePlugin({
+  routes: [
+    {
+      path: "/single-pages",
+      name: "SinglePagesRoot",
+      component: BasicLayout,
+      meta: {
+        title: "core.page.title",
+        searchable: true,
+        permissions: ["system:singlepages:view"],
+        menu: {
+          name: "core.sidebar.menu.items.single_pages",
+          group: "content",
+          icon: markRaw(IconPages),
+          priority: 1,
+        },
+      },
+      children: [
+        {
+          path: "",
+          name: "SinglePages",
+          component: () => import("./SinglePageList.vue"),
+        },
+        {
+          path: "deleted",
+          name: "DeletedSinglePages",
+          component: () => import("./DeletedSinglePageList.vue"),
+          meta: {
+            title: "core.deleted_page.title",
+            searchable: true,
+            permissions: ["system:singlepages:view"],
+          },
+        },
+        {
+          path: "editor",
+          name: "SinglePageEditor",
+          component: () => import("./SinglePageEditor.vue"),
+          meta: {
+            title: "core.page_editor.title",
+            searchable: true,
+            hideFooter: true,
+            permissions: ["system:singlepages:manage"],
+          },
+        },
+      ],
+    },
+    {
+      path: "/single-pages/snapshots",
+      name: "SinglePageSnapshots",
+      component: () => import("./SinglePageSnapshots.vue"),
+      meta: {
+        title: "core.page_snapshots.title",
+        searchable: false,
+        hideFooter: true,
+        permissions: ["system:singlepages:manage"],
+      },
+    },
+  ],
+});

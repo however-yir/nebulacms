@@ -1,0 +1,63 @@
+package io.nebulacms.app.theme.dialect;
+
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Component;
+import org.thymeleaf.context.ITemplateContext;
+import org.thymeleaf.model.IModel;
+import org.thymeleaf.model.IModelFactory;
+import org.thymeleaf.processor.element.IElementModelStructureHandler;
+import reactor.core.publisher.Mono;
+import io.nebulacms.app.infra.SystemConfigFetcher;
+import io.nebulacms.app.infra.SystemSetting;
+import io.nebulacms.app.theme.DefaultTemplateEnum;
+import io.nebulacms.app.theme.router.ModelConst;
+
+/**
+ * <p>Global custom head snippet injection for theme global setting.</p>
+ * <p>Globally injected head snippet can be overridden by content template.</p>
+ *
+ * @author guqing
+ * @since 2.0.0
+ */
+@Order(Ordered.HIGHEST_PRECEDENCE + 2)
+@Component
+public class TemplateGlobalHeadProcessor implements TemplateHeadProcessor {
+
+    private final SystemConfigFetcher fetcher;
+
+    public TemplateGlobalHeadProcessor(SystemConfigFetcher fetcher) {
+        this.fetcher = fetcher;
+    }
+
+    @Override
+    public Mono<Void> process(ITemplateContext context, IModel model,
+        IElementModelStructureHandler structureHandler) {
+        final IModelFactory modelFactory = context.getModelFactory();
+        return fetchCodeInjection()
+            .doOnNext(codeInjection -> {
+                String globalHeader = codeInjection.getGlobalHead();
+                if (StringUtils.isNotBlank(globalHeader)) {
+                    model.add(modelFactory.createText(globalHeader + "\n"));
+                }
+
+                // add content head to model
+                String contentHeader = codeInjection.getContentHead();
+                if (StringUtils.isNotBlank(contentHeader) && isContentTemplate(context)) {
+                    model.add(modelFactory.createText(contentHeader + "\n"));
+                }
+            })
+            .then();
+    }
+
+    private Mono<SystemSetting.CodeInjection> fetchCodeInjection() {
+        return fetcher.fetch(SystemSetting.CodeInjection.GROUP, SystemSetting.CodeInjection.class);
+    }
+
+    private boolean isContentTemplate(ITemplateContext context) {
+        String templateId = (String) context.getVariable(ModelConst.TEMPLATE_ID);
+        return DefaultTemplateEnum.POST.getValue().equals(templateId)
+            || DefaultTemplateEnum.SINGLE_PAGE.getValue().equals(templateId);
+    }
+}
