@@ -159,7 +159,7 @@ nebulacms/
 ### 6.1 本地开发
 
 ```bash
-git clone https://github.com/<your-github-username>/nebulacms.git
+git clone https://github.com/however-yir/nebulacms.git
 cd nebulacms
 cp .env.example .env
 ./gradlew clean build
