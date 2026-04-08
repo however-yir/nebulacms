@@ -17,6 +17,12 @@
   <img src="https://img.shields.io/badge/License-GPL--3.0-orange" alt="GPL-3.0" />
 </p>
 
+> Status: `showcase-ready`
+>
+> Upstream: `halo-dev/halo`
+>
+> Series: [talentflow-hr](https://github.com/however-yir/talentflow-hr) · [aurora-mall](https://github.com/however-yir/aurora-mall)
+
 ---
 
 ## 目录
