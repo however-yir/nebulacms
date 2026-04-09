@@ -22,8 +22,8 @@ class FileNameUtilsTest {
 
         @Test
         public void shouldRemoveExtIfHasOnlyOneExt() {
-            assertEquals("halo", removeFileExtension("nebulacms.io", true));
-            assertEquals("halo", removeFileExtension("nebulacms.io", false));
+            assertEquals("nebulacms", removeFileExtension("nebulacms.io", true));
+            assertEquals("nebulacms", removeFileExtension("nebulacms.io", false));
         }
 
         @Test
@@ -34,8 +34,8 @@ class FileNameUtilsTest {
 
         @Test
         public void shouldRemoveExtIfDotfileHasOneExt() {
-            assertEquals(".halo", removeFileExtension(".nebulacms.io", true));
-            assertEquals(".halo", removeFileExtension(".nebulacms.io", false));
+            assertEquals(".nebulacms", removeFileExtension(".nebulacms.io", true));
+            assertEquals(".nebulacms", removeFileExtension(".nebulacms.io", false));
         }
 
         @Test
@@ -62,9 +62,9 @@ class FileNameUtilsTest {
         @Test
         void normalFileName() {
             String randomFileName = randomFileName("nebulacms.io", 3);
-            assertEquals(12, randomFileName.length());
-            assertTrue(randomFileName.startsWith("halo-"));
-            assertTrue(randomFileName.endsWith(".run"));
+            assertEquals(16, randomFileName.length());
+            assertTrue(randomFileName.startsWith("nebulacms-"));
+            assertTrue(randomFileName.endsWith(".io"));
 
             randomFileName = randomFileName(".run", 3);
             assertEquals(7, randomFileName.length());
