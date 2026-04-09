@@ -1,4 +1,4 @@
-# NebulaCMS
+# NebulaCMS - 插件化内容管理平台 | Plugin-first Content Platform
 
 🔥 A plugin-first content platform rebuilt from Halo with independent namespace, branding, and delivery pipeline.  
 🚀 Built with Java 21, Spring Boot, WebFlux, R2DBC, Vue 3, and Gradle multi-module architecture.  
