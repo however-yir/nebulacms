@@ -57,7 +57,7 @@ jobs:
         run: ./gradlew clean downloadPluginPresets build -x check --configuration-cache --configuration-cache-problems=warn
       - name: Upload Artifacts
         if: github.repository == 'nebula-labs/nebulacms'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: nebulacms-artifacts
           path: application/build/libs
