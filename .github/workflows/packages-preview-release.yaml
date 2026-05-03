@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.repository == 'nebula-labs/nebulacms'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Setup Environment
         uses: ./.github/actions/setup-env
 
