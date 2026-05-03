@@ -190,7 +190,7 @@ jobs:
           name: nebulacms-artifacts
           path: application/build/libs
       - name: Docker Build
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v7
         with:
           tags: ghcr.io/nebula-labs/nebulacms-dev:main
           push: false
