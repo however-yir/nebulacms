@@ -59,7 +59,7 @@ jobs:
           while IFS= read -r file; do
             [ -z "$file" ] && continue
             case "$file" in
-              .github/workflows/*|*.md)
+              *.md)
                 ;;
               *)
                 app=true
