@@ -156,17 +156,23 @@ jobs:
           ./gradlew publishToAllRegistries -Prelease=${{ github.event_name == 'release' && 'true' || 'false' }}
 
   docker-build-and-push:
-    if: always() && needs.build.result == 'success' && (github.event_name == 'push' || github.event_name == 'release') && secrets.DOCKER_TOKEN != ''
+    if: always() && needs.build.result == 'success' && (github.event_name == 'push' || github.event_name == 'release')
     runs-on: ubuntu-latest
     needs: build
     steps:
       - uses: actions/checkout@v4
+      - name: Check DockerHub credentials
+        id: has_docker_creds
+        shell: bash
+        run: echo "has_token=${{ secrets.DOCKER_TOKEN != '' }}" >> "$GITHUB_OUTPUT"
       - name: Download Artifacts
+        if: steps.has_docker_creds.outputs.has_token == 'true'
         uses: actions/download-artifact@v4
         with:
           name: nebulacms-artifacts
           path: application/build/libs
       - name: Docker Buildx and Push
+        if: steps.has_docker_creds.outputs.has_token == 'true'
         uses: ./.github/actions/docker-buildx-push
         with:
           image-name: ${{ github.event_name == 'release' && 'nebulacms' || 'nebulacms-dev' }}
