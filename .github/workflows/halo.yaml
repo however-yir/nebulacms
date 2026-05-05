@@ -104,7 +104,6 @@ jobs:
       - name: Build NebulaCMS
         run: ./gradlew clean downloadPluginPresets build -x check --configuration-cache --configuration-cache-problems=warn
       - name: Upload Artifacts
-        if: github.repository == 'nebula-labs/nebulacms'
         uses: actions/upload-artifact@v4
         with:
           name: nebulacms-artifacts
@@ -130,7 +129,7 @@ jobs:
 
   build-and-publish-container-image-with-buildpacks:
     needs: build
-    if: always() && needs.build.result == 'success' && (github.event_name == 'push' || github.event_name == 'release')
+    if: always() && needs.build.result == 'success' && (github.event_name == 'push' || github.event_name == 'release') && github.repository == 'nebula-labs/nebulacms'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -156,7 +155,7 @@ jobs:
           ./gradlew publishToAllRegistries -Prelease=${{ github.event_name == 'release' && 'true' || 'false' }}
 
   docker-build-and-push:
-    if: always() && needs.build.result == 'success' && (github.event_name == 'push' || github.event_name == 'release')
+    if: always() && needs.build.result == 'success' && (github.event_name == 'push' || github.event_name == 'release') && secrets.DOCKER_TOKEN != ''
     runs-on: ubuntu-latest
     needs: build
     steps:
@@ -192,7 +191,7 @@ jobs:
       - name: Docker Build
         uses: docker/build-push-action@v5
         with:
-          tags: ghcr.io/nebula-labs/nebulacms-dev:main
+          tags: ghcr.io/${{ github.repository_owner }}/nebulacms-dev:main
           push: false
           context: .
       - name: E2E Testing
