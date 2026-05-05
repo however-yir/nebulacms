@@ -2012,7 +2012,7 @@
           "type": {
             "minLength": 1,
             "type": "string",
-            "description": "Document type. e.g.: post.content.nebulacms.io, singlepage.content.nebulacms.io, moment.moment\n .nebulacms.io, doc.doc.nebulacms.io."
+            "description": "Document type. e.g.: post.content.nebulacms.io,\n     singlepage.content.nebulacms.io, moment.moment\n .nebulacms.io, doc.doc.nebulacms.io."
           },
           "updateTimestamp": {
             "type": "string",

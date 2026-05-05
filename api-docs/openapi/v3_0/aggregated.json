@@ -7200,72 +7200,6 @@
         ]
       }
     },
-    "/apis/console.api.nebulacms.io/v1alpha1/systemconfigs/{group}": {
-      "get": {
-        "description": "Get system config by group",
-        "operationId": "getSystemConfigByGroup",
-        "parameters": [
-          {
-            "description": "Group of the system config",
-            "in": "path",
-            "name": "group",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "object"
-                }
-              },
-              "application/json": {}
-            },
-            "description": "default response"
-          }
-        },
-        "tags": [
-          "SystemConfigV1alpha1Console"
-        ]
-      },
-      "put": {
-        "description": "Update system config by group",
-        "operationId": "updateSystemConfigByGroup",
-        "parameters": [
-          {
-            "description": "Group of the system config",
-            "in": "path",
-            "name": "group",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "*/*": {
-              "schema": {
-                "type": "object"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204 NO_CONTENT": {
-            "content": {},
-            "description": "default response"
-          }
-        },
-        "tags": [
-          "SystemConfigV1alpha1Console"
-        ]
-      }
-    },
     "/apis/console.api.migration.nebulacms.io/v1alpha1/backup-files": {
       "get": {
         "description": "Get backup files from backup root.",
@@ -7336,6 +7270,72 @@
         "responses": {},
         "tags": [
           "MigrationV1alpha1Console"
+        ]
+      }
+    },
+    "/apis/console.api.nebulacms.io/v1alpha1/systemconfigs/{group}": {
+      "get": {
+        "description": "Get system config by group",
+        "operationId": "getSystemConfigByGroup",
+        "parameters": [
+          {
+            "description": "Group of the system config",
+            "in": "path",
+            "name": "group",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/json": {}
+            },
+            "description": "default response"
+          }
+        },
+        "tags": [
+          "SystemConfigV1alpha1Console"
+        ]
+      },
+      "put": {
+        "description": "Update system config by group",
+        "operationId": "updateSystemConfigByGroup",
+        "parameters": [
+          {
+            "description": "Group of the system config",
+            "in": "path",
+            "name": "group",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204 NO_CONTENT": {
+            "content": {},
+            "description": "default response"
+          }
+        },
+        "tags": [
+          "SystemConfigV1alpha1Console"
         ]
       }
     },
@@ -14553,7 +14553,7 @@
         ]
       },
       "post": {
-        "description": "Create my post. If you want to create a post with content, please set\n annotation: \"content.nebulacms.io/content-json\" into annotations and refer\n to Content for corresponding data type.\n",
+        "description": "Create my post. If you want to create a post with content, please set\n annotation: \"content.nebulacms.io/content-json\" into\n annotations and refer\n to Content for corresponding data type.\n",
         "operationId": "CreateMyPost",
         "requestBody": {
           "content": {
@@ -18065,7 +18065,7 @@
           "type": {
             "minLength": 1,
             "type": "string",
-            "description": "Document type. e.g.: post.content.nebulacms.io, singlepage.content.nebulacms.io, moment.moment\n .nebulacms.io, doc.doc.nebulacms.io."
+            "description": "Document type. e.g.: post.content.nebulacms.io,\n     singlepage.content.nebulacms.io, moment.moment\n .nebulacms.io, doc.doc.nebulacms.io."
           },
           "updateTimestamp": {
             "type": "string",
