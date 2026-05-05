@@ -2,6 +2,11 @@ package io.nebulacms.app.core.endpoint.uc;
 
 import static org.springdoc.core.fn.builders.apiresponse.Builder.responseBuilder;
 
+import io.nebulacms.app.core.extension.UserConnection;
+import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
+import io.nebulacms.app.core.user.service.UserConnectionService;
+import io.nebulacms.app.extension.GroupVersion;
+
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import org.springdoc.core.fn.builders.parameter.Builder;
 import org.springdoc.webflux.core.fn.SpringdocRouteBuilder;
@@ -13,10 +18,6 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
-import io.nebulacms.app.core.extension.UserConnection;
-import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
-import io.nebulacms.app.core.user.service.UserConnectionService;
-import io.nebulacms.app.extension.GroupVersion;
 
 /**
  * User connection endpoint.

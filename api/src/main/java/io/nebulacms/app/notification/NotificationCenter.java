@@ -1,8 +1,9 @@
 package io.nebulacms.app.notification;
 
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.core.extension.notification.Reason;
 import io.nebulacms.app.core.extension.notification.Subscription;
+
+import reactor.core.publisher.Mono;
 
 /**
  * Notification center to notify and manage notifications.

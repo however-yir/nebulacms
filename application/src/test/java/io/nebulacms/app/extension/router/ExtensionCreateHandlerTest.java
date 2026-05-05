@@ -12,6 +12,14 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.extension.FakeExtension;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.Scheme;
+import io.nebulacms.app.extension.Unstructured;
+import io.nebulacms.app.extension.exception.ExtensionConvertException;
+import io.nebulacms.app.extension.exception.ExtensionNotFoundException;
+
 import java.util.Objects;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -23,13 +31,6 @@ import org.springframework.mock.web.reactive.function.server.MockServerRequest;
 import org.springframework.web.reactive.function.server.EntityResponse;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.extension.FakeExtension;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.Scheme;
-import io.nebulacms.app.extension.Unstructured;
-import io.nebulacms.app.extension.exception.ExtensionConvertException;
-import io.nebulacms.app.extension.exception.ExtensionNotFoundException;
 
 @ExtendWith(MockitoExtension.class)
 class ExtensionCreateHandlerTest {

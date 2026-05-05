@@ -3,13 +3,14 @@ package io.nebulacms.app.infra;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import io.nebulacms.app.infra.utils.JsonUtils;
+
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Iterator;
 import org.json.JSONException;
 import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
-import io.nebulacms.app.infra.utils.JsonUtils;
 
 /**
  * Tests for {@link ConditionList}.

@@ -1,10 +1,10 @@
 package io.nebulacms.app.infra.utils;
 
+import static io.nebulacms.app.infra.utils.FileNameUtils.randomFileName;
+import static io.nebulacms.app.infra.utils.FileNameUtils.removeFileExtension;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static io.nebulacms.app.infra.utils.FileNameUtils.randomFileName;
-import static io.nebulacms.app.infra.utils.FileNameUtils.removeFileExtension;
 
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

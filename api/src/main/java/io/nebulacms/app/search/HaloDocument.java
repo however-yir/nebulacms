@@ -97,7 +97,8 @@ public final class HaloDocument {
     private String permalink;
 
     /**
-     * Document type. e.g.: post.content.nebulacms.io, singlepage.content.nebulacms.io, moment.moment
+     * Document type. e.g.: post.content.nebulacms.io,
+     *     singlepage.content.nebulacms.io, moment.moment
      * .nebulacms.io, doc.doc.nebulacms.io.
      */
     @NotBlank

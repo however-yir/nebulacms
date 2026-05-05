@@ -7,6 +7,13 @@ import static org.mockito.ArgumentMatchers.same;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.core.extension.AnnotationSetting;
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.plugin.PluginService;
+import io.nebulacms.app.theme.service.ThemeService;
+
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,12 +25,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.AnnotationSetting;
-import io.nebulacms.app.extension.ListOptions;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.plugin.PluginService;
-import io.nebulacms.app.theme.service.ThemeService;
 
 @ExtendWith(MockitoExtension.class)
 class AnnotationSettingEndpointTest {
@@ -74,7 +75,8 @@ class AnnotationSettingEndpointTest {
                 assertEquals("""
                     (\
                     (metadata.labels['theme.nebulacms.io/theme-name'] = 'fake-theme' \
-                    OR metadata.labels['plugin.nebulacms.io/plugin-name'] IN ('plugin-1', 'plugin-2')\
+                    OR metadata.labels['plugin.nebulacms.io/plugin-name'] \
+                    IN ('plugin-1', 'plugin-2')\
                     ) \
                     AND spec.targetRef = content.nebulacms.io/Post\
                     )""", condition.toString());

@@ -2,13 +2,14 @@ package io.nebulacms.app.theme.finders.vo;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import io.nebulacms.app.core.extension.User;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.infra.utils.JsonUtils;
+
 import java.time.Instant;
 import org.json.JSONException;
 import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
-import io.nebulacms.app.core.extension.User;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.infra.utils.JsonUtils;
 
 /**
  * Tests for {@link UserVo}.

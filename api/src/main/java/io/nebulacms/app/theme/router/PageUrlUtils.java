@@ -1,12 +1,13 @@
 package io.nebulacms.app.theme.router;
 
+import io.nebulacms.app.extension.ListResult;
+import io.nebulacms.app.infra.utils.PathUtils;
+
 import java.util.Objects;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.web.reactive.function.server.ServerRequest;
-import io.nebulacms.app.extension.ListResult;
-import io.nebulacms.app.infra.utils.PathUtils;
 
 /**
  * A utility class for template page url.

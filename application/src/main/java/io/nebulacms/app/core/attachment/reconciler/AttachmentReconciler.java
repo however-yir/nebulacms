@@ -3,14 +3,6 @@ package io.nebulacms.app.core.attachment.reconciler;
 import static io.nebulacms.app.extension.ExtensionUtil.addFinalizers;
 import static io.nebulacms.app.extension.ExtensionUtil.removeFinalizers;
 
-import java.net.URI;
-import java.time.Duration;
-import java.util.Set;
-import java.util.stream.Collectors;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.stereotype.Component;
 import io.nebulacms.app.core.attachment.AttachmentChangedEvent;
 import io.nebulacms.app.core.extension.attachment.Attachment;
 import io.nebulacms.app.core.extension.attachment.Attachment.AttachmentStatus;
@@ -23,6 +15,15 @@ import io.nebulacms.app.extension.controller.ControllerBuilder;
 import io.nebulacms.app.extension.controller.Reconciler;
 import io.nebulacms.app.extension.controller.Reconciler.Request;
 import io.nebulacms.app.extension.controller.RequeueException;
+
+import java.net.URI;
+import java.time.Duration;
+import java.util.Set;
+import java.util.stream.Collectors;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component

@@ -1,5 +1,8 @@
 package io.nebulacms.app.notification;
 
+import static io.nebulacms.app.notification.DefaultNotifierConfigStore.RECEIVER_KEY;
+import static io.nebulacms.app.notification.DefaultNotifierConfigStore.SECRET_NAME;
+import static io.nebulacms.app.notification.DefaultNotifierConfigStore.SENDER_KEY;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.assertArg;
@@ -9,9 +12,11 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static io.nebulacms.app.notification.DefaultNotifierConfigStore.RECEIVER_KEY;
-import static io.nebulacms.app.notification.DefaultNotifierConfigStore.SECRET_NAME;
-import static io.nebulacms.app.notification.DefaultNotifierConfigStore.SENDER_KEY;
+
+import io.nebulacms.app.extension.MetadataUtil;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.Secret;
+import io.nebulacms.app.infra.utils.JsonUtils;
 
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -23,10 +28,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.extension.MetadataUtil;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.Secret;
-import io.nebulacms.app.infra.utils.JsonUtils;
 
 /**
  * Tests for {@link DefaultNotifierConfigStore}.

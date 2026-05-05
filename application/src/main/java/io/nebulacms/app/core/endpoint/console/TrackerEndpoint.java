@@ -4,6 +4,12 @@ import static org.springdoc.core.fn.builders.apiresponse.Builder.responseBuilder
 import static org.springdoc.core.fn.builders.content.Builder.contentBuilder;
 import static org.springdoc.core.fn.builders.requestbody.Builder.requestBodyBuilder;
 
+import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
+import io.nebulacms.app.event.post.DownvotedEvent;
+import io.nebulacms.app.event.post.UpvotedEvent;
+import io.nebulacms.app.event.post.VisitedEvent;
+import io.nebulacms.app.extension.GroupVersion;
+
 import lombok.AllArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springdoc.core.fn.builders.schema.Builder;
@@ -16,11 +22,6 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
-import io.nebulacms.app.event.post.DownvotedEvent;
-import io.nebulacms.app.event.post.UpvotedEvent;
-import io.nebulacms.app.event.post.VisitedEvent;
-import io.nebulacms.app.extension.GroupVersion;
 
 /**
  * Metrics counter endpoint.

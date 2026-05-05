@@ -6,6 +6,9 @@ import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.core.extension.User;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -15,8 +18,6 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.User;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
 
 /**
  * Tests for {@link AuthorPostsRouteFactory}.

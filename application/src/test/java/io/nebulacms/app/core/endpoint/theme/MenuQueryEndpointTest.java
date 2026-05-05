@@ -5,6 +5,16 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.core.extension.Menu;
+import io.nebulacms.app.core.extension.MenuItem;
+import io.nebulacms.app.extension.GroupVersion;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.infra.SystemConfigFetcher;
+import io.nebulacms.app.infra.SystemSetting;
+import io.nebulacms.app.theme.finders.MenuFinder;
+import io.nebulacms.app.theme.finders.vo.MenuItemVo;
+import io.nebulacms.app.theme.finders.vo.MenuVo;
+
 import java.util.List;
 import lombok.NonNull;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,15 +26,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.Menu;
-import io.nebulacms.app.core.extension.MenuItem;
-import io.nebulacms.app.extension.GroupVersion;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.infra.SystemConfigFetcher;
-import io.nebulacms.app.infra.SystemSetting;
-import io.nebulacms.app.theme.finders.MenuFinder;
-import io.nebulacms.app.theme.finders.vo.MenuItemVo;
-import io.nebulacms.app.theme.finders.vo.MenuVo;
 
 /**
  * Tests for {@link MenuQueryEndpoint}.

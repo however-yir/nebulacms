@@ -1,5 +1,10 @@
 package io.nebulacms.app.extension.index.query;
 
+import io.nebulacms.app.extension.Extension;
+import io.nebulacms.app.extension.index.Indices;
+import io.nebulacms.app.extension.index.LabelIndexQuery;
+import io.nebulacms.app.extension.index.ValueIndexQuery;
+
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -8,10 +13,6 @@ import org.springframework.core.convert.ConversionService;
 import org.springframework.data.relational.core.sql.Visitable;
 import org.springframework.data.relational.core.sql.Visitor;
 import org.springframework.lang.NonNull;
-import io.nebulacms.app.extension.Extension;
-import io.nebulacms.app.extension.index.Indices;
-import io.nebulacms.app.extension.index.LabelIndexQuery;
-import io.nebulacms.app.extension.index.ValueIndexQuery;
 
 /**
  * A visitor that visits a query and returns the matching extension names.

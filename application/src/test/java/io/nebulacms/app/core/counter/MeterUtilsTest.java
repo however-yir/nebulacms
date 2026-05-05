@@ -2,13 +2,14 @@ package io.nebulacms.app.core.counter;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import io.nebulacms.app.core.extension.content.Post;
+
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.Meter;
 import io.micrometer.core.instrument.MeterRegistry;
 import io.micrometer.core.instrument.search.RequiredSearch;
 import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
 import org.junit.jupiter.api.Test;
-import io.nebulacms.app.core.extension.content.Post;
 
 /**
  * Tests for {@link MeterUtils}.
@@ -121,7 +122,8 @@ class MeterUtilsTest {
     void isApprovedCommentCounter() {
         MeterRegistry meterRegistry = new SimpleMeterRegistry();
         Counter approvedCommentCounter =
-            MeterUtils.approvedCommentCounter(meterRegistry, "posts.content.nebulacms.io/fake-post");
+            MeterUtils.approvedCommentCounter(meterRegistry,
+                "posts.content.nebulacms.io/fake-post");
         assertThat(MeterUtils.isApprovedCommentCounter(approvedCommentCounter)).isTrue();
         assertThat(MeterUtils.isVisitCounter(approvedCommentCounter)).isFalse();
     }

@@ -1,8 +1,9 @@
 package io.nebulacms.app.search.event;
 
+import io.nebulacms.app.plugin.SharedEvent;
+
 import org.springframework.context.ApplicationEvent;
 import org.springframework.lang.Nullable;
-import io.nebulacms.app.plugin.SharedEvent;
 
 @SharedEvent
 public class HaloDocumentDeleteRequestEvent extends ApplicationEvent {

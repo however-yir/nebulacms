@@ -1,7 +1,8 @@
 package io.nebulacms.app.core.user.service;
 
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.security.PersonalAccessToken;
+
+import reactor.core.publisher.Mono;
 
 /**
  * Service for personal access token.

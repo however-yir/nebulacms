@@ -5,6 +5,13 @@ import static io.nebulacms.app.extension.index.query.Queries.equal;
 import static io.nebulacms.app.extension.index.query.Queries.isNull;
 import static io.nebulacms.app.extension.index.query.Queries.or;
 
+import io.nebulacms.app.core.extension.content.Post;
+import io.nebulacms.app.extension.ExtensionUtil;
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.router.selector.FieldSelector;
+import io.nebulacms.app.extension.router.selector.LabelSelector;
+import io.nebulacms.app.infra.AnonymousUserConst;
+
 import java.security.Principal;
 import java.util.Objects;
 import java.util.function.Predicate;
@@ -12,12 +19,6 @@ import org.springframework.security.core.context.ReactiveSecurityContextHolder;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.content.Post;
-import io.nebulacms.app.extension.ExtensionUtil;
-import io.nebulacms.app.extension.ListOptions;
-import io.nebulacms.app.extension.router.selector.FieldSelector;
-import io.nebulacms.app.extension.router.selector.LabelSelector;
-import io.nebulacms.app.infra.AnonymousUserConst;
 
 /**
  * The default implementation of {@link ReactiveQueryPostPredicateResolver}.

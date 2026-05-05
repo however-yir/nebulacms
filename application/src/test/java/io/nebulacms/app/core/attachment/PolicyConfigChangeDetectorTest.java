@@ -7,6 +7,14 @@ import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.core.extension.attachment.Attachment;
+import io.nebulacms.app.core.extension.attachment.Policy;
+import io.nebulacms.app.extension.ConfigMap;
+import io.nebulacms.app.extension.ExtensionClient;
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.controller.Reconciler;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -16,13 +24,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Sort;
-import io.nebulacms.app.core.extension.attachment.Attachment;
-import io.nebulacms.app.core.extension.attachment.Policy;
-import io.nebulacms.app.extension.ConfigMap;
-import io.nebulacms.app.extension.ExtensionClient;
-import io.nebulacms.app.extension.ListOptions;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.controller.Reconciler;
 
 /**
  * Tests for {@link PolicyConfigChangeDetector}.

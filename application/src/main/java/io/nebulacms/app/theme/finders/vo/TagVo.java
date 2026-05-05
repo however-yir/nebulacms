@@ -2,10 +2,11 @@ package io.nebulacms.app.theme.finders.vo;
 
 import static org.apache.commons.lang3.ObjectUtils.defaultIfNull;
 
-import lombok.Builder;
-import lombok.Value;
 import io.nebulacms.app.core.extension.content.Tag;
 import io.nebulacms.app.extension.MetadataOperator;
+
+import lombok.Builder;
+import lombok.Value;
 
 /**
  * A value object for {@link Tag}.

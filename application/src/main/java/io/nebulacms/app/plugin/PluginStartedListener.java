@@ -4,6 +4,13 @@ import static io.nebulacms.app.plugin.PluginConst.PLUGIN_NAME_LABEL_NAME;
 import static io.nebulacms.app.plugin.PluginExtensionLoaderUtils.isSetting;
 import static io.nebulacms.app.plugin.PluginExtensionLoaderUtils.lookupExtensions;
 
+import io.nebulacms.app.core.extension.Plugin;
+import io.nebulacms.app.extension.ExtensionUtil;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.Unstructured;
+import io.nebulacms.app.infra.utils.YamlUnstructuredLoader;
+import io.nebulacms.app.plugin.event.HaloPluginStartedEvent;
+
 import java.time.Duration;
 import java.util.HashMap;
 import lombok.extern.slf4j.Slf4j;
@@ -11,12 +18,6 @@ import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.Plugin;
-import io.nebulacms.app.extension.ExtensionUtil;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.Unstructured;
-import io.nebulacms.app.infra.utils.YamlUnstructuredLoader;
-import io.nebulacms.app.plugin.event.HaloPluginStartedEvent;
 
 /**
  * TODO Optimized Unstructured loading.

@@ -4,6 +4,12 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 import static org.springframework.security.test.web.reactive.server.SecurityMockServerConfigurers.springSecurity;
 
+import io.nebulacms.app.core.extension.User;
+import io.nebulacms.app.core.user.service.EmailVerificationService;
+import io.nebulacms.app.core.user.service.UserService;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+
 import io.github.resilience4j.ratelimiter.RateLimiterConfig;
 import io.github.resilience4j.ratelimiter.RateLimiterRegistry;
 import java.time.Duration;
@@ -20,11 +26,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.validation.Validator;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.User;
-import io.nebulacms.app.core.user.service.EmailVerificationService;
-import io.nebulacms.app.core.user.service.UserService;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
 
 /**
  * Tests for a part of {@link UserEndpoint} about sending email verification code.

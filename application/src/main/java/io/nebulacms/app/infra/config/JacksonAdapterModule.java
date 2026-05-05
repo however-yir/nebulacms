@@ -1,5 +1,7 @@
 package io.nebulacms.app.infra.config;
 
+import io.nebulacms.app.extension.JsonExtension;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -7,7 +9,6 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.github.fge.jsonpatch.JsonPatch;
 import java.util.function.Supplier;
 import org.springframework.util.Assert;
-import io.nebulacms.app.extension.JsonExtension;
 import tools.jackson.core.JacksonException;
 import tools.jackson.core.JsonGenerator;
 import tools.jackson.core.JsonParser;

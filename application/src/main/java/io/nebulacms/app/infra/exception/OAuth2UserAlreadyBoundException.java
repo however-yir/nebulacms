@@ -1,7 +1,8 @@
 package io.nebulacms.app.infra.exception;
 
-import org.springframework.web.server.ServerWebInputException;
 import io.nebulacms.app.core.extension.UserConnection;
+
+import org.springframework.web.server.ServerWebInputException;
 
 /**
  * An exception that the user has been bound to another OAuth2 user.

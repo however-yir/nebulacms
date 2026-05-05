@@ -3,9 +3,10 @@ package io.nebulacms.app.security;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 
+import io.nebulacms.app.extension.MetadataUtil;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import io.nebulacms.app.extension.MetadataUtil;
 
 /**
  * Tests for {@link DefaultSuperAdminInitializer}.

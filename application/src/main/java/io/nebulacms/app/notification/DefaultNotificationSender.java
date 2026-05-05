@@ -1,5 +1,15 @@
 package io.nebulacms.app.notification;
 
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.controller.Controller;
+import io.nebulacms.app.extension.controller.ControllerBuilder;
+import io.nebulacms.app.extension.controller.DefaultController;
+import io.nebulacms.app.extension.controller.DefaultQueue;
+import io.nebulacms.app.extension.controller.Reconciler;
+import io.nebulacms.app.extension.controller.RequestQueue;
+import io.nebulacms.app.plugin.extensionpoint.ExtensionDefinition;
+import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
+
 import java.time.Duration;
 import java.time.Instant;
 import java.util.UUID;
@@ -12,15 +22,6 @@ import org.springframework.context.SmartLifecycle;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.controller.Controller;
-import io.nebulacms.app.extension.controller.ControllerBuilder;
-import io.nebulacms.app.extension.controller.DefaultController;
-import io.nebulacms.app.extension.controller.DefaultQueue;
-import io.nebulacms.app.extension.controller.Reconciler;
-import io.nebulacms.app.extension.controller.RequestQueue;
-import io.nebulacms.app.plugin.extensionpoint.ExtensionDefinition;
-import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
 
 /**
  * A default {@link NotificationSender} implementation.

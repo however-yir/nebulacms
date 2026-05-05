@@ -1,7 +1,8 @@
 package io.nebulacms.app.content.permalinks;
 
-import org.springframework.util.PropertyPlaceholderHelper;
 import io.nebulacms.app.extension.AbstractExtension;
+
+import org.springframework.util.PropertyPlaceholderHelper;
 
 /**
  * @author guqing

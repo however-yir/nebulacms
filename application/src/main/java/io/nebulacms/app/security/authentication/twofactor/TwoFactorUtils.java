@@ -2,8 +2,9 @@ package io.nebulacms.app.security.authentication.twofactor;
 
 import static org.apache.commons.lang3.ObjectUtils.defaultIfNull;
 
-import org.apache.commons.lang3.StringUtils;
 import io.nebulacms.app.core.extension.User;
+
+import org.apache.commons.lang3.StringUtils;
 
 public enum TwoFactorUtils {
     ;

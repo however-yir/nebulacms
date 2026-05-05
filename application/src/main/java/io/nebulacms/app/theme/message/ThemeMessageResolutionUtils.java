@@ -1,5 +1,7 @@
 package io.nebulacms.app.theme.message;
 
+import io.nebulacms.app.theme.ThemeContext;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.File;
@@ -20,7 +22,6 @@ import org.springframework.lang.Nullable;
 import org.thymeleaf.exceptions.TemplateInputException;
 import org.thymeleaf.exceptions.TemplateProcessingException;
 import org.thymeleaf.util.StringUtils;
-import io.nebulacms.app.theme.ThemeContext;
 
 /**
  * @author guqing
@@ -124,7 +125,6 @@ public class ThemeMessageResolutionUtils {
     private static String getResourceName(String name) {
         return LOCATION + "/" + name + PROPERTIES_FILE_EXTENSION;
     }
-
 
     private static Properties readMessagesResource(final Reader propertiesReader) {
         if (propertiesReader == null) {

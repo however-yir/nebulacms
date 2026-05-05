@@ -1,8 +1,5 @@
 package io.nebulacms.app.content;
 
-import java.time.Duration;
-import java.time.Instant;
-import org.springframework.context.SmartLifecycle;
 import io.nebulacms.app.extension.controller.Controller;
 import io.nebulacms.app.extension.controller.ControllerBuilder;
 import io.nebulacms.app.extension.controller.DefaultController;
@@ -10,6 +7,10 @@ import io.nebulacms.app.extension.controller.DefaultQueue;
 import io.nebulacms.app.extension.controller.Reconciler;
 import io.nebulacms.app.extension.controller.RequestQueue;
 import io.nebulacms.app.infra.InitializationPhase;
+
+import java.time.Duration;
+import java.time.Instant;
+import org.springframework.context.SmartLifecycle;
 
 /**
  * An abstract class for reconciling events.

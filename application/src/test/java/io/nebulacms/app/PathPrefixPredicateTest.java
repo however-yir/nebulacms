@@ -35,7 +35,6 @@ public class PathPrefixPredicateTest {
 
     }
 
-
     @Test
     void urlTest() {
         URI uri = URI.create("https:///path");

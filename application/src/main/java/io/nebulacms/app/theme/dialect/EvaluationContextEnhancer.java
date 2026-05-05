@@ -2,6 +2,8 @@ package io.nebulacms.app.theme.dialect;
 
 import static io.nebulacms.app.theme.HaloViewResolver.HaloView.CONTEXT_VIEW_KEY;
 
+import io.nebulacms.app.infra.utils.ReactiveUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -27,7 +29,6 @@ import org.thymeleaf.spring6.expression.ThymeleafEvaluationContext;
 import org.thymeleaf.standard.StandardDialect;
 import org.thymeleaf.templatemode.TemplateMode;
 import reactor.util.context.ContextView;
-import io.nebulacms.app.infra.utils.ReactiveUtils;
 
 /**
  * Enhance the evaluation context to support reactive types.

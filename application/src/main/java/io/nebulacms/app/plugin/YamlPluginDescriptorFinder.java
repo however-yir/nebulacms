@@ -1,5 +1,7 @@
 package io.nebulacms.app.plugin;
 
+import io.nebulacms.app.core.extension.Plugin;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
@@ -12,7 +14,6 @@ import org.pf4j.PluginDescriptor;
 import org.pf4j.PluginDescriptorFinder;
 import org.pf4j.util.FileUtils;
 import org.springframework.util.CollectionUtils;
-import io.nebulacms.app.core.extension.Plugin;
 
 /**
  * Find a plugin descriptor for a plugin path.

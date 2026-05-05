@@ -2,10 +2,11 @@ package io.nebulacms.app.security;
 
 import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
 
+import io.nebulacms.app.core.extension.AuthProvider;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
 import lombok.Data;
-import io.nebulacms.app.core.extension.AuthProvider;
 
 /**
  * A listed value object for {@link io.nebulacms.app.core.extension.AuthProvider}.

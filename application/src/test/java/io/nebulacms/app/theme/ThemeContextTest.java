@@ -1,10 +1,11 @@
 package io.nebulacms.app.theme;
 
+import io.nebulacms.app.infra.utils.JsonUtils;
+
 import java.nio.file.Path;
 import org.json.JSONException;
 import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
-import io.nebulacms.app.infra.utils.JsonUtils;
 
 /**
  * Tests for {@link ThemeContext}.

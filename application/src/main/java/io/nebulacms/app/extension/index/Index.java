@@ -1,7 +1,8 @@
 package io.nebulacms.app.extension.index;
 
-import java.io.Closeable;
 import io.nebulacms.app.extension.Extension;
+
+import java.io.Closeable;
 
 /**
  * Index for Extensions.

@@ -1,16 +1,17 @@
 package io.nebulacms.app.core.user.service.impl;
 
+import static io.nebulacms.app.core.user.service.impl.EmailVerificationServiceImpl.MAX_ATTEMPTS;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static io.nebulacms.app.core.user.service.impl.EmailVerificationServiceImpl.MAX_ATTEMPTS;
+
+import io.nebulacms.app.core.user.service.impl.EmailVerificationServiceImpl.EmailVerificationManager.UsernameEmail;
+import io.nebulacms.app.infra.exception.EmailVerificationFailed;
 
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
-import io.nebulacms.app.core.user.service.impl.EmailVerificationServiceImpl.EmailVerificationManager.UsernameEmail;
-import io.nebulacms.app.infra.exception.EmailVerificationFailed;
 
 /**
  * Tests for {@link EmailVerificationServiceImpl}.

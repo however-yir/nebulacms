@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.theme.ThemeContext;
+
 import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
@@ -14,7 +16,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.thymeleaf.autoconfigure.ThymeleafProperties;
 import org.springframework.util.ResourceUtils;
-import io.nebulacms.app.theme.ThemeContext;
 
 @ExtendWith(MockitoExtension.class)
 class DefaultThemeTemplateAvailabilityProviderTest {

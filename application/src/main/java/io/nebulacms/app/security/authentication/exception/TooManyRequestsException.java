@@ -1,8 +1,9 @@
 package io.nebulacms.app.security.authentication.exception;
 
+import io.nebulacms.app.infra.exception.RateLimitExceededException;
+
 import org.springframework.lang.Nullable;
 import org.springframework.security.core.AuthenticationException;
-import io.nebulacms.app.infra.exception.RateLimitExceededException;
 
 /**
  * Too many requests exception while authenticating. Because

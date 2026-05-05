@@ -2,6 +2,9 @@ package io.nebulacms.app.core.attachment.thumbnail;
 
 import static org.thymeleaf.templatemode.TemplateMode.HTML;
 
+import io.nebulacms.app.infra.utils.HaloUtils;
+import io.nebulacms.app.theme.dialect.ElementTagPostProcessor;
+
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Predicate;
@@ -15,8 +18,6 @@ import org.thymeleaf.model.IAttribute;
 import org.thymeleaf.model.IProcessableElementTag;
 import org.thymeleaf.processor.element.MatchingElementName;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.infra.utils.HaloUtils;
-import io.nebulacms.app.theme.dialect.ElementTagPostProcessor;
 
 @Slf4j
 @Component
@@ -38,7 +39,6 @@ class ThumbnailImgTagPostProcessor implements ElementTagPostProcessor {
         this.matchingElementName =
             MatchingElementName.forElementName(HTML, ElementNames.forHTMLName("img"));
     }
-
 
     @Override
     public Mono<IProcessableElementTag> process(ITemplateContext context,

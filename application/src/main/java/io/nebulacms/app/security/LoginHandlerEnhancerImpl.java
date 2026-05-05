@@ -1,17 +1,18 @@
 package io.nebulacms.app.security;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.stereotype.Component;
-import org.springframework.web.server.ServerWebExchange;
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.core.user.service.UserLoginOrLogoutProcessing;
 import io.nebulacms.app.security.authentication.oauth2.OAuth2LoginHandlerEnhancer;
 import io.nebulacms.app.security.authentication.rememberme.RememberMeRequestCache;
 import io.nebulacms.app.security.authentication.rememberme.RememberMeServices;
 import io.nebulacms.app.security.authentication.rememberme.WebSessionRememberMeRequestCache;
 import io.nebulacms.app.security.device.DeviceService;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.stereotype.Component;
+import org.springframework.web.server.ServerWebExchange;
+import reactor.core.publisher.Mono;
 
 /**
  * A default implementation for {@link LoginHandlerEnhancer} to handle device management and

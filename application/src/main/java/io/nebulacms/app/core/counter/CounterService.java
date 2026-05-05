@@ -1,9 +1,10 @@
 package io.nebulacms.app.core.counter;
 
+import io.nebulacms.app.core.extension.Counter;
+
 import java.util.Collection;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.Counter;
 
 /**
  * @author guqing

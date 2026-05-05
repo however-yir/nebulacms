@@ -1,9 +1,10 @@
 package io.nebulacms.app.extension.gc;
 
-import org.springframework.context.SmartLifecycle;
-import org.springframework.stereotype.Component;
 import io.nebulacms.app.extension.controller.Controller;
 import io.nebulacms.app.infra.InitializationPhase;
+
+import org.springframework.context.SmartLifecycle;
+import org.springframework.stereotype.Component;
 
 @Component
 class GcControllerInitializer implements SmartLifecycle {

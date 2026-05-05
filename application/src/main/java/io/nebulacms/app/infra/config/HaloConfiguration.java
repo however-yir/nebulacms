@@ -2,6 +2,9 @@ package io.nebulacms.app.infra.config;
 
 import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 
+import io.nebulacms.app.infra.properties.HaloProperties;
+import io.nebulacms.app.search.lucene.LuceneSearchEngine;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import org.springframework.beans.factory.ObjectProvider;
@@ -11,8 +14,6 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableAsync;
-import io.nebulacms.app.infra.properties.HaloProperties;
-import io.nebulacms.app.search.lucene.LuceneSearchEngine;
 import tools.jackson.databind.MapperFeature;
 
 @EnableCaching

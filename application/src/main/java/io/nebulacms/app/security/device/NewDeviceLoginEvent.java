@@ -1,8 +1,9 @@
 package io.nebulacms.app.security.device;
 
+import io.nebulacms.app.core.extension.Device;
+
 import lombok.Getter;
 import org.springframework.context.ApplicationEvent;
-import io.nebulacms.app.core.extension.Device;
 
 @Getter
 public class NewDeviceLoginEvent extends ApplicationEvent {

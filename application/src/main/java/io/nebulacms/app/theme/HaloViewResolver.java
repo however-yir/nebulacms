@@ -1,5 +1,8 @@
 package io.nebulacms.app.theme;
 
+import io.nebulacms.app.theme.finders.FinderRegistry;
+import io.nebulacms.app.theme.router.ModelConst;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -25,8 +28,6 @@ import org.thymeleaf.spring6.view.reactive.ThymeleafReactiveView;
 import org.thymeleaf.spring6.view.reactive.ThymeleafReactiveViewResolver;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.theme.finders.FinderRegistry;
-import io.nebulacms.app.theme.router.ModelConst;
 
 @Component("thymeleafReactiveViewResolver")
 public class HaloViewResolver extends ThymeleafReactiveViewResolver implements InitializingBean {

@@ -1,15 +1,5 @@
 package io.nebulacms.app.content.stats;
 
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Optional;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.ObjectUtils;
-import org.springframework.context.SmartLifecycle;
-import org.springframework.context.event.EventListener;
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.stereotype.Component;
 import io.nebulacms.app.core.counter.MeterUtils;
 import io.nebulacms.app.core.extension.Counter;
 import io.nebulacms.app.event.post.DownvotedEvent;
@@ -26,6 +16,17 @@ import io.nebulacms.app.extension.controller.DefaultQueue;
 import io.nebulacms.app.extension.controller.Reconciler;
 import io.nebulacms.app.extension.controller.RequestQueue;
 import io.nebulacms.app.infra.InitializationPhase;
+
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Optional;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.ObjectUtils;
+import org.springframework.context.SmartLifecycle;
+import org.springframework.context.event.EventListener;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Component;
 
 /**
  * Update counters after receiving upvote or downvote event.

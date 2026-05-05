@@ -3,10 +3,11 @@ package io.nebulacms.app.notification;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import io.nebulacms.app.core.extension.notification.Reason;
+
 import java.util.HashMap;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
-import io.nebulacms.app.core.extension.notification.Reason;
 
 /**
  * Tests for {@link ReasonPayload}.

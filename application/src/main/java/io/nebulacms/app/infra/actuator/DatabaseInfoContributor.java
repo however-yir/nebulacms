@@ -1,5 +1,7 @@
 package io.nebulacms.app.infra.actuator;
 
+import io.nebulacms.app.infra.utils.ReactiveUtils;
+
 import io.r2dbc.spi.Connection;
 import io.r2dbc.spi.ConnectionFactory;
 import io.r2dbc.spi.ConnectionMetadata;
@@ -12,7 +14,6 @@ import org.springframework.boot.actuate.info.Info;
 import org.springframework.boot.actuate.info.InfoContributor;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.infra.utils.ReactiveUtils;
 
 @Slf4j
 @Component

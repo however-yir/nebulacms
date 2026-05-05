@@ -1,11 +1,12 @@
 package io.nebulacms.app.content;
 
-import org.springframework.stereotype.Component;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.core.extension.content.Post;
 import io.nebulacms.app.extension.ReactiveExtensionClient;
 import io.nebulacms.app.extension.Ref;
+
+import org.springframework.stereotype.Component;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 /**
  * Provides ability to get post content for the specified post.

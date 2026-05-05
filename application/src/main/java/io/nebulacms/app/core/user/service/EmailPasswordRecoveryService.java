@@ -1,7 +1,8 @@
 package io.nebulacms.app.core.user.service;
 
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.infra.exception.AccessDeniedException;
+
+import reactor.core.publisher.Mono;
 
 /**
  * An interface for email password recovery.

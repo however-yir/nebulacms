@@ -1,9 +1,10 @@
 package io.nebulacms.app.theme.router;
 
+import io.nebulacms.app.extension.ListResult;
+
 import java.util.List;
 import lombok.Getter;
 import lombok.ToString;
-import io.nebulacms.app.extension.ListResult;
 
 /**
  * Page wrapper with next and previous url.

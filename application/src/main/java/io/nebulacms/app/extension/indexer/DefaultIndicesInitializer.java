@@ -1,11 +1,5 @@
 package io.nebulacms.app.extension.indexer;
 
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.event.EventListener;
-import org.springframework.stereotype.Component;
-import org.springframework.util.StopWatch;
 import io.nebulacms.app.extension.Extension;
 import io.nebulacms.app.extension.ExtensionConverter;
 import io.nebulacms.app.extension.ExtensionStoreUtil;
@@ -15,6 +9,13 @@ import io.nebulacms.app.extension.index.IndexEngine;
 import io.nebulacms.app.extension.index.IndicesInitializer;
 import io.nebulacms.app.extension.store.ExtensionStore;
 import io.nebulacms.app.extension.store.ExtensionStoreClient;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.event.EventListener;
+import org.springframework.stereotype.Component;
+import org.springframework.util.StopWatch;
 
 @Component
 @Slf4j

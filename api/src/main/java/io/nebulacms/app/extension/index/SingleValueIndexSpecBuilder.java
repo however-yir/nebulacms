@@ -1,7 +1,8 @@
 package io.nebulacms.app.extension.index;
 
-import java.util.function.Function;
 import io.nebulacms.app.extension.Extension;
+
+import java.util.function.Function;
 
 /**
  * Builder for {@link SingleValueIndexSpec}.

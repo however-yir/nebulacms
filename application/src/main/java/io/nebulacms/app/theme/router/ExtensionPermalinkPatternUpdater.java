@@ -3,16 +3,6 @@ package io.nebulacms.app.theme.router;
 import static io.nebulacms.app.theme.utils.PatternUtils.normalizePattern;
 import static io.nebulacms.app.theme.utils.PatternUtils.normalizePostPattern;
 
-import java.util.Map;
-import java.util.Objects;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.context.ApplicationListener;
-import org.springframework.data.domain.Sort;
-import org.springframework.lang.NonNull;
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.stereotype.Component;
 import io.nebulacms.app.core.extension.content.Category;
 import io.nebulacms.app.core.extension.content.Constant;
 import io.nebulacms.app.core.extension.content.Post;
@@ -26,6 +16,17 @@ import io.nebulacms.app.extension.MetadataUtil;
 import io.nebulacms.app.infra.SystemConfigChangedEvent;
 import io.nebulacms.app.infra.SystemSetting;
 import io.nebulacms.app.infra.SystemSetting.ThemeRouteRules;
+
+import java.util.Map;
+import java.util.Objects;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.context.ApplicationListener;
+import org.springframework.data.domain.Sort;
+import org.springframework.lang.NonNull;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Component;
 
 /**
  * {@link ExtensionPermalinkPatternUpdater} to update the value of key

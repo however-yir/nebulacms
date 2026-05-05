@@ -2,6 +2,10 @@ package io.nebulacms.app.security.jackson2;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import io.nebulacms.app.security.authentication.login.HaloUser;
+import io.nebulacms.app.security.authentication.oauth2.HaloOAuth2AuthenticationToken;
+import io.nebulacms.app.security.authentication.twofactor.TwoFactorAuthentication;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.ArrayList;
@@ -20,9 +24,6 @@ import org.springframework.security.jackson2.SecurityJackson2Modules;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.security.web.authentication.switchuser.SwitchUserGrantedAuthority;
-import io.nebulacms.app.security.authentication.login.HaloUser;
-import io.nebulacms.app.security.authentication.oauth2.HaloOAuth2AuthenticationToken;
-import io.nebulacms.app.security.authentication.twofactor.TwoFactorAuthentication;
 
 class HaloSecurityJacksonModuleTest {
 

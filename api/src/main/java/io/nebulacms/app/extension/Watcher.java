@@ -1,9 +1,10 @@
 package io.nebulacms.app.extension;
 
+import io.nebulacms.app.extension.controller.Reconciler;
+
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import reactor.core.Disposable;
-import io.nebulacms.app.extension.controller.Reconciler;
 
 public interface Watcher extends Disposable {
 

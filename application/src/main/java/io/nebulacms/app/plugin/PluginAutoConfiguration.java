@@ -2,6 +2,8 @@ package io.nebulacms.app.plugin;
 
 import static io.nebulacms.app.plugin.resources.BundleResourceUtils.getJsBundleResource;
 
+import io.nebulacms.app.infra.SystemVersionSupplier;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -20,7 +22,6 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.infra.SystemVersionSupplier;
 
 /**
  * Plugin autoconfiguration for Spring Boot.

@@ -6,6 +6,17 @@ import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.core.extension.content.Post;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.infra.SystemConfigFetcher;
+import io.nebulacms.app.infra.SystemSetting;
+import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
+import io.nebulacms.app.theme.DefaultTemplateEnum;
+import io.nebulacms.app.theme.finders.PostFinder;
+import io.nebulacms.app.theme.finders.SinglePageFinder;
+import io.nebulacms.app.theme.finders.vo.PostVo;
+import io.nebulacms.app.theme.router.ModelConst;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -31,16 +42,6 @@ import org.thymeleaf.templateresource.ITemplateResource;
 import org.thymeleaf.templateresource.StringTemplateResource;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.content.Post;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.infra.SystemConfigFetcher;
-import io.nebulacms.app.infra.SystemSetting;
-import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
-import io.nebulacms.app.theme.DefaultTemplateEnum;
-import io.nebulacms.app.theme.finders.PostFinder;
-import io.nebulacms.app.theme.finders.SinglePageFinder;
-import io.nebulacms.app.theme.finders.vo.PostVo;
-import io.nebulacms.app.theme.router.ModelConst;
 
 /**
  * Integration tests for {@link ContentTemplateHeadProcessor}.
@@ -119,7 +120,6 @@ class ContentTemplateHeadProcessorIntegrationTest {
             .thenReturn(fetcher);
         lenient().when(fetcher.fetchComment()).thenReturn(Mono.just(new SystemSetting.Comment()));
     }
-
 
     @Test
     void overrideGlobalMetaTest() {

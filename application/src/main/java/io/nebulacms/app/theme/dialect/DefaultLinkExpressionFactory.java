@@ -1,12 +1,13 @@
 package io.nebulacms.app.theme.dialect;
 
+import io.nebulacms.app.theme.ThemeLinkBuilder;
+
 import java.util.Set;
 import org.thymeleaf.context.IExpressionContext;
 import org.thymeleaf.exceptions.TemplateProcessingException;
 import org.thymeleaf.expression.IExpressionObjectFactory;
 import org.thymeleaf.linkbuilder.ILinkBuilder;
 import org.thymeleaf.util.Validate;
-import io.nebulacms.app.theme.ThemeLinkBuilder;
 
 /**
  * A default implementation of {@link IExpressionObjectFactory}.

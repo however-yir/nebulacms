@@ -3,14 +3,15 @@ package io.nebulacms.app.extension.controller;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import io.nebulacms.app.extension.ExtensionClient;
+import io.nebulacms.app.extension.FakeExtension;
+
 import java.time.Duration;
 import java.time.Instant;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import io.nebulacms.app.extension.ExtensionClient;
-import io.nebulacms.app.extension.FakeExtension;
 
 @ExtendWith(MockitoExtension.class)
 class ControllerBuilderTest {

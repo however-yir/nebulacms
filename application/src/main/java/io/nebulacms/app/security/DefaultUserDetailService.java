@@ -1,9 +1,15 @@
 package io.nebulacms.app.security;
 
-import static java.util.Objects.requireNonNullElse;
 import static io.nebulacms.app.security.authorization.AuthorityUtils.ANONYMOUS_ROLE_NAME;
 import static io.nebulacms.app.security.authorization.AuthorityUtils.AUTHENTICATED_ROLE_NAME;
 import static io.nebulacms.app.security.authorization.AuthorityUtils.ROLE_PREFIX;
+import static java.util.Objects.requireNonNullElse;
+
+import io.nebulacms.app.core.user.service.RoleService;
+import io.nebulacms.app.core.user.service.UserService;
+import io.nebulacms.app.infra.exception.UserNotFoundException;
+import io.nebulacms.app.security.authentication.login.HaloUser;
+import io.nebulacms.app.security.authentication.twofactor.TwoFactorUtils;
 
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -14,11 +20,6 @@ import org.springframework.security.core.userdetails.ReactiveUserDetailsService;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.user.service.RoleService;
-import io.nebulacms.app.core.user.service.UserService;
-import io.nebulacms.app.infra.exception.UserNotFoundException;
-import io.nebulacms.app.security.authentication.login.HaloUser;
-import io.nebulacms.app.security.authentication.twofactor.TwoFactorUtils;
 
 @Slf4j
 public class DefaultUserDetailService

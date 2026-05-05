@@ -2,6 +2,8 @@ package io.nebulacms.app.theme.dialect;
 
 import static org.thymeleaf.spring6.context.SpringContextUtils.getApplicationContext;
 
+import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
+
 import java.time.Duration;
 import java.util.List;
 import java.util.Objects;
@@ -14,7 +16,6 @@ import org.thymeleaf.model.IOpenElementTag;
 import org.thymeleaf.model.IProcessableElementTag;
 import org.thymeleaf.model.IStandaloneElementTag;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
 
 /**
  * Template post-handler.

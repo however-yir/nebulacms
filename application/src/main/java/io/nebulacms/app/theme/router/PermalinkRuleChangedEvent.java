@@ -1,7 +1,8 @@
 package io.nebulacms.app.theme.router;
 
-import org.springframework.context.ApplicationEvent;
 import io.nebulacms.app.theme.DefaultTemplateEnum;
+
+import org.springframework.context.ApplicationEvent;
 
 public class PermalinkRuleChangedEvent extends ApplicationEvent {
     private final DefaultTemplateEnum template;

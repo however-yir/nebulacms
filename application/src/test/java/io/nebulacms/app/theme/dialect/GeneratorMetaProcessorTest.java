@@ -3,6 +3,10 @@ package io.nebulacms.app.theme.dialect;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.infra.InitializationStateGetter;
+import io.nebulacms.app.theme.ThemeContext;
+import io.nebulacms.app.theme.ThemeResolver;
+
 import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
@@ -16,9 +20,6 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.infra.InitializationStateGetter;
-import io.nebulacms.app.theme.ThemeContext;
-import io.nebulacms.app.theme.ThemeResolver;
 
 @SpringBootTest
 @AutoConfigureWebTestClient

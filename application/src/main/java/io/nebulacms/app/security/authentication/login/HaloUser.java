@@ -1,12 +1,13 @@
 package io.nebulacms.app.security.authentication.login;
 
+import io.nebulacms.app.security.HaloUserDetails;
+
 import java.util.Collection;
 import java.util.Objects;
 import org.springframework.security.core.CredentialsContainer;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.util.Assert;
-import io.nebulacms.app.security.HaloUserDetails;
 
 public class HaloUser implements HaloUserDetails, CredentialsContainer {
 

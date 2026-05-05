@@ -6,6 +6,17 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
+import io.nebulacms.app.core.extension.content.Comment;
+import io.nebulacms.app.extension.Extension;
+import io.nebulacms.app.extension.ExtensionStoreUtil;
+import io.nebulacms.app.extension.GroupVersionKind;
+import io.nebulacms.app.extension.PageRequestImpl;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.Ref;
+import io.nebulacms.app.extension.SchemeManager;
+import io.nebulacms.app.extension.store.ReactiveExtensionStoreClient;
+import io.nebulacms.app.infra.utils.JsonUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
@@ -19,16 +30,6 @@ import org.springframework.test.context.bean.override.mockito.MockitoSpyBean;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.core.extension.content.Comment;
-import io.nebulacms.app.extension.Extension;
-import io.nebulacms.app.extension.ExtensionStoreUtil;
-import io.nebulacms.app.extension.GroupVersionKind;
-import io.nebulacms.app.extension.PageRequestImpl;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.Ref;
-import io.nebulacms.app.extension.SchemeManager;
-import io.nebulacms.app.extension.store.ReactiveExtensionStoreClient;
-import io.nebulacms.app.infra.utils.JsonUtils;
 
 /**
  * Integration tests for {@link CommentServiceImpl}.
@@ -87,7 +88,8 @@ class CommentServiceImplIntegrationTest {
         @Test
         void commentBatchDeletionTest() {
             Ref ref = Ref.of("67",
-                GroupVersionKind.fromAPIVersionAndKind("content.nebulacms.io/v1alpha1", "SinglePage"));
+                GroupVersionKind.fromAPIVersionAndKind(
+                    "content.nebulacms.io/v1alpha1", "SinglePage"));
             commentService.removeBySubject(ref)
                 .as(StepVerifier::create)
                 .verifyComplete();

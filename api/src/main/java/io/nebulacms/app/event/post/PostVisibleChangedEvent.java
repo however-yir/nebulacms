@@ -1,8 +1,9 @@
 package io.nebulacms.app.event.post;
 
-import org.springframework.lang.Nullable;
 import io.nebulacms.app.core.extension.content.Post;
 import io.nebulacms.app.plugin.SharedEvent;
+
+import org.springframework.lang.Nullable;
 
 @SharedEvent
 public class PostVisibleChangedEvent extends PostEvent {

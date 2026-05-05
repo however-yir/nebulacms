@@ -1,5 +1,7 @@
 package io.nebulacms.app.extension.index;
 
+import io.nebulacms.app.extension.Extension;
+
 import java.io.IOException;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -8,7 +10,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.stream.Stream;
 import org.apache.commons.io.IOUtils;
-import io.nebulacms.app.extension.Extension;
 
 /**
  * Default implementation of {@link IndicesManager}.

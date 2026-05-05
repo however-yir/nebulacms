@@ -1,6 +1,5 @@
 package io.nebulacms.app.content;
 
-import static org.springdoc.core.fn.builders.parameter.Builder.parameterBuilder;
 import static io.nebulacms.app.core.extension.content.Post.PostPhase.PENDING_APPROVAL;
 import static io.nebulacms.app.core.extension.content.SinglePage.PUBLISHED_LABEL;
 import static io.nebulacms.app.extension.index.query.Queries.contains;
@@ -8,6 +7,13 @@ import static io.nebulacms.app.extension.index.query.Queries.equal;
 import static io.nebulacms.app.extension.index.query.Queries.in;
 import static io.nebulacms.app.extension.index.query.Queries.or;
 import static io.nebulacms.app.extension.router.QueryParamBuildUtil.sortParameter;
+import static org.springdoc.core.fn.builders.parameter.Builder.parameterBuilder;
+
+import io.nebulacms.app.core.extension.content.Post;
+import io.nebulacms.app.core.extension.content.SinglePage;
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.router.IListRequest;
+import io.nebulacms.app.extension.router.SortableRequest;
 
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import java.util.Optional;
@@ -15,11 +21,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.springdoc.core.fn.builders.operation.Builder;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.reactive.function.server.ServerRequest;
-import io.nebulacms.app.core.extension.content.Post;
-import io.nebulacms.app.core.extension.content.SinglePage;
-import io.nebulacms.app.extension.ListOptions;
-import io.nebulacms.app.extension.router.IListRequest;
-import io.nebulacms.app.extension.router.SortableRequest;
 
 /**
  * Query parameter for {@link SinglePage} list.

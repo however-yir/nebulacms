@@ -1,7 +1,8 @@
 package io.nebulacms.app.extension.exception;
 
-import org.springframework.http.HttpStatus;
 import io.nebulacms.app.extension.GroupVersionKind;
+
+import org.springframework.http.HttpStatus;
 
 /**
  * SchemeNotFoundException is thrown while we try to get a scheme but not found.

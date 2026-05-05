@@ -1,5 +1,8 @@
 package io.nebulacms.app.theme.finders.vo;
 
+import io.nebulacms.app.core.extension.content.Category;
+import io.nebulacms.app.extension.MetadataOperator;
+
 import java.util.List;
 import java.util.Objects;
 import lombok.Builder;
@@ -7,8 +10,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.springframework.util.Assert;
-import io.nebulacms.app.core.extension.content.Category;
-import io.nebulacms.app.extension.MetadataOperator;
 
 /**
  * A tree vo for {@link Category}.

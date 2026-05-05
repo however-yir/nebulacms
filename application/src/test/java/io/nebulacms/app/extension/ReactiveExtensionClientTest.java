@@ -1,5 +1,6 @@
 package io.nebulacms.app.extension;
 
+import static io.nebulacms.app.extension.GroupVersionKind.fromAPIVersionAndKind;
 import static java.util.Collections.emptyList;
 import static java.util.Collections.reverseOrder;
 import static java.util.Comparator.comparing;
@@ -18,7 +19,11 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static io.nebulacms.app.extension.GroupVersionKind.fromAPIVersionAndKind;
+
+import io.nebulacms.app.extension.exception.SchemeNotFoundException;
+import io.nebulacms.app.extension.index.IndexEngine;
+import io.nebulacms.app.extension.store.ExtensionStore;
+import io.nebulacms.app.extension.store.ReactiveExtensionStoreClient;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -42,10 +47,6 @@ import reactor.core.Exceptions;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.extension.exception.SchemeNotFoundException;
-import io.nebulacms.app.extension.index.IndexEngine;
-import io.nebulacms.app.extension.store.ExtensionStore;
-import io.nebulacms.app.extension.store.ReactiveExtensionStoreClient;
 
 @ExtendWith(MockitoExtension.class)
 class ReactiveExtensionClientTest {
@@ -148,7 +149,9 @@ class ReactiveExtensionClientTest {
         assertThrows(SchemeNotFoundException.class,
             () -> client.fetch(UnRegisteredExtension.class, "fake"));
         assertThrows(SchemeNotFoundException.class, () ->
-            client.fetch(fromAPIVersionAndKind("fake.nebulacms.io/v1alpha1", "UnRegistered"), "fake"));
+            client.fetch(
+                fromAPIVersionAndKind("fake.nebulacms.io/v1alpha1", "UnRegistered"),
+                "fake"));
 
         when(converter.convertTo(any())).thenThrow(SchemeNotFoundException.class);
         StepVerifier.create(client.create(createFakeExtension("fake", null)))
@@ -606,7 +609,6 @@ class ReactiveExtensionClientTest {
         verify(converter, times(1)).convertFrom(eq(JsonExtension.class),
             eq(createExtensionStore(storeName)));
     }
-
 
     @Nested
     @DisplayName("Extension watcher test")

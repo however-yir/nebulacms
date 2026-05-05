@@ -71,7 +71,6 @@ public class PathUtils {
         return sb.toString();
     }
 
-
     /**
      * <p>Append a {@code '/'} if the path does not end with a {@code '/'}.</p>
      * Examples are as follows:

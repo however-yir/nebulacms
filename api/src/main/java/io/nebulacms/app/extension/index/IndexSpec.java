@@ -1,11 +1,12 @@
 package io.nebulacms.app.extension.index;
 
+import io.nebulacms.app.extension.Extension;
+
 import com.google.common.base.Objects;
 import java.util.Set;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.springframework.util.CollectionUtils;
-import io.nebulacms.app.extension.Extension;
 
 /**
  * An implementation of {@link MultiValueIndexSpec}.

@@ -1,5 +1,9 @@
 package io.nebulacms.app.security.authentication.twofactor.totp;
 
+import io.nebulacms.app.security.HaloUserDetails;
+import io.nebulacms.app.security.authentication.exception.TwoFactorAuthException;
+import io.nebulacms.app.security.authentication.twofactor.TwoFactorAuthentication;
+
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
@@ -8,9 +12,6 @@ import org.springframework.security.core.CredentialsContainer;
 import org.springframework.security.core.context.ReactiveSecurityContextHolder;
 import org.springframework.security.core.context.SecurityContext;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.security.HaloUserDetails;
-import io.nebulacms.app.security.authentication.exception.TwoFactorAuthException;
-import io.nebulacms.app.security.authentication.twofactor.TwoFactorAuthentication;
 
 /**
  * TOTP authentication manager.

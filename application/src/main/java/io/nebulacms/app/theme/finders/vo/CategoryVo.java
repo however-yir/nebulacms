@@ -1,10 +1,11 @@
 package io.nebulacms.app.theme.finders.vo;
 
+import io.nebulacms.app.core.extension.content.Category;
+import io.nebulacms.app.extension.MetadataOperator;
+
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Value;
-import io.nebulacms.app.core.extension.content.Category;
-import io.nebulacms.app.extension.MetadataOperator;
 
 /**
  * A value object for {@link Category}.

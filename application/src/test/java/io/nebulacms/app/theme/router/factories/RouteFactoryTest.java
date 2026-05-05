@@ -3,14 +3,15 @@ package io.nebulacms.app.theme.router.factories;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.infra.SystemSetting;
+import io.nebulacms.app.theme.router.ModelConst;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.infra.SystemSetting;
-import io.nebulacms.app.theme.router.ModelConst;
 
 /**
  * Tests for {@link RouteFactory}.

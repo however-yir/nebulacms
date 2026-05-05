@@ -1,8 +1,9 @@
 package io.nebulacms.app.core.extension.endpoint;
 
+import io.nebulacms.app.extension.GroupVersion;
+
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
-import io.nebulacms.app.extension.GroupVersion;
 
 /**
  * RouterFunction provider for custom endpoints.

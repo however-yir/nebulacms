@@ -10,6 +10,16 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.core.extension.MenuItem;
+import io.nebulacms.app.core.extension.MenuItem.MenuItemSpec;
+import io.nebulacms.app.core.extension.content.Category;
+import io.nebulacms.app.core.extension.content.SinglePage;
+import io.nebulacms.app.core.reconciler.MenuItemReconciler;
+import io.nebulacms.app.extension.ExtensionClient;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.Ref;
+import io.nebulacms.app.extension.controller.Reconciler.Request;
+
 import java.time.Duration;
 import java.util.Optional;
 import java.util.function.Consumer;
@@ -20,15 +30,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import io.nebulacms.app.core.extension.MenuItem;
-import io.nebulacms.app.core.extension.MenuItem.MenuItemSpec;
-import io.nebulacms.app.core.extension.content.Category;
-import io.nebulacms.app.core.extension.content.SinglePage;
-import io.nebulacms.app.core.reconciler.MenuItemReconciler;
-import io.nebulacms.app.extension.ExtensionClient;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.Ref;
-import io.nebulacms.app.extension.controller.Reconciler.Request;
 
 @ExtendWith(MockitoExtension.class)
 class MenuItemReconcilerTest {

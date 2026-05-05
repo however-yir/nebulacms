@@ -98,7 +98,6 @@ public enum Exceptions {
         return null;
     }
 
-
     public static Locale getLocale(ServerWebExchange exchange) {
         var locale = exchange.getLocaleContext().getLocale();
         return locale == null ? Locale.getDefault() : locale;

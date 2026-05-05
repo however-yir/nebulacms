@@ -3,6 +3,10 @@ package io.nebulacms.app.theme.dialect;
 import static org.apache.commons.lang3.BooleanUtils.isFalse;
 import static org.apache.commons.lang3.BooleanUtils.isTrue;
 
+import io.nebulacms.app.infra.SystemConfigFetcher;
+import io.nebulacms.app.infra.utils.ReactiveUtils;
+import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
+
 import java.time.Duration;
 import java.util.Optional;
 import org.springframework.context.ApplicationContext;
@@ -17,9 +21,6 @@ import org.thymeleaf.processor.templateboundaries.ITemplateBoundariesStructureHa
 import org.thymeleaf.spring6.context.SpringContextUtils;
 import org.thymeleaf.standard.StandardDialect;
 import org.thymeleaf.templatemode.TemplateMode;
-import io.nebulacms.app.infra.SystemConfigFetcher;
-import io.nebulacms.app.infra.utils.ReactiveUtils;
-import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
 
 /**
  * Comment enabled variable processor.

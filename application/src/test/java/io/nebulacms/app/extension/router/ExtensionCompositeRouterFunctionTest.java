@@ -3,6 +3,12 @@ package io.nebulacms.app.extension.router;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+import io.nebulacms.app.extension.FakeExtension;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.Scheme;
+import io.nebulacms.app.extension.event.SchemeAddedEvent;
+import io.nebulacms.app.extension.event.SchemeRemovedEvent;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -12,11 +18,6 @@ import org.springframework.mock.http.server.reactive.MockServerHttpRequest;
 import org.springframework.mock.web.server.MockServerWebExchange;
 import org.springframework.web.reactive.function.server.HandlerStrategies;
 import org.springframework.web.reactive.function.server.ServerRequest;
-import io.nebulacms.app.extension.FakeExtension;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.Scheme;
-import io.nebulacms.app.extension.event.SchemeAddedEvent;
-import io.nebulacms.app.extension.event.SchemeRemovedEvent;
 
 @ExtendWith(MockitoExtension.class)
 class ExtensionCompositeRouterFunctionTest {

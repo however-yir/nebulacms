@@ -2,14 +2,15 @@ package io.nebulacms.app.content.comment;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.json.JSONException;
-import org.junit.jupiter.api.Test;
-import org.skyscreamer.jsonassert.JSONAssert;
 import io.nebulacms.app.core.extension.content.Comment;
 import io.nebulacms.app.extension.FakeExtension;
 import io.nebulacms.app.extension.Metadata;
 import io.nebulacms.app.extension.Ref;
 import io.nebulacms.app.infra.utils.JsonUtils;
+
+import org.json.JSONException;
+import org.junit.jupiter.api.Test;
+import org.skyscreamer.jsonassert.JSONAssert;
 
 /**
  * Tests for {@link CommentRequest}.

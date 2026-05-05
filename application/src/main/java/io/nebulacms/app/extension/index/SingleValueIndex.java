@@ -1,5 +1,7 @@
 package io.nebulacms.app.extension.index;
 
+import io.nebulacms.app.extension.Extension;
+
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Comparator;
@@ -18,7 +20,6 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
 import org.springframework.util.CollectionUtils;
-import io.nebulacms.app.extension.Extension;
 
 /**
  * Single value index implementation.

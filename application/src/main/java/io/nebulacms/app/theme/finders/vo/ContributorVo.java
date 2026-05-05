@@ -1,12 +1,13 @@
 package io.nebulacms.app.theme.finders.vo;
 
-import lombok.Builder;
-import lombok.ToString;
-import lombok.Value;
 import io.nebulacms.app.core.extension.User;
 import io.nebulacms.app.core.user.service.UserService;
 import io.nebulacms.app.extension.Metadata;
 import io.nebulacms.app.extension.MetadataOperator;
+
+import lombok.Builder;
+import lombok.ToString;
+import lombok.Value;
 
 /**
  * A value object for {@link io.nebulacms.app.core.extension.User}.

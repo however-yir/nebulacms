@@ -7,6 +7,22 @@ import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.core.extension.User;
+import io.nebulacms.app.core.extension.content.Post;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.infra.SystemConfigFetcher;
+import io.nebulacms.app.infra.SystemSetting;
+import io.nebulacms.app.infra.SystemSetting.CodeInjection;
+import io.nebulacms.app.infra.SystemSetting.Seo;
+import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
+import io.nebulacms.app.theme.Constant;
+import io.nebulacms.app.theme.DefaultTemplateEnum;
+import io.nebulacms.app.theme.finders.PostFinder;
+import io.nebulacms.app.theme.finders.SinglePageFinder;
+import io.nebulacms.app.theme.finders.vo.PostVo;
+import io.nebulacms.app.theme.finders.vo.UserVo;
+import io.nebulacms.app.theme.router.ModelConst;
+
 import com.google.common.collect.ImmutableSortedMap;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,21 +48,6 @@ import org.thymeleaf.templateresource.ITemplateResource;
 import org.thymeleaf.templateresource.StringTemplateResource;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.User;
-import io.nebulacms.app.core.extension.content.Post;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.infra.SystemConfigFetcher;
-import io.nebulacms.app.infra.SystemSetting;
-import io.nebulacms.app.infra.SystemSetting.CodeInjection;
-import io.nebulacms.app.infra.SystemSetting.Seo;
-import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
-import io.nebulacms.app.theme.Constant;
-import io.nebulacms.app.theme.DefaultTemplateEnum;
-import io.nebulacms.app.theme.finders.PostFinder;
-import io.nebulacms.app.theme.finders.SinglePageFinder;
-import io.nebulacms.app.theme.finders.vo.PostVo;
-import io.nebulacms.app.theme.finders.vo.UserVo;
-import io.nebulacms.app.theme.router.ModelConst;
 
 /**
  * Tests for {@link HaloProcessorDialect}.

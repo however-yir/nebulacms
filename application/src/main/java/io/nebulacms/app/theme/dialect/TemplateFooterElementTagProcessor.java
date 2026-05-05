@@ -2,6 +2,11 @@ package io.nebulacms.app.theme.dialect;
 
 import static org.thymeleaf.spring6.context.SpringContextUtils.getApplicationContext;
 
+import io.nebulacms.app.infra.SystemConfigFetcher;
+import io.nebulacms.app.infra.SystemSetting;
+import io.nebulacms.app.infra.utils.ReactiveUtils;
+import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
+
 import java.time.Duration;
 import org.springframework.context.ApplicationContext;
 import org.thymeleaf.context.ITemplateContext;
@@ -12,10 +17,6 @@ import org.thymeleaf.processor.element.IElementTagStructureHandler;
 import org.thymeleaf.spring6.context.SpringContextUtils;
 import org.thymeleaf.templatemode.TemplateMode;
 import reactor.core.publisher.Flux;
-import io.nebulacms.app.infra.SystemConfigFetcher;
-import io.nebulacms.app.infra.SystemSetting;
-import io.nebulacms.app.infra.utils.ReactiveUtils;
-import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
 
 /**
  * <p>Footer element tag processor.</p>

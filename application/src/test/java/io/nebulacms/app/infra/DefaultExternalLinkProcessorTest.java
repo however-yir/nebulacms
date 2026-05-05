@@ -37,7 +37,6 @@ class DefaultExternalLinkProcessorTest {
     @InjectMocks
     DefaultExternalLinkProcessor externalLinkProcessor;
 
-
     @Test
     void processWhenLinkIsEmpty() {
         assertThat(externalLinkProcessor.processLink((String) null)).isNull();

@@ -1,10 +1,10 @@
 package io.nebulacms.app.security.authentication;
 
+import static io.nebulacms.app.security.authentication.WebExchangeMatchers.ignoringMediaTypeAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.http.MediaType.ALL;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.http.MediaType.TEXT_HTML;
-import static io.nebulacms.app.security.authentication.WebExchangeMatchers.ignoringMediaTypeAll;
 
 import java.util.Set;
 import org.junit.jupiter.api.Test;

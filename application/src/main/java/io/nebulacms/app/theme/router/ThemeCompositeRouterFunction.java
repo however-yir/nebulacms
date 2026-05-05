@@ -3,6 +3,21 @@ package io.nebulacms.app.theme.router;
 import static io.nebulacms.app.theme.utils.PatternUtils.normalizePattern;
 import static io.nebulacms.app.theme.utils.PatternUtils.normalizePostPattern;
 
+import io.nebulacms.app.infra.SystemConfigChangedEvent;
+import io.nebulacms.app.infra.SystemConfigFetcher;
+import io.nebulacms.app.infra.SystemSetting;
+import io.nebulacms.app.infra.SystemSetting.ThemeRouteRules;
+import io.nebulacms.app.infra.utils.ReactiveUtils;
+import io.nebulacms.app.theme.DefaultTemplateEnum;
+import io.nebulacms.app.theme.router.factories.ArchiveRouteFactory;
+import io.nebulacms.app.theme.router.factories.AuthorPostsRouteFactory;
+import io.nebulacms.app.theme.router.factories.CategoriesRouteFactory;
+import io.nebulacms.app.theme.router.factories.CategoryPostRouteFactory;
+import io.nebulacms.app.theme.router.factories.IndexRouteFactory;
+import io.nebulacms.app.theme.router.factories.PostRouteFactory;
+import io.nebulacms.app.theme.router.factories.TagPostRouteFactory;
+import io.nebulacms.app.theme.router.factories.TagsRouteFactory;
+
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,20 +35,6 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.infra.SystemConfigChangedEvent;
-import io.nebulacms.app.infra.SystemConfigFetcher;
-import io.nebulacms.app.infra.SystemSetting;
-import io.nebulacms.app.infra.SystemSetting.ThemeRouteRules;
-import io.nebulacms.app.infra.utils.ReactiveUtils;
-import io.nebulacms.app.theme.DefaultTemplateEnum;
-import io.nebulacms.app.theme.router.factories.ArchiveRouteFactory;
-import io.nebulacms.app.theme.router.factories.AuthorPostsRouteFactory;
-import io.nebulacms.app.theme.router.factories.CategoriesRouteFactory;
-import io.nebulacms.app.theme.router.factories.CategoryPostRouteFactory;
-import io.nebulacms.app.theme.router.factories.IndexRouteFactory;
-import io.nebulacms.app.theme.router.factories.PostRouteFactory;
-import io.nebulacms.app.theme.router.factories.TagPostRouteFactory;
-import io.nebulacms.app.theme.router.factories.TagsRouteFactory;
 
 /**
  * <p>The combination router of theme templates is used to render theme templates, but does not

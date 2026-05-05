@@ -2,15 +2,16 @@ package io.nebulacms.app.plugin;
 
 import static org.springframework.core.ResolvableType.forClassWithGenerics;
 
-import java.util.concurrent.ConcurrentHashMap;
-import org.springframework.context.event.EventListener;
-import reactor.core.Disposable;
 import io.nebulacms.app.extension.ExtensionClient;
 import io.nebulacms.app.extension.controller.Controller;
 import io.nebulacms.app.extension.controller.ControllerBuilder;
 import io.nebulacms.app.extension.controller.Reconciler;
 import io.nebulacms.app.plugin.event.SpringPluginStartedEvent;
 import io.nebulacms.app.plugin.event.SpringPluginStoppingEvent;
+
+import java.util.concurrent.ConcurrentHashMap;
+import org.springframework.context.event.EventListener;
+import reactor.core.Disposable;
 
 public class PluginControllerManager {
 

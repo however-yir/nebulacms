@@ -4,6 +4,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.core.endpoint.WebSocketEndpoint;
+import io.nebulacms.app.core.extension.Role;
+import io.nebulacms.app.core.user.service.RoleService;
+import io.nebulacms.app.extension.GroupVersion;
+import io.nebulacms.app.extension.Metadata;
+
 import java.net.URI;
 import java.util.List;
 import java.util.Set;
@@ -32,11 +38,6 @@ import org.springframework.web.reactive.socket.client.ReactorNettyWebSocketClien
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.core.endpoint.WebSocketEndpoint;
-import io.nebulacms.app.core.extension.Role;
-import io.nebulacms.app.core.user.service.RoleService;
-import io.nebulacms.app.extension.GroupVersion;
-import io.nebulacms.app.extension.Metadata;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Import({
@@ -73,7 +74,8 @@ class WebFluxConfigTest {
             when(roleService.listDependenciesFlux(Set.of("anonymous"))).thenReturn(Flux.just(role));
             var webSocketClient = new ReactorNettyWebSocketClient();
             webSocketClient.execute(
-                    URI.create("ws://localhost:" + port + "/apis/fake.nebulacms.io/v1alpha1/resources"),
+                    URI.create("ws://localhost:" + port
+                        + "/apis/fake.nebulacms.io/v1alpha1/resources"),
                     session -> {
                         var send = session.send(Flux.just(session.textMessage("halo")));
                         var receive = session.receive().map(WebSocketMessage::getPayloadAsText)
@@ -192,7 +194,6 @@ class WebFluxConfigTest {
                 .expectStatus().isNotFound();
         }
     }
-
 
     @Nested
     class ServerWebExchangeContextFilterTest {

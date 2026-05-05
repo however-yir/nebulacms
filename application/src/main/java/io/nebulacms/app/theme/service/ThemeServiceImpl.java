@@ -1,11 +1,33 @@
 package io.nebulacms.app.theme.service;
 
-import static org.springframework.util.FileSystemUtils.copyRecursively;
 import static io.nebulacms.app.infra.utils.FileUtils.deleteRecursivelyAndSilently;
 import static io.nebulacms.app.infra.utils.FileUtils.unzip;
 import static io.nebulacms.app.theme.service.ThemeUtils.loadThemeManifest;
 import static io.nebulacms.app.theme.service.ThemeUtils.locateThemeManifest;
 import static io.nebulacms.app.theme.service.ThemeUtils.unzipThemeTo;
+import static org.springframework.util.FileSystemUtils.copyRecursively;
+
+import io.nebulacms.app.core.extension.AnnotationSetting;
+import io.nebulacms.app.core.extension.Setting;
+import io.nebulacms.app.core.extension.Theme;
+import io.nebulacms.app.core.extension.notification.NotificationTemplate;
+import io.nebulacms.app.extension.ConfigMap;
+import io.nebulacms.app.extension.Extension;
+import io.nebulacms.app.extension.GroupVersionKind;
+import io.nebulacms.app.extension.MetadataUtil;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.Unstructured;
+import io.nebulacms.app.infra.SystemConfigFetcher;
+import io.nebulacms.app.infra.SystemSetting;
+import io.nebulacms.app.infra.SystemVersionSupplier;
+import io.nebulacms.app.infra.ThemeRootGetter;
+import io.nebulacms.app.infra.exception.ThemeAlreadyExistsException;
+import io.nebulacms.app.infra.exception.ThemeUpgradeException;
+import io.nebulacms.app.infra.exception.UnsatisfiedAttributeValueException;
+import io.nebulacms.app.infra.properties.HaloProperties;
+import io.nebulacms.app.infra.utils.FileUtils;
+import io.nebulacms.app.infra.utils.SettingUtils;
+import io.nebulacms.app.infra.utils.VersionUtils;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -39,27 +61,6 @@ import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Scheduler;
 import reactor.core.scheduler.Schedulers;
 import reactor.util.retry.Retry;
-import io.nebulacms.app.core.extension.AnnotationSetting;
-import io.nebulacms.app.core.extension.Setting;
-import io.nebulacms.app.core.extension.Theme;
-import io.nebulacms.app.core.extension.notification.NotificationTemplate;
-import io.nebulacms.app.extension.ConfigMap;
-import io.nebulacms.app.extension.Extension;
-import io.nebulacms.app.extension.GroupVersionKind;
-import io.nebulacms.app.extension.MetadataUtil;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.Unstructured;
-import io.nebulacms.app.infra.SystemConfigFetcher;
-import io.nebulacms.app.infra.SystemSetting;
-import io.nebulacms.app.infra.SystemVersionSupplier;
-import io.nebulacms.app.infra.ThemeRootGetter;
-import io.nebulacms.app.infra.exception.ThemeAlreadyExistsException;
-import io.nebulacms.app.infra.exception.ThemeUpgradeException;
-import io.nebulacms.app.infra.exception.UnsatisfiedAttributeValueException;
-import io.nebulacms.app.infra.properties.HaloProperties;
-import io.nebulacms.app.infra.utils.FileUtils;
-import io.nebulacms.app.infra.utils.SettingUtils;
-import io.nebulacms.app.infra.utils.VersionUtils;
 
 @Slf4j
 @Service

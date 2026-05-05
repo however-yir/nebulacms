@@ -1,14 +1,5 @@
 package io.nebulacms.app.theme.finders.impl;
 
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collectors;
-import org.apache.commons.lang3.ObjectUtils;
-import org.springframework.data.domain.Sort;
-import org.springframework.util.CollectionUtils;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.core.extension.content.Tag;
 import io.nebulacms.app.extension.ExtensionUtil;
 import io.nebulacms.app.extension.ListOptions;
@@ -20,6 +11,16 @@ import io.nebulacms.app.extension.index.query.Queries;
 import io.nebulacms.app.theme.finders.Finder;
 import io.nebulacms.app.theme.finders.TagFinder;
 import io.nebulacms.app.theme.finders.vo.TagVo;
+
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+import org.apache.commons.lang3.ObjectUtils;
+import org.springframework.data.domain.Sort;
+import org.springframework.util.CollectionUtils;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 /**
  * A default implementation of {@link TagFinder}.

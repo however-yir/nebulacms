@@ -2,6 +2,8 @@ package io.nebulacms.app.security.authentication.pat;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import io.nebulacms.app.security.PersonalAccessToken;
+
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.webtestclient.autoconfigure.AutoConfigureWebTestClient;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.reactive.server.WebTestClient;
-import io.nebulacms.app.security.PersonalAccessToken;
 
 @SpringBootTest
 @AutoConfigureWebTestClient

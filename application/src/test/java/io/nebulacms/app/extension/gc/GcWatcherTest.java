@@ -8,15 +8,16 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
+import io.nebulacms.app.extension.FakeExtension;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.controller.RequestQueue;
+
 import java.time.Instant;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import io.nebulacms.app.extension.FakeExtension;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.controller.RequestQueue;
 
 @ExtendWith(MockitoExtension.class)
 class GcWatcherTest {
@@ -80,7 +81,6 @@ class GcWatcherTest {
         assertTrue(watcher.isDisposed());
         verify(run).run();
     }
-
 
     FakeExtension createExtension() {
         var fake = new FakeExtension();

@@ -1,9 +1,10 @@
 package io.nebulacms.app.infra;
 
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.extension.Extension;
 import io.nebulacms.app.extension.ListOptions;
+
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 /**
  * Reactive extension paginated operator to handle extensions by pagination.

@@ -1,24 +1,25 @@
 package io.nebulacms.app.extension.controller;
 
+import static io.nebulacms.app.extension.FakeExtension.createFake;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static io.nebulacms.app.extension.FakeExtension.createFake;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 import io.nebulacms.app.extension.DefaultExtensionMatcher;
 import io.nebulacms.app.extension.ExtensionClient;
 import io.nebulacms.app.extension.FakeExtension;
 import io.nebulacms.app.extension.GroupVersionKind;
 import io.nebulacms.app.extension.WatcherExtensionMatchers;
 import io.nebulacms.app.extension.controller.Reconciler.Request;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
 class ExtensionWatcherTest {

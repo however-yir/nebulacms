@@ -1,10 +1,11 @@
 package io.nebulacms.app.core.extension;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 import io.nebulacms.app.extension.AbstractExtension;
 import io.nebulacms.app.extension.GVK;
 import io.nebulacms.app.extension.Metadata;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * A counter for number of requests by extension resource name.

@@ -1,8 +1,8 @@
 package io.nebulacms.app.extension;
 
+import static io.nebulacms.app.extension.GroupVersionKind.fromAPIVersionAndKind;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static io.nebulacms.app.extension.GroupVersionKind.fromAPIVersionAndKind;
 
 import java.util.List;
 import org.junit.jupiter.api.Test;

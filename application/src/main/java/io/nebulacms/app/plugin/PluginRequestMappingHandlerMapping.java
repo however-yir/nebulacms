@@ -1,5 +1,7 @@
 package io.nebulacms.app.plugin;
 
+import io.nebulacms.app.extension.GroupVersion;
+
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Collections;
@@ -19,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.reactive.result.method.RequestMappingInfo;
 import org.springframework.web.reactive.result.method.RequestMappingInfoHandlerMapping;
 import org.springframework.web.reactive.result.method.annotation.RequestMappingHandlerMapping;
-import io.nebulacms.app.extension.GroupVersion;
 
 /**
  * An extension of {@link RequestMappingInfoHandlerMapping} that creates

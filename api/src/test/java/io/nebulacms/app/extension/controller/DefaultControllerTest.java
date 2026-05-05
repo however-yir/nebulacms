@@ -14,6 +14,10 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.extension.controller.Reconciler.Request;
+import io.nebulacms.app.extension.controller.Reconciler.Result;
+import io.nebulacms.app.extension.controller.RequestQueue.DelayedEntry;
+
 import java.time.Duration;
 import java.time.Instant;
 import java.util.concurrent.ExecutorService;
@@ -24,9 +28,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import io.nebulacms.app.extension.controller.Reconciler.Request;
-import io.nebulacms.app.extension.controller.Reconciler.Result;
-import io.nebulacms.app.extension.controller.RequestQueue.DelayedEntry;
 
 @ExtendWith(MockitoExtension.class)
 class DefaultControllerTest {

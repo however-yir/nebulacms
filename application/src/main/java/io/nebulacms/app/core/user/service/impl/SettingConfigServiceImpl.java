@@ -1,5 +1,12 @@
 package io.nebulacms.app.core.user.service.impl;
 
+import io.nebulacms.app.core.extension.Setting;
+import io.nebulacms.app.core.user.service.SettingConfigService;
+import io.nebulacms.app.extension.ConfigMap;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.infra.utils.SettingUtils;
+
 import java.time.Duration;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.OptimisticLockingFailureException;
@@ -7,12 +14,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import reactor.core.publisher.Mono;
 import reactor.util.retry.Retry;
-import io.nebulacms.app.core.extension.Setting;
-import io.nebulacms.app.core.user.service.SettingConfigService;
-import io.nebulacms.app.extension.ConfigMap;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.infra.utils.SettingUtils;
 import tools.jackson.databind.node.ObjectNode;
 
 /**

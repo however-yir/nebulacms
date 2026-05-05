@@ -1,10 +1,11 @@
 package io.nebulacms.app.extension.index;
 
+import io.nebulacms.app.extension.Extension;
+
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
 import org.springframework.util.Assert;
-import io.nebulacms.app.extension.Extension;
 
 @Deprecated(forRemoval = true, since = "2.22.0")
 class DefaultIndexAttribute<E extends Extension, K extends Comparable<K>>

@@ -1,9 +1,10 @@
 package io.nebulacms.app.security;
 
+import io.nebulacms.app.core.extension.AuthProvider;
+
 import java.util.List;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.AuthProvider;
 
 /**
  * A service for {@link AuthProvider}.

@@ -1,13 +1,14 @@
 package io.nebulacms.app.core.attachment.reconciler;
 
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 import io.nebulacms.app.core.attachment.extension.Thumbnail;
 import io.nebulacms.app.extension.ExtensionClient;
 import io.nebulacms.app.extension.ExtensionUtil;
 import io.nebulacms.app.extension.controller.Controller;
 import io.nebulacms.app.extension.controller.ControllerBuilder;
 import io.nebulacms.app.extension.controller.Reconciler;
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component

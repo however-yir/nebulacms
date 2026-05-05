@@ -4,13 +4,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.HashMap;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
 import io.nebulacms.app.extension.ConfigMap;
 import io.nebulacms.app.infra.SystemSetting.Comment;
 import io.nebulacms.app.infra.SystemSetting.ExtensionPointEnabled;
 import io.nebulacms.app.infra.utils.JsonUtils;
+
+import java.util.HashMap;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 
 class SystemSettingTest {
 

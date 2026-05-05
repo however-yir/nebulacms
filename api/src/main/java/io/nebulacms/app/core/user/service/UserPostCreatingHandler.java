@@ -1,8 +1,9 @@
 package io.nebulacms.app.core.user.service;
 
+import io.nebulacms.app.core.extension.User;
+
 import org.pf4j.ExtensionPoint;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.User;
 
 /**
  * User post-creating handler.

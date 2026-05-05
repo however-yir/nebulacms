@@ -1,6 +1,5 @@
 package io.nebulacms.app.theme.dialect;
 
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Nested;

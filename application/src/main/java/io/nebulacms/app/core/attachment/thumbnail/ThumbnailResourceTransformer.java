@@ -1,5 +1,7 @@
 package io.nebulacms.app.core.attachment.thumbnail;
 
+import io.nebulacms.app.core.attachment.ThumbnailSize;
+
 import java.io.IOException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.PathResource;
@@ -9,7 +11,6 @@ import org.springframework.web.reactive.resource.ResourceTransformer;
 import org.springframework.web.reactive.resource.ResourceTransformerChain;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.attachment.ThumbnailSize;
 
 /**
  * A {@link ResourceTransformer} to generate and serve image thumbnails on the fly.

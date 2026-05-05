@@ -1,12 +1,13 @@
 package io.nebulacms.app.plugin;
 
+import io.nebulacms.app.core.extension.Plugin;
+import io.nebulacms.app.extension.ConfigMap;
+
 import com.fasterxml.jackson.databind.JsonNode;
 import java.util.Map;
 import lombok.Builder;
 import lombok.Getter;
 import org.springframework.context.ApplicationEvent;
-import io.nebulacms.app.core.extension.Plugin;
-import io.nebulacms.app.extension.ConfigMap;
 
 /**
  * <p>Event that is triggered when the {@link ConfigMap } represented by

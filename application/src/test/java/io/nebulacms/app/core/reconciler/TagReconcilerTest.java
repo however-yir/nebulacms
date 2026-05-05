@@ -7,6 +7,12 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.content.permalinks.TagPermalinkPolicy;
+import io.nebulacms.app.core.extension.content.Tag;
+import io.nebulacms.app.core.reconciler.TagReconciler;
+import io.nebulacms.app.extension.ExtensionClient;
+import io.nebulacms.app.extension.Metadata;
+
 import java.time.Instant;
 import java.util.Optional;
 import java.util.Set;
@@ -16,11 +22,6 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import io.nebulacms.app.content.permalinks.TagPermalinkPolicy;
-import io.nebulacms.app.core.extension.content.Tag;
-import io.nebulacms.app.core.reconciler.TagReconciler;
-import io.nebulacms.app.extension.ExtensionClient;
-import io.nebulacms.app.extension.Metadata;
 
 /**
  * Tests for {@link TagReconciler}.

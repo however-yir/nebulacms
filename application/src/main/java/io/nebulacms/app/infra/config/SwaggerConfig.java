@@ -2,6 +2,8 @@ package io.nebulacms.app.infra.config;
 
 import static org.springdoc.core.utils.Constants.SPRINGDOC_ENABLED;
 
+import io.nebulacms.app.extension.router.JsonPatch;
+
 import io.swagger.v3.core.converter.ModelConverter;
 import io.swagger.v3.core.jackson.ModelResolver;
 import io.swagger.v3.core.jackson.TypeNameResolver;
@@ -23,7 +25,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
-import io.nebulacms.app.extension.router.JsonPatch;
 
 @Configuration
 @ConditionalOnProperty(name = SPRINGDOC_ENABLED, matchIfMissing = true)
@@ -107,7 +108,6 @@ public class SwaggerConfig {
             .build();
     }
 
-
     @Bean
     GroupedOpenApi ucV1alpha1Api() {
         return GroupedOpenApi.builder()
@@ -121,7 +121,6 @@ public class SwaggerConfig {
             )
             .build();
     }
-
 
     @Bean
     GroupedOpenApi extensionV1alpha1Api() {

@@ -1,20 +1,10 @@
 package io.nebulacms.app.theme.finders.impl;
 
-import static java.util.Objects.requireNonNullElse;
-import static java.util.Objects.requireNonNullElseGet;
 import static io.nebulacms.app.core.counter.MeterUtils.nameOf;
 import static io.nebulacms.app.core.user.service.UserService.GHOST_USER_NAME;
+import static java.util.Objects.requireNonNullElse;
+import static java.util.Objects.requireNonNullElseGet;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.function.Function;
-import lombok.RequiredArgsConstructor;
-import org.springframework.lang.NonNull;
-import org.springframework.stereotype.Component;
-import org.springframework.util.Assert;
-import org.springframework.util.CollectionUtils;
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.content.ContentWrapper;
 import io.nebulacms.app.content.PostService;
 import io.nebulacms.app.core.counter.CounterService;
@@ -35,6 +25,17 @@ import io.nebulacms.app.theme.finders.vo.ListedPostVo;
 import io.nebulacms.app.theme.finders.vo.PostVo;
 import io.nebulacms.app.theme.finders.vo.StatsVo;
 import io.nebulacms.app.theme.router.ReactiveQueryPostPredicateResolver;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.function.Function;
+import lombok.RequiredArgsConstructor;
+import org.springframework.lang.NonNull;
+import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
+import org.springframework.util.CollectionUtils;
+import reactor.core.publisher.Mono;
 
 @Component
 @RequiredArgsConstructor
@@ -81,7 +82,6 @@ public class PostPublicQueryServiceImpl implements PostPublicQueryService {
             )
             .defaultIfEmpty(ListResult.emptyResult());
     }
-
 
     @Override
     public Mono<ListedPostVo> convertToListedVo(@NonNull Post post) {

@@ -1,5 +1,19 @@
 package io.nebulacms.app.core.user.service.impl;
 
+import io.nebulacms.app.core.attachment.ThumbnailSize;
+import io.nebulacms.app.core.extension.attachment.Attachment;
+import io.nebulacms.app.core.extension.attachment.Group;
+import io.nebulacms.app.core.extension.attachment.Policy;
+import io.nebulacms.app.core.extension.attachment.endpoint.AttachmentHandler;
+import io.nebulacms.app.core.extension.attachment.endpoint.DeleteOption;
+import io.nebulacms.app.core.extension.attachment.endpoint.SimpleFilePart;
+import io.nebulacms.app.core.extension.attachment.endpoint.UploadOption;
+import io.nebulacms.app.core.extension.service.AttachmentService;
+import io.nebulacms.app.extension.ConfigMap;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.infra.ReactiveUrlDataBufferFetcher;
+import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
+
 import java.net.URI;
 import java.net.URL;
 import java.nio.file.Paths;
@@ -25,19 +39,6 @@ import org.springframework.web.server.ServerErrorException;
 import org.springframework.web.server.ServerWebInputException;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.attachment.ThumbnailSize;
-import io.nebulacms.app.core.extension.attachment.Attachment;
-import io.nebulacms.app.core.extension.attachment.Group;
-import io.nebulacms.app.core.extension.attachment.Policy;
-import io.nebulacms.app.core.extension.attachment.endpoint.AttachmentHandler;
-import io.nebulacms.app.core.extension.attachment.endpoint.DeleteOption;
-import io.nebulacms.app.core.extension.attachment.endpoint.SimpleFilePart;
-import io.nebulacms.app.core.extension.attachment.endpoint.UploadOption;
-import io.nebulacms.app.core.extension.service.AttachmentService;
-import io.nebulacms.app.extension.ConfigMap;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.infra.ReactiveUrlDataBufferFetcher;
-import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
 
 @Component
 public class DefaultAttachmentService implements AttachmentService {

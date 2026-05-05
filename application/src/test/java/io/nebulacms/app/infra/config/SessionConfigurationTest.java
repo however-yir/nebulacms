@@ -4,13 +4,14 @@ import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import io.nebulacms.app.security.session.ReactiveIndexedSessionRepository;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.UnsatisfiedDependencyException;
 import org.springframework.boot.session.autoconfigure.SessionProperties;
 import org.springframework.boot.test.context.runner.ReactiveWebApplicationContextRunner;
 import org.springframework.boot.web.server.autoconfigure.ServerProperties;
 import org.springframework.session.ReactiveFindByIndexNameSessionRepository;
-import io.nebulacms.app.security.session.ReactiveIndexedSessionRepository;
 
 class SessionConfigurationTest {
 

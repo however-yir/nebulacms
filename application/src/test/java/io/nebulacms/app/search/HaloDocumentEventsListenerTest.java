@@ -7,6 +7,11 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
+import io.nebulacms.app.search.event.HaloDocumentAddRequestEvent;
+import io.nebulacms.app.search.event.HaloDocumentDeleteRequestEvent;
+import io.nebulacms.app.search.event.HaloDocumentRebuildRequestEvent;
+
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,10 +20,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
-import io.nebulacms.app.search.event.HaloDocumentAddRequestEvent;
-import io.nebulacms.app.search.event.HaloDocumentDeleteRequestEvent;
-import io.nebulacms.app.search.event.HaloDocumentRebuildRequestEvent;
 
 @ExtendWith(MockitoExtension.class)
 class HaloDocumentEventsListenerTest {

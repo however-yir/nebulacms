@@ -4,14 +4,6 @@ import static io.nebulacms.app.extension.ExtensionUtil.defaultSort;
 import static io.nebulacms.app.extension.index.query.Queries.and;
 import static io.nebulacms.app.extension.index.query.Queries.equal;
 
-import java.time.Clock;
-import java.util.HashMap;
-import java.util.Optional;
-import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.security.oauth2.core.user.OAuth2User;
-import org.springframework.stereotype.Service;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.core.extension.UserConnection;
 import io.nebulacms.app.core.extension.UserConnection.UserConnectionSpec;
 import io.nebulacms.app.core.user.service.UserConnectionService;
@@ -22,6 +14,15 @@ import io.nebulacms.app.extension.MetadataOperator;
 import io.nebulacms.app.extension.ReactiveExtensionClient;
 import io.nebulacms.app.infra.exception.OAuth2UserAlreadyBoundException;
 import io.nebulacms.app.infra.utils.JsonUtils;
+
+import java.time.Clock;
+import java.util.HashMap;
+import java.util.Optional;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.security.oauth2.core.user.OAuth2User;
+import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @Service
 public class UserConnectionServiceImpl implements UserConnectionService {

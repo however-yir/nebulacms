@@ -3,23 +3,6 @@ package io.nebulacms.app.core.reconciler;
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.springframework.web.util.UriUtils.encodePath;
 
-import com.google.common.hash.Hashing;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
-import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
-import org.jsoup.Jsoup;
-import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Component;
-import org.springframework.util.Assert;
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.content.ContentWrapper;
 import io.nebulacms.app.content.ExcerptGenerator;
 import io.nebulacms.app.content.NotificationReasonConst;
@@ -51,6 +34,24 @@ import io.nebulacms.app.infra.utils.JsonUtils;
 import io.nebulacms.app.infra.utils.ReactiveUtils;
 import io.nebulacms.app.notification.NotificationCenter;
 import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
+
+import com.google.common.hash.Hashing;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.jsoup.Jsoup;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
+import reactor.core.publisher.Mono;
 
 /**
  * <p>Reconciler for {@link SinglePage}.</p>

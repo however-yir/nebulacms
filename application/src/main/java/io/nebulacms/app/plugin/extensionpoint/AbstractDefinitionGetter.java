@@ -1,14 +1,15 @@
 package io.nebulacms.app.plugin.extensionpoint;
 
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.DisposableBean;
 import io.nebulacms.app.extension.Extension;
 import io.nebulacms.app.extension.ExtensionClient;
 import io.nebulacms.app.extension.controller.Controller;
 import io.nebulacms.app.extension.controller.ControllerBuilder;
 import io.nebulacms.app.extension.controller.Reconciler;
+
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.DisposableBean;
 
 @RequiredArgsConstructor
 abstract class AbstractDefinitionGetter<E extends Extension>

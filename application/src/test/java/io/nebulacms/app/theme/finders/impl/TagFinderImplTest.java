@@ -5,6 +5,13 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.core.extension.content.Tag;
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.infra.utils.JsonUtils;
+import io.nebulacms.app.theme.finders.vo.TagVo;
+
 import java.time.Instant;
 import java.util.List;
 import java.util.Map;
@@ -19,12 +26,6 @@ import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.data.domain.Sort;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.content.Tag;
-import io.nebulacms.app.extension.ListOptions;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.infra.utils.JsonUtils;
-import io.nebulacms.app.theme.finders.vo.TagVo;
 
 /**
  * Tests for {@link TagFinderImpl}.

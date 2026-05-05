@@ -13,6 +13,21 @@ import static org.mockito.Mockito.when;
 import static org.springframework.security.test.web.reactive.server.SecurityMockServerConfigurers.mockUser;
 import static org.springframework.security.test.web.reactive.server.SecurityMockServerConfigurers.springSecurity;
 
+import io.nebulacms.app.core.extension.Role;
+import io.nebulacms.app.core.extension.User;
+import io.nebulacms.app.core.extension.attachment.Attachment;
+import io.nebulacms.app.core.extension.service.AttachmentService;
+import io.nebulacms.app.core.user.service.RoleService;
+import io.nebulacms.app.core.user.service.UserService;
+import io.nebulacms.app.extension.ListResult;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.PageRequest;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.infra.SystemConfigFetcher;
+import io.nebulacms.app.infra.SystemSetting;
+import io.nebulacms.app.infra.exception.UserNotFoundException;
+import io.nebulacms.app.infra.utils.JsonUtils;
+
 import java.time.Instant;
 import java.util.HashMap;
 import java.util.List;
@@ -32,20 +47,6 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.web.reactive.function.BodyInserters;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.Role;
-import io.nebulacms.app.core.extension.User;
-import io.nebulacms.app.core.extension.attachment.Attachment;
-import io.nebulacms.app.core.extension.service.AttachmentService;
-import io.nebulacms.app.core.user.service.RoleService;
-import io.nebulacms.app.core.user.service.UserService;
-import io.nebulacms.app.extension.ListResult;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.PageRequest;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.infra.SystemConfigFetcher;
-import io.nebulacms.app.infra.SystemSetting;
-import io.nebulacms.app.infra.exception.UserNotFoundException;
-import io.nebulacms.app.infra.utils.JsonUtils;
 
 @ExtendWith(MockitoExtension.class)
 class UserEndpointTest {
@@ -436,7 +437,6 @@ class UserEndpointTest {
             multipartBodyBuilder.part("file", "fake-file")
                 .contentType(MediaType.IMAGE_PNG)
                 .filename("fake-filename.png");
-
 
             when(environmentFetcher.fetch(
                 SystemSetting.Attachment.GROUP, SystemSetting.Attachment.class

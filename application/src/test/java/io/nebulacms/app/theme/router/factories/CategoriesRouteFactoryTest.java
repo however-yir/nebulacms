@@ -2,6 +2,8 @@ package io.nebulacms.app.theme.router.factories;
 
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.theme.finders.CategoryFinder;
+
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -9,7 +11,6 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Flux;
-import io.nebulacms.app.theme.finders.CategoryFinder;
 
 /**
  * Tests for {@link CategoriesRouteFactory}.

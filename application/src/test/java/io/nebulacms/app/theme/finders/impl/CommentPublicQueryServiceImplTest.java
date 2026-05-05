@@ -4,6 +4,20 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.core.counter.CounterService;
+import io.nebulacms.app.core.extension.Counter;
+import io.nebulacms.app.core.extension.User;
+import io.nebulacms.app.core.extension.content.Comment;
+import io.nebulacms.app.core.extension.content.Post;
+import io.nebulacms.app.core.user.service.UserService;
+import io.nebulacms.app.extension.GroupVersionKind;
+import io.nebulacms.app.extension.ListResult;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.Ref;
+import io.nebulacms.app.infra.AnonymousUserConst;
+import io.nebulacms.app.infra.utils.JsonUtils;
+
 import java.time.Instant;
 import java.util.HashMap;
 import java.util.List;
@@ -21,19 +35,6 @@ import org.mockito.stubbing.Answer;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.counter.CounterService;
-import io.nebulacms.app.core.extension.Counter;
-import io.nebulacms.app.core.extension.User;
-import io.nebulacms.app.core.extension.content.Comment;
-import io.nebulacms.app.core.extension.content.Post;
-import io.nebulacms.app.core.user.service.UserService;
-import io.nebulacms.app.extension.GroupVersionKind;
-import io.nebulacms.app.extension.ListResult;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.Ref;
-import io.nebulacms.app.infra.AnonymousUserConst;
-import io.nebulacms.app.infra.utils.JsonUtils;
 
 /**
  * Tests for {@link CommentFinderImpl}.

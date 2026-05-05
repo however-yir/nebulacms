@@ -1,5 +1,11 @@
 package io.nebulacms.app.content.impl;
 
+import io.nebulacms.app.content.Content;
+import io.nebulacms.app.content.PatchUtils;
+import io.nebulacms.app.content.SnapshotService;
+import io.nebulacms.app.core.extension.content.Snapshot;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+
 import java.time.Clock;
 import java.util.HashMap;
 import java.util.Objects;
@@ -8,11 +14,6 @@ import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.content.Content;
-import io.nebulacms.app.content.PatchUtils;
-import io.nebulacms.app.content.SnapshotService;
-import io.nebulacms.app.core.extension.content.Snapshot;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
 
 @Service
 public class SnapshotServiceImpl implements SnapshotService {

@@ -5,6 +5,11 @@ import static io.nebulacms.app.security.authorization.AuthorityUtils.ANONYMOUS_R
 import static io.nebulacms.app.security.authorization.AuthorityUtils.AUTHENTICATED_ROLE_NAME;
 import static io.nebulacms.app.security.authorization.AuthorityUtils.ROLE_PREFIX;
 
+import io.nebulacms.app.extension.ExtensionUtil;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.security.PersonalAccessToken;
+import io.nebulacms.app.security.authorization.AuthorityUtils;
+
 import com.nimbusds.jwt.JWTClaimNames;
 import java.time.Clock;
 import java.time.Duration;
@@ -21,10 +26,6 @@ import org.springframework.security.oauth2.server.resource.authentication.Bearer
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import reactor.core.publisher.Mono;
 import reactor.util.retry.Retry;
-import io.nebulacms.app.extension.ExtensionUtil;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.security.PersonalAccessToken;
-import io.nebulacms.app.security.authorization.AuthorityUtils;
 
 public class PatAuthenticationManager implements ReactiveAuthenticationManager {
 

@@ -2,6 +2,9 @@ package io.nebulacms.app.infra.webfilter;
 
 import static io.nebulacms.app.theme.ThemeLocaleContextResolver.LANGUAGE_COOKIE_NAME;
 
+import io.nebulacms.app.theme.ThemeLocaleContextResolver;
+import io.nebulacms.app.theme.UserLocaleRequestAttributeWriteFilter;
+
 import java.util.Locale;
 import java.util.Objects;
 import java.util.Set;
@@ -21,8 +24,6 @@ import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.server.WebFilter;
 import org.springframework.web.server.WebFilterChain;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.theme.ThemeLocaleContextResolver;
-import io.nebulacms.app.theme.UserLocaleRequestAttributeWriteFilter;
 
 /**
  * {@link UserLocaleRequestAttributeWriteFilter} is before {@link LocaleChangeWebFilter} to

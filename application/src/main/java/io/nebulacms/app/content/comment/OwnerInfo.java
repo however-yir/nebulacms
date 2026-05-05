@@ -1,9 +1,10 @@
 package io.nebulacms.app.content.comment;
 
-import lombok.Builder;
-import lombok.Value;
 import io.nebulacms.app.core.extension.User;
 import io.nebulacms.app.core.extension.content.Comment;
+
+import lombok.Builder;
+import lombok.Value;
 
 /**
  * Comment owner info.

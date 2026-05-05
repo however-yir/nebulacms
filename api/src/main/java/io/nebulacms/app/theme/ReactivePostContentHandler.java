@@ -1,11 +1,12 @@
 package io.nebulacms.app.theme;
 
+import io.nebulacms.app.core.extension.content.Post;
+
 import lombok.Builder;
 import lombok.Data;
 import org.pf4j.ExtensionPoint;
 import org.springframework.lang.NonNull;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.content.Post;
 
 /**
  * <p>{@link ReactivePostContentHandler} provides a way to extend the content to be displayed in

@@ -1,5 +1,7 @@
 package io.nebulacms.app.security.authorization;
 
+import io.nebulacms.app.core.user.service.RoleService;
+
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authorization.AuthorizationDecision;
@@ -8,7 +10,6 @@ import org.springframework.security.authorization.ReactiveAuthorizationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.server.authorization.AuthorizationContext;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.user.service.RoleService;
 
 @Slf4j
 public class RequestInfoAuthorizationManager

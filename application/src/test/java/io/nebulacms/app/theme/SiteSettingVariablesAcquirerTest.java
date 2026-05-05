@@ -6,6 +6,11 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.infra.ExternalUrlSupplier;
+import io.nebulacms.app.infra.SystemConfigFetcher;
+import io.nebulacms.app.infra.SystemVersionSupplier;
+import io.nebulacms.app.theme.finders.vo.SiteSettingVo;
+
 import com.github.zafarkhaja.semver.Version;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -18,10 +23,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.infra.ExternalUrlSupplier;
-import io.nebulacms.app.infra.SystemConfigFetcher;
-import io.nebulacms.app.infra.SystemVersionSupplier;
-import io.nebulacms.app.theme.finders.vo.SiteSettingVo;
 
 /**
  * Tests for {@link SiteSettingVariablesAcquirer}.

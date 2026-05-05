@@ -1,9 +1,10 @@
 package io.nebulacms.app.notification;
 
+import io.nebulacms.app.infra.AnonymousUserConst;
+
 import java.util.Optional;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.Assert;
-import io.nebulacms.app.infra.AnonymousUserConst;
 
 /**
  * Identity for user.

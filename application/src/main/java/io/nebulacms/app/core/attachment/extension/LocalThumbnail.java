@@ -3,16 +3,17 @@ package io.nebulacms.app.core.attachment.extension;
 import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.NOT_REQUIRED;
 import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
 
+import io.nebulacms.app.core.attachment.AttachmentRootGetter;
+import io.nebulacms.app.core.attachment.ThumbnailSize;
+import io.nebulacms.app.extension.AbstractExtension;
+import io.nebulacms.app.extension.GVK;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 import org.springframework.lang.NonNull;
-import io.nebulacms.app.core.attachment.AttachmentRootGetter;
-import io.nebulacms.app.core.attachment.ThumbnailSize;
-import io.nebulacms.app.extension.AbstractExtension;
-import io.nebulacms.app.extension.GVK;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -21,7 +22,8 @@ import io.nebulacms.app.extension.GVK;
 @Deprecated(forRemoval = true, since = "2.22.0")
 public class LocalThumbnail extends AbstractExtension {
     public static final String UNIQUE_IMAGE_AND_SIZE_INDEX = "uniqueImageAndSize";
-    public static final String REQUEST_TO_GENERATE_ANNO = "storage.nebulacms.io/request-to-generate";
+    public static final String REQUEST_TO_GENERATE_ANNO =
+        "storage.nebulacms.io/request-to-generate";
 
     @Schema(requiredMode = REQUIRED)
     private Spec spec;

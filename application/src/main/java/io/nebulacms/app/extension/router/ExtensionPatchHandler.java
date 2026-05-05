@@ -2,6 +2,11 @@ package io.nebulacms.app.extension.router;
 
 import static io.nebulacms.app.extension.router.ExtensionRouterFunctionFactory.PathPatternGenerator.buildExtensionPathPattern;
 
+import io.nebulacms.app.extension.JsonExtension;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.Scheme;
+import io.nebulacms.app.extension.router.ExtensionRouterFunctionFactory.PatchHandler;
+
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.github.fge.jsonpatch.JsonPatch;
 import com.github.fge.jsonpatch.JsonPatchException;
@@ -13,10 +18,6 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.server.ServerWebInputException;
 import org.springframework.web.server.UnsupportedMediaTypeStatusException;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.extension.JsonExtension;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.Scheme;
-import io.nebulacms.app.extension.router.ExtensionRouterFunctionFactory.PatchHandler;
 
 /**
  * Handler for patching extension.

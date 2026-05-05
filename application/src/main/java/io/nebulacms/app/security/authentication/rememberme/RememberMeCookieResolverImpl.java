@@ -1,5 +1,7 @@
 package io.nebulacms.app.security.authentication.rememberme;
 
+import io.nebulacms.app.infra.properties.HaloProperties;
+
 import java.time.Duration;
 import lombok.Getter;
 import org.springframework.http.HttpCookie;
@@ -8,7 +10,6 @@ import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import org.springframework.web.server.ServerWebExchange;
-import io.nebulacms.app.infra.properties.HaloProperties;
 
 @Getter
 @Component

@@ -7,6 +7,16 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.content.ContentWrapper;
+import io.nebulacms.app.content.PostService;
+import io.nebulacms.app.core.extension.content.Post;
+import io.nebulacms.app.event.post.PostDeletedEvent;
+import io.nebulacms.app.event.post.PostUpdatedEvent;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.search.event.HaloDocumentAddRequestEvent;
+import io.nebulacms.app.search.event.HaloDocumentDeleteRequestEvent;
+
 import java.time.Instant;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -17,15 +27,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.context.ApplicationEventPublisher;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.content.ContentWrapper;
-import io.nebulacms.app.content.PostService;
-import io.nebulacms.app.core.extension.content.Post;
-import io.nebulacms.app.event.post.PostDeletedEvent;
-import io.nebulacms.app.event.post.PostUpdatedEvent;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.search.event.HaloDocumentAddRequestEvent;
-import io.nebulacms.app.search.event.HaloDocumentDeleteRequestEvent;
 
 @ExtendWith(MockitoExtension.class)
 class PostEventsListenerTest {

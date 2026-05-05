@@ -1,7 +1,8 @@
 package io.nebulacms.app.notification;
 
-import reactor.core.publisher.Flux;
 import io.nebulacms.app.core.extension.notification.Reason;
+
+import reactor.core.publisher.Flux;
 
 public interface RecipientResolver {
 

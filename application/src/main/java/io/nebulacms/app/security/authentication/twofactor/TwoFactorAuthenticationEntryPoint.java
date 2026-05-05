@@ -1,5 +1,7 @@
 package io.nebulacms.app.security.authentication.twofactor;
 
+import io.nebulacms.app.infra.exception.Exceptions;
+
 import java.net.URI;
 import org.springframework.context.MessageSource;
 import org.springframework.security.core.AuthenticationException;
@@ -10,7 +12,6 @@ import org.springframework.security.web.server.util.matcher.ServerWebExchangeMat
 import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.infra.exception.Exceptions;
 
 public class TwoFactorAuthenticationEntryPoint implements ServerAuthenticationEntryPoint {
 

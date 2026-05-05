@@ -1,7 +1,19 @@
 package io.nebulacms.app.theme.router.factories;
 
-import static org.springframework.web.reactive.function.server.RequestPredicates.accept;
 import static io.nebulacms.app.theme.router.PageUrlUtils.totalPage;
+import static org.springframework.web.reactive.function.server.RequestPredicates.accept;
+
+import io.nebulacms.app.infra.SystemConfigFetcher;
+import io.nebulacms.app.infra.SystemSetting;
+import io.nebulacms.app.infra.utils.JsonUtils;
+import io.nebulacms.app.infra.utils.PathUtils;
+import io.nebulacms.app.theme.DefaultTemplateEnum;
+import io.nebulacms.app.theme.finders.PostFinder;
+import io.nebulacms.app.theme.finders.vo.PostArchiveVo;
+import io.nebulacms.app.theme.router.ModelConst;
+import io.nebulacms.app.theme.router.PageUrlUtils;
+import io.nebulacms.app.theme.router.TitleVisibilityIdentifyCalculator;
+import io.nebulacms.app.theme.router.UrlContextListResult;
 
 import java.util.List;
 import java.util.Map;
@@ -19,17 +31,6 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.server.i18n.LocaleContextResolver;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.infra.SystemConfigFetcher;
-import io.nebulacms.app.infra.SystemSetting;
-import io.nebulacms.app.infra.utils.JsonUtils;
-import io.nebulacms.app.infra.utils.PathUtils;
-import io.nebulacms.app.theme.DefaultTemplateEnum;
-import io.nebulacms.app.theme.finders.PostFinder;
-import io.nebulacms.app.theme.finders.vo.PostArchiveVo;
-import io.nebulacms.app.theme.router.ModelConst;
-import io.nebulacms.app.theme.router.PageUrlUtils;
-import io.nebulacms.app.theme.router.TitleVisibilityIdentifyCalculator;
-import io.nebulacms.app.theme.router.UrlContextListResult;
 
 /**
  * The {@link ArchiveRouteFactory} for generate {@link RouterFunction} specific to the template

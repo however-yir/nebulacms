@@ -3,6 +3,14 @@ package io.nebulacms.app.content;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
 
+import io.nebulacms.app.core.extension.content.Category;
+import io.nebulacms.app.core.extension.content.Post;
+import io.nebulacms.app.extension.Extension;
+import io.nebulacms.app.extension.ExtensionClient;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.SchemeManager;
+
 import java.time.Duration;
 import java.util.List;
 import java.util.Set;
@@ -17,13 +25,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 import reactor.util.retry.Retry;
-import io.nebulacms.app.core.extension.content.Category;
-import io.nebulacms.app.core.extension.content.Post;
-import io.nebulacms.app.extension.Extension;
-import io.nebulacms.app.extension.ExtensionClient;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.SchemeManager;
 
 /**
  * Tests for {@link CategoryPostCountUpdater}.
@@ -33,7 +34,6 @@ import io.nebulacms.app.extension.SchemeManager;
  */
 @SpringBootTest
 class CategoryPostCountUpdaterTest {
-
 
     private final List<Post> storedPosts = posts();
 

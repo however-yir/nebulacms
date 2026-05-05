@@ -1,10 +1,11 @@
 package io.nebulacms.app.security.device;
 
+import io.nebulacms.app.security.authentication.SecurityConfigurer;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.stereotype.Component;
-import io.nebulacms.app.security.authentication.SecurityConfigurer;
 
 @Component
 @RequiredArgsConstructor

@@ -2,10 +2,6 @@ package io.nebulacms.app.content;
 
 import static io.nebulacms.app.extension.index.query.Queries.equal;
 
-import java.time.Duration;
-import org.springframework.context.event.EventListener;
-import org.springframework.lang.NonNull;
-import org.springframework.stereotype.Component;
 import io.nebulacms.app.core.extension.content.Post;
 import io.nebulacms.app.event.post.CategoryHiddenStateChangeEvent;
 import io.nebulacms.app.extension.ListOptions;
@@ -13,6 +9,11 @@ import io.nebulacms.app.extension.ReactiveExtensionClient;
 import io.nebulacms.app.extension.router.selector.FieldSelector;
 import io.nebulacms.app.infra.ReactiveExtensionPaginatedOperator;
 import io.nebulacms.app.infra.utils.ReactiveUtils;
+
+import java.time.Duration;
+import org.springframework.context.event.EventListener;
+import org.springframework.lang.NonNull;
+import org.springframework.stereotype.Component;
 
 /**
  * Synchronize the {@link Post.PostStatus#getHideFromList()} state of the post with the category.

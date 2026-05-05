@@ -7,6 +7,11 @@ import static org.mockito.Mockito.when;
 import static org.springframework.data.domain.Sort.Direction.ASC;
 import static org.springframework.data.domain.Sort.Direction.DESC;
 
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.PageRequestImpl;
+import io.nebulacms.app.extension.index.query.Queries;
+
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -20,10 +25,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.data.domain.Sort;
-import io.nebulacms.app.extension.ListOptions;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.PageRequestImpl;
-import io.nebulacms.app.extension.index.query.Queries;
 
 @ExtendWith(MockitoExtension.class)
 class DefaultIndexEngineTest {

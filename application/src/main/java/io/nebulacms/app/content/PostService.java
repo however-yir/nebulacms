@@ -1,12 +1,13 @@
 package io.nebulacms.app.content;
 
+import io.nebulacms.app.core.extension.content.Category;
+import io.nebulacms.app.core.extension.content.Post;
+import io.nebulacms.app.extension.ListResult;
+
 import java.util.List;
 import org.springframework.lang.NonNull;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.content.Category;
-import io.nebulacms.app.core.extension.content.Post;
-import io.nebulacms.app.extension.ListResult;
 
 /**
  * Service for {@link Post}.

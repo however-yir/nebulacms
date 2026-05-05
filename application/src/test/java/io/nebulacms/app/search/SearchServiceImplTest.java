@@ -3,6 +3,9 @@ package io.nebulacms.app.search;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.infra.exception.RequestBodyValidationException;
+import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -12,8 +15,6 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.infra.exception.RequestBodyValidationException;
-import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
 
 @ExtendWith(MockitoExtension.class)
 class SearchServiceImplTest {

@@ -2,6 +2,9 @@ package io.nebulacms.app.security.authentication.oauth2;
 
 import static io.nebulacms.app.security.authentication.oauth2.HaloOAuth2AuthenticationToken.authenticated;
 
+import io.nebulacms.app.core.user.service.UserConnectionService;
+import io.nebulacms.app.security.LoginHandlerEnhancer;
+
 import java.net.URI;
 import lombok.Setter;
 import org.springframework.security.authentication.AuthenticationTrustResolver;
@@ -22,8 +25,6 @@ import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.server.WebFilter;
 import org.springframework.web.server.WebFilterChain;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.user.service.UserConnectionService;
-import io.nebulacms.app.security.LoginHandlerEnhancer;
 
 /**
  * A filter to map OAuth2 authentication to authenticated user.

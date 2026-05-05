@@ -1,5 +1,6 @@
 package io.nebulacms.app.migration;
 
+import static io.nebulacms.app.extension.ExtensionUtil.addFinalizers;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -11,7 +12,10 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static io.nebulacms.app.extension.ExtensionUtil.addFinalizers;
+
+import io.nebulacms.app.extension.ExtensionClient;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.controller.Reconciler;
 
 import java.io.IOException;
 import java.time.Clock;
@@ -28,9 +32,6 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import reactor.core.Exceptions;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.extension.ExtensionClient;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.controller.Reconciler;
 
 @ExtendWith(MockitoExtension.class)
 class BackupReconcilerTest {

@@ -7,8 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.Test;
 import io.nebulacms.app.extension.FakeExtension;
+
+import org.junit.jupiter.api.Test;
 
 class SingleValueBuilderTest {
 

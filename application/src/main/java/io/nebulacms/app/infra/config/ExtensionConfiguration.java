@@ -1,10 +1,11 @@
 package io.nebulacms.app.infra.config;
 
+import io.nebulacms.app.extension.ExtensionClient;
+import io.nebulacms.app.extension.controller.DefaultControllerManager;
+
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import io.nebulacms.app.extension.ExtensionClient;
-import io.nebulacms.app.extension.controller.DefaultControllerManager;
 
 @Configuration(proxyBeanMethods = false)
 public class ExtensionConfiguration {

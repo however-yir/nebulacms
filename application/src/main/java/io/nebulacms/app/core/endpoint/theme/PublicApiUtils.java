@@ -1,5 +1,10 @@
 package io.nebulacms.app.core.endpoint.theme;
 
+import io.nebulacms.app.extension.Extension;
+import io.nebulacms.app.extension.GroupVersion;
+import io.nebulacms.app.extension.GroupVersionKind;
+import io.nebulacms.app.extension.ListResult;
+
 import java.util.Collection;
 import java.util.List;
 import java.util.function.Function;
@@ -7,10 +12,6 @@ import lombok.experimental.UtilityClass;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
-import io.nebulacms.app.extension.Extension;
-import io.nebulacms.app.extension.GroupVersion;
-import io.nebulacms.app.extension.GroupVersionKind;
-import io.nebulacms.app.extension.ListResult;
 
 /**
  * Utility class for public api.

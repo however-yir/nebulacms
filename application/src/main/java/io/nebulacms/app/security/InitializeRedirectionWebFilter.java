@@ -2,6 +2,8 @@ package io.nebulacms.app.security;
 
 import static org.springframework.security.web.server.util.matcher.ServerWebExchangeMatchers.pathMatchers;
 
+import io.nebulacms.app.infra.InitializationStateGetter;
+
 import java.net.URI;
 import java.util.Set;
 import lombok.Getter;
@@ -19,7 +21,6 @@ import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.server.WebFilter;
 import org.springframework.web.server.WebFilterChain;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.infra.InitializationStateGetter;
 
 /**
  * A web filter that will redirect user to set up page if system is not initialized.

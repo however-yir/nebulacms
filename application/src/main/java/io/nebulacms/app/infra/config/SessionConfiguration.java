@@ -1,5 +1,8 @@
 package io.nebulacms.app.infra.config;
 
+import io.nebulacms.app.security.session.InMemoryReactiveIndexedSessionRepository;
+import io.nebulacms.app.security.session.ReactiveIndexedSessionRepository;
+
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -12,8 +15,6 @@ import org.springframework.session.ReactiveSessionRepository;
 import org.springframework.session.Session;
 import org.springframework.session.config.annotation.web.server.EnableSpringWebSession;
 import org.springframework.session.security.SpringSessionBackedReactiveSessionRegistry;
-import io.nebulacms.app.security.session.InMemoryReactiveIndexedSessionRepository;
-import io.nebulacms.app.security.session.ReactiveIndexedSessionRepository;
 
 /**
  * Configuration for Spring Web Session.

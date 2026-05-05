@@ -2,6 +2,17 @@ package io.nebulacms.app.content.permalinks;
 
 import static org.springframework.web.util.UriUtils.encode;
 
+import io.nebulacms.app.content.PostService;
+import io.nebulacms.app.core.extension.content.Constant;
+import io.nebulacms.app.core.extension.content.Post;
+import io.nebulacms.app.extension.MetadataUtil;
+import io.nebulacms.app.infra.ExternalUrlSupplier;
+import io.nebulacms.app.infra.SystemConfigFetcher;
+import io.nebulacms.app.infra.SystemSetting;
+import io.nebulacms.app.infra.utils.PathUtils;
+import io.nebulacms.app.infra.utils.ReactiveUtils;
+import io.nebulacms.app.theme.utils.PatternUtils;
+
 import java.nio.charset.StandardCharsets;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -13,16 +24,6 @@ import java.util.Map;
 import java.util.Properties;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import io.nebulacms.app.content.PostService;
-import io.nebulacms.app.core.extension.content.Constant;
-import io.nebulacms.app.core.extension.content.Post;
-import io.nebulacms.app.extension.MetadataUtil;
-import io.nebulacms.app.infra.ExternalUrlSupplier;
-import io.nebulacms.app.infra.SystemConfigFetcher;
-import io.nebulacms.app.infra.SystemSetting;
-import io.nebulacms.app.infra.utils.PathUtils;
-import io.nebulacms.app.infra.utils.ReactiveUtils;
-import io.nebulacms.app.theme.utils.PatternUtils;
 
 /**
  * @author guqing

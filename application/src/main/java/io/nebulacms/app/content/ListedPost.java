@@ -2,13 +2,14 @@ package io.nebulacms.app.content;
 
 import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
 
+import io.nebulacms.app.core.extension.content.Category;
+import io.nebulacms.app.core.extension.content.Post;
+import io.nebulacms.app.core.extension.content.Tag;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.List;
 import lombok.Data;
 import lombok.experimental.Accessors;
-import io.nebulacms.app.core.extension.content.Category;
-import io.nebulacms.app.core.extension.content.Post;
-import io.nebulacms.app.core.extension.content.Tag;
 
 /**
  * An aggregate object of {@link Post} and {@link Category}

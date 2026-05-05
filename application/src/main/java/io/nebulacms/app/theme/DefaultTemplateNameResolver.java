@@ -2,11 +2,12 @@ package io.nebulacms.app.theme;
 
 import static io.nebulacms.app.plugin.PluginConst.SYSTEM_PLUGIN_NAME;
 
+import io.nebulacms.app.plugin.PluginApplicationContext;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.plugin.PluginApplicationContext;
 
 /**
  * A default implementation of {@link TemplateNameResolver}, It will be provided for plugins to

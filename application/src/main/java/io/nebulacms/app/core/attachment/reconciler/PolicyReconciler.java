@@ -1,7 +1,5 @@
 package io.nebulacms.app.core.attachment.reconciler;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 import io.nebulacms.app.core.extension.attachment.Policy;
 import io.nebulacms.app.extension.ConfigMap;
 import io.nebulacms.app.extension.ExtensionClient;
@@ -9,6 +7,9 @@ import io.nebulacms.app.extension.MetadataUtil;
 import io.nebulacms.app.extension.controller.Controller;
 import io.nebulacms.app.extension.controller.ControllerBuilder;
 import io.nebulacms.app.extension.controller.Reconciler;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor

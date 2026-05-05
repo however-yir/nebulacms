@@ -5,6 +5,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.lenient;
 
+import io.nebulacms.app.infra.exception.AccessDeniedException;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,7 +19,6 @@ import org.pf4j.PluginClassLoader;
 import org.pf4j.PluginManager;
 import org.pf4j.PluginWrapper;
 import org.springframework.core.io.Resource;
-import io.nebulacms.app.infra.exception.AccessDeniedException;
 
 /**
  * Tests for {@link BundleResourceUtils}.

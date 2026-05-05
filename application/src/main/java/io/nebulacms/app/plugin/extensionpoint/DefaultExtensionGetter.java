@@ -1,5 +1,10 @@
 package io.nebulacms.app.plugin.extensionpoint;
 
+import io.nebulacms.app.infra.SystemConfigFetcher;
+import io.nebulacms.app.infra.SystemSetting.ExtensionPointEnabled;
+import io.nebulacms.app.plugin.SpringPlugin;
+import io.nebulacms.app.plugin.SpringPluginManager;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -14,10 +19,6 @@ import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.infra.SystemConfigFetcher;
-import io.nebulacms.app.infra.SystemSetting.ExtensionPointEnabled;
-import io.nebulacms.app.plugin.SpringPlugin;
-import io.nebulacms.app.plugin.SpringPluginManager;
 
 @Slf4j
 @Component

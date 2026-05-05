@@ -1,5 +1,7 @@
 package io.nebulacms.app.theme.service;
 
+import static io.nebulacms.app.infra.utils.FileUtils.deleteRecursivelyAndSilently;
+import static io.nebulacms.app.infra.utils.FileUtils.zip;
 import static java.nio.file.Files.createTempDirectory;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -11,8 +13,21 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static io.nebulacms.app.infra.utils.FileUtils.deleteRecursivelyAndSilently;
-import static io.nebulacms.app.infra.utils.FileUtils.zip;
+
+import io.nebulacms.app.core.extension.AnnotationSetting;
+import io.nebulacms.app.core.extension.Setting;
+import io.nebulacms.app.core.extension.Theme;
+import io.nebulacms.app.extension.ConfigMap;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.Unstructured;
+import io.nebulacms.app.extension.exception.ExtensionException;
+import io.nebulacms.app.infra.SystemConfigFetcher;
+import io.nebulacms.app.infra.SystemSetting;
+import io.nebulacms.app.infra.SystemVersionSupplier;
+import io.nebulacms.app.infra.ThemeRootGetter;
+import io.nebulacms.app.infra.exception.ThemeInstallationException;
+import io.nebulacms.app.infra.utils.JsonUtils;
 
 import com.github.zafarkhaja.semver.Version;
 import java.io.IOException;
@@ -42,20 +57,6 @@ import org.springframework.web.server.ServerWebInputException;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.core.extension.AnnotationSetting;
-import io.nebulacms.app.core.extension.Setting;
-import io.nebulacms.app.core.extension.Theme;
-import io.nebulacms.app.extension.ConfigMap;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.Unstructured;
-import io.nebulacms.app.extension.exception.ExtensionException;
-import io.nebulacms.app.infra.SystemConfigFetcher;
-import io.nebulacms.app.infra.SystemSetting;
-import io.nebulacms.app.infra.SystemVersionSupplier;
-import io.nebulacms.app.infra.ThemeRootGetter;
-import io.nebulacms.app.infra.exception.ThemeInstallationException;
-import io.nebulacms.app.infra.utils.JsonUtils;
 
 @ExtendWith(MockitoExtension.class)
 class ThemeServiceImplTest {
@@ -174,7 +175,6 @@ class ThemeServiceImplTest {
 
     @Nested
     class InstallTest {
-
 
         @Test
         void shouldInstallSuccessfully() throws IOException, URISyntaxException {

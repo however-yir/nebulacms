@@ -1,8 +1,9 @@
 package io.nebulacms.app.notification;
 
+import io.nebulacms.app.infra.AnonymousUserConst;
+
 import java.util.Optional;
 import org.springframework.util.Assert;
-import io.nebulacms.app.infra.AnonymousUserConst;
 
 public record Subscriber(UserIdentity identity, String subscriptionName) {
     public Subscriber {

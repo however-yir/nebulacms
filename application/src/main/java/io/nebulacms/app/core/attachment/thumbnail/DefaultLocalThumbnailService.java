@@ -3,6 +3,11 @@ package io.nebulacms.app.core.attachment.thumbnail;
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 import static java.nio.file.StandardOpenOption.READ;
 
+import io.nebulacms.app.core.attachment.AttachmentRootGetter;
+import io.nebulacms.app.core.attachment.ThumbnailSize;
+import io.nebulacms.app.infra.properties.AttachmentProperties;
+import io.nebulacms.app.infra.properties.HaloProperties;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -23,10 +28,6 @@ import org.springframework.core.io.PathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.attachment.AttachmentRootGetter;
-import io.nebulacms.app.core.attachment.ThumbnailSize;
-import io.nebulacms.app.infra.properties.AttachmentProperties;
-import io.nebulacms.app.infra.properties.HaloProperties;
 
 /**
  * Default implementation of {@link LocalThumbnailService} that generates thumbnails using

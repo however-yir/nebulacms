@@ -6,6 +6,12 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.extension.GroupVersionKind;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.Unstructured;
+import io.nebulacms.app.infra.properties.HaloProperties;
+import io.nebulacms.app.infra.utils.JsonUtils;
+
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -26,11 +32,6 @@ import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.util.FileSystemUtils;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.extension.GroupVersionKind;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.Unstructured;
-import io.nebulacms.app.infra.properties.HaloProperties;
-import io.nebulacms.app.infra.utils.JsonUtils;
 
 /**
  * Tests for {@link ExtensionResourceInitializer}.

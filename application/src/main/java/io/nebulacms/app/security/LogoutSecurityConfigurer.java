@@ -2,6 +2,12 @@ package io.nebulacms.app.security;
 
 import static io.nebulacms.app.security.authentication.WebExchangeMatchers.ignoringMediaTypeAll;
 
+import io.nebulacms.app.core.user.service.UserLoginOrLogoutProcessing;
+import io.nebulacms.app.core.user.service.UserService;
+import io.nebulacms.app.infra.actuator.GlobalInfoService;
+import io.nebulacms.app.security.authentication.SecurityConfigurer;
+import io.nebulacms.app.theme.router.ModelConst;
+
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Map;
@@ -33,11 +39,6 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.user.service.UserLoginOrLogoutProcessing;
-import io.nebulacms.app.core.user.service.UserService;
-import io.nebulacms.app.infra.actuator.GlobalInfoService;
-import io.nebulacms.app.security.authentication.SecurityConfigurer;
-import io.nebulacms.app.theme.router.ModelConst;
 
 @Component
 @RequiredArgsConstructor
@@ -103,7 +104,6 @@ class LogoutSecurityConfigurer implements SecurityConfigurer {
             )
             .build();
     }
-
 
     private class LogoutSuccessHandler implements ServerLogoutSuccessHandler {
 

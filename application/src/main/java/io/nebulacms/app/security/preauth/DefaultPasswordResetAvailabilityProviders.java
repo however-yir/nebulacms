@@ -1,13 +1,14 @@
 package io.nebulacms.app.security.preauth;
 
+import io.nebulacms.app.infra.properties.HaloProperties;
+import io.nebulacms.app.infra.properties.SecurityProperties;
+import io.nebulacms.app.infra.properties.SecurityProperties.PasswordResetMethod;
+
 import java.util.List;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.infra.properties.HaloProperties;
-import io.nebulacms.app.infra.properties.SecurityProperties;
-import io.nebulacms.app.infra.properties.SecurityProperties.PasswordResetMethod;
 
 /**
  * Default password reset availability providers.

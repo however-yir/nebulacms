@@ -1,5 +1,7 @@
 package io.nebulacms.app.plugin;
 
+import io.nebulacms.app.extension.GroupVersionKind;
+
 import java.util.List;
 import java.util.concurrent.locks.StampedLock;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
@@ -10,7 +12,6 @@ import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.util.Assert;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-import io.nebulacms.app.extension.GroupVersionKind;
 
 /**
  * The generic IOC container for plugins.

@@ -9,6 +9,17 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.core.extension.content.SinglePage;
+import io.nebulacms.app.extension.ExtensionClient;
+import io.nebulacms.app.extension.GroupVersionKind;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.controller.Reconciler;
+import io.nebulacms.app.theme.DefaultTemplateEnum;
+import io.nebulacms.app.theme.ViewNameResolver;
+import io.nebulacms.app.theme.finders.SinglePageFinder;
+import io.nebulacms.app.theme.finders.vo.SinglePageVo;
+import io.nebulacms.app.theme.router.SinglePageRoute.NameSlugPair;
+
 import java.net.URI;
 import java.time.Instant;
 import java.util.HashMap;
@@ -42,16 +53,6 @@ import org.springframework.web.server.i18n.LocaleContextResolver;
 import org.springframework.web.util.UriUtils;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.core.extension.content.SinglePage;
-import io.nebulacms.app.extension.ExtensionClient;
-import io.nebulacms.app.extension.GroupVersionKind;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.controller.Reconciler;
-import io.nebulacms.app.theme.DefaultTemplateEnum;
-import io.nebulacms.app.theme.ViewNameResolver;
-import io.nebulacms.app.theme.finders.SinglePageFinder;
-import io.nebulacms.app.theme.finders.vo.SinglePageVo;
-import io.nebulacms.app.theme.router.SinglePageRoute.NameSlugPair;
 
 /**
  * Tests for {@link SinglePageRoute}.
@@ -226,7 +227,6 @@ class SinglePageRouteTest {
             verify(client).fetch(SinglePage.class, name);
             verify(routeMap).remove(NameSlugPair.from(page));
         }
-
 
         SinglePage newSinglePage(String name, boolean published) {
             var metadata = new Metadata();

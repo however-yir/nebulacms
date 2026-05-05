@@ -3,15 +3,6 @@ package io.nebulacms.app.core.endpoint.theme;
 import static org.springdoc.core.fn.builders.apiresponse.Builder.responseBuilder;
 import static org.springdoc.core.fn.builders.parameter.Builder.parameterBuilder;
 
-import io.swagger.v3.oas.annotations.enums.ParameterIn;
-import lombok.RequiredArgsConstructor;
-import org.springdoc.webflux.core.fn.SpringdocRouteBuilder;
-import org.springframework.http.MediaType;
-import org.springframework.stereotype.Component;
-import org.springframework.web.reactive.function.server.RouterFunction;
-import org.springframework.web.reactive.function.server.ServerRequest;
-import org.springframework.web.reactive.function.server.ServerResponse;
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.core.extension.content.Post;
 import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
 import io.nebulacms.app.extension.GroupVersion;
@@ -22,6 +13,16 @@ import io.nebulacms.app.theme.finders.PostPublicQueryService;
 import io.nebulacms.app.theme.finders.vo.ListedPostVo;
 import io.nebulacms.app.theme.finders.vo.NavigationPostVo;
 import io.nebulacms.app.theme.finders.vo.PostVo;
+
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
+import lombok.RequiredArgsConstructor;
+import org.springdoc.webflux.core.fn.SpringdocRouteBuilder;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Component;
+import org.springframework.web.reactive.function.server.RouterFunction;
+import org.springframework.web.reactive.function.server.ServerRequest;
+import org.springframework.web.reactive.function.server.ServerResponse;
+import reactor.core.publisher.Mono;
 
 /**
  * Endpoint for post query.

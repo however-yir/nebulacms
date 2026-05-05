@@ -52,7 +52,6 @@ public class IpAddressUtils {
             ? UNKNOWN : remoteAddress.getAddress().getHostAddress();
     }
 
-
     /**
      * Gets the ip address from request.
      *

@@ -60,7 +60,6 @@ class ViewNameResolverTest {
         Files.createFile(templatesPath.resolve("post_news.html"));
         Files.createFile(templatesPath.resolve("post_docs.html"));
 
-
         var exchange = Mockito.mock(ServerWebExchange.class);
         when(themeResolver.getTheme(exchange))
             .thenReturn(Mono.fromSupplier(() -> ThemeContext.builder()

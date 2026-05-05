@@ -1,5 +1,6 @@
 package io.nebulacms.app.plugin.extensionpoint;
 
+import static io.nebulacms.app.infra.SystemSetting.ExtensionPointEnabled.GROUP;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
@@ -7,7 +8,11 @@ import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
-import static io.nebulacms.app.infra.SystemSetting.ExtensionPointEnabled.GROUP;
+
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.infra.SystemConfigFetcher;
+import io.nebulacms.app.infra.SystemSetting.ExtensionPointEnabled;
+import io.nebulacms.app.plugin.extensionpoint.ExtensionPointDefinition.ExtensionPointType;
 
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -24,10 +29,6 @@ import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.core.annotation.Order;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.infra.SystemConfigFetcher;
-import io.nebulacms.app.infra.SystemSetting.ExtensionPointEnabled;
-import io.nebulacms.app.plugin.extensionpoint.ExtensionPointDefinition.ExtensionPointType;
 
 @ExtendWith(MockitoExtension.class)
 class DefaultExtensionGetterTest {
@@ -176,7 +177,6 @@ class DefaultExtensionGetterTest {
             .expectNext(extensionImpl)
             .verifyComplete();
     }
-
 
     @Test
     void shouldGetMultiInstanceExtensionWhileExtensionPointEnabledNotSet() {

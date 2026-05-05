@@ -1,5 +1,15 @@
 package io.nebulacms.app.core.user.service.impl;
 
+import io.nebulacms.app.core.user.service.PatService;
+import io.nebulacms.app.core.user.service.RoleService;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.infra.ExternalUrlSupplier;
+import io.nebulacms.app.infra.exception.NotFoundException;
+import io.nebulacms.app.security.PersonalAccessToken;
+import io.nebulacms.app.security.authentication.CryptoService;
+import io.nebulacms.app.security.authorization.AuthorityUtils;
+
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
 import java.time.Clock;
@@ -28,15 +38,6 @@ import org.springframework.util.IdGenerator;
 import org.springframework.web.filter.reactive.ServerWebExchangeContextFilter;
 import org.springframework.web.server.ServerWebInputException;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.user.service.PatService;
-import io.nebulacms.app.core.user.service.RoleService;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.infra.ExternalUrlSupplier;
-import io.nebulacms.app.infra.exception.NotFoundException;
-import io.nebulacms.app.security.PersonalAccessToken;
-import io.nebulacms.app.security.authentication.CryptoService;
-import io.nebulacms.app.security.authorization.AuthorityUtils;
 
 /**
  * Service for managing personal access tokens (PATs).

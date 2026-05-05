@@ -10,6 +10,15 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.store.ExtensionStore;
+import io.nebulacms.app.extension.store.ExtensionStoreRepository;
+import io.nebulacms.app.infra.BackupRootGetter;
+import io.nebulacms.app.infra.exception.NotFoundException;
+import io.nebulacms.app.infra.properties.HaloProperties;
+import io.nebulacms.app.infra.utils.FileUtils;
+import io.nebulacms.app.migration.Backup;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -38,14 +47,6 @@ import org.springframework.transaction.ReactiveTransaction;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.store.ExtensionStore;
-import io.nebulacms.app.extension.store.ExtensionStoreRepository;
-import io.nebulacms.app.infra.BackupRootGetter;
-import io.nebulacms.app.infra.exception.NotFoundException;
-import io.nebulacms.app.infra.properties.HaloProperties;
-import io.nebulacms.app.infra.utils.FileUtils;
-import io.nebulacms.app.migration.Backup;
 
 @ExtendWith(MockitoExtension.class)
 class MigrationServiceImplTest {
@@ -144,7 +145,6 @@ class MigrationServiceImplTest {
         var workdir = tempDir.resolve("workdir-for-restoration");
         Files.createDirectory(workdir);
 
-
         var expectStore = createExtensionStore("fake-extension-store", "fake-data");
         expectStore.setVersion(null);
 
@@ -162,7 +162,6 @@ class MigrationServiceImplTest {
             StandardOpenOption.READ);
         StepVerifier.create(migrationService.restore(content))
             .verifyComplete();
-
 
         verify(haloProperties).getWorkDir();
         verify(repository).deleteAll();

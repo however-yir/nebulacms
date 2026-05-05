@@ -1,10 +1,11 @@
 package io.nebulacms.app.infra;
 
+import io.nebulacms.app.extension.ConfigMap;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+
 import java.util.Map;
 import java.util.Optional;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.extension.ConfigMap;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
 
 /**
  * A fetcher that fetches the system configuration from the extension client.

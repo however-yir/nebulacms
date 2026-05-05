@@ -1,11 +1,12 @@
 package io.nebulacms.app.security.authentication.login;
 
+import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
 
 @Slf4j
 public class UsernamePasswordDelegatingAuthenticationManager

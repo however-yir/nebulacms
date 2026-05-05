@@ -10,6 +10,20 @@ import static org.mockito.Mockito.when;
 import static org.springframework.security.test.web.reactive.server.SecurityMockServerConfigurers.mockUser;
 import static org.springframework.security.test.web.reactive.server.SecurityMockServerConfigurers.springSecurity;
 
+import io.nebulacms.app.core.attachment.AttachmentLister;
+import io.nebulacms.app.core.attachment.endpoint.AttachmentEndpoint;
+import io.nebulacms.app.core.extension.attachment.Attachment;
+import io.nebulacms.app.core.extension.attachment.Group;
+import io.nebulacms.app.core.extension.attachment.Policy;
+import io.nebulacms.app.core.extension.attachment.Policy.PolicySpec;
+import io.nebulacms.app.core.user.service.impl.DefaultAttachmentService;
+import io.nebulacms.app.extension.ConfigMap;
+import io.nebulacms.app.extension.ListResult;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.infra.ReactiveUrlDataBufferFetcher;
+import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
+
 import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
@@ -27,19 +41,6 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.web.reactive.function.BodyInserters;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.attachment.AttachmentLister;
-import io.nebulacms.app.core.attachment.endpoint.AttachmentEndpoint;
-import io.nebulacms.app.core.extension.attachment.Attachment;
-import io.nebulacms.app.core.extension.attachment.Group;
-import io.nebulacms.app.core.extension.attachment.Policy;
-import io.nebulacms.app.core.extension.attachment.Policy.PolicySpec;
-import io.nebulacms.app.core.user.service.impl.DefaultAttachmentService;
-import io.nebulacms.app.extension.ConfigMap;
-import io.nebulacms.app.extension.ListResult;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.infra.ReactiveUrlDataBufferFetcher;
-import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
 
 @ExtendWith(MockitoExtension.class)
 class AttachmentEndpointTest {

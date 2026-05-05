@@ -1,12 +1,19 @@
 package io.nebulacms.app.security.authorization;
 
+import static io.nebulacms.app.core.extension.Role.ROLE_AGGREGATE_LABEL_PREFIX;
 import static org.mockito.ArgumentMatchers.anySet;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.security.test.web.reactive.server.SecurityMockServerConfigurers.csrf;
-import static io.nebulacms.app.core.extension.Role.ROLE_AGGREGATE_LABEL_PREFIX;
+
+import io.nebulacms.app.core.extension.Role;
+import io.nebulacms.app.core.extension.Role.PolicyRule;
+import io.nebulacms.app.core.user.service.RoleService;
+import io.nebulacms.app.extension.ExtensionClient;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.infra.AnonymousUserConst;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,12 +40,6 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.Role;
-import io.nebulacms.app.core.extension.Role.PolicyRule;
-import io.nebulacms.app.core.user.service.RoleService;
-import io.nebulacms.app.extension.ExtensionClient;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.infra.AnonymousUserConst;
 
 @SpringBootTest
 @AutoConfigureWebTestClient

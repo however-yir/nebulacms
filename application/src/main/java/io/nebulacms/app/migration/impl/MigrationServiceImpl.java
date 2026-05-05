@@ -1,14 +1,26 @@
 package io.nebulacms.app.migration.impl;
 
-import static java.nio.file.Files.deleteIfExists;
-import static java.util.Comparator.comparing;
-import static org.apache.commons.io.FilenameUtils.isExtension;
-import static org.springframework.util.FileSystemUtils.copyRecursively;
 import static io.nebulacms.app.infra.utils.FileUtils.checkDirectoryTraversal;
 import static io.nebulacms.app.infra.utils.FileUtils.copyRecursively;
 import static io.nebulacms.app.infra.utils.FileUtils.createTempDir;
 import static io.nebulacms.app.infra.utils.FileUtils.deleteRecursivelyAndSilently;
 import static io.nebulacms.app.infra.utils.FileUtils.unzip;
+import static java.nio.file.Files.deleteIfExists;
+import static java.util.Comparator.comparing;
+import static org.apache.commons.io.FilenameUtils.isExtension;
+import static org.springframework.util.FileSystemUtils.copyRecursively;
+
+import io.nebulacms.app.extension.ExtensionStoreUtil;
+import io.nebulacms.app.extension.Scheme;
+import io.nebulacms.app.extension.store.ExtensionStore;
+import io.nebulacms.app.extension.store.ExtensionStoreRepository;
+import io.nebulacms.app.infra.BackupRootGetter;
+import io.nebulacms.app.infra.exception.NotFoundException;
+import io.nebulacms.app.infra.properties.HaloProperties;
+import io.nebulacms.app.infra.utils.FileUtils;
+import io.nebulacms.app.migration.Backup;
+import io.nebulacms.app.migration.BackupFile;
+import io.nebulacms.app.migration.MigrationService;
 
 import com.fasterxml.jackson.core.util.MinimalPrettyPrinter;
 import com.fasterxml.jackson.databind.MappingIterator;
@@ -44,17 +56,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Scheduler;
 import reactor.core.scheduler.Schedulers;
-import io.nebulacms.app.extension.ExtensionStoreUtil;
-import io.nebulacms.app.extension.Scheme;
-import io.nebulacms.app.extension.store.ExtensionStore;
-import io.nebulacms.app.extension.store.ExtensionStoreRepository;
-import io.nebulacms.app.infra.BackupRootGetter;
-import io.nebulacms.app.infra.exception.NotFoundException;
-import io.nebulacms.app.infra.properties.HaloProperties;
-import io.nebulacms.app.infra.utils.FileUtils;
-import io.nebulacms.app.migration.Backup;
-import io.nebulacms.app.migration.BackupFile;
-import io.nebulacms.app.migration.MigrationService;
 
 @Slf4j
 @Service

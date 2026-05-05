@@ -1,24 +1,12 @@
 package io.nebulacms.app.theme.router.factories;
 
-import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
-import static org.springframework.web.reactive.function.server.RequestPredicates.accept;
 import static io.nebulacms.app.extension.index.query.Queries.and;
 import static io.nebulacms.app.extension.index.query.Queries.equal;
 import static io.nebulacms.app.extension.index.query.Queries.isNull;
 import static io.nebulacms.app.theme.router.PageUrlUtils.totalPage;
+import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
+import static org.springframework.web.reactive.function.server.RequestPredicates.accept;
 
-import java.util.HashMap;
-import java.util.Map;
-import lombok.AllArgsConstructor;
-import org.springframework.http.MediaType;
-import org.springframework.stereotype.Component;
-import org.springframework.web.reactive.function.server.HandlerFunction;
-import org.springframework.web.reactive.function.server.RouterFunction;
-import org.springframework.web.reactive.function.server.RouterFunctions;
-import org.springframework.web.reactive.function.server.ServerRequest;
-import org.springframework.web.reactive.function.server.ServerResponse;
-import org.springframework.web.server.i18n.LocaleContextResolver;
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.core.extension.content.Category;
 import io.nebulacms.app.extension.ListOptions;
 import io.nebulacms.app.extension.ListResult;
@@ -39,6 +27,19 @@ import io.nebulacms.app.theme.router.ModelConst;
 import io.nebulacms.app.theme.router.PageUrlUtils;
 import io.nebulacms.app.theme.router.TitleVisibilityIdentifyCalculator;
 import io.nebulacms.app.theme.router.UrlContextListResult;
+
+import java.util.HashMap;
+import java.util.Map;
+import lombok.AllArgsConstructor;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Component;
+import org.springframework.web.reactive.function.server.HandlerFunction;
+import org.springframework.web.reactive.function.server.RouterFunction;
+import org.springframework.web.reactive.function.server.RouterFunctions;
+import org.springframework.web.reactive.function.server.ServerRequest;
+import org.springframework.web.reactive.function.server.ServerResponse;
+import org.springframework.web.server.i18n.LocaleContextResolver;
+import reactor.core.publisher.Mono;
 
 /**
  * The {@link CategoryPostRouteFactory} for generate {@link RouterFunction} specific to the template

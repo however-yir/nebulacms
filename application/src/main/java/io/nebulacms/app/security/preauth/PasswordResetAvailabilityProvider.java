@@ -1,7 +1,8 @@
 package io.nebulacms.app.security.preauth;
 
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.infra.properties.SecurityProperties;
+
+import reactor.core.publisher.Mono;
 
 /**
  * Password reset availability provider.

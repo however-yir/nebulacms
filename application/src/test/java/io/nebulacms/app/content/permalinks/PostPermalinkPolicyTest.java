@@ -5,6 +5,17 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.content.PostService;
+import io.nebulacms.app.content.TestPost;
+import io.nebulacms.app.core.extension.content.Category;
+import io.nebulacms.app.core.extension.content.Constant;
+import io.nebulacms.app.core.extension.content.Post;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.MetadataUtil;
+import io.nebulacms.app.infra.ExternalUrlSupplier;
+import io.nebulacms.app.infra.SystemConfigFetcher;
+import io.nebulacms.app.infra.utils.PathUtils;
+
 import java.net.URI;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -20,16 +31,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.context.ApplicationContext;
 import reactor.core.publisher.Flux;
-import io.nebulacms.app.content.PostService;
-import io.nebulacms.app.content.TestPost;
-import io.nebulacms.app.core.extension.content.Category;
-import io.nebulacms.app.core.extension.content.Constant;
-import io.nebulacms.app.core.extension.content.Post;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.MetadataUtil;
-import io.nebulacms.app.infra.ExternalUrlSupplier;
-import io.nebulacms.app.infra.SystemConfigFetcher;
-import io.nebulacms.app.infra.utils.PathUtils;
 
 /**
  * Tests for {@link PostPermalinkPolicy}.

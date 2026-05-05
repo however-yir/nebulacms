@@ -12,6 +12,11 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.security.core.authority.AuthorityUtils.authorityListToSet;
 
+import io.nebulacms.app.core.user.service.RoleService;
+import io.nebulacms.app.core.user.service.UserService;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.infra.exception.UserNotFoundException;
+
 import java.util.Set;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -25,10 +30,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.core.user.service.RoleService;
-import io.nebulacms.app.core.user.service.UserService;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.infra.exception.UserNotFoundException;
 
 @ExtendWith(MockitoExtension.class)
 class DefaultUserDetailServiceTest {

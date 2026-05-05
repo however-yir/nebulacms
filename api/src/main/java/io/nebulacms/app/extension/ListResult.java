@@ -2,6 +2,8 @@ package io.nebulacms.app.extension;
 
 import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
 
+import io.nebulacms.app.infra.utils.GenericClassUtils;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -14,7 +16,6 @@ import java.util.function.Supplier;
 import java.util.stream.Stream;
 import lombok.Data;
 import org.springframework.util.Assert;
-import io.nebulacms.app.infra.utils.GenericClassUtils;
 
 @Data
 public class ListResult<T> implements Iterable<T>, Supplier<Stream<T>> {

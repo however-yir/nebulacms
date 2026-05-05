@@ -1,5 +1,7 @@
 package io.nebulacms.app.infra;
 
+import io.nebulacms.app.infra.properties.HaloProperties;
+
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -14,7 +16,6 @@ import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import reactor.core.Exceptions;
-import io.nebulacms.app.infra.properties.HaloProperties;
 
 /**
  * Default implementation for getting external url from system config first, halo properties second.

@@ -1,5 +1,9 @@
 package io.nebulacms.app.infra.actuator;
 
+import io.nebulacms.app.infra.ExternalUrlSupplier;
+import io.nebulacms.app.infra.SystemConfigFetcher;
+import io.nebulacms.app.infra.SystemSetting;
+
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Map;
@@ -10,9 +14,6 @@ import org.reactivestreams.Publisher;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.infra.ExternalUrlSupplier;
-import io.nebulacms.app.infra.SystemConfigFetcher;
-import io.nebulacms.app.infra.SystemSetting;
 
 /**
  * Global info service implementation.

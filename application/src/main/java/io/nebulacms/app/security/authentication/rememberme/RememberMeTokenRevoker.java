@@ -1,12 +1,13 @@
 package io.nebulacms.app.security.authentication.rememberme;
 
+import io.nebulacms.app.event.user.PasswordChangedEvent;
+import io.nebulacms.app.infra.utils.ReactiveUtils;
+
 import java.time.Duration;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
-import io.nebulacms.app.event.user.PasswordChangedEvent;
-import io.nebulacms.app.infra.utils.ReactiveUtils;
 
 /**
  * Remember me token revoker.

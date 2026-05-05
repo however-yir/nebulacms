@@ -1,5 +1,9 @@
 package io.nebulacms.app.infra.exception.handlers;
 
+import io.nebulacms.app.theme.ThemeContext;
+import io.nebulacms.app.theme.ThemeResolver;
+import io.nebulacms.app.theme.engine.ThemeTemplateAvailabilityProvider;
+
 import java.util.Map;
 import java.util.Optional;
 import org.springframework.boot.autoconfigure.web.ErrorProperties;
@@ -13,9 +17,6 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 import reactor.util.context.Context;
-import io.nebulacms.app.theme.ThemeContext;
-import io.nebulacms.app.theme.ThemeResolver;
-import io.nebulacms.app.theme.engine.ThemeTemplateAvailabilityProvider;
 
 public class HaloErrorWebExceptionHandler extends DefaultErrorWebExceptionHandler {
 

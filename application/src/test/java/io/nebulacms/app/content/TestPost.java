@@ -1,12 +1,13 @@
 package io.nebulacms.app.content;
 
-import java.time.Instant;
 import io.nebulacms.app.core.extension.content.Post;
 import io.nebulacms.app.core.extension.content.Snapshot;
 import io.nebulacms.app.extension.AbstractExtension;
 import io.nebulacms.app.extension.GVK;
 import io.nebulacms.app.extension.Metadata;
 import io.nebulacms.app.extension.MetadataUtil;
+
+import java.time.Instant;
 
 /**
  * @author guqing

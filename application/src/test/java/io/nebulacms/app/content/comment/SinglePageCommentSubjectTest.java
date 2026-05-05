@@ -8,6 +8,13 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.core.extension.content.Constant;
+import io.nebulacms.app.core.extension.content.SinglePage;
+import io.nebulacms.app.extension.FakeExtension;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.Ref;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -15,12 +22,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.core.extension.content.Constant;
-import io.nebulacms.app.core.extension.content.SinglePage;
-import io.nebulacms.app.extension.FakeExtension;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.Ref;
 
 /**
  * Tests for {@link SinglePageCommentSubject}.
@@ -74,7 +75,6 @@ class SinglePageCommentSubjectTest {
         supports = singlePageCommentSubject.supports(Ref.of(fakeExtension));
         assertThat(supports).isFalse();
     }
-
 
     @Test
     void shouldSupportRefWithoutVersion() {

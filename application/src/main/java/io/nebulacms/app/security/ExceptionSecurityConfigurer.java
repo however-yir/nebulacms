@@ -3,6 +3,9 @@ package io.nebulacms.app.security;
 import static org.springframework.security.web.server.util.matcher.ServerWebExchangeMatchers.anyExchange;
 import static org.springframework.security.web.server.util.matcher.ServerWebExchangeMatchers.pathMatchers;
 
+import io.nebulacms.app.security.authentication.SecurityConfigurer;
+import io.nebulacms.app.security.authentication.twofactor.TwoFactorAuthenticationEntryPoint;
+
 import java.util.ArrayList;
 import org.springframework.context.MessageSource;
 import org.springframework.core.annotation.Order;
@@ -18,8 +21,6 @@ import org.springframework.security.web.server.authorization.ServerWebExchangeDe
 import org.springframework.security.web.server.savedrequest.ServerRequestCache;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerResponse;
-import io.nebulacms.app.security.authentication.SecurityConfigurer;
-import io.nebulacms.app.security.authentication.twofactor.TwoFactorAuthenticationEntryPoint;
 
 @Component
 @Order(0)

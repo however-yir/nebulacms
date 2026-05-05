@@ -1,10 +1,11 @@
 package io.nebulacms.app.notification;
 
+import io.nebulacms.app.core.extension.notification.Reason;
+
 import java.util.HashMap;
 import java.util.Map;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import io.nebulacms.app.core.extension.notification.Reason;
 
 /**
  * A value object to hold reason payload.

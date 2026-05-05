@@ -1,5 +1,7 @@
 package io.nebulacms.app.extension.store;
 
+import io.nebulacms.app.infra.exception.DuplicateNameException;
+
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
@@ -22,7 +24,6 @@ import org.springframework.util.Assert;
 import org.springframework.util.CollectionUtils;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.infra.exception.DuplicateNameException;
 
 @Component
 @RequiredArgsConstructor

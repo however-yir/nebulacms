@@ -1,11 +1,12 @@
 package io.nebulacms.app.content;
 
+import io.nebulacms.app.core.extension.content.Post;
+
 import java.time.Instant;
 import java.util.Comparator;
 import java.util.Objects;
 import java.util.function.Function;
 import org.springframework.util.comparator.Comparators;
-import io.nebulacms.app.core.extension.content.Post;
 
 /**
  * A sorter for {@link Post}.

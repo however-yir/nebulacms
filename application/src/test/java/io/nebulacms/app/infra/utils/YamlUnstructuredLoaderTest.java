@@ -2,13 +2,14 @@ package io.nebulacms.app.infra.utils;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import io.nebulacms.app.extension.Unstructured;
+
 import java.util.List;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.core.io.Resource;
 import org.springframework.security.util.InMemoryResource;
-import io.nebulacms.app.extension.Unstructured;
 
 /**
  * Tests for {@link YamlUnstructuredLoader}.

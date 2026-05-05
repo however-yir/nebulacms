@@ -4,6 +4,13 @@ import static io.nebulacms.app.extension.ExtensionUtil.defaultSort;
 import static io.nebulacms.app.infra.utils.IpAddressUtils.getClientIp;
 import static io.nebulacms.app.security.authentication.rememberme.PersistentTokenBasedRememberMeServices.REMEMBER_ME_SERIES_REQUEST_NAME;
 
+import io.nebulacms.app.core.extension.Device;
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.index.query.Queries;
+import io.nebulacms.app.security.authentication.rememberme.PersistentRememberMeTokenRepository;
+
 import java.security.Principal;
 import java.time.Duration;
 import java.time.Instant;
@@ -28,12 +35,6 @@ import org.springframework.util.Assert;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 import reactor.util.retry.Retry;
-import io.nebulacms.app.core.extension.Device;
-import io.nebulacms.app.extension.ListOptions;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.index.query.Queries;
-import io.nebulacms.app.security.authentication.rememberme.PersistentRememberMeTokenRepository;
 
 @Slf4j
 @Component

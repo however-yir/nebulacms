@@ -1,15 +1,16 @@
 package io.nebulacms.app.core.extension;
 
-import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
 import static io.nebulacms.app.extension.GroupVersionKind.fromExtension;
+import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
+
+import io.nebulacms.app.extension.AbstractExtension;
+import io.nebulacms.app.extension.GVK;
+import io.nebulacms.app.extension.GroupVersionKind;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import io.nebulacms.app.extension.AbstractExtension;
-import io.nebulacms.app.extension.GVK;
-import io.nebulacms.app.extension.GroupVersionKind;
 
 /**
  * {@link Setting} is a custom extension to generate forms based on configuration.

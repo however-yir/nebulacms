@@ -1,12 +1,13 @@
 package io.nebulacms.app.theme.finders.vo;
 
+import io.nebulacms.app.core.extension.MenuItem;
+import io.nebulacms.app.extension.MetadataOperator;
+
 import java.util.List;
 import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
 import org.apache.commons.lang3.StringUtils;
-import io.nebulacms.app.core.extension.MenuItem;
-import io.nebulacms.app.extension.MetadataOperator;
 
 /**
  * A value object for {@link MenuItem}.

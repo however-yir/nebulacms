@@ -1,9 +1,10 @@
 package io.nebulacms.app.core.user.service;
 
+import io.nebulacms.app.core.extension.UserConnection;
+
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.UserConnection;
 
 public interface UserConnectionService {
 

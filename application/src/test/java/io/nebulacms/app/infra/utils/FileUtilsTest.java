@@ -1,13 +1,15 @@
 package io.nebulacms.app.infra.utils;
 
-import static java.util.Objects.requireNonNull;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static io.nebulacms.app.infra.utils.FileUtils.checkDirectoryTraversal;
 import static io.nebulacms.app.infra.utils.FileUtils.deleteFileSilently;
 import static io.nebulacms.app.infra.utils.FileUtils.jar;
 import static io.nebulacms.app.infra.utils.FileUtils.unzip;
 import static io.nebulacms.app.infra.utils.FileUtils.zip;
+import static java.util.Objects.requireNonNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import io.nebulacms.app.infra.exception.AccessDeniedException;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -20,7 +22,6 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.infra.exception.AccessDeniedException;
 
 class FileUtilsTest {
 

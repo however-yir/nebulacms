@@ -1,5 +1,8 @@
 package io.nebulacms.app.core.extension.service;
 
+import io.nebulacms.app.core.attachment.ThumbnailSize;
+import io.nebulacms.app.core.extension.attachment.Attachment;
+
 import java.net.URI;
 import java.net.URL;
 import java.time.Duration;
@@ -12,8 +15,6 @@ import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.attachment.ThumbnailSize;
-import io.nebulacms.app.core.extension.attachment.Attachment;
 
 /**
  * AttachmentService.

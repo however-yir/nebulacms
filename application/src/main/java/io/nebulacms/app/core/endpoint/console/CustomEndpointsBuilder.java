@@ -1,5 +1,8 @@
 package io.nebulacms.app.core.endpoint.console;
 
+import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
+import io.nebulacms.app.extension.GroupVersion;
+
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -9,8 +12,6 @@ import org.springframework.web.reactive.function.server.RequestPredicates;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
-import io.nebulacms.app.extension.GroupVersion;
 
 public class CustomEndpointsBuilder {
 

@@ -1,11 +1,12 @@
 package io.nebulacms.app.search;
 
+import io.nebulacms.app.infra.exception.RequestBodyValidationException;
+import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
+
 import org.springframework.stereotype.Service;
 import org.springframework.validation.Validator;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
-import io.nebulacms.app.infra.exception.RequestBodyValidationException;
-import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
 
 @Service
 public class SearchServiceImpl implements SearchService {

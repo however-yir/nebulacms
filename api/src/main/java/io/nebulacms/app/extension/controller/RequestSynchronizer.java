@@ -2,15 +2,16 @@ package io.nebulacms.app.extension.controller;
 
 import static org.springframework.data.domain.Sort.Direction.ASC;
 
-import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Sort;
 import io.nebulacms.app.extension.Extension;
 import io.nebulacms.app.extension.ExtensionClient;
 import io.nebulacms.app.extension.ListOptions;
 import io.nebulacms.app.extension.Watcher;
 import io.nebulacms.app.extension.controller.Reconciler.Request;
 import io.nebulacms.app.extension.index.query.Queries;
+
+import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Sort;
 
 @Slf4j
 public class RequestSynchronizer implements Synchronizer<Request> {

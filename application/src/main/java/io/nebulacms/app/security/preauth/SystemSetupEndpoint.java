@@ -1,5 +1,6 @@
 package io.nebulacms.app.security.preauth;
 
+import static io.nebulacms.app.infra.ValidationUtils.validate;
 import static io.r2dbc.spi.ConnectionFactoryOptions.DRIVER;
 import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
 import static org.springdoc.core.fn.builders.apiresponse.Builder.responseBuilder;
@@ -9,7 +10,24 @@ import static org.springdoc.core.fn.builders.schema.Builder.schemaBuilder;
 import static org.springframework.web.reactive.function.server.RequestPredicates.accept;
 import static org.springframework.web.reactive.function.server.RequestPredicates.contentType;
 import static org.springframework.web.reactive.function.server.RequestPredicates.path;
-import static io.nebulacms.app.infra.ValidationUtils.validate;
+
+import io.nebulacms.app.extension.ConfigMap;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.Unstructured;
+import io.nebulacms.app.infra.ExternalUrlChangedEvent;
+import io.nebulacms.app.infra.ExternalUrlSupplier;
+import io.nebulacms.app.infra.InitializationStateGetter;
+import io.nebulacms.app.infra.SystemConfigFetcher;
+import io.nebulacms.app.infra.SystemSetting;
+import io.nebulacms.app.infra.SystemState;
+import io.nebulacms.app.infra.ValidationUtils;
+import io.nebulacms.app.infra.exception.RequestBodyValidationException;
+import io.nebulacms.app.infra.utils.HaloUtils;
+import io.nebulacms.app.infra.utils.JsonUtils;
+import io.nebulacms.app.infra.utils.YamlUnstructuredLoader;
+import io.nebulacms.app.plugin.PluginService;
+import io.nebulacms.app.security.SuperAdminInitializer;
+import io.nebulacms.app.theme.service.ThemeService;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Email;
@@ -55,23 +73,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 import reactor.util.retry.Retry;
-import io.nebulacms.app.extension.ConfigMap;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.Unstructured;
-import io.nebulacms.app.infra.ExternalUrlChangedEvent;
-import io.nebulacms.app.infra.ExternalUrlSupplier;
-import io.nebulacms.app.infra.InitializationStateGetter;
-import io.nebulacms.app.infra.SystemConfigFetcher;
-import io.nebulacms.app.infra.SystemSetting;
-import io.nebulacms.app.infra.SystemState;
-import io.nebulacms.app.infra.ValidationUtils;
-import io.nebulacms.app.infra.exception.RequestBodyValidationException;
-import io.nebulacms.app.infra.utils.HaloUtils;
-import io.nebulacms.app.infra.utils.JsonUtils;
-import io.nebulacms.app.infra.utils.YamlUnstructuredLoader;
-import io.nebulacms.app.plugin.PluginService;
-import io.nebulacms.app.security.SuperAdminInitializer;
-import io.nebulacms.app.theme.service.ThemeService;
 
 @Component
 @RequiredArgsConstructor

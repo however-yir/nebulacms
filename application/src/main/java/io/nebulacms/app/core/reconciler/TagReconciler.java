@@ -4,10 +4,6 @@ import static io.nebulacms.app.extension.ExtensionUtil.addFinalizers;
 import static io.nebulacms.app.extension.ExtensionUtil.removeFinalizers;
 import static io.nebulacms.app.extension.index.query.Queries.equal;
 
-import java.util.Map;
-import java.util.Set;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 import io.nebulacms.app.content.permalinks.TagPermalinkPolicy;
 import io.nebulacms.app.core.extension.content.Constant;
 import io.nebulacms.app.core.extension.content.Tag;
@@ -18,6 +14,11 @@ import io.nebulacms.app.extension.MetadataUtil;
 import io.nebulacms.app.extension.controller.Controller;
 import io.nebulacms.app.extension.controller.ControllerBuilder;
 import io.nebulacms.app.extension.controller.Reconciler;
+
+import java.util.Map;
+import java.util.Set;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 /**
  * Reconciler for {@link Tag}.

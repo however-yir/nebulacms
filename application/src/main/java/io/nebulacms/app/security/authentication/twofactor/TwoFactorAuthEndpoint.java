@@ -5,6 +5,17 @@ import static org.springdoc.core.fn.builders.requestbody.Builder.requestBodyBuil
 import static org.springdoc.webflux.core.fn.SpringdocRouteBuilder.route;
 import static org.springframework.web.reactive.function.server.RequestPredicates.path;
 
+import io.nebulacms.app.core.extension.User;
+import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
+import io.nebulacms.app.core.user.service.UserService;
+import io.nebulacms.app.extension.GroupVersion;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.infra.ExternalUrlSupplier;
+import io.nebulacms.app.infra.ValidationUtils;
+import io.nebulacms.app.infra.exception.AccessDeniedException;
+import io.nebulacms.app.infra.exception.RequestBodyValidationException;
+import io.nebulacms.app.security.authentication.twofactor.totp.TotpAuthService;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import java.net.URI;
@@ -22,16 +33,6 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.server.ServerWebInputException;
 import org.springframework.web.util.UriComponentsBuilder;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.User;
-import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
-import io.nebulacms.app.core.user.service.UserService;
-import io.nebulacms.app.extension.GroupVersion;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.infra.ExternalUrlSupplier;
-import io.nebulacms.app.infra.ValidationUtils;
-import io.nebulacms.app.infra.exception.AccessDeniedException;
-import io.nebulacms.app.infra.exception.RequestBodyValidationException;
-import io.nebulacms.app.security.authentication.twofactor.totp.TotpAuthService;
 
 @Component
 public class TwoFactorAuthEndpoint implements CustomEndpoint {

@@ -1,7 +1,8 @@
 package io.nebulacms.app.extension.gc;
 
-import org.springframework.util.Assert;
 import io.nebulacms.app.extension.GroupVersionKind;
+
+import org.springframework.util.Assert;
 
 record GcRequest(GroupVersionKind gvk, String name) {
 

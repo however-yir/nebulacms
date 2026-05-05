@@ -5,16 +5,6 @@ import static org.springdoc.core.fn.builders.content.Builder.contentBuilder;
 import static org.springdoc.core.fn.builders.parameter.Builder.parameterBuilder;
 import static org.springdoc.core.fn.builders.requestbody.Builder.requestBodyBuilder;
 
-import io.swagger.v3.oas.annotations.enums.ParameterIn;
-import java.time.Instant;
-import org.springdoc.core.fn.builders.schema.Builder;
-import org.springdoc.webflux.core.fn.SpringdocRouteBuilder;
-import org.springframework.http.MediaType;
-import org.springframework.stereotype.Component;
-import org.springframework.web.reactive.function.server.RouterFunction;
-import org.springframework.web.reactive.function.server.ServerRequest;
-import org.springframework.web.reactive.function.server.ServerResponse;
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.content.comment.CommentQuery;
 import io.nebulacms.app.content.comment.CommentRequest;
 import io.nebulacms.app.content.comment.CommentService;
@@ -28,6 +18,16 @@ import io.nebulacms.app.extension.ListResult;
 import io.nebulacms.app.infra.utils.HaloUtils;
 import io.nebulacms.app.infra.utils.IpAddressUtils;
 
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
+import java.time.Instant;
+import org.springdoc.core.fn.builders.schema.Builder;
+import org.springdoc.webflux.core.fn.SpringdocRouteBuilder;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Component;
+import org.springframework.web.reactive.function.server.RouterFunction;
+import org.springframework.web.reactive.function.server.ServerRequest;
+import org.springframework.web.reactive.function.server.ServerResponse;
+import reactor.core.publisher.Mono;
 
 /**
  * Endpoint for managing comment.

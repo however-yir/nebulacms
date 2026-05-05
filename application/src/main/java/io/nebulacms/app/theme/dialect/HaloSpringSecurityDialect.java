@@ -1,10 +1,12 @@
 package io.nebulacms.app.theme.dialect;
 
+import static io.nebulacms.app.infra.AnonymousUserConst.PRINCIPAL;
+import static io.nebulacms.app.infra.AnonymousUserConst.Role;
 import static org.springframework.security.core.authority.AuthorityUtils.createAuthorityList;
 import static org.thymeleaf.extras.springsecurity6.dialect.processor.AuthorizeAttrProcessor.ATTR_NAME;
 import static org.thymeleaf.extras.springsecurity6.dialect.processor.AuthorizeAttrProcessor.ATTR_PRECEDENCE;
-import static io.nebulacms.app.infra.AnonymousUserConst.PRINCIPAL;
-import static io.nebulacms.app.infra.AnonymousUserConst.Role;
+
+import io.nebulacms.app.security.authorization.AuthorityUtils;
 
 import java.util.LinkedHashSet;
 import java.util.Optional;
@@ -31,7 +33,6 @@ import org.thymeleaf.model.IProcessableElementTag;
 import org.thymeleaf.processor.IProcessor;
 import org.thymeleaf.standard.processor.AbstractStandardConditionalVisibilityTagProcessor;
 import org.thymeleaf.templatemode.TemplateMode;
-import io.nebulacms.app.security.authorization.AuthorityUtils;
 
 /**
  * HaloSpringSecurityDialect overwrites value of thymeleafSpringSecurityContext.

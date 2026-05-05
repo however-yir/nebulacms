@@ -4,6 +4,10 @@ import static org.apache.commons.lang3.ObjectUtils.defaultIfNull;
 import static org.springdoc.core.fn.builders.apiresponse.Builder.responseBuilder;
 import static org.springdoc.core.fn.builders.parameter.Builder.parameterBuilder;
 
+import io.nebulacms.app.core.extension.notification.Subscription;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.infra.ExternalUrlSupplier;
+
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import java.net.URI;
 import lombok.RequiredArgsConstructor;
@@ -17,9 +21,6 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.util.UriComponentsBuilder;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.notification.Subscription;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.infra.ExternalUrlSupplier;
 
 /**
  * A router for {@link Subscription}.

@@ -4,6 +4,11 @@ import static io.nebulacms.app.core.extension.RoleBinding.GROUP;
 import static io.nebulacms.app.core.extension.RoleBinding.KIND;
 import static io.nebulacms.app.core.extension.RoleBinding.VERSION;
 
+import io.nebulacms.app.extension.AbstractExtension;
+import io.nebulacms.app.extension.ExtensionOperator;
+import io.nebulacms.app.extension.GVK;
+import io.nebulacms.app.extension.Metadata;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -14,10 +19,6 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.springframework.util.StringUtils;
-import io.nebulacms.app.extension.AbstractExtension;
-import io.nebulacms.app.extension.ExtensionOperator;
-import io.nebulacms.app.extension.GVK;
-import io.nebulacms.app.extension.Metadata;
 
 /**
  * RoleBinding references a role, but does not contain it.

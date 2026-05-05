@@ -1,5 +1,7 @@
 package io.nebulacms.app.content;
 
+import io.nebulacms.app.infra.utils.JsonUtils;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.github.difflib.DiffUtils;
 import com.github.difflib.patch.AbstractDelta;
@@ -15,7 +17,6 @@ import java.util.Collections;
 import java.util.List;
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
-import io.nebulacms.app.infra.utils.JsonUtils;
 
 /**
  * @author guqing

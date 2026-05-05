@@ -5,6 +5,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.extension.ConfigMap;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.infra.utils.JsonUtils;
+
 import java.util.Map;
 import java.util.Set;
 import org.json.JSONException;
@@ -17,9 +21,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.skyscreamer.jsonassert.JSONAssert;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.extension.ConfigMap;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.infra.utils.JsonUtils;
 
 /**
  * Tests for {@link UserNotificationPreferenceServiceImpl}.
@@ -83,7 +84,6 @@ class UserNotificationPreferenceServiceImplTest {
 
         verify(client).fetch(ConfigMap.class, "user-preferences-guqing");
     }
-
 
     @Nested
     class UserNotificationPreferenceTest {

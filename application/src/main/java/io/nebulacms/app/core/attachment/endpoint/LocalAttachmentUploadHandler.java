@@ -1,9 +1,29 @@
 package io.nebulacms.app.core.attachment.endpoint;
 
-import static java.nio.file.StandardOpenOption.CREATE_NEW;
 import static io.nebulacms.app.infra.utils.FileNameUtils.randomFileName;
 import static io.nebulacms.app.infra.utils.FileUtils.checkDirectoryTraversal;
 import static io.nebulacms.app.infra.utils.FileUtils.deleteFileSilently;
+import static java.nio.file.StandardOpenOption.CREATE_NEW;
+
+import io.nebulacms.app.core.attachment.AttachmentRootGetter;
+import io.nebulacms.app.core.attachment.ThumbnailSize;
+import io.nebulacms.app.core.attachment.thumbnail.LocalThumbnailService;
+import io.nebulacms.app.core.attachment.thumbnail.ThumbnailUtils;
+import io.nebulacms.app.core.extension.attachment.Attachment;
+import io.nebulacms.app.core.extension.attachment.Attachment.AttachmentSpec;
+import io.nebulacms.app.core.extension.attachment.Constant;
+import io.nebulacms.app.core.extension.attachment.Policy;
+import io.nebulacms.app.core.extension.attachment.endpoint.AttachmentHandler;
+import io.nebulacms.app.extension.ConfigMap;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.infra.FileCategoryMatcher;
+import io.nebulacms.app.infra.exception.AttachmentAlreadyExistsException;
+import io.nebulacms.app.infra.exception.FileSizeExceededException;
+import io.nebulacms.app.infra.exception.FileTypeNotAllowedException;
+import io.nebulacms.app.infra.utils.FileNameUtils;
+import io.nebulacms.app.infra.utils.FileTypeDetectUtils;
+import io.nebulacms.app.infra.utils.HaloUtils;
+import io.nebulacms.app.infra.utils.JsonUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -43,25 +63,6 @@ import reactor.core.publisher.Mono;
 import reactor.core.publisher.SynchronousSink;
 import reactor.core.scheduler.Schedulers;
 import reactor.util.retry.Retry;
-import io.nebulacms.app.core.attachment.AttachmentRootGetter;
-import io.nebulacms.app.core.attachment.ThumbnailSize;
-import io.nebulacms.app.core.attachment.thumbnail.LocalThumbnailService;
-import io.nebulacms.app.core.attachment.thumbnail.ThumbnailUtils;
-import io.nebulacms.app.core.extension.attachment.Attachment;
-import io.nebulacms.app.core.extension.attachment.Attachment.AttachmentSpec;
-import io.nebulacms.app.core.extension.attachment.Constant;
-import io.nebulacms.app.core.extension.attachment.Policy;
-import io.nebulacms.app.core.extension.attachment.endpoint.AttachmentHandler;
-import io.nebulacms.app.extension.ConfigMap;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.infra.FileCategoryMatcher;
-import io.nebulacms.app.infra.exception.AttachmentAlreadyExistsException;
-import io.nebulacms.app.infra.exception.FileSizeExceededException;
-import io.nebulacms.app.infra.exception.FileTypeNotAllowedException;
-import io.nebulacms.app.infra.utils.FileNameUtils;
-import io.nebulacms.app.infra.utils.FileTypeDetectUtils;
-import io.nebulacms.app.infra.utils.HaloUtils;
-import io.nebulacms.app.infra.utils.JsonUtils;
 
 @Slf4j
 @Component
@@ -423,7 +424,6 @@ class LocalAttachmentUploadHandler implements AttachmentHandler {
             }
         }
     }
-
 
     @Data
     public static class PolicySetting {

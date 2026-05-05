@@ -1,5 +1,10 @@
 package io.nebulacms.app.plugin;
 
+import io.nebulacms.app.core.extension.Plugin;
+import io.nebulacms.app.extension.MetadataUtil;
+import io.nebulacms.app.extension.Unstructured;
+import io.nebulacms.app.infra.utils.YamlUnstructuredLoader;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -11,10 +16,6 @@ import org.pf4j.PluginRuntimeException;
 import org.pf4j.util.FileUtils;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
-import io.nebulacms.app.core.extension.Plugin;
-import io.nebulacms.app.extension.MetadataUtil;
-import io.nebulacms.app.extension.Unstructured;
-import io.nebulacms.app.infra.utils.YamlUnstructuredLoader;
 
 /**
  * <p>Reading plugin descriptor data from plugin.yaml.</p>

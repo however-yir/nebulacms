@@ -1,18 +1,10 @@
 package io.nebulacms.app.infra;
 
-import static java.util.Objects.requireNonNullElse;
 import static io.nebulacms.app.core.extension.Role.ROLE_AGGREGATE_LABEL_PREFIX;
 import static io.nebulacms.app.core.extension.content.Comment.CommentOwner.ownerIdentity;
 import static io.nebulacms.app.extension.index.IndexAttributeFactory.simpleAttribute;
+import static java.util.Objects.requireNonNullElse;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import java.time.Instant;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.context.SmartLifecycle;
-import org.springframework.stereotype.Component;
 import io.nebulacms.app.content.Stats;
 import io.nebulacms.app.core.attachment.extension.LocalThumbnail;
 import io.nebulacms.app.core.attachment.extension.Thumbnail;
@@ -74,6 +66,15 @@ import io.nebulacms.app.migration.Backup;
 import io.nebulacms.app.plugin.extensionpoint.ExtensionDefinition;
 import io.nebulacms.app.plugin.extensionpoint.ExtensionPointDefinition;
 import io.nebulacms.app.security.PersonalAccessToken;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import java.time.Instant;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.context.SmartLifecycle;
+import org.springframework.stereotype.Component;
 
 @Component
 class SchemeInitializer implements SmartLifecycle {

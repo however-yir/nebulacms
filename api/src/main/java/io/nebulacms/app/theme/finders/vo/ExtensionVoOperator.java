@@ -1,7 +1,8 @@
 package io.nebulacms.app.theme.finders.vo;
 
-import org.springframework.lang.NonNull;
 import io.nebulacms.app.extension.MetadataOperator;
+
+import org.springframework.lang.NonNull;
 
 /**
  * An operator for extension value object.

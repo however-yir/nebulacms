@@ -2,9 +2,6 @@ package io.nebulacms.app.core.reconciler;
 
 import static java.util.Objects.deepEquals;
 
-import java.util.Map;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 import io.nebulacms.app.core.extension.Role;
 import io.nebulacms.app.extension.ExtensionClient;
 import io.nebulacms.app.extension.MetadataUtil;
@@ -12,6 +9,10 @@ import io.nebulacms.app.extension.controller.Controller;
 import io.nebulacms.app.extension.controller.ControllerBuilder;
 import io.nebulacms.app.extension.controller.Reconciler;
 import io.nebulacms.app.extension.controller.Reconciler.Request;
+
+import java.util.Map;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 /**
  * Role reconcile.

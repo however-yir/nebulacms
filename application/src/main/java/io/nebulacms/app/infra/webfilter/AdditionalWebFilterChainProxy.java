@@ -1,5 +1,8 @@
 package io.nebulacms.app.infra.webfilter;
 
+import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
+import io.nebulacms.app.security.AdditionalWebFilter;
+
 import lombok.Setter;
 import org.springframework.core.annotation.AnnotationAwareOrderComparator;
 import org.springframework.security.web.server.WebFilterChainProxy;
@@ -7,8 +10,6 @@ import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.server.WebFilter;
 import org.springframework.web.server.WebFilterChain;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
-import io.nebulacms.app.security.AdditionalWebFilter;
 
 public class AdditionalWebFilterChainProxy implements WebFilter {
 

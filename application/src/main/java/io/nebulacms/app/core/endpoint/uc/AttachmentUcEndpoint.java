@@ -1,5 +1,6 @@
 package io.nebulacms.app.core.endpoint.uc;
 
+import static io.nebulacms.app.extension.index.query.Queries.equal;
 import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.NOT_REQUIRED;
 import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
 import static org.springdoc.core.fn.builders.apiresponse.Builder.responseBuilder;
@@ -9,7 +10,21 @@ import static org.springdoc.core.fn.builders.requestbody.Builder.requestBodyBuil
 import static org.springdoc.core.fn.builders.schema.Builder.schemaBuilder;
 import static org.springdoc.webflux.core.fn.SpringdocRouteBuilder.route;
 import static org.springframework.web.reactive.function.server.RequestPredicates.contentType;
-import static io.nebulacms.app.extension.index.query.Queries.equal;
+
+import io.nebulacms.app.content.PostService;
+import io.nebulacms.app.core.attachment.AttachmentLister;
+import io.nebulacms.app.core.attachment.SearchRequest;
+import io.nebulacms.app.core.endpoint.AttachmentHandler;
+import io.nebulacms.app.core.extension.attachment.Attachment;
+import io.nebulacms.app.core.extension.content.Post;
+import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
+import io.nebulacms.app.core.extension.service.AttachmentService;
+import io.nebulacms.app.extension.GroupVersion;
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.ListResult;
+import io.nebulacms.app.infra.SystemConfigFetcher;
+import io.nebulacms.app.infra.SystemSetting;
+import io.nebulacms.app.infra.exception.NotFoundException;
 
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -37,20 +52,6 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.server.ServerWebInputException;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.content.PostService;
-import io.nebulacms.app.core.attachment.AttachmentLister;
-import io.nebulacms.app.core.attachment.SearchRequest;
-import io.nebulacms.app.core.endpoint.AttachmentHandler;
-import io.nebulacms.app.core.extension.attachment.Attachment;
-import io.nebulacms.app.core.extension.content.Post;
-import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
-import io.nebulacms.app.core.extension.service.AttachmentService;
-import io.nebulacms.app.extension.GroupVersion;
-import io.nebulacms.app.extension.ListOptions;
-import io.nebulacms.app.extension.ListResult;
-import io.nebulacms.app.infra.SystemConfigFetcher;
-import io.nebulacms.app.infra.SystemSetting;
-import io.nebulacms.app.infra.exception.NotFoundException;
 
 @Component
 @RequiredArgsConstructor

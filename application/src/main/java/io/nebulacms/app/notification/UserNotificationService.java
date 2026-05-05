@@ -1,10 +1,11 @@
 package io.nebulacms.app.notification;
 
+import io.nebulacms.app.core.extension.notification.Notification;
+import io.nebulacms.app.extension.ListResult;
+
 import java.util.List;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.notification.Notification;
-import io.nebulacms.app.extension.ListResult;
 
 /**
  * Notification service.

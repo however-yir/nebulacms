@@ -2,7 +2,6 @@ package io.nebulacms.app.extension.controller;
 
 import io.nebulacms.app.extension.controller.Reconciler.Result;
 
-
 /**
  * Requeue with result data after throwing this exception.
  *

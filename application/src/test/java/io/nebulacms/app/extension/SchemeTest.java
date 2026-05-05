@@ -35,7 +35,6 @@ class SchemeTest {
             "fake", new ObjectNode(null));
     }
 
-
     @Test
     void shouldThrowExceptionWhenTypeHasNoGvkAnno() {
         class NoGvkExtension extends AbstractExtension {

@@ -2,6 +2,17 @@ package io.nebulacms.app.theme.router;
 
 import static org.springframework.web.reactive.function.server.RequestPredicates.methods;
 
+import io.nebulacms.app.core.extension.content.SinglePage;
+import io.nebulacms.app.extension.ExtensionClient;
+import io.nebulacms.app.extension.ExtensionOperator;
+import io.nebulacms.app.extension.controller.Controller;
+import io.nebulacms.app.extension.controller.ControllerBuilder;
+import io.nebulacms.app.extension.controller.Reconciler;
+import io.nebulacms.app.infra.exception.NotFoundException;
+import io.nebulacms.app.theme.DefaultTemplateEnum;
+import io.nebulacms.app.theme.ViewNameResolver;
+import io.nebulacms.app.theme.finders.SinglePageFinder;
+
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
@@ -27,16 +38,6 @@ import org.springframework.web.server.i18n.LocaleContextResolver;
 import org.springframework.web.util.UriUtils;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.content.SinglePage;
-import io.nebulacms.app.extension.ExtensionClient;
-import io.nebulacms.app.extension.ExtensionOperator;
-import io.nebulacms.app.extension.controller.Controller;
-import io.nebulacms.app.extension.controller.ControllerBuilder;
-import io.nebulacms.app.extension.controller.Reconciler;
-import io.nebulacms.app.infra.exception.NotFoundException;
-import io.nebulacms.app.theme.DefaultTemplateEnum;
-import io.nebulacms.app.theme.ViewNameResolver;
-import io.nebulacms.app.theme.finders.SinglePageFinder;
 
 /**
  * The {@link SinglePageRoute} for route request to specific template <code>page.html</code>.

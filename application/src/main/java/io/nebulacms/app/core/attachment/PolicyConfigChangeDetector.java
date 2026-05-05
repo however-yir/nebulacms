@@ -2,14 +2,6 @@ package io.nebulacms.app.core.attachment;
 
 import static io.nebulacms.app.extension.index.query.Queries.equal;
 
-import java.time.Duration;
-import java.time.Instant;
-import java.util.List;
-import lombok.RequiredArgsConstructor;
-import org.springframework.context.SmartLifecycle;
-import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 import io.nebulacms.app.core.extension.attachment.Attachment;
 import io.nebulacms.app.core.extension.attachment.Policy;
 import io.nebulacms.app.extension.ConfigMap;
@@ -24,6 +16,15 @@ import io.nebulacms.app.extension.controller.DefaultController;
 import io.nebulacms.app.extension.controller.DefaultQueue;
 import io.nebulacms.app.extension.controller.Reconciler;
 import io.nebulacms.app.extension.controller.RequestQueue;
+
+import java.time.Duration;
+import java.time.Instant;
+import java.util.List;
+import lombok.RequiredArgsConstructor;
+import org.springframework.context.SmartLifecycle;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 /**
  * <p>Detects changes to {@link ConfigMap} that are referenced by {@link Policy} and updates the

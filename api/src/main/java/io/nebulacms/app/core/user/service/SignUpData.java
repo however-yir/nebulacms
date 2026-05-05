@@ -1,5 +1,7 @@
 package io.nebulacms.app.core.user.service;
 
+import io.nebulacms.app.infra.ValidationUtils;
+
 import jakarta.validation.Constraint;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
@@ -14,7 +16,6 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import java.util.Objects;
 import lombok.Data;
-import io.nebulacms.app.infra.ValidationUtils;
 
 /**
  * Sign up data.

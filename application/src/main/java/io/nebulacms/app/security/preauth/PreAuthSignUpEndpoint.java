@@ -1,10 +1,23 @@
 package io.nebulacms.app.security.preauth;
 
+import static io.nebulacms.app.infra.ValidationUtils.validate;
 import static org.springframework.http.MediaType.APPLICATION_FORM_URLENCODED;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.web.reactive.function.server.RequestPredicates.contentType;
 import static org.springframework.web.reactive.function.server.RequestPredicates.path;
-import static io.nebulacms.app.infra.ValidationUtils.validate;
+
+import io.nebulacms.app.core.user.service.EmailVerificationService;
+import io.nebulacms.app.core.user.service.SignUpData;
+import io.nebulacms.app.core.user.service.UserService;
+import io.nebulacms.app.infra.actuator.GlobalInfoService;
+import io.nebulacms.app.infra.exception.DuplicateNameException;
+import io.nebulacms.app.infra.exception.EmailAlreadyTakenException;
+import io.nebulacms.app.infra.exception.EmailVerificationFailed;
+import io.nebulacms.app.infra.exception.RateLimitExceededException;
+import io.nebulacms.app.infra.exception.RequestBodyValidationException;
+import io.nebulacms.app.infra.exception.RestrictedNameException;
+import io.nebulacms.app.infra.utils.HaloUtils;
+import io.nebulacms.app.infra.utils.IpAddressUtils;
 
 import io.github.resilience4j.ratelimiter.RateLimiterRegistry;
 import io.github.resilience4j.ratelimiter.RequestNotPermitted;
@@ -26,18 +39,6 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.user.service.EmailVerificationService;
-import io.nebulacms.app.core.user.service.SignUpData;
-import io.nebulacms.app.core.user.service.UserService;
-import io.nebulacms.app.infra.actuator.GlobalInfoService;
-import io.nebulacms.app.infra.exception.DuplicateNameException;
-import io.nebulacms.app.infra.exception.EmailAlreadyTakenException;
-import io.nebulacms.app.infra.exception.EmailVerificationFailed;
-import io.nebulacms.app.infra.exception.RateLimitExceededException;
-import io.nebulacms.app.infra.exception.RequestBodyValidationException;
-import io.nebulacms.app.infra.exception.RestrictedNameException;
-import io.nebulacms.app.infra.utils.HaloUtils;
-import io.nebulacms.app.infra.utils.IpAddressUtils;
 
 /**
  * Pre-auth sign up endpoint.
@@ -161,7 +162,6 @@ class PreAuthSignUpEndpoint {
             rateLimiterRegistry.rateLimiter(rateLimiterKey, "send-email-verification-code");
         return RateLimiterOperator.of(rateLimiter);
     }
-
 
     @Data
     public static class SendEmailCodeBody {

@@ -1,12 +1,13 @@
 package io.nebulacms.app.theme.finders.vo;
 
+import io.nebulacms.app.core.extension.Theme;
+import io.nebulacms.app.extension.MetadataOperator;
+
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.Builder;
 import lombok.ToString;
 import lombok.Value;
 import lombok.With;
-import io.nebulacms.app.core.extension.Theme;
-import io.nebulacms.app.extension.MetadataOperator;
 
 /**
  * A value object for {@link Theme}.

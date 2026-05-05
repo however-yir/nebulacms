@@ -4,6 +4,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.content.ContentWrapper;
+import io.nebulacms.app.core.extension.content.SinglePage;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
+import io.nebulacms.app.theme.ReactiveSinglePageContentHandler;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -13,11 +19,6 @@ import org.springframework.lang.NonNull;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.content.ContentWrapper;
-import io.nebulacms.app.core.extension.content.SinglePage;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
-import io.nebulacms.app.theme.ReactiveSinglePageContentHandler;
 
 /**
  * Tests for {@link SinglePageConversionServiceImpl}.

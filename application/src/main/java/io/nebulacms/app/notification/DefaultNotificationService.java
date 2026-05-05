@@ -1,5 +1,10 @@
 package io.nebulacms.app.notification;
 
+import io.nebulacms.app.core.extension.notification.Notification;
+import io.nebulacms.app.extension.ListResult;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.infra.exception.AccessDeniedException;
+
 import java.time.Instant;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -7,10 +12,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.notification.Notification;
-import io.nebulacms.app.extension.ListResult;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.infra.exception.AccessDeniedException;
 
 /**
  * A default implementation of {@link UserNotificationService}.

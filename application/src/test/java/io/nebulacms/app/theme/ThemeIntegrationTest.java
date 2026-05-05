@@ -6,6 +6,15 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 import static org.springframework.security.web.server.util.matcher.ServerWebExchangeMatchers.pathMatchers;
 
+import io.nebulacms.app.core.extension.Menu;
+import io.nebulacms.app.core.extension.MenuItem;
+import io.nebulacms.app.extension.ExtensionClient;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.infra.InitializationStateGetter;
+import io.nebulacms.app.infra.utils.HaloUtils;
+import io.nebulacms.app.security.AfterSecurityWebFilter;
+import io.nebulacms.app.theme.router.ModelConst;
+
 import java.util.LinkedHashSet;
 import java.util.List;
 import org.hamcrest.Matchers;
@@ -27,14 +36,6 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.Menu;
-import io.nebulacms.app.core.extension.MenuItem;
-import io.nebulacms.app.extension.ExtensionClient;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.infra.InitializationStateGetter;
-import io.nebulacms.app.infra.utils.HaloUtils;
-import io.nebulacms.app.security.AfterSecurityWebFilter;
-import io.nebulacms.app.theme.router.ModelConst;
 
 @SpringBootTest
 @Import(ThemeIntegrationTest.TestConfig.class)

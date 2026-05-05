@@ -6,6 +6,8 @@ import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.infra.properties.HaloProperties;
+
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
@@ -19,7 +21,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.webflux.autoconfigure.WebFluxProperties;
 import org.springframework.http.HttpRequest;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.infra.properties.HaloProperties;
 
 @ExtendWith(MockitoExtension.class)
 class SystemConfigFirstExternalUrlSupplierTest {
@@ -71,7 +72,6 @@ class SystemConfigFirstExternalUrlSupplierTest {
 
             assertEquals(URI.create("https://nebulacms.io/fake"), externalUrl.get());
         }
-
 
         @Test
         void getURIWhenUsingRelativePermalink() throws MalformedURLException {

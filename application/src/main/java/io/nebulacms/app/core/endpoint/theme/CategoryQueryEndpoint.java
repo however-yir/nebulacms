@@ -1,8 +1,19 @@
 package io.nebulacms.app.core.endpoint.theme;
 
+import static io.nebulacms.app.core.endpoint.theme.PublicApiUtils.toAnotherListResult;
 import static org.springdoc.core.fn.builders.apiresponse.Builder.responseBuilder;
 import static org.springdoc.core.fn.builders.parameter.Builder.parameterBuilder;
-import static io.nebulacms.app.core.endpoint.theme.PublicApiUtils.toAnotherListResult;
+
+import io.nebulacms.app.core.extension.content.Category;
+import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
+import io.nebulacms.app.extension.GroupVersion;
+import io.nebulacms.app.extension.ListResult;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.index.query.Queries;
+import io.nebulacms.app.extension.router.SortableRequest;
+import io.nebulacms.app.theme.finders.PostPublicQueryService;
+import io.nebulacms.app.theme.finders.vo.CategoryVo;
+import io.nebulacms.app.theme.finders.vo.ListedPostVo;
 
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import lombok.RequiredArgsConstructor;
@@ -15,16 +26,6 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.content.Category;
-import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
-import io.nebulacms.app.extension.GroupVersion;
-import io.nebulacms.app.extension.ListResult;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.index.query.Queries;
-import io.nebulacms.app.extension.router.SortableRequest;
-import io.nebulacms.app.theme.finders.PostPublicQueryService;
-import io.nebulacms.app.theme.finders.vo.CategoryVo;
-import io.nebulacms.app.theme.finders.vo.ListedPostVo;
 
 /**
  * Endpoint for category query APIs.

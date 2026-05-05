@@ -1,7 +1,8 @@
 package io.nebulacms.app.notification;
 
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.core.extension.notification.Reason;
+
+import reactor.core.publisher.Mono;
 
 /**
  * <p>{@link NotificationSender} used to send notification.</p>

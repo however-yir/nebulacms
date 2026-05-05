@@ -3,12 +3,13 @@ package io.nebulacms.app.extension;
 import static org.springframework.data.domain.Sort.Order.asc;
 import static org.springframework.data.domain.Sort.Order.desc;
 
+import io.nebulacms.app.extension.index.query.Queries;
+import io.nebulacms.app.extension.index.query.Query;
+
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import org.springframework.data.domain.Sort;
-import io.nebulacms.app.extension.index.query.Queries;
-import io.nebulacms.app.extension.index.query.Query;
 
 public enum ExtensionUtil {
     ;

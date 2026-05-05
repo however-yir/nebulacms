@@ -2,6 +2,10 @@ package io.nebulacms.app.notification;
 
 import static org.apache.commons.lang3.StringUtils.defaultString;
 
+import io.nebulacms.app.infra.ExternalUrlSupplier;
+import io.nebulacms.app.infra.SystemConfigFetcher;
+import io.nebulacms.app.infra.SystemSetting;
+
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -14,9 +18,6 @@ import org.thymeleaf.context.Context;
 import org.thymeleaf.spring6.SpringTemplateEngine;
 import org.thymeleaf.templateresolver.StringTemplateResolver;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.infra.ExternalUrlSupplier;
-import io.nebulacms.app.infra.SystemConfigFetcher;
-import io.nebulacms.app.infra.SystemSetting;
 
 /**
  * <p>Default implementation of {@link NotificationTemplateRender}.</p>

@@ -1,8 +1,9 @@
 package io.nebulacms.app.core.attachment;
 
+import io.nebulacms.app.core.extension.attachment.Attachment;
+
 import lombok.Getter;
 import org.springframework.context.ApplicationEvent;
-import io.nebulacms.app.core.extension.attachment.Attachment;
 
 /**
  * Event triggered when an attachment is created, updated, or deleted.

@@ -4,6 +4,11 @@ import static org.apache.commons.lang3.ObjectUtils.defaultIfNull;
 import static org.apache.commons.lang3.StringUtils.defaultIfBlank;
 import static org.thymeleaf.model.AttributeValueQuotes.DOUBLE;
 
+import io.nebulacms.app.theme.DefaultTemplateEnum;
+import io.nebulacms.app.theme.finders.PostFinder;
+import io.nebulacms.app.theme.finders.SinglePageFinder;
+import io.nebulacms.app.theme.router.ModelConst;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -20,10 +25,6 @@ import org.thymeleaf.model.IModelFactory;
 import org.thymeleaf.model.ITemplateEvent;
 import org.thymeleaf.processor.element.IElementModelStructureHandler;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.theme.DefaultTemplateEnum;
-import io.nebulacms.app.theme.finders.PostFinder;
-import io.nebulacms.app.theme.finders.SinglePageFinder;
-import io.nebulacms.app.theme.router.ModelConst;
 
 /**
  * <p>The <code>head</code> html snippet injection processor for content template such as post

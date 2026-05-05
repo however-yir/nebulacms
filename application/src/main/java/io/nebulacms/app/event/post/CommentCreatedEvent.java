@@ -1,8 +1,9 @@
 package io.nebulacms.app.event.post;
 
+import io.nebulacms.app.core.extension.content.Comment;
+
 import lombok.Getter;
 import org.springframework.context.ApplicationEvent;
-import io.nebulacms.app.core.extension.content.Comment;
 
 /**
  * Comment created event.

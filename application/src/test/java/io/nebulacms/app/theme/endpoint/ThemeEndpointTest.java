@@ -9,6 +9,17 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.web.reactive.function.BodyInserters.fromMultipartData;
 
+import io.nebulacms.app.core.extension.Setting;
+import io.nebulacms.app.core.extension.Theme;
+import io.nebulacms.app.core.user.service.SettingConfigService;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.infra.ReactiveUrlDataBufferFetcher;
+import io.nebulacms.app.infra.SystemConfigFetcher;
+import io.nebulacms.app.infra.ThemeRootGetter;
+import io.nebulacms.app.theme.TemplateEngineManager;
+import io.nebulacms.app.theme.service.ThemeService;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
@@ -32,16 +43,6 @@ import org.springframework.util.FileSystemUtils;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.server.ServerWebInputException;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.Setting;
-import io.nebulacms.app.core.extension.Theme;
-import io.nebulacms.app.core.user.service.SettingConfigService;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.infra.ReactiveUrlDataBufferFetcher;
-import io.nebulacms.app.infra.SystemConfigFetcher;
-import io.nebulacms.app.infra.ThemeRootGetter;
-import io.nebulacms.app.theme.TemplateEngineManager;
-import io.nebulacms.app.theme.service.ThemeService;
 
 /**
  * Tests for {@link ThemeEndpoint}.
@@ -193,7 +194,6 @@ class ThemeEndpointTest {
             .isEqualTo(installedTheme);
 
         verify(themeService).install(any());
-
 
         when(themeService.install(any())).thenReturn(
             Mono.error(new RuntimeException("Fake exception")));

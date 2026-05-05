@@ -1,9 +1,10 @@
 package io.nebulacms.app.theme.engine;
 
+import io.nebulacms.app.theme.ThemeContext;
+
 import java.nio.file.Files;
 import org.springframework.boot.thymeleaf.autoconfigure.ThymeleafProperties;
 import org.springframework.stereotype.Component;
-import io.nebulacms.app.theme.ThemeContext;
 
 @Component
 public class DefaultThemeTemplateAvailabilityProvider implements ThemeTemplateAvailabilityProvider {

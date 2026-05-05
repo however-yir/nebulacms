@@ -6,6 +6,10 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.core.extension.ReverseProxy;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.plugin.PluginRouterFunctionRegistry;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -15,9 +19,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.ReverseProxy;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.plugin.PluginRouterFunctionRegistry;
 
 /**
  * Tests for {@link ReverseProxyRouterFunctionRegistry}.

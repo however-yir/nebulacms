@@ -2,6 +2,9 @@ package io.nebulacms.app.theme.router;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
+import io.nebulacms.app.core.extension.content.Post;
+import io.nebulacms.app.extension.Metadata;
+
 import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,8 +12,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.core.extension.content.Post;
-import io.nebulacms.app.extension.Metadata;
 
 /**
  * Tests for {@link ReactiveQueryPostPredicateResolver}.

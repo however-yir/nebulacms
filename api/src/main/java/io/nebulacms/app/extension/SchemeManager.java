@@ -1,13 +1,14 @@
 package io.nebulacms.app.extension;
 
+import io.nebulacms.app.extension.exception.SchemeNotFoundException;
+import io.nebulacms.app.extension.index.IndexSpecs;
+
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Consumer;
 import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
-import io.nebulacms.app.extension.exception.SchemeNotFoundException;
-import io.nebulacms.app.extension.index.IndexSpecs;
 
 public interface SchemeManager {
 

@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.lenient;
 
+import io.nebulacms.app.extension.Metadata;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.Set;
@@ -17,7 +19,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.dao.DuplicateKeyException;
-import io.nebulacms.app.extension.Metadata;
 
 @ExtendWith(MockitoExtension.class)
 class SingleValueIndexTest {
@@ -27,7 +28,6 @@ class SingleValueIndexTest {
 
     @InjectMocks
     SingleValueIndex<Fake, String> index;
-
 
     @Nested
     class NonNullAndUniqueTest {
@@ -103,7 +103,6 @@ class SingleValueIndexTest {
 
                 assertEquals(Set.of("fake"), index.equal("new-string"));
             }
-
 
             @Test
             void shouldRollbackUpdateCorrectly() {

@@ -1,9 +1,10 @@
 package io.nebulacms.app.theme.finders.vo;
 
+import io.nebulacms.app.core.extension.content.Snapshot;
+
 import lombok.Builder;
 import lombok.ToString;
 import lombok.Value;
-import io.nebulacms.app.core.extension.content.Snapshot;
 
 /**
  * A value object for Content from {@link Snapshot}.

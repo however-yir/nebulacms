@@ -1,5 +1,20 @@
 package io.nebulacms.app.core.user.service.impl;
 
+import io.nebulacms.app.core.extension.User;
+import io.nebulacms.app.core.extension.notification.Reason;
+import io.nebulacms.app.core.extension.notification.Subscription;
+import io.nebulacms.app.core.user.service.EmailVerificationService;
+import io.nebulacms.app.extension.ExtensionUtil;
+import io.nebulacms.app.extension.GroupVersion;
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.MetadataUtil;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.index.query.Queries;
+import io.nebulacms.app.infra.exception.EmailVerificationFailed;
+import io.nebulacms.app.notification.NotificationCenter;
+import io.nebulacms.app.notification.NotificationReasonEmitter;
+import io.nebulacms.app.notification.UserIdentity;
+
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import java.time.Duration;
@@ -18,20 +33,6 @@ import org.springframework.web.server.ServerWebInputException;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 import reactor.util.retry.Retry;
-import io.nebulacms.app.core.extension.User;
-import io.nebulacms.app.core.extension.notification.Reason;
-import io.nebulacms.app.core.extension.notification.Subscription;
-import io.nebulacms.app.core.user.service.EmailVerificationService;
-import io.nebulacms.app.extension.ExtensionUtil;
-import io.nebulacms.app.extension.GroupVersion;
-import io.nebulacms.app.extension.ListOptions;
-import io.nebulacms.app.extension.MetadataUtil;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.index.query.Queries;
-import io.nebulacms.app.infra.exception.EmailVerificationFailed;
-import io.nebulacms.app.notification.NotificationCenter;
-import io.nebulacms.app.notification.NotificationReasonEmitter;
-import io.nebulacms.app.notification.UserIdentity;
 
 /**
  * A default implementation of {@link EmailVerificationService}.

@@ -1,7 +1,8 @@
 package io.nebulacms.app.search.event;
 
-import org.springframework.context.ApplicationEvent;
 import io.nebulacms.app.plugin.SharedEvent;
+
+import org.springframework.context.ApplicationEvent;
 
 @SharedEvent
 public class HaloDocumentRebuildRequestEvent extends ApplicationEvent {

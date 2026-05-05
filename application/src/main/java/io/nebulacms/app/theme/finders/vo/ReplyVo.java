@@ -2,14 +2,15 @@ package io.nebulacms.app.theme.finders.vo;
 
 import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
 
+import io.nebulacms.app.content.comment.OwnerInfo;
+import io.nebulacms.app.core.extension.content.Reply;
+import io.nebulacms.app.extension.MetadataOperator;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import io.nebulacms.app.content.comment.OwnerInfo;
-import io.nebulacms.app.core.extension.content.Reply;
-import io.nebulacms.app.extension.MetadataOperator;
 
 /**
  * A value object for {@link Reply}.

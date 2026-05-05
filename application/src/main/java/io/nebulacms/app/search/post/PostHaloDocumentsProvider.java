@@ -1,8 +1,5 @@
 package io.nebulacms.app.search.post;
 
-import org.springframework.stereotype.Component;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.content.ContentWrapper;
 import io.nebulacms.app.content.PostService;
 import io.nebulacms.app.core.extension.content.Post;
@@ -12,6 +9,10 @@ import io.nebulacms.app.extension.router.selector.FieldSelector;
 import io.nebulacms.app.infra.ReactiveExtensionPaginatedOperator;
 import io.nebulacms.app.search.HaloDocument;
 import io.nebulacms.app.search.HaloDocumentsProvider;
+
+import org.springframework.stereotype.Component;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @Component
 public class PostHaloDocumentsProvider implements HaloDocumentsProvider {

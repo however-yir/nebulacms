@@ -9,6 +9,8 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.infra.exception.RequestBodyValidationException;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -20,7 +22,6 @@ import org.springframework.validation.Errors;
 import org.springframework.web.reactive.function.server.HandlerStrategies;
 import org.springframework.web.server.handler.ResponseStatusExceptionHandler;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.infra.exception.RequestBodyValidationException;
 
 @ExtendWith(MockitoExtension.class)
 class IndexEndpointTest {

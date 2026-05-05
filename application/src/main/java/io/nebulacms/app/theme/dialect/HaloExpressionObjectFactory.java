@@ -1,9 +1,10 @@
 package io.nebulacms.app.theme.dialect;
 
+import io.nebulacms.app.theme.dialect.expression.Annotations;
+
 import java.util.Set;
 import org.thymeleaf.context.IExpressionContext;
 import org.thymeleaf.expression.IExpressionObjectFactory;
-import io.nebulacms.app.theme.dialect.expression.Annotations;
 
 /**
  * Builds the expression objects to be used by Halo dialects.

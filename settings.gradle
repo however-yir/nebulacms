@@ -1,12 +1,12 @@
 pluginManagement {
     repositories {
-        maven { url = 'https://repo.spring.io/milestone' }
+        maven { url = uri('https://repo.spring.io/milestone') }
         gradlePluginPortal()
     }
 }
 
 plugins {
-    id 'org.gradle.toolchains.foojay-resolver-convention' version '1.0.0'
+    id 'org.gradle.toolchains.foojay-resolver-convention' version '0.9.0'
 }
 
 rootProject.name = 'nebulacms'

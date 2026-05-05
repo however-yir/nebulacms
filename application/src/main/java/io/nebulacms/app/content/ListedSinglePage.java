@@ -2,12 +2,12 @@ package io.nebulacms.app.content;
 
 import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
 
+import io.nebulacms.app.core.extension.content.SinglePage;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.List;
 import lombok.Data;
 import lombok.experimental.Accessors;
-import io.nebulacms.app.core.extension.content.SinglePage;
-
 
 /**
  * An aggregate object of {@link SinglePage} and {@link Contributor} single page list.

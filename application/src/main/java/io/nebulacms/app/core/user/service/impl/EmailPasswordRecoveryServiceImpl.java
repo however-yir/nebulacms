@@ -1,17 +1,5 @@
 package io.nebulacms.app.core.user.service.impl;
 
-import java.time.Clock;
-import java.time.Duration;
-import lombok.RequiredArgsConstructor;
-import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.dao.OptimisticLockingFailureException;
-import org.springframework.security.core.token.Sha512DigestUtils;
-import org.springframework.stereotype.Component;
-import org.springframework.util.Assert;
-import org.springframework.web.util.UriComponentsBuilder;
-import reactor.core.publisher.Mono;
-import reactor.util.retry.Retry;
 import io.nebulacms.app.core.extension.User;
 import io.nebulacms.app.core.extension.notification.Reason;
 import io.nebulacms.app.core.extension.notification.Subscription;
@@ -26,6 +14,19 @@ import io.nebulacms.app.infra.ExternalLinkProcessor;
 import io.nebulacms.app.notification.NotificationCenter;
 import io.nebulacms.app.notification.NotificationReasonEmitter;
 import io.nebulacms.app.notification.UserIdentity;
+
+import java.time.Clock;
+import java.time.Duration;
+import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.dao.OptimisticLockingFailureException;
+import org.springframework.security.core.token.Sha512DigestUtils;
+import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
+import org.springframework.web.util.UriComponentsBuilder;
+import reactor.core.publisher.Mono;
+import reactor.util.retry.Retry;
 
 /**
  * A default implementation for {@link EmailPasswordRecoveryService}.

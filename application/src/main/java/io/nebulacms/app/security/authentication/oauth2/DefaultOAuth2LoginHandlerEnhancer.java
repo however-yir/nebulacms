@@ -1,5 +1,7 @@
 package io.nebulacms.app.security.authentication.oauth2;
 
+import io.nebulacms.app.core.user.service.UserConnectionService;
+
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationTrustResolver;
@@ -8,7 +10,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.user.service.UserConnectionService;
 
 /**
  * Default implementation of {@link OAuth2LoginHandlerEnhancer}.

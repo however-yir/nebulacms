@@ -2,11 +2,12 @@ package io.nebulacms.app.extension.router;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Test;
 import io.nebulacms.app.extension.AbstractExtension;
 import io.nebulacms.app.extension.GVK;
 import io.nebulacms.app.extension.Scheme;
 import io.nebulacms.app.extension.router.ExtensionRouterFunctionFactory.PathPatternGenerator;
+
+import org.junit.jupiter.api.Test;
 
 class PathPatternGeneratorTest {
 

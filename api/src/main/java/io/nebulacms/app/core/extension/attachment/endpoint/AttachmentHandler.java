@@ -1,5 +1,11 @@
 package io.nebulacms.app.core.extension.attachment.endpoint;
 
+import io.nebulacms.app.core.attachment.ThumbnailSize;
+import io.nebulacms.app.core.extension.attachment.Attachment;
+import io.nebulacms.app.core.extension.attachment.Group;
+import io.nebulacms.app.core.extension.attachment.Policy;
+import io.nebulacms.app.extension.ConfigMap;
+
 import java.net.URI;
 import java.time.Duration;
 import java.util.Map;
@@ -7,11 +13,6 @@ import org.jspecify.annotations.Nullable;
 import org.pf4j.ExtensionPoint;
 import org.springframework.http.codec.multipart.FilePart;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.attachment.ThumbnailSize;
-import io.nebulacms.app.core.extension.attachment.Attachment;
-import io.nebulacms.app.core.extension.attachment.Group;
-import io.nebulacms.app.core.extension.attachment.Policy;
-import io.nebulacms.app.extension.ConfigMap;
 
 public interface AttachmentHandler extends ExtensionPoint {
 

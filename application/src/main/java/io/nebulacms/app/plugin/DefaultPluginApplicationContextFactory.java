@@ -2,6 +2,21 @@ package io.nebulacms.app.plugin;
 
 import static org.springframework.util.ResourceUtils.CLASSPATH_URL_PREFIX;
 
+import io.nebulacms.app.core.endpoint.WebSocketEndpoint;
+import io.nebulacms.app.core.endpoint.WebSocketEndpointManager;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.infra.properties.HaloProperties;
+import io.nebulacms.app.plugin.event.HaloPluginBeforeStopEvent;
+import io.nebulacms.app.plugin.event.HaloPluginStartedEvent;
+import io.nebulacms.app.plugin.event.HaloPluginStoppedEvent;
+import io.nebulacms.app.plugin.event.SpringPluginStartedEvent;
+import io.nebulacms.app.plugin.event.SpringPluginStoppedEvent;
+import io.nebulacms.app.plugin.event.SpringPluginStoppingEvent;
+import io.nebulacms.app.search.SearchService;
+import io.nebulacms.app.theme.DefaultTemplateNameResolver;
+import io.nebulacms.app.theme.ViewNameResolver;
+import io.nebulacms.app.theme.finders.FinderRegistry;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -29,20 +44,6 @@ import org.springframework.util.StopWatch;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.Exceptions;
-import io.nebulacms.app.core.endpoint.WebSocketEndpoint;
-import io.nebulacms.app.core.endpoint.WebSocketEndpointManager;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.infra.properties.HaloProperties;
-import io.nebulacms.app.plugin.event.HaloPluginBeforeStopEvent;
-import io.nebulacms.app.plugin.event.HaloPluginStartedEvent;
-import io.nebulacms.app.plugin.event.HaloPluginStoppedEvent;
-import io.nebulacms.app.plugin.event.SpringPluginStartedEvent;
-import io.nebulacms.app.plugin.event.SpringPluginStoppedEvent;
-import io.nebulacms.app.plugin.event.SpringPluginStoppingEvent;
-import io.nebulacms.app.search.SearchService;
-import io.nebulacms.app.theme.DefaultTemplateNameResolver;
-import io.nebulacms.app.theme.ViewNameResolver;
-import io.nebulacms.app.theme.finders.FinderRegistry;
 
 @Slf4j
 public class DefaultPluginApplicationContextFactory implements PluginApplicationContextFactory {
@@ -69,7 +70,6 @@ public class DefaultPluginApplicationContextFactory implements PluginApplication
 
         var pluginWrapper = pluginManager.getPlugin(pluginId);
         var classLoader = pluginWrapper.getPluginClassLoader();
-
 
         /*
          * Manually creating a BeanFactory and setting the plugin's ClassLoader is necessary
@@ -281,7 +281,6 @@ public class DefaultPluginApplicationContextFactory implements PluginApplication
             this.routerFunctions = routerFunctions;
         }
     }
-
 
     private static class PluginHandlerMappingManager {
         private final String pluginId;

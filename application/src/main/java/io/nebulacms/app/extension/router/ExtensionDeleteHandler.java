@@ -2,13 +2,14 @@ package io.nebulacms.app.extension.router;
 
 import static io.nebulacms.app.extension.router.ExtensionRouterFunctionFactory.PathPatternGenerator.buildExtensionPathPattern;
 
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.Scheme;
+import io.nebulacms.app.extension.router.ExtensionRouterFunctionFactory.DeleteHandler;
+
 import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.Scheme;
-import io.nebulacms.app.extension.router.ExtensionRouterFunctionFactory.DeleteHandler;
 
 class ExtensionDeleteHandler implements DeleteHandler {
 

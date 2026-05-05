@@ -1,5 +1,7 @@
 package io.nebulacms.app.theme.router.factories;
 
+import io.nebulacms.app.theme.finders.PostFinder;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -9,7 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
-import io.nebulacms.app.theme.finders.PostFinder;
 
 /**
  * Tests for {@link ArchiveRouteFactory}.

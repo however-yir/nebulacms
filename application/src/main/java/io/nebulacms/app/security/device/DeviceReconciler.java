@@ -5,12 +5,6 @@ import static io.nebulacms.app.extension.ExtensionUtil.isDeleted;
 import static io.nebulacms.app.extension.ExtensionUtil.removeFinalizers;
 import static io.nebulacms.app.extension.index.query.Queries.equal;
 
-import java.time.Duration;
-import java.util.Set;
-import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Sort;
-import org.springframework.session.ReactiveSessionRepository;
-import org.springframework.stereotype.Component;
 import io.nebulacms.app.core.extension.Device;
 import io.nebulacms.app.extension.ExtensionClient;
 import io.nebulacms.app.extension.ListOptions;
@@ -19,6 +13,13 @@ import io.nebulacms.app.extension.controller.ControllerBuilder;
 import io.nebulacms.app.extension.controller.Reconciler;
 import io.nebulacms.app.extension.router.selector.FieldSelector;
 import io.nebulacms.app.infra.utils.ReactiveUtils;
+
+import java.time.Duration;
+import java.util.Set;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
+import org.springframework.session.ReactiveSessionRepository;
+import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor

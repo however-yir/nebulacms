@@ -4,6 +4,12 @@ import static org.mockito.ArgumentMatchers.anySet;
 import static org.mockito.Mockito.when;
 import static org.springframework.security.test.web.reactive.server.SecurityMockServerConfigurers.csrf;
 
+import io.nebulacms.app.core.extension.Role;
+import io.nebulacms.app.core.extension.User;
+import io.nebulacms.app.core.user.service.RoleService;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+
 import java.time.Instant;
 import java.util.List;
 import java.util.Map;
@@ -20,11 +26,6 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.Role;
-import io.nebulacms.app.core.extension.User;
-import io.nebulacms.app.core.user.service.RoleService;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
 
 @SpringBootTest
 @AutoConfigureWebTestClient

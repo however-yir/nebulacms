@@ -30,7 +30,6 @@ public class ThemeLocaleContextResolver extends AcceptHeaderLocaleContextResolve
 
     public static final String TIME_ZONE_COOKIE_NAME = "time_zone";
 
-
     @Override
     @NonNull
     public LocaleContext resolveLocaleContext(@NonNull ServerWebExchange exchange) {

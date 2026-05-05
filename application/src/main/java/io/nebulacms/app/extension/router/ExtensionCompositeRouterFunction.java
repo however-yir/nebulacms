@@ -1,5 +1,10 @@
 package io.nebulacms.app.extension.router;
 
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.Scheme;
+import io.nebulacms.app.extension.event.SchemeAddedEvent;
+import io.nebulacms.app.extension.event.SchemeRemovedEvent;
+
 import java.util.Collections;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -13,10 +18,6 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.Scheme;
-import io.nebulacms.app.extension.event.SchemeAddedEvent;
-import io.nebulacms.app.extension.event.SchemeRemovedEvent;
 
 @Component
 public class ExtensionCompositeRouterFunction implements RouterFunction<ServerResponse> {

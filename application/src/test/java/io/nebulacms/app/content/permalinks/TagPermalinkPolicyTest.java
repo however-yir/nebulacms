@@ -3,6 +3,11 @@ package io.nebulacms.app.content.permalinks;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.core.extension.content.Tag;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.infra.ExternalUrlSupplier;
+import io.nebulacms.app.infra.SystemConfigFetcher;
+
 import java.net.URI;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,10 +15,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.context.ApplicationContext;
-import io.nebulacms.app.core.extension.content.Tag;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.infra.ExternalUrlSupplier;
-import io.nebulacms.app.infra.SystemConfigFetcher;
 
 /**
  * Tests for {@link TagPermalinkPolicy}.

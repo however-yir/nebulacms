@@ -4,6 +4,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.content.ContentWrapper;
+import io.nebulacms.app.content.TestPost;
+import io.nebulacms.app.core.extension.content.Post;
+import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
+import io.nebulacms.app.theme.ReactivePostContentHandler;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -12,11 +18,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.content.ContentWrapper;
-import io.nebulacms.app.content.TestPost;
-import io.nebulacms.app.core.extension.content.Post;
-import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
-import io.nebulacms.app.theme.ReactivePostContentHandler;
 
 /**
  * Tests for {@link PostPublicQueryServiceImpl}.

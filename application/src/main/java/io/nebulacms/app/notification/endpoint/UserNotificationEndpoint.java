@@ -5,6 +5,13 @@ import static org.springdoc.core.fn.builders.content.Builder.contentBuilder;
 import static org.springdoc.core.fn.builders.parameter.Builder.parameterBuilder;
 import static org.springdoc.core.fn.builders.requestbody.Builder.requestBodyBuilder;
 
+import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
+import io.nebulacms.app.core.extension.notification.Notification;
+import io.nebulacms.app.extension.GroupVersion;
+import io.nebulacms.app.extension.ListResult;
+import io.nebulacms.app.notification.UserNotificationQuery;
+import io.nebulacms.app.notification.UserNotificationService;
+
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import java.util.List;
 import java.util.function.Supplier;
@@ -18,12 +25,6 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
-import io.nebulacms.app.core.extension.notification.Notification;
-import io.nebulacms.app.extension.GroupVersion;
-import io.nebulacms.app.extension.ListResult;
-import io.nebulacms.app.notification.UserNotificationQuery;
-import io.nebulacms.app.notification.UserNotificationService;
 
 /**
  * Custom notification endpoint to managing notification for authenticated user.

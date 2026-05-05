@@ -8,6 +8,11 @@ import static org.springframework.mock.http.server.reactive.MockServerHttpReques
 import static org.springframework.security.authentication.UsernamePasswordAuthenticationToken.authenticated;
 import static org.springframework.security.core.authority.AuthorityUtils.createAuthorityList;
 
+import io.nebulacms.app.core.extension.Role;
+import io.nebulacms.app.core.extension.Role.PolicyRule;
+import io.nebulacms.app.core.user.service.RoleService;
+import io.nebulacms.app.extension.Metadata;
+
 import java.util.List;
 import java.util.Set;
 import org.junit.jupiter.api.Test;
@@ -19,10 +24,6 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.core.userdetails.User;
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.core.extension.Role;
-import io.nebulacms.app.core.extension.Role.PolicyRule;
-import io.nebulacms.app.core.user.service.RoleService;
-import io.nebulacms.app.extension.Metadata;
 
 @ExtendWith(MockitoExtension.class)
 class DefaultRuleResolverTest {
@@ -120,7 +121,8 @@ class DefaultRuleResolverTest {
             new RequestResolveCase("/apis/group/v1/posts", "GET", false),
 
             // plugin custom resource url
-            new RequestResolveCase("/apis/api.plugin.nebulacms.io/v1alpha1/plugins/foo/users", "GET",
+            new RequestResolveCase(
+                "/apis/api.plugin.nebulacms.io/v1alpha1/plugins/foo/users", "GET",
                 true),
             new RequestResolveCase("/apis/api.plugin.nebulacms.io/v1alpha1/plugins/foo/users/bar",
                 "GET", true),

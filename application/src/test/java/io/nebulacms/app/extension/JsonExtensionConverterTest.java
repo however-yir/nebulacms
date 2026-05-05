@@ -4,6 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.lenient;
 
+import io.nebulacms.app.extension.exception.ExtensionConvertException;
+import io.nebulacms.app.extension.exception.SchemaViolationException;
+import io.nebulacms.app.extension.store.ExtensionStore;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
@@ -13,9 +17,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import io.nebulacms.app.extension.exception.ExtensionConvertException;
-import io.nebulacms.app.extension.exception.SchemaViolationException;
-import io.nebulacms.app.extension.store.ExtensionStore;
 
 @ExtendWith(MockitoExtension.class)
 class JsonExtensionConverterTest {

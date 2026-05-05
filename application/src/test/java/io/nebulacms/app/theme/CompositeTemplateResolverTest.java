@@ -6,11 +6,12 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.infra.exception.NotFoundException;
+
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 import org.thymeleaf.templateresolver.TemplateResolution;
-import io.nebulacms.app.infra.exception.NotFoundException;
 
 class CompositeTemplateResolverTest {
 

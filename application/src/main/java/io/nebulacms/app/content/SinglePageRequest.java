@@ -2,9 +2,10 @@ package io.nebulacms.app.content;
 
 import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import io.nebulacms.app.core.extension.content.SinglePage;
 import io.nebulacms.app.extension.Ref;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * A request parameter for {@link SinglePage}.

@@ -1,9 +1,10 @@
 package io.nebulacms.app.plugin;
 
+import io.nebulacms.app.infra.properties.HaloProperties;
+
 import java.nio.file.Path;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
-import io.nebulacms.app.infra.properties.HaloProperties;
 
 /**
  * Default implementation of {@link PluginsRootGetter}.

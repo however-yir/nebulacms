@@ -7,6 +7,13 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.core.extension.attachment.Policy;
+import io.nebulacms.app.extension.ConfigMap;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.Scheme;
+import io.nebulacms.app.extension.exception.ExtensionNotFoundException;
+
 import java.util.HashMap;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,12 +28,6 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.transaction.ReactiveTransaction;
 import org.springframework.transaction.ReactiveTransactionManager;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.attachment.Policy;
-import io.nebulacms.app.extension.ConfigMap;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.Scheme;
-import io.nebulacms.app.extension.exception.ExtensionNotFoundException;
 import tools.jackson.databind.json.JsonMapper;
 
 @ExtendWith(MockitoExtension.class)
@@ -134,7 +135,6 @@ class PolicyEndpointTest {
             .jsonPath("$.halo").isEqualTo("awesome");
     }
 
-
     @Test
     void shouldUpdateConfigIfPresent() {
         when(client.get(Policy.class, "fake-policy")).thenReturn(Mono.fromSupplier(() -> {
@@ -185,7 +185,6 @@ class PolicyEndpointTest {
         var policy = new Policy();
         policy.setSpec(new Policy.PolicySpec());
         when(client.get(Policy.class, "fake-policy")).thenReturn(Mono.just(policy));
-
 
         var tx = mock(ReactiveTransaction.class);
         when(txManager.getReactiveTransaction(any())).thenReturn(Mono.just(tx));

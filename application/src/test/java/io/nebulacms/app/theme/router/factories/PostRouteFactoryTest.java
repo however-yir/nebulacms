@@ -5,6 +5,21 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.content.TestPost;
+import io.nebulacms.app.core.extension.content.Post;
+import io.nebulacms.app.extension.GroupVersionKind;
+import io.nebulacms.app.extension.MetadataUtil;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.theme.DefaultTemplateEnum;
+import io.nebulacms.app.theme.ViewNameResolver;
+import io.nebulacms.app.theme.finders.PostFinder;
+import io.nebulacms.app.theme.finders.vo.PostVo;
+import io.nebulacms.app.theme.router.DefaultQueryPostPredicateResolver;
+import io.nebulacms.app.theme.router.EmptyView;
+import io.nebulacms.app.theme.router.ModelConst;
+import io.nebulacms.app.theme.router.ReactiveQueryPostPredicateResolver;
+import io.nebulacms.app.theme.router.TitleVisibilityIdentifyCalculator;
+
 import java.util.Locale;
 import java.util.Map;
 import org.junit.jupiter.api.Assertions;
@@ -22,20 +37,6 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.server.i18n.LocaleContextResolver;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.content.TestPost;
-import io.nebulacms.app.core.extension.content.Post;
-import io.nebulacms.app.extension.GroupVersionKind;
-import io.nebulacms.app.extension.MetadataUtil;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.theme.DefaultTemplateEnum;
-import io.nebulacms.app.theme.ViewNameResolver;
-import io.nebulacms.app.theme.finders.PostFinder;
-import io.nebulacms.app.theme.finders.vo.PostVo;
-import io.nebulacms.app.theme.router.DefaultQueryPostPredicateResolver;
-import io.nebulacms.app.theme.router.EmptyView;
-import io.nebulacms.app.theme.router.ModelConst;
-import io.nebulacms.app.theme.router.ReactiveQueryPostPredicateResolver;
-import io.nebulacms.app.theme.router.TitleVisibilityIdentifyCalculator;
 
 /**
  * Tests for {@link PostRouteFactory}.

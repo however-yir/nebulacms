@@ -1,7 +1,12 @@
 package io.nebulacms.app.notification;
 
-import static org.apache.commons.lang3.StringUtils.defaultIfBlank;
 import static io.nebulacms.app.extension.index.query.Queries.equal;
+import static org.apache.commons.lang3.StringUtils.defaultIfBlank;
+
+import io.nebulacms.app.core.extension.notification.NotificationTemplate;
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.router.selector.FieldSelector;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -17,10 +22,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.notification.NotificationTemplate;
-import io.nebulacms.app.extension.ListOptions;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.router.selector.FieldSelector;
 
 /**
  * A default implementation of {@link ReasonNotificationTemplateSelector}.

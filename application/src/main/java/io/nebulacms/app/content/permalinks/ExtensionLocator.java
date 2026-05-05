@@ -1,7 +1,8 @@
 package io.nebulacms.app.content.permalinks;
 
-import java.util.Objects;
 import io.nebulacms.app.extension.GroupVersionKind;
+
+import java.util.Objects;
 
 /**
  * Slug can be modified, so it is not included in {@link #equals(Object)} and {@link #hashCode()}.

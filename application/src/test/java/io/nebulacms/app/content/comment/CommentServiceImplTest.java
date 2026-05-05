@@ -7,6 +7,27 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.content.TestPost;
+import io.nebulacms.app.core.counter.CounterService;
+import io.nebulacms.app.core.counter.MeterUtils;
+import io.nebulacms.app.core.extension.Counter;
+import io.nebulacms.app.core.extension.User;
+import io.nebulacms.app.core.extension.content.Comment;
+import io.nebulacms.app.core.extension.content.Post;
+import io.nebulacms.app.core.user.service.RoleService;
+import io.nebulacms.app.core.user.service.UserService;
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.ListResult;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.PageRequest;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.Ref;
+import io.nebulacms.app.infra.SystemConfigFetcher;
+import io.nebulacms.app.infra.SystemSetting;
+import io.nebulacms.app.infra.utils.JsonUtils;
+import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
+import io.nebulacms.app.security.authorization.AuthorityUtils;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -29,26 +50,6 @@ import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.content.TestPost;
-import io.nebulacms.app.core.counter.CounterService;
-import io.nebulacms.app.core.counter.MeterUtils;
-import io.nebulacms.app.core.extension.Counter;
-import io.nebulacms.app.core.extension.User;
-import io.nebulacms.app.core.extension.content.Comment;
-import io.nebulacms.app.core.extension.content.Post;
-import io.nebulacms.app.core.user.service.RoleService;
-import io.nebulacms.app.core.user.service.UserService;
-import io.nebulacms.app.extension.ListOptions;
-import io.nebulacms.app.extension.ListResult;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.PageRequest;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.Ref;
-import io.nebulacms.app.infra.SystemConfigFetcher;
-import io.nebulacms.app.infra.SystemSetting;
-import io.nebulacms.app.infra.utils.JsonUtils;
-import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
-import io.nebulacms.app.security.authorization.AuthorityUtils;
 
 /**
  * Tests for {@link CommentServiceImpl}.

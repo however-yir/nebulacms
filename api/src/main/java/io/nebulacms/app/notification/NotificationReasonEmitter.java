@@ -1,8 +1,9 @@
 package io.nebulacms.app.notification;
 
+import io.nebulacms.app.core.extension.notification.Reason;
+
 import java.util.function.Consumer;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.notification.Reason;
 
 /**
  * {@link NotificationReasonEmitter} to emit notification reason.

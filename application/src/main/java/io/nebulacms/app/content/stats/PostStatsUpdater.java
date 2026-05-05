@@ -1,10 +1,5 @@
 package io.nebulacms.app.content.stats;
 
-import java.time.Duration;
-import java.time.Instant;
-import org.springframework.context.SmartLifecycle;
-import org.springframework.context.event.EventListener;
-import org.springframework.stereotype.Component;
 import io.nebulacms.app.content.Stats;
 import io.nebulacms.app.core.extension.content.Post;
 import io.nebulacms.app.event.post.PostStatsChangedEvent;
@@ -18,6 +13,12 @@ import io.nebulacms.app.extension.controller.Reconciler;
 import io.nebulacms.app.extension.controller.RequestQueue;
 import io.nebulacms.app.infra.InitializationPhase;
 import io.nebulacms.app.infra.utils.JsonUtils;
+
+import java.time.Duration;
+import java.time.Instant;
+import org.springframework.context.SmartLifecycle;
+import org.springframework.context.event.EventListener;
+import org.springframework.stereotype.Component;
 
 @Component
 public class PostStatsUpdater implements Reconciler<PostStatsUpdater.StatsRequest>,

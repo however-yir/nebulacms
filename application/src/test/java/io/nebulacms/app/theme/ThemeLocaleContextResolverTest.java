@@ -1,5 +1,7 @@
 package io.nebulacms.app.theme;
 
+import static io.nebulacms.app.theme.ThemeLocaleContextResolver.LANGUAGE_COOKIE_NAME;
+import static io.nebulacms.app.theme.ThemeLocaleContextResolver.TIME_ZONE_COOKIE_NAME;
 import static java.util.Locale.CANADA;
 import static java.util.Locale.CHINA;
 import static java.util.Locale.CHINESE;
@@ -12,8 +14,6 @@ import static java.util.Locale.KOREA;
 import static java.util.Locale.UK;
 import static java.util.Locale.US;
 import static org.assertj.core.api.Assertions.assertThat;
-import static io.nebulacms.app.theme.ThemeLocaleContextResolver.LANGUAGE_COOKIE_NAME;
-import static io.nebulacms.app.theme.ThemeLocaleContextResolver.TIME_ZONE_COOKIE_NAME;
 
 import java.util.Arrays;
 import java.util.Collections;

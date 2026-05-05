@@ -2,6 +2,9 @@ package io.nebulacms.app.security.authorization;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import io.nebulacms.app.core.extension.Role;
+import io.nebulacms.app.infra.utils.JsonUtils;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -9,8 +12,6 @@ import org.json.JSONException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
-import io.nebulacms.app.core.extension.Role;
-import io.nebulacms.app.infra.utils.JsonUtils;
 
 /**
  * Tests for {@link Role.PolicyRule}.
