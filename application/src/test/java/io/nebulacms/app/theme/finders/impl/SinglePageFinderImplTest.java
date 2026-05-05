@@ -6,6 +6,13 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.core.extension.content.Post;
+import io.nebulacms.app.core.extension.content.SinglePage;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.theme.finders.SinglePageConversionService;
+import io.nebulacms.app.theme.finders.vo.SinglePageVo;
+
 import java.util.Map;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,12 +21,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.core.extension.content.Post;
-import io.nebulacms.app.core.extension.content.SinglePage;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.theme.finders.SinglePageConversionService;
-import io.nebulacms.app.theme.finders.vo.SinglePageVo;
 
 /**
  * Tests for {@link SinglePageFinderImpl}.

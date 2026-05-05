@@ -6,6 +6,12 @@ import static org.mockito.Mockito.when;
 import static org.springframework.security.test.web.reactive.server.SecurityMockServerConfigurers.springSecurity;
 import static org.springframework.test.web.reactive.server.WebTestClient.bindToRouterFunction;
 
+import io.nebulacms.app.core.extension.content.Tag;
+import io.nebulacms.app.extension.ListResult;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.PageRequest;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+
 import java.time.Instant;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,11 +23,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.content.Tag;
-import io.nebulacms.app.extension.ListResult;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.PageRequest;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
 
 /**
  * Tag endpoint test.

@@ -1,8 +1,9 @@
 package io.nebulacms.app.extension.event;
 
+import io.nebulacms.app.extension.Scheme;
+
 import lombok.Getter;
 import org.springframework.context.ApplicationEvent;
-import io.nebulacms.app.extension.Scheme;
 
 /**
  * Event published when a scheme is added.

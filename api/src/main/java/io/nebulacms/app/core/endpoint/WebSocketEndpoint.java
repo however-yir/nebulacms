@@ -1,7 +1,8 @@
 package io.nebulacms.app.core.endpoint;
 
-import org.springframework.web.reactive.socket.WebSocketHandler;
 import io.nebulacms.app.extension.GroupVersion;
+
+import org.springframework.web.reactive.socket.WebSocketHandler;
 
 /**
  * Endpoint for WebSocket.

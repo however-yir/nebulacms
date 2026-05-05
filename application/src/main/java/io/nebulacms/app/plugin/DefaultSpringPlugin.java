@@ -1,12 +1,13 @@
 package io.nebulacms.app.plugin;
 
+import io.nebulacms.app.plugin.event.SpringPluginStartedEvent;
+import io.nebulacms.app.plugin.event.SpringPluginStartingEvent;
+import io.nebulacms.app.plugin.event.SpringPluginStoppingEvent;
+
 import org.jspecify.annotations.NonNull;
 import org.pf4j.Plugin;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
-import io.nebulacms.app.plugin.event.SpringPluginStartedEvent;
-import io.nebulacms.app.plugin.event.SpringPluginStartingEvent;
-import io.nebulacms.app.plugin.event.SpringPluginStoppingEvent;
 
 /**
  * Default implementation of {@link SpringPlugin}.

@@ -1,22 +1,8 @@
 package io.nebulacms.app.content.comment;
 
-import static org.apache.commons.lang3.StringUtils.defaultIfBlank;
 import static io.nebulacms.app.content.comment.ReplyNotificationSubscriptionHelper.identityFrom;
+import static org.apache.commons.lang3.StringUtils.defaultIfBlank;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import java.time.Duration;
-import java.util.Map;
-import java.util.Optional;
-import lombok.Builder;
-import lombok.RequiredArgsConstructor;
-import lombok.experimental.UtilityClass;
-import org.apache.commons.lang3.StringUtils;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.springframework.context.event.EventListener;
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.stereotype.Component;
-import org.springframework.util.Assert;
 import io.nebulacms.app.content.NotificationReasonConst;
 import io.nebulacms.app.core.extension.User;
 import io.nebulacms.app.core.extension.content.Comment;
@@ -35,6 +21,21 @@ import io.nebulacms.app.infra.utils.JsonUtils;
 import io.nebulacms.app.infra.utils.ReactiveUtils;
 import io.nebulacms.app.notification.NotificationReasonEmitter;
 import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import java.time.Duration;
+import java.util.Map;
+import java.util.Optional;
+import lombok.Builder;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.UtilityClass;
+import org.apache.commons.lang3.StringUtils;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.springframework.context.event.EventListener;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
 
 /**
  * Notification reason publisher for {@link Comment} and {@link Reply}.

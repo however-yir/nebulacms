@@ -1,5 +1,7 @@
 package io.nebulacms.app.security;
 
+import io.nebulacms.app.infra.utils.HaloUtils;
+
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.AuthenticationException;
@@ -10,7 +12,6 @@ import org.springframework.security.web.server.util.matcher.ServerWebExchangeMat
 import org.springframework.security.web.server.util.matcher.ServerWebExchangeMatcher.MatchResult;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.infra.utils.HaloUtils;
 
 /**
  * Default authentication entry point.

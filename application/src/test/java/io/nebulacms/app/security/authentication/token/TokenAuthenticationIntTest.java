@@ -1,5 +1,7 @@
 package io.nebulacms.app.security.authentication.token;
 
+import io.nebulacms.app.security.authentication.CryptoService;
+
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
 import java.util.List;
@@ -14,7 +16,6 @@ import org.springframework.security.oauth2.jwt.JwtClaimsSet;
 import org.springframework.security.oauth2.jwt.JwtEncoderParameters;
 import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
 import org.springframework.test.web.reactive.server.WebTestClient;
-import io.nebulacms.app.security.authentication.CryptoService;
 
 @SpringBootTest
 @AutoConfigureWebTestClient

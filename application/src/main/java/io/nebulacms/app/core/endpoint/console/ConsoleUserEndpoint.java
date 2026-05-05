@@ -2,6 +2,11 @@ package io.nebulacms.app.core.endpoint.console;
 
 import static org.springdoc.core.fn.builders.apiresponse.Builder.responseBuilder;
 
+import io.nebulacms.app.core.extension.User;
+import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
+import io.nebulacms.app.core.user.service.UserService;
+import io.nebulacms.app.extension.GroupVersion;
+
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import java.util.Objects;
 import org.springdoc.core.fn.builders.parameter.Builder;
@@ -17,10 +22,6 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.server.ServerWebInputException;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.User;
-import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
-import io.nebulacms.app.core.user.service.UserService;
-import io.nebulacms.app.extension.GroupVersion;
 
 /**
  * User endpoint for console.

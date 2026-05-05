@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 import static org.thymeleaf.templatemode.TemplateMode.HTML;
 
+import io.nebulacms.app.core.attachment.ThumbnailSize;
+
 import java.net.URI;
 import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,7 +22,6 @@ import org.thymeleaf.model.IModelFactory;
 import org.thymeleaf.spring6.SpringTemplateEngine;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.core.attachment.ThumbnailSize;
 
 @ExtendWith(MockitoExtension.class)
 class ThumbnailImgTagPostProcessorTest {

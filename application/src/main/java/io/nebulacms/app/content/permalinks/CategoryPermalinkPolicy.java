@@ -2,11 +2,6 @@ package io.nebulacms.app.content.permalinks;
 
 import static org.springframework.web.util.UriUtils.encode;
 
-import java.nio.charset.StandardCharsets;
-import java.time.Duration;
-import java.util.Map;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 import io.nebulacms.app.core.extension.content.Category;
 import io.nebulacms.app.core.extension.content.Constant;
 import io.nebulacms.app.extension.MetadataUtil;
@@ -16,6 +11,12 @@ import io.nebulacms.app.infra.SystemSetting;
 import io.nebulacms.app.infra.utils.PathUtils;
 import io.nebulacms.app.infra.utils.ReactiveUtils;
 import io.nebulacms.app.theme.utils.PatternUtils;
+
+import java.nio.charset.StandardCharsets;
+import java.time.Duration;
+import java.util.Map;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 /**
  * @author guqing

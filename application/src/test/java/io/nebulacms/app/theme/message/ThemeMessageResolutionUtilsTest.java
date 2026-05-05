@@ -2,6 +2,8 @@ package io.nebulacms.app.theme.message;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import io.nebulacms.app.theme.ThemeContext;
+
 import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -11,7 +13,6 @@ import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.util.ResourceUtils;
-import io.nebulacms.app.theme.ThemeContext;
 
 /**
  * @author guqing

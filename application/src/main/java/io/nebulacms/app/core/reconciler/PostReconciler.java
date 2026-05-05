@@ -1,36 +1,16 @@
 package io.nebulacms.app.core.reconciler;
 
-import static java.nio.charset.StandardCharsets.UTF_8;
-import static org.apache.commons.lang3.BooleanUtils.TRUE;
-import static org.apache.commons.lang3.BooleanUtils.isFalse;
-import static org.apache.commons.lang3.BooleanUtils.isTrue;
-import static org.apache.commons.lang3.ObjectUtils.defaultIfNull;
 import static io.nebulacms.app.extension.ExtensionUtil.addFinalizers;
 import static io.nebulacms.app.extension.ExtensionUtil.removeFinalizers;
 import static io.nebulacms.app.extension.MetadataUtil.nullSafeAnnotations;
 import static io.nebulacms.app.extension.MetadataUtil.nullSafeLabels;
 import static io.nebulacms.app.extension.index.query.Queries.in;
+import static java.nio.charset.StandardCharsets.UTF_8;
+import static org.apache.commons.lang3.BooleanUtils.TRUE;
+import static org.apache.commons.lang3.BooleanUtils.isFalse;
+import static org.apache.commons.lang3.BooleanUtils.isTrue;
+import static org.apache.commons.lang3.ObjectUtils.defaultIfNull;
 
-import com.google.common.hash.Hashing;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
-import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.BooleanUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.jsoup.Jsoup;
-import org.springframework.context.ApplicationEvent;
-import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Component;
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.content.CategoryService;
 import io.nebulacms.app.content.ContentWrapper;
 import io.nebulacms.app.content.ExcerptGenerator;
@@ -69,6 +49,27 @@ import io.nebulacms.app.infra.utils.HaloUtils;
 import io.nebulacms.app.infra.utils.ReactiveUtils;
 import io.nebulacms.app.notification.NotificationCenter;
 import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
+
+import com.google.common.hash.Hashing;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.BooleanUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.jsoup.Jsoup;
+import org.springframework.context.ApplicationEvent;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Component;
+import reactor.core.publisher.Mono;
 
 /**
  * <p>Reconciler for {@link Post}.</p>

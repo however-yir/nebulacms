@@ -5,6 +5,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import io.nebulacms.app.core.extension.Plugin;
+import io.nebulacms.app.extension.Unstructured;
+import io.nebulacms.app.infra.utils.FileUtils;
+import io.nebulacms.app.infra.utils.JsonUtils;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -24,10 +29,6 @@ import org.springframework.security.util.InMemoryResource;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.util.ResourceUtils;
-import io.nebulacms.app.core.extension.Plugin;
-import io.nebulacms.app.extension.Unstructured;
-import io.nebulacms.app.infra.utils.FileUtils;
-import io.nebulacms.app.infra.utils.JsonUtils;
 
 /**
  * Tests for {@link YamlPluginDescriptorFinder}.

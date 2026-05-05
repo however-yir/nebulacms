@@ -2,15 +2,16 @@ package io.nebulacms.app.extension.controller;
 
 import static org.springframework.core.ResolvableType.forClassWithGenerics;
 
+import io.nebulacms.app.extension.ExtensionClient;
+import io.nebulacms.app.extension.controller.Reconciler.Request;
+import io.nebulacms.app.infra.InitializationPhase;
+
 import java.util.concurrent.ConcurrentHashMap;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.SmartLifecycle;
-import io.nebulacms.app.extension.ExtensionClient;
-import io.nebulacms.app.extension.controller.Reconciler.Request;
-import io.nebulacms.app.infra.InitializationPhase;
 
 @Slf4j
 public class DefaultControllerManager implements ApplicationContextAware, SmartLifecycle {
@@ -79,7 +80,6 @@ public class DefaultControllerManager implements ApplicationContextAware, SmartL
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
     }
-
 
     @Override
     public boolean isRunning() {

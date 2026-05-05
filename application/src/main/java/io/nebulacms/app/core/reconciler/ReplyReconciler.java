@@ -1,13 +1,9 @@
 package io.nebulacms.app.core.reconciler;
 
-import static org.apache.commons.lang3.ObjectUtils.defaultIfNull;
 import static io.nebulacms.app.extension.ExtensionUtil.addFinalizers;
 import static io.nebulacms.app.extension.index.query.Queries.equal;
+import static org.apache.commons.lang3.ObjectUtils.defaultIfNull;
 
-import java.util.Set;
-import lombok.AllArgsConstructor;
-import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.stereotype.Component;
 import io.nebulacms.app.content.comment.ReplyNotificationSubscriptionHelper;
 import io.nebulacms.app.core.extension.content.Reply;
 import io.nebulacms.app.event.post.ReplyChangedEvent;
@@ -18,6 +14,11 @@ import io.nebulacms.app.extension.ListOptions;
 import io.nebulacms.app.extension.controller.Controller;
 import io.nebulacms.app.extension.controller.ControllerBuilder;
 import io.nebulacms.app.extension.controller.Reconciler;
+
+import java.util.Set;
+import lombok.AllArgsConstructor;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.stereotype.Component;
 
 /**
  * Reconciler for {@link Reply}.

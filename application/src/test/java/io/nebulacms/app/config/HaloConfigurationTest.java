@@ -4,14 +4,15 @@ import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+import io.nebulacms.app.search.SearchEngine;
+import io.nebulacms.app.search.lucene.LuceneSearchEngine;
+
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
-import io.nebulacms.app.search.SearchEngine;
-import io.nebulacms.app.search.lucene.LuceneSearchEngine;
 
 class HaloConfigurationTest {
 

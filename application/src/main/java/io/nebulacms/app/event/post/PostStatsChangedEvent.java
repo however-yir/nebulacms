@@ -1,11 +1,12 @@
 package io.nebulacms.app.event.post;
 
-import lombok.Getter;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.context.ApplicationEvent;
 import io.nebulacms.app.core.counter.MeterUtils;
 import io.nebulacms.app.core.extension.Counter;
 import io.nebulacms.app.core.extension.content.Post;
+
+import lombok.Getter;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.context.ApplicationEvent;
 
 @Getter
 public class PostStatsChangedEvent extends ApplicationEvent {

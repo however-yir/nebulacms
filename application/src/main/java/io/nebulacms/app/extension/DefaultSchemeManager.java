@@ -1,5 +1,11 @@
 package io.nebulacms.app.extension;
 
+import io.nebulacms.app.extension.event.SchemeAddedEvent;
+import io.nebulacms.app.extension.event.SchemeRemovedEvent;
+import io.nebulacms.app.extension.index.IndexEngine;
+import io.nebulacms.app.extension.index.IndexSpecs;
+import io.nebulacms.app.extension.index.ValueIndexSpec;
+
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -10,11 +16,6 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
-import io.nebulacms.app.extension.event.SchemeAddedEvent;
-import io.nebulacms.app.extension.event.SchemeRemovedEvent;
-import io.nebulacms.app.extension.index.IndexEngine;
-import io.nebulacms.app.extension.index.IndexSpecs;
-import io.nebulacms.app.extension.index.ValueIndexSpec;
 
 @Component
 public class DefaultSchemeManager implements SchemeManager {

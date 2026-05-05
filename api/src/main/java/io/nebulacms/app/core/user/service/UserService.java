@@ -1,10 +1,11 @@
 package io.nebulacms.app.core.user.service;
 
+import io.nebulacms.app.core.extension.User;
+
 import java.util.Collection;
 import java.util.Set;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.User;
 
 public interface UserService {
 

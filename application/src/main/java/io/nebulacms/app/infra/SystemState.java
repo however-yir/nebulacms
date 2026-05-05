@@ -1,5 +1,11 @@
 package io.nebulacms.app.infra;
 
+import io.nebulacms.app.extension.ConfigMap;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.infra.utils.JsonParseException;
+import io.nebulacms.app.infra.utils.JsonUtils;
+
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.fge.jsonpatch.JsonPatchException;
 import com.github.fge.jsonpatch.mergepatch.JsonMergePatch;
@@ -13,11 +19,6 @@ import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.lang.NonNull;
 import reactor.core.publisher.Mono;
 import reactor.util.retry.Retry;
-import io.nebulacms.app.extension.ConfigMap;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.infra.utils.JsonParseException;
-import io.nebulacms.app.infra.utils.JsonUtils;
 
 /**
  * A model for system state deserialize from {@link io.nebulacms.app.extension.ConfigMap}

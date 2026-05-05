@@ -1,5 +1,11 @@
 package io.nebulacms.app.plugin;
 
+import io.nebulacms.app.extension.ExtensionUtil;
+import io.nebulacms.app.extension.GroupVersionKind;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.exception.SchemeNotFoundException;
+import io.nebulacms.app.plugin.event.HaloPluginBeforeStopEvent;
+
 import java.time.Duration;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.event.EventListener;
@@ -9,11 +15,6 @@ import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.util.retry.Retry;
-import io.nebulacms.app.extension.ExtensionUtil;
-import io.nebulacms.app.extension.GroupVersionKind;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.exception.SchemeNotFoundException;
-import io.nebulacms.app.plugin.event.HaloPluginBeforeStopEvent;
 
 /**
  * Synchronization listener executed by the plugin before it is stopped.

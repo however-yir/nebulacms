@@ -3,9 +3,6 @@ package io.nebulacms.app.extension.gc;
 import static io.nebulacms.app.extension.index.query.Queries.isNull;
 import static io.nebulacms.app.extension.index.query.Queries.not;
 
-import java.util.List;
-import org.springframework.context.ApplicationListener;
-import org.springframework.data.domain.Sort;
 import io.nebulacms.app.extension.Extension;
 import io.nebulacms.app.extension.ExtensionClient;
 import io.nebulacms.app.extension.ListOptions;
@@ -16,6 +13,10 @@ import io.nebulacms.app.extension.controller.RequestQueue;
 import io.nebulacms.app.extension.controller.Synchronizer;
 import io.nebulacms.app.extension.event.SchemeAddedEvent;
 import io.nebulacms.app.extension.router.selector.FieldSelector;
+
+import java.util.List;
+import org.springframework.context.ApplicationListener;
+import org.springframework.data.domain.Sort;
 
 class GcSynchronizer implements Synchronizer<GcRequest>, ApplicationListener<SchemeAddedEvent> {
 

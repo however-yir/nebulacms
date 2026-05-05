@@ -6,12 +6,13 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import io.nebulacms.app.extension.AbstractExtension;
+import io.nebulacms.app.extension.GVK;
+
 import java.util.Set;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.junit.jupiter.api.Test;
-import io.nebulacms.app.extension.AbstractExtension;
-import io.nebulacms.app.extension.GVK;
 
 /**
  * Tests for {@link IndexSpec}.

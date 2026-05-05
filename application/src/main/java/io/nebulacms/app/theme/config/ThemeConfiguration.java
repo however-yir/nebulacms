@@ -1,5 +1,10 @@
 package io.nebulacms.app.theme.config;
 
+import io.nebulacms.app.theme.dialect.GeneratorMetaProcessor;
+import io.nebulacms.app.theme.dialect.HaloSpringSecurityDialect;
+import io.nebulacms.app.theme.dialect.LinkExpressionObjectDialect;
+import io.nebulacms.app.theme.dialect.TemplateHeadProcessor;
+
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.info.BuildProperties;
@@ -8,10 +13,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.expression.method.MethodSecurityExpressionHandler;
 import org.springframework.security.web.server.context.ServerSecurityContextRepository;
 import org.thymeleaf.extras.springsecurity6.dialect.SpringSecurityDialect;
-import io.nebulacms.app.theme.dialect.GeneratorMetaProcessor;
-import io.nebulacms.app.theme.dialect.HaloSpringSecurityDialect;
-import io.nebulacms.app.theme.dialect.LinkExpressionObjectDialect;
-import io.nebulacms.app.theme.dialect.TemplateHeadProcessor;
 
 /**
  * @author guqing

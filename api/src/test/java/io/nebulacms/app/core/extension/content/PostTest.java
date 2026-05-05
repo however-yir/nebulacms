@@ -2,6 +2,8 @@ package io.nebulacms.app.core.extension.content;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import io.nebulacms.app.extension.Metadata;
+
 import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -9,7 +11,6 @@ import java.util.stream.Stream;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import io.nebulacms.app.extension.Metadata;
 
 class PostTest {
 

@@ -8,6 +8,9 @@ import static org.springframework.security.config.web.server.SecurityWebFiltersO
 import static org.springframework.security.config.web.server.SecurityWebFiltersOrder.LAST;
 import static org.springframework.security.config.web.server.SecurityWebFiltersOrder.OAUTH2_AUTHORIZATION_CODE;
 
+import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
+import io.nebulacms.app.security.authentication.SecurityConfigurer;
+
 import lombok.Setter;
 import org.pf4j.ExtensionPoint;
 import org.springframework.core.annotation.AnnotationAwareOrderComparator;
@@ -19,8 +22,6 @@ import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.server.WebFilter;
 import org.springframework.web.server.WebFilterChain;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
-import io.nebulacms.app.security.authentication.SecurityConfigurer;
 
 @Component
 // Specific an order here to control the order or security configurer initialization

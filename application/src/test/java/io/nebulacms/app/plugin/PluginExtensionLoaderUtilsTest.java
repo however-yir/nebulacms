@@ -1,10 +1,12 @@
 package io.nebulacms.app.plugin;
 
+import static io.nebulacms.app.plugin.PluginExtensionLoaderUtils.isSetting;
+import static io.nebulacms.app.plugin.PluginExtensionLoaderUtils.lookupExtensions;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static io.nebulacms.app.plugin.PluginExtensionLoaderUtils.isSetting;
-import static io.nebulacms.app.plugin.PluginExtensionLoaderUtils.lookupExtensions;
+
+import io.nebulacms.app.infra.utils.YamlUnstructuredLoader;
 
 import java.io.IOException;
 import java.net.URL;
@@ -13,7 +15,6 @@ import java.util.Arrays;
 import java.util.Objects;
 import org.junit.jupiter.api.Test;
 import org.springframework.core.io.DefaultResourceLoader;
-import io.nebulacms.app.infra.utils.YamlUnstructuredLoader;
 
 class PluginExtensionLoaderUtilsTest {
 

@@ -1,5 +1,8 @@
 package io.nebulacms.app.plugin;
 
+import io.nebulacms.app.infra.SystemVersionSupplier;
+import io.nebulacms.app.plugin.event.PluginStartedEvent;
+
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +29,6 @@ import org.pf4j.PluginWrapper;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.data.util.Lazy;
-import io.nebulacms.app.infra.SystemVersionSupplier;
-import io.nebulacms.app.plugin.event.PluginStartedEvent;
 
 /**
  * PluginManager to hold the main ApplicationContext.

@@ -1,5 +1,7 @@
 package io.nebulacms.app.theme.message;
 
+import io.nebulacms.app.theme.ThemeContext;
+
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Locale;
@@ -7,7 +9,6 @@ import java.util.Map;
 import java.util.Optional;
 import org.thymeleaf.messageresolver.StandardMessageResolver;
 import org.thymeleaf.templateresource.ITemplateResource;
-import io.nebulacms.app.theme.ThemeContext;
 
 /**
  * @author guqing

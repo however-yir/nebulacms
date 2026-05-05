@@ -1,12 +1,13 @@
 package io.nebulacms.app.security.jackson2;
 
+import io.nebulacms.app.security.authentication.login.HaloUser;
+import io.nebulacms.app.security.authentication.oauth2.HaloOAuth2AuthenticationToken;
+import io.nebulacms.app.security.authentication.twofactor.TwoFactorAuthentication;
+
 import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.springframework.security.jackson2.SecurityJackson2Modules;
 import org.springframework.security.web.authentication.switchuser.SwitchUserGrantedAuthority;
-import io.nebulacms.app.security.authentication.login.HaloUser;
-import io.nebulacms.app.security.authentication.oauth2.HaloOAuth2AuthenticationToken;
-import io.nebulacms.app.security.authentication.twofactor.TwoFactorAuthentication;
 
 /**
  * Halo security Jackson2 module.

@@ -7,6 +7,15 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.content.ContentUpdateParam;
+import io.nebulacms.app.content.PostRequest;
+import io.nebulacms.app.content.PostService;
+import io.nebulacms.app.content.TestPost;
+import io.nebulacms.app.core.extension.content.Post;
+import io.nebulacms.app.core.extension.content.Post.PostSpec;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+
 import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,14 +27,6 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.content.ContentUpdateParam;
-import io.nebulacms.app.content.PostRequest;
-import io.nebulacms.app.content.PostService;
-import io.nebulacms.app.content.TestPost;
-import io.nebulacms.app.core.extension.content.Post;
-import io.nebulacms.app.core.extension.content.Post.PostSpec;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
 
 /**
  * Tests for @{@link PostEndpoint}.

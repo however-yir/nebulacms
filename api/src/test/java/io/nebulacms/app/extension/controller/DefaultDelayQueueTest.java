@@ -5,13 +5,14 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import io.nebulacms.app.extension.controller.Reconciler.Request;
+import io.nebulacms.app.extension.controller.RequestQueue.DelayedEntry;
+
 import java.time.Duration;
 import java.time.Instant;
 import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import io.nebulacms.app.extension.controller.Reconciler.Request;
-import io.nebulacms.app.extension.controller.RequestQueue.DelayedEntry;
 
 class DefaultDelayQueueTest {
 

@@ -1,9 +1,16 @@
 package io.nebulacms.app.security.device;
 
+import static io.nebulacms.app.extension.index.query.Queries.equal;
 import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
 import static org.springdoc.core.fn.builders.apiresponse.Builder.responseBuilder;
 import static org.springdoc.core.fn.builders.parameter.Builder.parameterBuilder;
-import static io.nebulacms.app.extension.index.query.Queries.equal;
+
+import io.nebulacms.app.core.extension.Device;
+import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
+import io.nebulacms.app.extension.GroupVersion;
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.router.selector.FieldSelector;
 
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -26,12 +33,6 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.Device;
-import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
-import io.nebulacms.app.extension.GroupVersion;
-import io.nebulacms.app.extension.ListOptions;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.router.selector.FieldSelector;
 
 /**
  * Device endpoint for user profile,every user can only manage their own devices.

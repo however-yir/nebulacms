@@ -1,9 +1,16 @@
 package io.nebulacms.app.content.comment;
 
-import static org.springdoc.core.fn.builders.parameter.Builder.parameterBuilder;
-import static org.springframework.data.domain.Sort.Order.desc;
 import static io.nebulacms.app.extension.index.query.Queries.contains;
 import static io.nebulacms.app.extension.index.query.Queries.equal;
+import static org.springdoc.core.fn.builders.parameter.Builder.parameterBuilder;
+import static org.springframework.data.domain.Sort.Order.desc;
+
+import io.nebulacms.app.core.extension.User;
+import io.nebulacms.app.core.extension.content.Comment;
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.router.IListRequest;
+import io.nebulacms.app.extension.router.QueryParamBuildUtil;
+import io.nebulacms.app.extension.router.SortableRequest;
 
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import java.util.Optional;
@@ -12,12 +19,6 @@ import org.springdoc.core.fn.builders.operation.Builder;
 import org.springframework.data.domain.Sort;
 import org.springframework.lang.Nullable;
 import org.springframework.web.reactive.function.server.ServerRequest;
-import io.nebulacms.app.core.extension.User;
-import io.nebulacms.app.core.extension.content.Comment;
-import io.nebulacms.app.extension.ListOptions;
-import io.nebulacms.app.extension.router.IListRequest;
-import io.nebulacms.app.extension.router.QueryParamBuildUtil;
-import io.nebulacms.app.extension.router.SortableRequest;
 
 /**
  * Query criteria for comment list.

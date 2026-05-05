@@ -1,5 +1,8 @@
 package io.nebulacms.app.plugin.resources;
 
+import io.nebulacms.app.core.extension.ReverseProxy;
+import io.nebulacms.app.plugin.PluginRouterFunctionRegistry;
+
 import com.google.common.collect.LinkedHashMultimap;
 import java.util.HashMap;
 import java.util.Map;
@@ -9,8 +12,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
-import io.nebulacms.app.core.extension.ReverseProxy;
-import io.nebulacms.app.plugin.PluginRouterFunctionRegistry;
 
 /**
  * A registry for {@link RouterFunction} of plugin.

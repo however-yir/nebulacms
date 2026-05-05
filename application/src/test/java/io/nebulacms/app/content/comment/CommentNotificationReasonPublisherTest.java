@@ -10,16 +10,6 @@ import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.util.Map;
-import java.util.Optional;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.content.NotificationReasonConst;
 import io.nebulacms.app.core.extension.User;
 import io.nebulacms.app.core.extension.content.Comment;
@@ -39,6 +29,17 @@ import io.nebulacms.app.notification.NotificationReasonEmitter;
 import io.nebulacms.app.notification.ReasonPayload;
 import io.nebulacms.app.notification.UserIdentity;
 import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
+
+import java.util.Map;
+import java.util.Optional;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 /**
  * Tests for {@link CommentNotificationReasonPublisher}.
@@ -65,7 +66,6 @@ class CommentNotificationReasonPublisherTest {
 
     @InjectMocks
     private CommentNotificationReasonPublisher reasonPublisher;
-
 
     @Test
     void onNewCommentTest() {

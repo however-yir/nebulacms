@@ -2,13 +2,14 @@ package io.nebulacms.app.extension;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import io.nebulacms.app.infra.utils.JsonUtils;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 import java.util.Map;
 import org.json.JSONException;
 import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
-import io.nebulacms.app.infra.utils.JsonUtils;
 
 /**
  * Tests for {@link Secret}.

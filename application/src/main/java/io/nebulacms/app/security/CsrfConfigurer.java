@@ -2,6 +2,8 @@ package io.nebulacms.app.security;
 
 import static org.springframework.security.web.server.util.matcher.ServerWebExchangeMatchers.pathMatchers;
 
+import io.nebulacms.app.security.authentication.SecurityConfigurer;
+
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.oauth2.server.resource.web.server.authentication.ServerBearerTokenAuthenticationConverter;
@@ -13,7 +15,6 @@ import org.springframework.security.web.server.util.matcher.NegatedServerWebExch
 import org.springframework.security.web.server.util.matcher.ServerWebExchangeMatcher;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.security.authentication.SecurityConfigurer;
 
 @Component
 @Order(0)

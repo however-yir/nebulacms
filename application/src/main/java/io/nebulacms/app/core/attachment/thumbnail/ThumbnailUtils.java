@@ -1,5 +1,7 @@
 package io.nebulacms.app.core.attachment.thumbnail;
 
+import io.nebulacms.app.core.attachment.ThumbnailSize;
+
 import java.net.URI;
 import java.util.Arrays;
 import java.util.Map;
@@ -11,7 +13,6 @@ import org.springframework.http.MediaType;
 import org.springframework.util.MimeType;
 import org.springframework.util.StringUtils;
 import org.springframework.web.util.UriComponentsBuilder;
-import io.nebulacms.app.core.attachment.ThumbnailSize;
 
 public enum ThumbnailUtils {
     ;

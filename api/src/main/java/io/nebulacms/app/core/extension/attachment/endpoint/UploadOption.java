@@ -1,14 +1,15 @@
 package io.nebulacms.app.core.extension.attachment.endpoint;
 
+import io.nebulacms.app.core.extension.attachment.Group;
+import io.nebulacms.app.core.extension.attachment.Policy;
+import io.nebulacms.app.extension.ConfigMap;
+
 import lombok.Builder;
 import org.jspecify.annotations.Nullable;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.MediaType;
 import org.springframework.http.codec.multipart.FilePart;
 import reactor.core.publisher.Flux;
-import io.nebulacms.app.core.extension.attachment.Group;
-import io.nebulacms.app.core.extension.attachment.Policy;
-import io.nebulacms.app.extension.ConfigMap;
 
 @Builder
 public record UploadOption(FilePart file,

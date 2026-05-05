@@ -7,13 +7,14 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.withSettings;
 
+import io.nebulacms.app.search.SearchService;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.pf4j.Plugin;
 import org.pf4j.PluginWrapper;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.bean.override.mockito.MockitoSpyBean;
-import io.nebulacms.app.search.SearchService;
 
 @SpringBootTest
 class DefaultPluginApplicationContextFactoryTest {

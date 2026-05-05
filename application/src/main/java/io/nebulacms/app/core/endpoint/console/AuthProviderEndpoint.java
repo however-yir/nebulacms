@@ -3,6 +3,11 @@ package io.nebulacms.app.core.endpoint.console;
 import static org.springdoc.core.fn.builders.apiresponse.Builder.responseBuilder;
 import static org.springdoc.core.fn.builders.parameter.Builder.parameterBuilder;
 
+import io.nebulacms.app.core.extension.AuthProvider;
+import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
+import io.nebulacms.app.security.AuthProviderService;
+import io.nebulacms.app.security.ListedAuthProvider;
+
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import lombok.RequiredArgsConstructor;
 import org.springdoc.webflux.core.fn.SpringdocRouteBuilder;
@@ -11,10 +16,6 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.AuthProvider;
-import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
-import io.nebulacms.app.security.AuthProviderService;
-import io.nebulacms.app.security.ListedAuthProvider;
 
 /**
  * Auth provider endpoint.

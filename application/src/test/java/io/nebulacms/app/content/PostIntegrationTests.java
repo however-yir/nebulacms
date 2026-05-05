@@ -5,6 +5,13 @@ import static org.mockito.ArgumentMatchers.anySet;
 import static org.mockito.Mockito.when;
 import static org.springframework.security.test.web.reactive.server.SecurityMockServerConfigurers.csrf;
 
+import io.nebulacms.app.core.extension.Role;
+import io.nebulacms.app.core.extension.content.Post;
+import io.nebulacms.app.core.user.service.RoleService;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.MetadataOperator;
+import io.nebulacms.app.infra.utils.JsonUtils;
+
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,12 +23,6 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Flux;
-import io.nebulacms.app.core.extension.Role;
-import io.nebulacms.app.core.extension.content.Post;
-import io.nebulacms.app.core.user.service.RoleService;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.MetadataOperator;
-import io.nebulacms.app.infra.utils.JsonUtils;
 
 /**
  * Integration tests for {@link PostService}.

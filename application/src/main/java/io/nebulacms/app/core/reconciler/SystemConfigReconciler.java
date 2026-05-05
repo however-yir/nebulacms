@@ -1,18 +1,9 @@
 package io.nebulacms.app.core.reconciler;
 
-import static java.util.Objects.requireNonNullElse;
 import static io.nebulacms.app.extension.index.query.Queries.equal;
 import static io.nebulacms.app.infra.utils.SystemConfigUtils.mergeMap;
+import static java.util.Objects.requireNonNullElse;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import java.util.Map;
-import java.util.Objects;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.jspecify.annotations.Nullable;
-import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.stereotype.Component;
-import org.springframework.util.Assert;
 import io.nebulacms.app.extension.ConfigMap;
 import io.nebulacms.app.extension.ExtensionClient;
 import io.nebulacms.app.extension.ExtensionMatcher;
@@ -24,6 +15,16 @@ import io.nebulacms.app.extension.controller.Reconciler;
 import io.nebulacms.app.infra.SystemConfigChangedEvent;
 import io.nebulacms.app.infra.SystemSetting;
 import io.nebulacms.app.infra.utils.SystemConfigUtils;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import java.util.Map;
+import java.util.Objects;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.jspecify.annotations.Nullable;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
 
 @Slf4j
 @Component

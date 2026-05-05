@@ -1,8 +1,9 @@
 package io.nebulacms.app.extension.exception;
 
+import io.nebulacms.app.extension.GroupVersionKind;
+
 import java.net.URI;
 import org.springframework.http.HttpStatus;
-import io.nebulacms.app.extension.GroupVersionKind;
 
 public class ExtensionNotFoundException extends ExtensionException {
 

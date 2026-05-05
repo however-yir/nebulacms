@@ -1,9 +1,5 @@
 package io.nebulacms.app.core.reconciler;
 
-import java.util.Map;
-import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Component;
-import org.thymeleaf.util.StringUtils;
 import io.nebulacms.app.core.extension.AnnotationSetting;
 import io.nebulacms.app.extension.ExtensionClient;
 import io.nebulacms.app.extension.GroupKind;
@@ -11,6 +7,11 @@ import io.nebulacms.app.extension.MetadataUtil;
 import io.nebulacms.app.extension.controller.Controller;
 import io.nebulacms.app.extension.controller.ControllerBuilder;
 import io.nebulacms.app.extension.controller.Reconciler;
+
+import java.util.Map;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Component;
+import org.thymeleaf.util.StringUtils;
 
 /**
  * Reconciler for {@link AnnotationSetting}.

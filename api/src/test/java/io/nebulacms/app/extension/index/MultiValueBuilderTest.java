@@ -7,9 +7,10 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import io.nebulacms.app.extension.FakeExtension;
+
 import java.util.Collections;
 import org.junit.jupiter.api.Test;
-import io.nebulacms.app.extension.FakeExtension;
 
 class MultiValueBuilderTest {
 

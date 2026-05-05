@@ -3,13 +3,14 @@ package io.nebulacms.app.content;
 import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.NOT_REQUIRED;
 import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
 
+import io.nebulacms.app.core.extension.content.Snapshot;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.Ref;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.HashMap;
 import lombok.Builder;
 import org.apache.commons.lang3.StringUtils;
-import io.nebulacms.app.core.extension.content.Snapshot;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.Ref;
 
 /**
  * @author guqing

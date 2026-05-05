@@ -4,6 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+import io.nebulacms.app.infra.webfilter.LocaleChangeWebFilter;
+import io.nebulacms.app.theme.ThemeLocaleContextResolver;
+
 import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,8 +18,6 @@ import org.springframework.mock.http.server.reactive.MockServerHttpRequest;
 import org.springframework.mock.web.server.MockServerWebExchange;
 import org.springframework.web.server.WebFilterChain;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.infra.webfilter.LocaleChangeWebFilter;
-import io.nebulacms.app.theme.ThemeLocaleContextResolver;
 
 class LocaleChangeWebFilterTest {
 

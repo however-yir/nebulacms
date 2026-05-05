@@ -1,9 +1,10 @@
 package io.nebulacms.app.content;
 
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.core.extension.content.SinglePage;
 import io.nebulacms.app.extension.ListResult;
+
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 /**
  * Single page service.

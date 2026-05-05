@@ -81,7 +81,6 @@ public class ConditionList extends AbstractCollection<Condition> {
         return null;
     }
 
-
     public void remove(Condition condition) {
         conditions.remove(condition);
     }

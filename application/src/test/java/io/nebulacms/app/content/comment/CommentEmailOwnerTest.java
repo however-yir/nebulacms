@@ -1,10 +1,11 @@
 package io.nebulacms.app.content.comment;
 
+import io.nebulacms.app.core.extension.content.Comment;
+import io.nebulacms.app.infra.utils.JsonUtils;
+
 import org.json.JSONException;
 import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
-import io.nebulacms.app.core.extension.content.Comment;
-import io.nebulacms.app.infra.utils.JsonUtils;
 
 /**
  * Tests for {@link CommentEmailOwner}.

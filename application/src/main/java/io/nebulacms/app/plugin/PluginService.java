@@ -1,5 +1,7 @@
 package io.nebulacms.app.plugin;
 
+import io.nebulacms.app.core.extension.Plugin;
+
 import java.nio.file.Path;
 import java.util.List;
 import java.util.function.Predicate;
@@ -9,7 +11,6 @@ import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.web.server.ServerWebInputException;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.Plugin;
 
 public interface PluginService {
 

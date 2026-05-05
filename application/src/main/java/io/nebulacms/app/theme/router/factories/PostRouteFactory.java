@@ -1,10 +1,25 @@
 package io.nebulacms.app.theme.router.factories;
 
+import static io.nebulacms.app.content.permalinks.PostPermalinkPolicy.DEFAULT_CATEGORY;
 import static org.apache.commons.lang3.ObjectUtils.defaultIfNull;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
 import static org.springframework.web.reactive.function.server.RequestPredicates.accept;
-import static io.nebulacms.app.content.permalinks.PostPermalinkPolicy.DEFAULT_CATEGORY;
+
+import io.nebulacms.app.content.PostService;
+import io.nebulacms.app.core.extension.content.Post;
+import io.nebulacms.app.extension.MetadataUtil;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.index.query.Queries;
+import io.nebulacms.app.infra.exception.NotFoundException;
+import io.nebulacms.app.infra.utils.JsonUtils;
+import io.nebulacms.app.theme.DefaultTemplateEnum;
+import io.nebulacms.app.theme.ViewNameResolver;
+import io.nebulacms.app.theme.finders.PostFinder;
+import io.nebulacms.app.theme.finders.vo.PostVo;
+import io.nebulacms.app.theme.router.ModelMapUtils;
+import io.nebulacms.app.theme.router.ReactiveQueryPostPredicateResolver;
+import io.nebulacms.app.theme.router.TitleVisibilityIdentifyCalculator;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -30,20 +45,6 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.server.i18n.LocaleContextResolver;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.content.PostService;
-import io.nebulacms.app.core.extension.content.Post;
-import io.nebulacms.app.extension.MetadataUtil;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.index.query.Queries;
-import io.nebulacms.app.infra.exception.NotFoundException;
-import io.nebulacms.app.infra.utils.JsonUtils;
-import io.nebulacms.app.theme.DefaultTemplateEnum;
-import io.nebulacms.app.theme.ViewNameResolver;
-import io.nebulacms.app.theme.finders.PostFinder;
-import io.nebulacms.app.theme.finders.vo.PostVo;
-import io.nebulacms.app.theme.router.ModelMapUtils;
-import io.nebulacms.app.theme.router.ReactiveQueryPostPredicateResolver;
-import io.nebulacms.app.theme.router.TitleVisibilityIdentifyCalculator;
 
 /**
  * The {@link PostRouteFactory} for generate {@link RouterFunction} specific to the template

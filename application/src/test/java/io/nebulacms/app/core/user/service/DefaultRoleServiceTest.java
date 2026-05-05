@@ -8,6 +8,14 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.core.extension.Role;
+import io.nebulacms.app.core.extension.RoleBinding;
+import io.nebulacms.app.core.user.service.DefaultRoleService;
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.infra.utils.JsonUtils;
+
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -27,13 +35,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Sort;
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.core.extension.Role;
-import io.nebulacms.app.core.extension.RoleBinding;
-import io.nebulacms.app.core.user.service.DefaultRoleService;
-import io.nebulacms.app.extension.ListOptions;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.infra.utils.JsonUtils;
 
 /**
  * Tests for {@link DefaultRoleService}.
@@ -72,7 +73,6 @@ class DefaultRoleServiceTest {
             var role3 = createRole("role3");
 
             var roleNames = Set.of("role1");
-
 
             when(client.listAll(same(Role.class), any(ListOptions.class), any(Sort.class)))
                 .thenReturn(Flux.just(role1))

@@ -5,6 +5,11 @@ import static org.apache.lucene.index.IndexWriterConfig.OpenMode.CREATE_OR_APPEN
 import static org.apache.lucene.search.BooleanClause.Occur.FILTER;
 import static org.apache.lucene.search.BooleanClause.Occur.MUST;
 
+import io.nebulacms.app.search.HaloDocument;
+import io.nebulacms.app.search.SearchEngine;
+import io.nebulacms.app.search.SearchOption;
+import io.nebulacms.app.search.SearchResult;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.Closeable;
@@ -62,10 +67,6 @@ import org.springframework.lang.NonNull;
 import org.springframework.util.StopWatch;
 import org.springframework.util.StringUtils;
 import reactor.core.Exceptions;
-import io.nebulacms.app.search.HaloDocument;
-import io.nebulacms.app.search.SearchEngine;
-import io.nebulacms.app.search.SearchOption;
-import io.nebulacms.app.search.SearchResult;
 
 @Slf4j
 public class LuceneSearchEngine implements SearchEngine, InitializingBean, DisposableBean {

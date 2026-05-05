@@ -8,17 +8,6 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.time.Instant;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.content.comment.ReplyService;
 import io.nebulacms.app.core.extension.content.Comment;
 import io.nebulacms.app.core.reconciler.CommentReconciler;
@@ -30,6 +19,18 @@ import io.nebulacms.app.extension.PageRequest;
 import io.nebulacms.app.extension.Ref;
 import io.nebulacms.app.extension.SchemeManager;
 import io.nebulacms.app.extension.controller.Reconciler;
+
+import java.time.Instant;
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import reactor.core.publisher.Mono;
 
 /**
  * Tests for {@link CommentReconciler}.

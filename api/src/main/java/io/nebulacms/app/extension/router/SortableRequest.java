@@ -6,6 +6,12 @@ import static io.nebulacms.app.extension.Comparators.nullsComparator;
 import static io.nebulacms.app.extension.ExtensionUtil.defaultSort;
 import static io.nebulacms.app.extension.router.selector.SelectorUtil.labelAndFieldSelectorToListOptions;
 
+import io.nebulacms.app.core.extension.endpoint.SortResolver;
+import io.nebulacms.app.extension.Extension;
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.PageRequest;
+import io.nebulacms.app.extension.PageRequestImpl;
+
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Comparator;
@@ -16,11 +22,6 @@ import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.server.ServerWebExchange;
-import io.nebulacms.app.core.extension.endpoint.SortResolver;
-import io.nebulacms.app.extension.Extension;
-import io.nebulacms.app.extension.ListOptions;
-import io.nebulacms.app.extension.PageRequest;
-import io.nebulacms.app.extension.PageRequestImpl;
 
 public class SortableRequest extends IListRequest.QueryListRequest {
 

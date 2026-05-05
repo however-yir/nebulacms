@@ -1,22 +1,13 @@
 package io.nebulacms.app.core.reconciler;
 
-import static org.apache.commons.lang3.ObjectUtils.defaultIfNull;
 import static io.nebulacms.app.extension.ExtensionUtil.addFinalizers;
 import static io.nebulacms.app.extension.ExtensionUtil.isDeleted;
 import static io.nebulacms.app.extension.ExtensionUtil.removeFinalizers;
 import static io.nebulacms.app.extension.index.query.Queries.and;
 import static io.nebulacms.app.extension.index.query.Queries.equal;
 import static io.nebulacms.app.extension.index.query.Queries.isNull;
+import static org.apache.commons.lang3.ObjectUtils.defaultIfNull;
 
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import lombok.RequiredArgsConstructor;
-import org.apache.commons.lang3.BooleanUtils;
-import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.stereotype.Component;
 import io.nebulacms.app.content.comment.ReplyNotificationSubscriptionHelper;
 import io.nebulacms.app.content.comment.ReplyService;
 import io.nebulacms.app.core.counter.MeterUtils;
@@ -37,6 +28,16 @@ import io.nebulacms.app.extension.controller.Reconciler;
 import io.nebulacms.app.extension.index.query.Condition;
 import io.nebulacms.app.extension.router.selector.FieldSelector;
 import io.nebulacms.app.infra.utils.ReactiveUtils;
+
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.BooleanUtils;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.stereotype.Component;
 
 /**
  * Reconciler for {@link Comment}.

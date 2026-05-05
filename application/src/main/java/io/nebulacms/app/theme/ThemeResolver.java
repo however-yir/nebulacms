@@ -2,6 +2,14 @@ package io.nebulacms.app.theme;
 
 import static io.nebulacms.app.security.authorization.AuthorityUtils.authoritiesToRoles;
 
+import io.nebulacms.app.core.user.service.RoleService;
+import io.nebulacms.app.infra.AnonymousUserConst;
+import io.nebulacms.app.infra.SystemConfigFetcher;
+import io.nebulacms.app.infra.SystemSetting.Theme;
+import io.nebulacms.app.infra.SystemSetting.ThemeRouteRules;
+import io.nebulacms.app.infra.ThemeRootGetter;
+import io.nebulacms.app.security.authorization.AuthorityUtils;
+
 import java.util.Collection;
 import java.util.Set;
 import lombok.AllArgsConstructor;
@@ -13,13 +21,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.user.service.RoleService;
-import io.nebulacms.app.infra.AnonymousUserConst;
-import io.nebulacms.app.infra.SystemConfigFetcher;
-import io.nebulacms.app.infra.SystemSetting.Theme;
-import io.nebulacms.app.infra.SystemSetting.ThemeRouteRules;
-import io.nebulacms.app.infra.ThemeRootGetter;
-import io.nebulacms.app.security.authorization.AuthorityUtils;
 
 /**
  * @author johnniang

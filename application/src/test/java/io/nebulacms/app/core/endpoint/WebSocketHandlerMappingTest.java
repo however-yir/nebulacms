@@ -3,6 +3,8 @@ package io.nebulacms.app.core.endpoint;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import io.nebulacms.app.extension.GroupVersion;
+
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -10,7 +12,6 @@ import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.web.reactive.socket.WebSocketHandler;
 import org.springframework.web.reactive.socket.WebSocketSession;
-import io.nebulacms.app.extension.GroupVersion;
 
 @ExtendWith(MockitoExtension.class)
 class WebSocketHandlerMappingTest {

@@ -6,6 +6,17 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.content.CategoryService;
+import io.nebulacms.app.core.extension.content.Category;
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.ListResult;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.PageRequest;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.infra.utils.JsonUtils;
+import io.nebulacms.app.theme.finders.vo.CategoryTreeVo;
+import io.nebulacms.app.theme.finders.vo.CategoryVo;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -27,16 +38,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.util.ResourceUtils;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.content.CategoryService;
-import io.nebulacms.app.core.extension.content.Category;
-import io.nebulacms.app.extension.ListOptions;
-import io.nebulacms.app.extension.ListResult;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.PageRequest;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.infra.utils.JsonUtils;
-import io.nebulacms.app.theme.finders.vo.CategoryTreeVo;
-import io.nebulacms.app.theme.finders.vo.CategoryVo;
 
 /**
  * Tests for {@link CategoryFinderImpl}.

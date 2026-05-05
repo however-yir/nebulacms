@@ -5,6 +5,11 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.core.extension.notification.NotificationTemplate;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.infra.utils.JsonUtils;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -20,10 +25,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Sort;
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.core.extension.notification.NotificationTemplate;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.infra.utils.JsonUtils;
 
 /**
  * Tests for {@link ReasonNotificationTemplateSelectorImpl}.

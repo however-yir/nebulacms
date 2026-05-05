@@ -3,6 +3,11 @@ package io.nebulacms.app.extension;
 import static org.apache.commons.lang3.RandomStringUtils.secure;
 import static org.springframework.util.StringUtils.hasText;
 
+import io.nebulacms.app.extension.exception.ExtensionNotFoundException;
+import io.nebulacms.app.extension.index.IndexEngine;
+import io.nebulacms.app.extension.index.IndexedQueryEngine;
+import io.nebulacms.app.extension.store.ReactiveExtensionStoreClient;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.time.Duration;
@@ -27,10 +32,6 @@ import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Scheduler;
 import reactor.core.scheduler.Schedulers;
 import reactor.util.retry.Retry;
-import io.nebulacms.app.extension.exception.ExtensionNotFoundException;
-import io.nebulacms.app.extension.index.IndexEngine;
-import io.nebulacms.app.extension.index.IndexedQueryEngine;
-import io.nebulacms.app.extension.store.ReactiveExtensionStoreClient;
 
 @Slf4j
 @Component

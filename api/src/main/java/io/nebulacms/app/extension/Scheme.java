@@ -1,12 +1,13 @@
 package io.nebulacms.app.extension;
 
+import io.nebulacms.app.extension.exception.ExtensionException;
+
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.swagger.v3.core.converter.ModelConverters;
 import io.swagger.v3.core.util.Json;
 import java.util.Map;
 import org.springframework.lang.NonNull;
 import org.springframework.util.Assert;
-import io.nebulacms.app.extension.exception.ExtensionException;
 
 /**
  * This class represents scheme of an Extension.

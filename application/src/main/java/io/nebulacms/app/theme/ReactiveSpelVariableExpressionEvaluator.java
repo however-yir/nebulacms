@@ -2,6 +2,8 @@ package io.nebulacms.app.theme;
 
 import static io.nebulacms.app.theme.HaloViewResolver.HaloView.CONTEXT_VIEW_KEY;
 
+import io.nebulacms.app.infra.utils.ReactiveUtils;
+
 import java.util.Optional;
 import org.thymeleaf.context.IExpressionContext;
 import org.thymeleaf.spring6.expression.SPELVariableExpressionEvaluator;
@@ -9,7 +11,6 @@ import org.thymeleaf.standard.expression.IStandardVariableExpression;
 import org.thymeleaf.standard.expression.IStandardVariableExpressionEvaluator;
 import org.thymeleaf.standard.expression.StandardExpressionExecutionContext;
 import reactor.util.context.ContextView;
-import io.nebulacms.app.infra.utils.ReactiveUtils;
 
 /**
  * Reactive SPEL variable expression evaluator.

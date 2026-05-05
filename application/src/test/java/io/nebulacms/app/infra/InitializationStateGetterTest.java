@@ -5,6 +5,13 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.core.extension.User;
+import io.nebulacms.app.extension.ConfigMap;
+import io.nebulacms.app.extension.ListResult;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.PageRequest;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+
 import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
@@ -14,12 +21,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.core.extension.User;
-import io.nebulacms.app.extension.ConfigMap;
-import io.nebulacms.app.extension.ListResult;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.PageRequest;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
 
 /**
  * Tests for {@link InitializationStateGetter}.

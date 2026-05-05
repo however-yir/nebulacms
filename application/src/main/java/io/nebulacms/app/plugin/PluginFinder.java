@@ -1,9 +1,10 @@
 package io.nebulacms.app.plugin;
 
+import io.nebulacms.app.core.extension.Plugin;
+
 import java.nio.file.Path;
 import org.jspecify.annotations.NonNull;
 import org.pf4j.PluginRuntimeException;
-import io.nebulacms.app.core.extension.Plugin;
 
 /**
  * The plugin finder to find plugin manifest from given plugin path.

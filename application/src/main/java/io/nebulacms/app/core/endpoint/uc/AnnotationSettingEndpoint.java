@@ -1,7 +1,19 @@
 package io.nebulacms.app.core.endpoint.uc;
 
-import static org.springdoc.core.fn.builders.parameter.Builder.parameterBuilder;
 import static io.nebulacms.app.extension.ExtensionUtil.defaultSort;
+import static org.springdoc.core.fn.builders.parameter.Builder.parameterBuilder;
+
+import io.nebulacms.app.core.extension.AnnotationSetting;
+import io.nebulacms.app.core.extension.Theme;
+import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
+import io.nebulacms.app.extension.GroupVersion;
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.index.query.Condition;
+import io.nebulacms.app.extension.index.query.Queries;
+import io.nebulacms.app.plugin.PluginConst;
+import io.nebulacms.app.plugin.PluginService;
+import io.nebulacms.app.theme.service.ThemeService;
 
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import java.util.Optional;
@@ -16,17 +28,6 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.server.ServerWebInputException;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.AnnotationSetting;
-import io.nebulacms.app.core.extension.Theme;
-import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
-import io.nebulacms.app.extension.GroupVersion;
-import io.nebulacms.app.extension.ListOptions;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.index.query.Condition;
-import io.nebulacms.app.extension.index.query.Queries;
-import io.nebulacms.app.plugin.PluginConst;
-import io.nebulacms.app.plugin.PluginService;
-import io.nebulacms.app.theme.service.ThemeService;
 
 /**
  * The endpoint for managing AnnotationSettings.
@@ -62,7 +63,8 @@ class AnnotationSettingEndpoint implements CustomEndpoint {
                         .name("targetRef")
                         .in(ParameterIn.QUERY)
                         .description(
-                            "The targetRef of the AnnotationSetting. e.g.: 'content.nebulacms.io/Post"
+                            "The targetRef of the AnnotationSetting. e.g.: "
+                            + "'content.nebulacms.io/Post"
                         )
                         .required(true)
                         .implementation(String.class)

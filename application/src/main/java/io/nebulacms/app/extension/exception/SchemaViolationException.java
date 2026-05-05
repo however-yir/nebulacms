@@ -1,8 +1,9 @@
 package io.nebulacms.app.extension.exception;
 
+import io.nebulacms.app.extension.GroupVersionKind;
+
 import org.openapi4j.core.validation.ValidationResults;
 import org.springframework.http.HttpStatus;
-import io.nebulacms.app.extension.GroupVersionKind;
 
 /**
  * This exception is thrown when Schema is violation.

@@ -1,13 +1,14 @@
 package io.nebulacms.app.content;
 
-import org.json.JSONException;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.skyscreamer.jsonassert.JSONAssert;
 import io.nebulacms.app.core.extension.content.Post;
 import io.nebulacms.app.core.extension.content.Snapshot;
 import io.nebulacms.app.extension.Ref;
 import io.nebulacms.app.infra.utils.JsonUtils;
+
+import org.json.JSONException;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.skyscreamer.jsonassert.JSONAssert;
 
 /**
  * Tests for {@link ContentRequest}.

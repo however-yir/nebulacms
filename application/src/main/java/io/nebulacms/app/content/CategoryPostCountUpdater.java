@@ -1,17 +1,8 @@
 package io.nebulacms.app.content;
 
-import static org.apache.commons.lang3.ObjectUtils.defaultIfNull;
 import static io.nebulacms.app.extension.index.query.Queries.equal;
+import static org.apache.commons.lang3.ObjectUtils.defaultIfNull;
 
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import org.apache.commons.lang3.BooleanUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.context.event.EventListener;
-import org.springframework.stereotype.Component;
 import io.nebulacms.app.core.extension.content.Category;
 import io.nebulacms.app.core.extension.content.Post;
 import io.nebulacms.app.event.post.PostDeletedEvent;
@@ -25,6 +16,16 @@ import io.nebulacms.app.extension.index.query.Queries;
 import io.nebulacms.app.extension.router.selector.FieldSelector;
 import io.nebulacms.app.extension.router.selector.LabelSelector;
 import io.nebulacms.app.infra.utils.JsonUtils;
+
+import com.google.common.collect.Sets;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import org.apache.commons.lang3.BooleanUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.context.event.EventListener;
+import org.springframework.stereotype.Component;
 
 /**
  * A class used to update the post count of the category when the post changes.

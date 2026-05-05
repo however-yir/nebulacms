@@ -1,8 +1,9 @@
 package io.nebulacms.app.plugin.extensionpoint;
 
+import io.nebulacms.app.extension.ExtensionClient;
+
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.extension.ExtensionClient;
 
 @Component
 public class ExtensionPointDefinitionGetterImpl

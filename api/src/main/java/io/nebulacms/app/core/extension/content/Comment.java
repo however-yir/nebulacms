@@ -3,6 +3,10 @@ package io.nebulacms.app.core.extension.content;
 import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
 import static org.apache.commons.lang3.ObjectUtils.defaultIfNull;
 
+import io.nebulacms.app.extension.AbstractExtension;
+import io.nebulacms.app.extension.GVK;
+import io.nebulacms.app.extension.Ref;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.Instant;
@@ -13,9 +17,6 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.springframework.lang.Nullable;
 import org.springframework.util.CollectionUtils;
-import io.nebulacms.app.extension.AbstractExtension;
-import io.nebulacms.app.extension.GVK;
-import io.nebulacms.app.extension.Ref;
 
 /**
  * @author guqing

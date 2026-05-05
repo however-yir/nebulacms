@@ -1,10 +1,11 @@
 package io.nebulacms.app.extension.router.selector;
 
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.index.query.Condition;
+
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import io.nebulacms.app.extension.ListOptions;
-import io.nebulacms.app.extension.index.query.Condition;
 
 public final class SelectorUtil {
 

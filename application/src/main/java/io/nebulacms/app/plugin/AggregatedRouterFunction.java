@@ -1,5 +1,9 @@
 package io.nebulacms.app.plugin;
 
+import io.nebulacms.app.core.endpoint.console.CustomEndpointsBuilder;
+import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
+import io.nebulacms.app.infra.SecureServerRequest;
+
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.web.reactive.function.server.HandlerFunction;
 import org.springframework.web.reactive.function.server.RouterFunction;
@@ -7,9 +11,6 @@ import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.endpoint.console.CustomEndpointsBuilder;
-import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
-import io.nebulacms.app.infra.SecureServerRequest;
 
 /**
  * Aggregated router function built from all custom endpoints.

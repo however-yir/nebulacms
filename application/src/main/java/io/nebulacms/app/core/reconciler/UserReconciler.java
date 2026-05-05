@@ -6,19 +6,6 @@ import static io.nebulacms.app.extension.ExtensionUtil.isDeleted;
 import static io.nebulacms.app.extension.ExtensionUtil.removeFinalizers;
 import static io.nebulacms.app.extension.index.query.Queries.equal;
 
-import java.net.URI;
-import java.time.Duration;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.stereotype.Component;
-import org.springframework.util.CollectionUtils;
-import org.springframework.web.util.UriComponentsBuilder;
 import io.nebulacms.app.core.extension.User;
 import io.nebulacms.app.core.extension.UserConnection;
 import io.nebulacms.app.core.extension.attachment.Attachment;
@@ -36,6 +23,20 @@ import io.nebulacms.app.infra.AnonymousUserConst;
 import io.nebulacms.app.infra.ExternalUrlSupplier;
 import io.nebulacms.app.infra.utils.JsonUtils;
 import io.nebulacms.app.infra.utils.ReactiveUtils;
+
+import java.net.URI;
+import java.time.Duration;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @Slf4j
 @Component

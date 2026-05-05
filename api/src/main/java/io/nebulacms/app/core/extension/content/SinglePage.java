@@ -2,6 +2,11 @@ package io.nebulacms.app.core.extension.content;
 
 import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
 
+import io.nebulacms.app.extension.AbstractExtension;
+import io.nebulacms.app.extension.GVK;
+import io.nebulacms.app.extension.GroupVersionKind;
+import io.nebulacms.app.extension.MetadataUtil;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.Instant;
@@ -10,10 +15,6 @@ import java.util.Map;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import io.nebulacms.app.extension.AbstractExtension;
-import io.nebulacms.app.extension.GVK;
-import io.nebulacms.app.extension.GroupVersionKind;
-import io.nebulacms.app.extension.MetadataUtil;
 
 /**
  * <p>Single page extension.</p>

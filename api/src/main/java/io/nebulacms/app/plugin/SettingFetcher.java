@@ -1,8 +1,9 @@
 package io.nebulacms.app.plugin;
 
+import io.nebulacms.app.extension.ConfigMap;
+
 import java.util.Map;
 import java.util.Optional;
-import io.nebulacms.app.extension.ConfigMap;
 import tools.jackson.databind.JsonNode;
 
 /**

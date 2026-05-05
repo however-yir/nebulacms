@@ -1,11 +1,12 @@
 package io.nebulacms.app.theme.router;
 
+import io.nebulacms.app.core.extension.content.Post;
+
 import java.util.Locale;
 import lombok.AllArgsConstructor;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
-import io.nebulacms.app.core.extension.content.Post;
 
 @Component
 @AllArgsConstructor

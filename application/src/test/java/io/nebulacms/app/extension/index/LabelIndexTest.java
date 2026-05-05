@@ -3,6 +3,10 @@ package io.nebulacms.app.extension.index;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import io.nebulacms.app.extension.AbstractExtension;
+import io.nebulacms.app.extension.GVK;
+import io.nebulacms.app.extension.Metadata;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -15,9 +19,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
-import io.nebulacms.app.extension.AbstractExtension;
-import io.nebulacms.app.extension.GVK;
-import io.nebulacms.app.extension.Metadata;
 
 @ExtendWith(MockitoExtension.class)
 class LabelIndexTest {

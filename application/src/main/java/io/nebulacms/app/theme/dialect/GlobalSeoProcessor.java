@@ -2,6 +2,9 @@ package io.nebulacms.app.theme.dialect;
 
 import static io.nebulacms.app.theme.Constant.META_DESCRIPTION_VARIABLE_NAME;
 
+import io.nebulacms.app.infra.SystemConfigFetcher;
+import io.nebulacms.app.infra.SystemSetting;
+
 import java.util.LinkedHashMap;
 import lombok.AllArgsConstructor;
 import org.springframework.core.Ordered;
@@ -13,8 +16,6 @@ import org.thymeleaf.model.IModel;
 import org.thymeleaf.model.IModelFactory;
 import org.thymeleaf.processor.element.IElementModelStructureHandler;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.infra.SystemConfigFetcher;
-import io.nebulacms.app.infra.SystemSetting;
 
 /**
  * Inject code to the template head tag according to the global seo settings.

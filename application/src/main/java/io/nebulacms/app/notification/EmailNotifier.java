@@ -1,5 +1,9 @@
 package io.nebulacms.app.notification;
 
+import io.nebulacms.app.core.extension.notification.Subscription;
+import io.nebulacms.app.infra.utils.JsonUtils;
+import io.nebulacms.app.notification.EmailSenderHelper.EmailSenderConfig;
+
 import com.fasterxml.jackson.databind.JsonNode;
 import java.util.concurrent.atomic.AtomicReference;
 import lombok.NonNull;
@@ -13,9 +17,6 @@ import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
-import io.nebulacms.app.core.extension.notification.Subscription;
-import io.nebulacms.app.infra.utils.JsonUtils;
-import io.nebulacms.app.notification.EmailSenderHelper.EmailSenderConfig;
 
 /**
  * <p>A notifier that can send email.</p>

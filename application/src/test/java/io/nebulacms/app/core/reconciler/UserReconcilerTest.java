@@ -8,6 +8,16 @@ import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.core.extension.User;
+import io.nebulacms.app.core.reconciler.UserReconciler;
+import io.nebulacms.app.core.user.service.RoleService;
+import io.nebulacms.app.extension.ExtensionClient;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.controller.Reconciler;
+import io.nebulacms.app.infra.AnonymousUserConst;
+import io.nebulacms.app.infra.ExternalUrlSupplier;
+import io.nebulacms.app.notification.NotificationCenter;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Optional;
@@ -20,15 +30,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.User;
-import io.nebulacms.app.core.reconciler.UserReconciler;
-import io.nebulacms.app.core.user.service.RoleService;
-import io.nebulacms.app.extension.ExtensionClient;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.controller.Reconciler;
-import io.nebulacms.app.infra.AnonymousUserConst;
-import io.nebulacms.app.infra.ExternalUrlSupplier;
-import io.nebulacms.app.notification.NotificationCenter;
 
 /**
  * Tests for {@link UserReconciler}.

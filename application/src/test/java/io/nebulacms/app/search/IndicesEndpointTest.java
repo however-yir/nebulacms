@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.mockito.ArgumentMatchers.assertArg;
 import static org.mockito.Mockito.verify;
 
+import io.nebulacms.app.search.event.HaloDocumentRebuildRequestEvent;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,7 +17,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.test.web.reactive.server.WebTestClient;
-import io.nebulacms.app.search.event.HaloDocumentRebuildRequestEvent;
 
 @ExtendWith(MockitoExtension.class)
 class IndicesEndpointTest {

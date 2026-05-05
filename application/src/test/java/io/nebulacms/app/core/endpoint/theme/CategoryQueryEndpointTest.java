@@ -5,6 +5,16 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.core.extension.content.Category;
+import io.nebulacms.app.extension.GroupVersion;
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.ListResult;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.PageRequest;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.theme.finders.PostPublicQueryService;
+import io.nebulacms.app.theme.finders.vo.ListedPostVo;
+
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,15 +26,6 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.content.Category;
-import io.nebulacms.app.extension.GroupVersion;
-import io.nebulacms.app.extension.ListOptions;
-import io.nebulacms.app.extension.ListResult;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.PageRequest;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.theme.finders.PostPublicQueryService;
-import io.nebulacms.app.theme.finders.vo.ListedPostVo;
 
 /**
  * Tests for {@link CategoryQueryEndpoint}.

@@ -2,14 +2,15 @@ package io.nebulacms.app.extension.index;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import io.nebulacms.app.extension.AbstractExtension;
+import io.nebulacms.app.extension.GVK;
+import io.nebulacms.app.extension.Metadata;
+
 import java.util.Set;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import io.nebulacms.app.extension.AbstractExtension;
-import io.nebulacms.app.extension.GVK;
-import io.nebulacms.app.extension.Metadata;
 
 /**
  * Tests for {@link IndexAttributeFactory}.

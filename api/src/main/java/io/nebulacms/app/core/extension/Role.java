@@ -1,10 +1,13 @@
 package io.nebulacms.app.core.extension;
 
-import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
-import static java.util.Arrays.compare;
 import static io.nebulacms.app.core.extension.Role.GROUP;
 import static io.nebulacms.app.core.extension.Role.KIND;
 import static io.nebulacms.app.core.extension.Role.VERSION;
+import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
+import static java.util.Arrays.compare;
+
+import io.nebulacms.app.extension.AbstractExtension;
+import io.nebulacms.app.extension.GVK;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.List;
@@ -13,8 +16,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import org.springframework.lang.NonNull;
-import io.nebulacms.app.extension.AbstractExtension;
-import io.nebulacms.app.extension.GVK;
 
 /**
  * @author guqing
@@ -33,8 +34,10 @@ public class Role extends AbstractExtension {
         "rbac.authorization.nebulacms.io/dependency-rules";
     public static final String ROLE_AGGREGATE_LABEL_PREFIX =
         "rbac.authorization.nebulacms.io/aggregate-to-";
-    public static final String ROLE_DEPENDENCIES_ANNO = "rbac.authorization.nebulacms.io/dependencies";
-    public static final String UI_PERMISSIONS_ANNO = "rbac.authorization.nebulacms.io/ui-permissions";
+    public static final String ROLE_DEPENDENCIES_ANNO =
+        "rbac.authorization.nebulacms.io/dependencies";
+    public static final String UI_PERMISSIONS_ANNO =
+        "rbac.authorization.nebulacms.io/ui-permissions";
 
     public static final String SYSTEM_RESERVED_LABELS =
         "rbac.authorization.nebulacms.io/system-reserved";

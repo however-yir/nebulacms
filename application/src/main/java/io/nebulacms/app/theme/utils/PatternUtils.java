@@ -3,9 +3,10 @@ package io.nebulacms.app.theme.utils;
 import static org.apache.commons.lang3.StringUtils.prependIfMissing;
 import static org.apache.commons.lang3.StringUtils.removeEnd;
 
+import io.nebulacms.app.infra.SystemSetting.ThemeRouteRules;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.Assert;
-import io.nebulacms.app.infra.SystemSetting.ThemeRouteRules;
 
 /**
  * Pattern utility methods.
@@ -28,7 +29,6 @@ public enum PatternUtils {
         pattern = prependIfMissing(pattern.trim(), "/");
         return removeEnd(pattern, "/");
     }
-
 
     /**
      * Normalize the post pattern, if the post pattern starts with /archives/ or /categories/,

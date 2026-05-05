@@ -1,5 +1,10 @@
 package io.nebulacms.app.theme.dialect;
 
+import io.nebulacms.app.infra.SystemConfigFetcher;
+import io.nebulacms.app.infra.SystemSetting;
+import io.nebulacms.app.theme.DefaultTemplateEnum;
+import io.nebulacms.app.theme.router.ModelConst;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
@@ -9,10 +14,6 @@ import org.thymeleaf.model.IModel;
 import org.thymeleaf.model.IModelFactory;
 import org.thymeleaf.processor.element.IElementModelStructureHandler;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.infra.SystemConfigFetcher;
-import io.nebulacms.app.infra.SystemSetting;
-import io.nebulacms.app.theme.DefaultTemplateEnum;
-import io.nebulacms.app.theme.router.ModelConst;
 
 /**
  * <p>Global custom head snippet injection for theme global setting.</p>

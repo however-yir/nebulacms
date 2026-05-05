@@ -9,21 +9,6 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.time.Instant;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.context.ApplicationEventPublisher;
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.content.ContentWrapper;
 import io.nebulacms.app.content.ExcerptGenerator;
 import io.nebulacms.app.content.NotificationReasonConst;
@@ -39,6 +24,22 @@ import io.nebulacms.app.extension.ExtensionClient;
 import io.nebulacms.app.extension.controller.Reconciler;
 import io.nebulacms.app.notification.NotificationCenter;
 import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
+
+import java.time.Instant;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.context.ApplicationEventPublisher;
+import reactor.core.publisher.Mono;
 
 /**
  * Tests for {@link PostReconciler}.

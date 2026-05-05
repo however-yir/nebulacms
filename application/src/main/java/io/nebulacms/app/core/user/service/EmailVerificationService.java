@@ -1,7 +1,8 @@
 package io.nebulacms.app.core.user.service;
 
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.infra.exception.EmailVerificationFailed;
+
+import reactor.core.publisher.Mono;
 
 /**
  * Email verification service to handle email verification.

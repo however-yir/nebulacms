@@ -2,6 +2,10 @@ package io.nebulacms.app.security.authentication.token;
 
 import static org.springframework.security.oauth2.jwt.NimbusReactiveJwtDecoder.withJwkSource;
 
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.security.authentication.CryptoService;
+import io.nebulacms.app.security.authentication.SecurityConfigurer;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.annotation.Order;
@@ -13,9 +17,6 @@ import org.springframework.security.web.server.authentication.AuthenticationWebF
 import org.springframework.security.web.server.authentication.ServerAuthenticationEntryPointFailureHandler;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.security.authentication.CryptoService;
-import io.nebulacms.app.security.authentication.SecurityConfigurer;
 
 @Slf4j
 @Component

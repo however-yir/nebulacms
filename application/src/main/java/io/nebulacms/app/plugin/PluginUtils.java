@@ -1,11 +1,12 @@
 package io.nebulacms.app.plugin;
 
+import io.nebulacms.app.core.extension.Plugin;
+
 import java.util.Objects;
 import lombok.experimental.UtilityClass;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.Assert;
 import org.springframework.web.server.ServerWebInputException;
-import io.nebulacms.app.core.extension.Plugin;
 
 @UtilityClass
 public class PluginUtils {

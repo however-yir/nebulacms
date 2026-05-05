@@ -1,8 +1,14 @@
 package io.nebulacms.app.content.comment;
 
-import static org.springdoc.core.fn.builders.parameter.Builder.parameterBuilder;
 import static io.nebulacms.app.extension.index.query.Queries.equal;
 import static io.nebulacms.app.extension.router.selector.SelectorUtil.labelAndFieldSelectorToListOptions;
+import static org.springdoc.core.fn.builders.parameter.Builder.parameterBuilder;
+
+import io.nebulacms.app.core.extension.content.Reply;
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.PageRequest;
+import io.nebulacms.app.extension.PageRequestImpl;
+import io.nebulacms.app.extension.router.SortableRequest;
 
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -11,11 +17,6 @@ import org.springdoc.core.fn.builders.operation.Builder;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.server.ServerWebInputException;
-import io.nebulacms.app.core.extension.content.Reply;
-import io.nebulacms.app.extension.ListOptions;
-import io.nebulacms.app.extension.PageRequest;
-import io.nebulacms.app.extension.PageRequestImpl;
-import io.nebulacms.app.extension.router.SortableRequest;
 
 /**
  * Query criteria for {@link Reply} list.

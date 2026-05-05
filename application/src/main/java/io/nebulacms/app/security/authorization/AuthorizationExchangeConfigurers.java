@@ -1,5 +1,9 @@
 package io.nebulacms.app.security.authorization;
 
+import io.nebulacms.app.core.user.service.RoleService;
+import io.nebulacms.app.security.authentication.SecurityConfigurer;
+import io.nebulacms.app.security.authentication.twofactor.TwoFactorAuthentication;
+
 import java.util.Collections;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.Order;
@@ -18,9 +22,6 @@ import org.springframework.security.web.server.util.matcher.ServerWebExchangeMat
 import org.springframework.security.web.server.util.matcher.ServerWebExchangeMatchers;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.user.service.RoleService;
-import io.nebulacms.app.security.authentication.SecurityConfigurer;
-import io.nebulacms.app.security.authentication.twofactor.TwoFactorAuthentication;
 
 /**
  * Authorization exchange configurers.

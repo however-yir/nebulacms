@@ -4,8 +4,6 @@ import static io.nebulacms.app.extension.index.query.Queries.and;
 import static io.nebulacms.app.extension.index.query.Queries.equal;
 import static io.nebulacms.app.extension.index.query.Queries.isNull;
 
-import lombok.AllArgsConstructor;
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.core.extension.Counter;
 import io.nebulacms.app.core.extension.content.Category;
 import io.nebulacms.app.core.extension.content.Post;
@@ -18,6 +16,9 @@ import io.nebulacms.app.extension.router.selector.LabelSelector;
 import io.nebulacms.app.theme.finders.Finder;
 import io.nebulacms.app.theme.finders.SiteStatsFinder;
 import io.nebulacms.app.theme.finders.vo.SiteStatsVo;
+
+import lombok.AllArgsConstructor;
+import reactor.core.publisher.Mono;
 
 /**
  * A default implementation of {@link SiteStatsFinder}.

@@ -4,6 +4,10 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.lenient;
 
+import io.nebulacms.app.infra.SystemConfigFetcher;
+import io.nebulacms.app.infra.SystemSetting;
+import io.nebulacms.app.theme.router.EmptyView;
+
 import java.net.URISyntaxException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,9 +19,6 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.reactive.result.view.ViewResolver;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.infra.SystemConfigFetcher;
-import io.nebulacms.app.infra.SystemSetting;
-import io.nebulacms.app.theme.router.EmptyView;
 
 /**
  * Abstract test for {@link RouteFactory}.

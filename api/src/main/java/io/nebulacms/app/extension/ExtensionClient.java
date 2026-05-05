@@ -1,11 +1,12 @@
 package io.nebulacms.app.extension;
 
+import io.nebulacms.app.extension.index.IndexedQueryEngine;
+
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 import org.springframework.data.domain.Sort;
-import io.nebulacms.app.extension.index.IndexedQueryEngine;
 
 /**
  * ExtensionClient is an interface which contains some operations on Extension instead of
@@ -72,7 +73,6 @@ public interface ExtensionClient {
     <E extends Extension> Optional<E> fetch(Class<E> type, String name);
 
     Optional<Unstructured> fetch(GroupVersionKind gvk, String name);
-
 
     /**
      * Creates an Extension.

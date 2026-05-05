@@ -3,17 +3,18 @@ package io.nebulacms.app.notification;
 import static io.nebulacms.app.extension.ExtensionUtil.addFinalizers;
 import static io.nebulacms.app.extension.ExtensionUtil.removeFinalizers;
 
-import java.time.Duration;
-import java.util.Set;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 import io.nebulacms.app.core.extension.notification.Reason;
 import io.nebulacms.app.extension.ExtensionClient;
 import io.nebulacms.app.extension.ExtensionUtil;
 import io.nebulacms.app.extension.controller.Controller;
 import io.nebulacms.app.extension.controller.ControllerBuilder;
 import io.nebulacms.app.extension.controller.Reconciler;
+
+import java.time.Duration;
+import java.util.Set;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 /**
  * <p>Notification trigger for {@link Reason}.</p>

@@ -2,15 +2,16 @@ package io.nebulacms.app.core.extension;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.Unstructured;
+import io.nebulacms.app.infra.utils.JsonUtils;
+import io.nebulacms.app.infra.utils.YamlUnstructuredLoader;
+
 import java.util.List;
 import org.json.JSONException;
 import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.security.util.InMemoryResource;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.Unstructured;
-import io.nebulacms.app.infra.utils.JsonUtils;
-import io.nebulacms.app.infra.utils.YamlUnstructuredLoader;
 
 /**
  * Tests for {@link Theme}.
@@ -26,7 +27,6 @@ class ThemeTest {
         Metadata metadata = new Metadata();
         metadata.setName("test-theme");
         theme.setMetadata(metadata);
-
 
         Theme.ThemeSpec themeSpec = new Theme.ThemeSpec();
         theme.setSpec(themeSpec);

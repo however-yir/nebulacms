@@ -4,6 +4,13 @@ import static org.springframework.http.MediaType.ALL;
 import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
 import static org.springframework.web.reactive.function.server.RequestPredicates.accept;
 
+import io.nebulacms.app.core.extension.ReverseProxy;
+import io.nebulacms.app.core.extension.ReverseProxy.FileReverseProxyProvider;
+import io.nebulacms.app.core.extension.ReverseProxy.ReverseProxyRule;
+import io.nebulacms.app.infra.exception.NotFoundException;
+import io.nebulacms.app.infra.utils.PathUtils;
+import io.nebulacms.app.plugin.PluginConst;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.Instant;
@@ -31,12 +38,6 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.reactive.resource.NoResourceFoundException;
 import org.springframework.web.util.pattern.PathPatternParser;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.ReverseProxy;
-import io.nebulacms.app.core.extension.ReverseProxy.FileReverseProxyProvider;
-import io.nebulacms.app.core.extension.ReverseProxy.ReverseProxyRule;
-import io.nebulacms.app.infra.exception.NotFoundException;
-import io.nebulacms.app.infra.utils.PathUtils;
-import io.nebulacms.app.plugin.PluginConst;
 
 /**
  * <p>Plugin's reverse proxy router factory.</p>

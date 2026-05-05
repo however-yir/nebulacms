@@ -3,6 +3,11 @@ package io.nebulacms.app.extension;
 import static io.nebulacms.app.extension.ExtensionStoreUtil.buildStoreName;
 import static io.nebulacms.app.extension.Unstructured.OBJECT_MAPPER;
 
+import io.nebulacms.app.extension.event.SchemeRemovedEvent;
+import io.nebulacms.app.extension.exception.ExtensionConvertException;
+import io.nebulacms.app.extension.exception.SchemaViolationException;
+import io.nebulacms.app.extension.store.ExtensionStore;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -22,10 +27,6 @@ import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import reactor.core.Exceptions;
-import io.nebulacms.app.extension.event.SchemeRemovedEvent;
-import io.nebulacms.app.extension.exception.ExtensionConvertException;
-import io.nebulacms.app.extension.exception.SchemaViolationException;
-import io.nebulacms.app.extension.store.ExtensionStore;
 
 /**
  * JSON implementation of ExtensionConverter.

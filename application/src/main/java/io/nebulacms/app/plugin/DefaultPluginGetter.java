@@ -1,11 +1,12 @@
 package io.nebulacms.app.plugin;
 
-import lombok.RequiredArgsConstructor;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.stereotype.Component;
 import io.nebulacms.app.core.extension.Plugin;
 import io.nebulacms.app.extension.ExtensionClient;
 import io.nebulacms.app.infra.exception.NotFoundException;
+
+import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Component;
 
 /**
  * Default implementation of {@link PluginGetter}.

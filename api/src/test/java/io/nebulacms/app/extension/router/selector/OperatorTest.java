@@ -1,11 +1,11 @@
 package io.nebulacms.app.extension.router.selector;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static io.nebulacms.app.extension.router.selector.Operator.Equals;
 import static io.nebulacms.app.extension.router.selector.Operator.Exist;
 import static io.nebulacms.app.extension.router.selector.Operator.IN;
 import static io.nebulacms.app.extension.router.selector.Operator.NotEquals;
 import static io.nebulacms.app.extension.router.selector.Operator.NotExist;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 import java.util.Set;

@@ -2,12 +2,13 @@ package io.nebulacms.app.extension.router.selector;
 
 import static org.apache.commons.lang3.ObjectUtils.defaultIfNull;
 
+import io.nebulacms.app.extension.index.query.Condition;
+import io.nebulacms.app.extension.index.query.Queries;
+
 import java.util.Set;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.NonNull;
 import org.springframework.util.CollectionUtils;
-import io.nebulacms.app.extension.index.query.Condition;
-import io.nebulacms.app.extension.index.query.Queries;
 
 public class FieldSelectorConverter implements Converter<SelectorCriteria, Condition> {
 

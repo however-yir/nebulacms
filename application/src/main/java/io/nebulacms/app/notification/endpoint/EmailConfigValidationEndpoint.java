@@ -3,6 +3,12 @@ package io.nebulacms.app.notification.endpoint;
 import static org.springdoc.core.fn.builders.apiresponse.Builder.responseBuilder;
 import static org.springdoc.core.fn.builders.requestbody.Builder.requestBodyBuilder;
 
+import io.nebulacms.app.core.extension.User;
+import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
+import io.nebulacms.app.extension.GroupVersion;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.notification.EmailSenderHelper;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.security.Principal;
 import lombok.Data;
@@ -20,11 +26,6 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.server.ServerWebInputException;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.User;
-import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
-import io.nebulacms.app.extension.GroupVersion;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.notification.EmailSenderHelper;
 
 /**
  * Validation endpoint for email config.

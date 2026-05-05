@@ -2,6 +2,8 @@ package io.nebulacms.app.extension.router;
 
 import static org.springdoc.core.fn.builders.parameter.Builder.parameterBuilder;
 
+import io.nebulacms.app.extension.PageRequestImpl;
+
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Collections;
@@ -11,7 +13,6 @@ import org.springframework.boot.convert.ApplicationConversionService;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.util.MultiValueMap;
 import org.springframework.util.StringUtils;
-import io.nebulacms.app.extension.PageRequestImpl;
 
 public interface IListRequest {
 

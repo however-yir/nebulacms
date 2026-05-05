@@ -7,6 +7,17 @@ import static org.mockito.ArgumentMatchers.assertArg;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.extension.FakeExtension;
+import io.nebulacms.app.extension.JsonExtension;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.Scheme;
+import io.nebulacms.app.extension.router.ExtensionRouterFunctionFactory.CreateHandler;
+import io.nebulacms.app.extension.router.ExtensionRouterFunctionFactory.GetHandler;
+import io.nebulacms.app.extension.router.ExtensionRouterFunctionFactory.ListHandler;
+import io.nebulacms.app.extension.router.ExtensionRouterFunctionFactory.UpdateHandler;
+import io.nebulacms.app.infra.config.JacksonAdapterModule;
+
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.github.fge.jackson.jsonpointer.JsonPointer;
 import com.github.fge.jsonpatch.AddOperation;
@@ -36,16 +47,6 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.extension.FakeExtension;
-import io.nebulacms.app.extension.JsonExtension;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.Scheme;
-import io.nebulacms.app.extension.router.ExtensionRouterFunctionFactory.CreateHandler;
-import io.nebulacms.app.extension.router.ExtensionRouterFunctionFactory.GetHandler;
-import io.nebulacms.app.extension.router.ExtensionRouterFunctionFactory.ListHandler;
-import io.nebulacms.app.extension.router.ExtensionRouterFunctionFactory.UpdateHandler;
-import io.nebulacms.app.infra.config.JacksonAdapterModule;
 import tools.jackson.databind.json.JsonMapper;
 
 @ExtendWith(MockitoExtension.class)

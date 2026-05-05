@@ -1,5 +1,7 @@
 package io.nebulacms.app.extension;
 
+import io.nebulacms.app.extension.index.IndexedQueryEngine;
+
 import java.time.Duration;
 import java.util.Comparator;
 import java.util.List;
@@ -7,7 +9,6 @@ import java.util.Optional;
 import java.util.function.Predicate;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
-import io.nebulacms.app.extension.index.IndexedQueryEngine;
 
 /**
  * DelegateExtensionClient fully delegates ReactiveExtensionClient.

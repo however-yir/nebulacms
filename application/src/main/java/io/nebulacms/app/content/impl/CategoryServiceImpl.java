@@ -2,13 +2,6 @@ package io.nebulacms.app.content.impl;
 
 import static io.nebulacms.app.extension.index.query.Queries.equal;
 
-import lombok.RequiredArgsConstructor;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.data.domain.Sort;
-import org.springframework.lang.NonNull;
-import org.springframework.stereotype.Component;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.content.CategoryService;
 import io.nebulacms.app.core.extension.content.Category;
 import io.nebulacms.app.extension.ListOptions;
@@ -16,6 +9,14 @@ import io.nebulacms.app.extension.ListResult;
 import io.nebulacms.app.extension.PageRequestImpl;
 import io.nebulacms.app.extension.ReactiveExtensionClient;
 import io.nebulacms.app.extension.router.selector.FieldSelector;
+
+import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.data.domain.Sort;
+import org.springframework.lang.NonNull;
+import org.springframework.stereotype.Component;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @Component
 @RequiredArgsConstructor

@@ -1,11 +1,14 @@
 package io.nebulacms.app.notification;
 
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+
+import io.nebulacms.app.infra.ExternalUrlSupplier;
+import io.nebulacms.app.infra.SystemConfigFetcher;
+import io.nebulacms.app.infra.SystemSetting;
 
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -19,9 +22,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.infra.ExternalUrlSupplier;
-import io.nebulacms.app.infra.SystemConfigFetcher;
-import io.nebulacms.app.infra.SystemSetting;
 
 /**
  * Tests for {@link DefaultNotificationTemplateRender}.

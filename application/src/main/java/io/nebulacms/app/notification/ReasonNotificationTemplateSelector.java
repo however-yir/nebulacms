@@ -1,10 +1,11 @@
 package io.nebulacms.app.notification;
 
-import java.util.Locale;
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.core.extension.notification.NotificationTemplate;
 import io.nebulacms.app.core.extension.notification.ReasonType;
 import io.nebulacms.app.extension.Metadata;
+
+import java.util.Locale;
+import reactor.core.publisher.Mono;
 
 /**
  * Reason notification template selector to select notification template by reason type and locale.

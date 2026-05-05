@@ -6,6 +6,10 @@ import static org.springdoc.core.fn.builders.parameter.Builder.parameterBuilder;
 import static org.springdoc.core.fn.builders.requestbody.Builder.requestBodyBuilder;
 import static org.springdoc.core.fn.builders.schema.Builder.schemaBuilder;
 
+import io.nebulacms.app.extension.ListResult;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.Scheme;
+
 import io.swagger.v3.core.util.RefUtils;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import org.springdoc.webflux.core.fn.SpringdocRouteBuilder;
@@ -14,9 +18,6 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.reactive.function.server.HandlerFunction;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
-import io.nebulacms.app.extension.ListResult;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.Scheme;
 
 public class ExtensionRouterFunctionFactory {
 

@@ -1,9 +1,16 @@
 package io.nebulacms.app.core.endpoint.console;
 
-import static org.springdoc.core.fn.builders.apiresponse.Builder.responseBuilder;
 import static io.nebulacms.app.extension.index.query.Queries.and;
 import static io.nebulacms.app.extension.index.query.Queries.equal;
 import static io.nebulacms.app.extension.index.query.Queries.isNull;
+import static org.springdoc.core.fn.builders.apiresponse.Builder.responseBuilder;
+
+import io.nebulacms.app.core.extension.Counter;
+import io.nebulacms.app.core.extension.User;
+import io.nebulacms.app.core.extension.content.Post;
+import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
 
 import lombok.Data;
 import org.springdoc.webflux.core.fn.SpringdocRouteBuilder;
@@ -13,12 +20,6 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.Counter;
-import io.nebulacms.app.core.extension.User;
-import io.nebulacms.app.core.extension.content.Post;
-import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
-import io.nebulacms.app.extension.ListOptions;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
 
 /**
  * Stats endpoint.

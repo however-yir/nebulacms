@@ -2,6 +2,10 @@ package io.nebulacms.app.core.extension;
 
 import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
 
+import io.nebulacms.app.extension.AbstractExtension;
+import io.nebulacms.app.extension.GVK;
+import io.nebulacms.app.infra.ConditionList;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.net.URI;
@@ -15,9 +19,6 @@ import lombok.ToString;
 import org.pf4j.PluginState;
 import org.springframework.lang.NonNull;
 import org.springframework.util.Assert;
-import io.nebulacms.app.extension.AbstractExtension;
-import io.nebulacms.app.extension.GVK;
-import io.nebulacms.app.infra.ConditionList;
 
 /**
  * A custom resource for Plugin.
@@ -101,7 +102,8 @@ public class Plugin extends AbstractExtension {
     }
 
     /**
-     * In the future, we may consider using {@link io.nebulacms.app.infra.model.License} instead of it.
+     * In the future, we may consider using
+     * {@link io.nebulacms.app.infra.model.License} instead of it.
      * But now, replace it will lead to incompatibility with downstream.
      */
     @Data

@@ -5,6 +5,13 @@ import static org.mockito.ArgumentMatchers.same;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.core.attachment.ThumbnailSize;
+import io.nebulacms.app.core.extension.attachment.Attachment;
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.infra.ExternalUrlSupplier;
+
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.util.Map;
@@ -17,12 +24,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Sort;
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.core.attachment.ThumbnailSize;
-import io.nebulacms.app.core.extension.attachment.Attachment;
-import io.nebulacms.app.extension.ListOptions;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.infra.ExternalUrlSupplier;
 
 @ExtendWith(MockitoExtension.class)
 class DefaultThumbnailServiceTest {

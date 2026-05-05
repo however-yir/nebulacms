@@ -64,7 +64,6 @@ class I18nExceptionTest {
             });
     }
 
-
     @Test
     void shouldGetErrorIfErrorResponseThrowWithMessageCode() {
         webClient.get().uri("/response-entity/error-response/with-message-code")

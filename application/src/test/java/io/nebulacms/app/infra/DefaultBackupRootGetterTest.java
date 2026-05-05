@@ -4,13 +4,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.infra.properties.HaloProperties;
+
 import java.nio.file.Path;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import io.nebulacms.app.infra.properties.HaloProperties;
 
 @ExtendWith(MockitoExtension.class)
 class DefaultBackupRootGetterTest {
@@ -28,6 +29,5 @@ class DefaultBackupRootGetterTest {
         assertEquals(Path.of("workdir", "backups"), backupRoot);
         verify(haloProperties).getWorkDir();
     }
-
 
 }

@@ -1,5 +1,9 @@
 package io.nebulacms.app.security;
 
+import io.nebulacms.app.infra.properties.HaloProperties;
+import io.nebulacms.app.infra.properties.SecurityProperties;
+import io.nebulacms.app.security.authentication.SecurityConfigurer;
+
 import com.google.common.net.HttpHeaders;
 import java.util.List;
 import org.springframework.core.annotation.Order;
@@ -8,9 +12,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.reactive.CorsConfigurationSource;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
-import io.nebulacms.app.infra.properties.HaloProperties;
-import io.nebulacms.app.infra.properties.SecurityProperties;
-import io.nebulacms.app.security.authentication.SecurityConfigurer;
 
 @Component
 @Order(0)

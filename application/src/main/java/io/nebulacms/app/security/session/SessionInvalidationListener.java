@@ -1,5 +1,8 @@
 package io.nebulacms.app.security.session;
 
+import io.nebulacms.app.event.user.PasswordChangedEvent;
+import io.nebulacms.app.infra.utils.ReactiveUtils;
+
 import java.time.Duration;
 import java.util.Map;
 import lombok.RequiredArgsConstructor;
@@ -10,8 +13,6 @@ import org.springframework.session.ReactiveSessionRepository;
 import org.springframework.session.Session;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
-import io.nebulacms.app.event.user.PasswordChangedEvent;
-import io.nebulacms.app.infra.utils.ReactiveUtils;
 
 @Component
 @RequiredArgsConstructor

@@ -1,9 +1,10 @@
 package io.nebulacms.app.content;
 
+import io.nebulacms.app.core.extension.content.Snapshot;
+
 import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.content.Snapshot;
 
 public interface SnapshotService {
 

@@ -1,5 +1,8 @@
 package io.nebulacms.app.security.preauth;
 
+import io.nebulacms.app.infra.actuator.GlobalInfoService;
+import io.nebulacms.app.infra.utils.HaloUtils;
+
 import java.util.Map;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.Ordered;
@@ -8,8 +11,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
-import io.nebulacms.app.infra.actuator.GlobalInfoService;
-import io.nebulacms.app.infra.utils.HaloUtils;
 
 /**
  * Pre-auth two-factor endpoints.

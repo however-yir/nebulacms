@@ -2,14 +2,15 @@ package io.nebulacms.app.core.extension;
 
 import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
 
+import io.nebulacms.app.extension.AbstractExtension;
+import io.nebulacms.app.extension.GVK;
+
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.LinkedHashSet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import io.nebulacms.app.extension.AbstractExtension;
-import io.nebulacms.app.extension.GVK;
 
 @Data
 @ToString(callSuper = true)

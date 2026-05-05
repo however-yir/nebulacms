@@ -2,6 +2,10 @@ package io.nebulacms.app.theme.router.factories;
 
 import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
 
+import io.nebulacms.app.theme.DefaultTemplateEnum;
+import io.nebulacms.app.theme.finders.CategoryFinder;
+import io.nebulacms.app.theme.router.ModelConst;
+
 import java.util.Map;
 import lombok.AllArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
@@ -10,9 +14,6 @@ import org.springframework.web.reactive.function.server.HandlerFunction;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
-import io.nebulacms.app.theme.DefaultTemplateEnum;
-import io.nebulacms.app.theme.finders.CategoryFinder;
-import io.nebulacms.app.theme.router.ModelConst;
 
 /**
  * The {@link CategoriesRouteFactory} for generate {@link RouterFunction} specific to the

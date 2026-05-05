@@ -1,12 +1,5 @@
 package io.nebulacms.app.security.device;
 
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
-import lombok.RequiredArgsConstructor;
-import org.springframework.context.event.EventListener;
-import org.springframework.lang.NonNull;
-import org.springframework.stereotype.Component;
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.core.extension.Device;
 import io.nebulacms.app.core.extension.notification.Reason;
 import io.nebulacms.app.core.extension.notification.Subscription;
@@ -14,6 +7,14 @@ import io.nebulacms.app.notification.NotificationCenter;
 import io.nebulacms.app.notification.NotificationReasonEmitter;
 import io.nebulacms.app.notification.ReasonAttributes;
 import io.nebulacms.app.notification.UserIdentity;
+
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
+import lombok.RequiredArgsConstructor;
+import org.springframework.context.event.EventListener;
+import org.springframework.lang.NonNull;
+import org.springframework.stereotype.Component;
+import reactor.core.publisher.Mono;
 
 /**
  * <p>Sends a notification when a new device login,It listens for {@link NewDeviceLoginEvent}

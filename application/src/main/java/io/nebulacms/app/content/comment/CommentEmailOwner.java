@@ -1,10 +1,11 @@
 package io.nebulacms.app.content.comment;
 
+import io.nebulacms.app.core.extension.content.Comment;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.Assert;
-import io.nebulacms.app.core.extension.content.Comment;
 
 /**
  * <p>The creator info of the comment.</p>

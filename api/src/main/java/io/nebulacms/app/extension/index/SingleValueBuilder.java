@@ -1,8 +1,9 @@
 package io.nebulacms.app.extension.index;
 
+import io.nebulacms.app.extension.Extension;
+
 import java.util.function.Function;
 import org.springframework.util.Assert;
-import io.nebulacms.app.extension.Extension;
 
 /**
  * Single value index specification builder.

@@ -2,6 +2,9 @@ package io.nebulacms.app.security.authentication.token;
 
 import static io.nebulacms.app.security.PersonalAccessToken.PAT_TOKEN_PREFIX;
 
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.security.authorization.AuthorityUtils;
+
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.jwt.ReactiveJwtDecoder;
@@ -11,8 +14,6 @@ import org.springframework.security.oauth2.server.resource.authentication.JwtRea
 import org.springframework.security.oauth2.server.resource.authentication.ReactiveJwtAuthenticationConverter;
 import org.springframework.security.oauth2.server.resource.authentication.ReactiveJwtGrantedAuthoritiesConverterAdapter;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.security.authorization.AuthorityUtils;
 
 /**
  * Authentication manager for bearer token based authorization.

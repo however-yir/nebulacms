@@ -1,7 +1,7 @@
 package io.nebulacms.app.extension.router.selector;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static io.nebulacms.app.extension.router.selector.Operator.Equals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 import java.util.Set;

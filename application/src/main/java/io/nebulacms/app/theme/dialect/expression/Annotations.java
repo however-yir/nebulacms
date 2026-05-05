@@ -1,9 +1,10 @@
 package io.nebulacms.app.theme.dialect.expression;
 
+import io.nebulacms.app.theme.finders.vo.ExtensionVoOperator;
+
 import java.util.Map;
 import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
-import io.nebulacms.app.theme.finders.vo.ExtensionVoOperator;
 
 /**
  * <p>Expression Object for performing annotations operations inside Halo Extra Expressions.</p>

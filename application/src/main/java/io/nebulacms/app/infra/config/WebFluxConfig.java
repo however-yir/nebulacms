@@ -1,9 +1,25 @@
 package io.nebulacms.app.infra.config;
 
+import static io.nebulacms.app.infra.utils.FileUtils.checkDirectoryTraversal;
 import static org.springframework.util.ResourceUtils.FILE_URL_PREFIX;
 import static org.springframework.web.reactive.function.server.RequestPredicates.accept;
 import static org.springframework.web.reactive.function.server.RequestPredicates.path;
-import static io.nebulacms.app.infra.utils.FileUtils.checkDirectoryTraversal;
+
+import io.nebulacms.app.core.attachment.AttachmentRootGetter;
+import io.nebulacms.app.core.attachment.thumbnail.LocalThumbnailService;
+import io.nebulacms.app.core.attachment.thumbnail.ThumbnailResourceTransformer;
+import io.nebulacms.app.core.endpoint.WebSocketHandlerMapping;
+import io.nebulacms.app.core.endpoint.console.CustomEndpointsBuilder;
+import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
+import io.nebulacms.app.infra.SecureRequestMappingHandlerAdapter;
+import io.nebulacms.app.infra.properties.AttachmentProperties;
+import io.nebulacms.app.infra.properties.HaloProperties;
+import io.nebulacms.app.infra.ui.ProxyFilter;
+import io.nebulacms.app.infra.ui.WebSocketRequestPredicate;
+import io.nebulacms.app.infra.webfilter.AdditionalWebFilterChainProxy;
+import io.nebulacms.app.infra.webfilter.LocaleChangeWebFilter;
+import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
+import io.nebulacms.app.theme.UserLocaleRequestAttributeWriteFilter;
 
 import java.util.List;
 import java.util.Objects;
@@ -37,21 +53,6 @@ import org.springframework.web.reactive.resource.PathResourceResolver;
 import org.springframework.web.reactive.result.method.annotation.RequestMappingHandlerAdapter;
 import org.springframework.web.reactive.result.view.ViewResolutionResultHandler;
 import org.springframework.web.reactive.result.view.ViewResolver;
-import io.nebulacms.app.core.attachment.AttachmentRootGetter;
-import io.nebulacms.app.core.attachment.thumbnail.LocalThumbnailService;
-import io.nebulacms.app.core.attachment.thumbnail.ThumbnailResourceTransformer;
-import io.nebulacms.app.core.endpoint.WebSocketHandlerMapping;
-import io.nebulacms.app.core.endpoint.console.CustomEndpointsBuilder;
-import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
-import io.nebulacms.app.infra.SecureRequestMappingHandlerAdapter;
-import io.nebulacms.app.infra.properties.AttachmentProperties;
-import io.nebulacms.app.infra.properties.HaloProperties;
-import io.nebulacms.app.infra.ui.ProxyFilter;
-import io.nebulacms.app.infra.ui.WebSocketRequestPredicate;
-import io.nebulacms.app.infra.webfilter.AdditionalWebFilterChainProxy;
-import io.nebulacms.app.infra.webfilter.LocaleChangeWebFilter;
-import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
-import io.nebulacms.app.theme.UserLocaleRequestAttributeWriteFilter;
 import tools.jackson.databind.json.JsonMapper;
 
 @Configuration

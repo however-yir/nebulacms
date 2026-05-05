@@ -4,6 +4,8 @@ import static java.util.Comparator.comparing;
 import static java.util.Comparator.naturalOrder;
 import static java.util.Comparator.nullsLast;
 
+import io.nebulacms.app.infra.exception.NotFoundException;
+
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +15,6 @@ import java.util.stream.Collectors;
 import org.thymeleaf.IEngineConfiguration;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 import org.thymeleaf.templateresolver.TemplateResolution;
-import io.nebulacms.app.infra.exception.NotFoundException;
 
 /**
  * Composite template resolver to control execution flow of multiple template resolvers.

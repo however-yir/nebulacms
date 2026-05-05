@@ -1,10 +1,11 @@
 package io.nebulacms.app.core.extension;
 
+import io.nebulacms.app.extension.AbstractExtension;
+import io.nebulacms.app.extension.GVK;
+
 import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import io.nebulacms.app.extension.AbstractExtension;
-import io.nebulacms.app.extension.GVK;
 
 /**
  * <p>The reverse proxy custom resource is used to configure a path to proxy it to a directory or

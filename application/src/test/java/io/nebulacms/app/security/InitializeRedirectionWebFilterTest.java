@@ -8,6 +8,8 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.infra.InitializationStateGetter;
+
 import java.net.URI;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,7 +24,6 @@ import org.springframework.security.web.server.ServerRedirectStrategy;
 import org.springframework.web.server.WebFilterChain;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.infra.InitializationStateGetter;
 
 /**
  * Tests for {@link InitializeRedirectionWebFilter}.

@@ -1,5 +1,7 @@
 package io.nebulacms.app.security.authentication.twofactor;
 
+import io.nebulacms.app.security.LoginHandlerEnhancer;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.server.WebFilterExchange;
@@ -7,7 +9,6 @@ import org.springframework.security.web.server.authentication.RedirectServerAuth
 import org.springframework.security.web.server.authentication.ServerAuthenticationSuccessHandler;
 import org.springframework.security.web.server.savedrequest.ServerRequestCache;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.security.LoginHandlerEnhancer;
 
 @Slf4j
 public class TotpAuthenticationSuccessHandler implements ServerAuthenticationSuccessHandler {

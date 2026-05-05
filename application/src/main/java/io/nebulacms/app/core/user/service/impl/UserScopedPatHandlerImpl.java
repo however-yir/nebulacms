@@ -2,6 +2,12 @@ package io.nebulacms.app.core.user.service.impl;
 
 import static io.nebulacms.app.extension.Comparators.compareCreationTimestamp;
 
+import io.nebulacms.app.core.user.service.PatService;
+import io.nebulacms.app.core.user.service.UserScopedPatHandler;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.infra.exception.AccessDeniedException;
+import io.nebulacms.app.security.PersonalAccessToken;
+
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.function.Predicate;
@@ -15,11 +21,6 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.server.ServerWebInputException;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.user.service.PatService;
-import io.nebulacms.app.core.user.service.UserScopedPatHandler;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.infra.exception.AccessDeniedException;
-import io.nebulacms.app.security.PersonalAccessToken;
 
 @Service
 class UserScopedPatHandlerImpl implements UserScopedPatHandler {

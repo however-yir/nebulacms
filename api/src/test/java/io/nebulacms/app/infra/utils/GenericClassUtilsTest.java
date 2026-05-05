@@ -2,9 +2,10 @@ package io.nebulacms.app.infra.utils;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Test;
 import io.nebulacms.app.core.extension.content.Post;
 import io.nebulacms.app.extension.ListResult;
+
+import org.junit.jupiter.api.Test;
 
 class GenericClassUtilsTest {
 

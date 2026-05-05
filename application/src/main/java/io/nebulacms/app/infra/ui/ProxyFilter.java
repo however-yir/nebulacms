@@ -1,5 +1,7 @@
 package io.nebulacms.app.infra.ui;
 
+import io.nebulacms.app.infra.properties.ProxyProperties;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.HttpMethod;
@@ -15,7 +17,6 @@ import org.springframework.web.server.WebFilter;
 import org.springframework.web.server.WebFilterChain;
 import org.springframework.web.util.UriComponentsBuilder;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.infra.properties.ProxyProperties;
 
 @Slf4j
 public class ProxyFilter implements WebFilter {

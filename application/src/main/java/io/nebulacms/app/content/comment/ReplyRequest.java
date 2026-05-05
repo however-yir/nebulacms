@@ -2,11 +2,12 @@ package io.nebulacms.app.content.comment;
 
 import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
 
+import io.nebulacms.app.core.extension.content.Reply;
+import io.nebulacms.app.extension.Metadata;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.UUID;
 import lombok.Data;
-import io.nebulacms.app.core.extension.content.Reply;
-import io.nebulacms.app.extension.Metadata;
 
 /**
  * A request parameter object for {@link Reply}.

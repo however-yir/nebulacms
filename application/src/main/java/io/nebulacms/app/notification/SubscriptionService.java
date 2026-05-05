@@ -1,9 +1,10 @@
 package io.nebulacms.app.notification;
 
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.core.extension.notification.Subscription;
 import io.nebulacms.app.extension.ListOptions;
+
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 public interface SubscriptionService {
 

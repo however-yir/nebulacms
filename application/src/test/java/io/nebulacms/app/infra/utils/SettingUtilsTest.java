@@ -1,10 +1,11 @@
 package io.nebulacms.app.infra.utils;
 
+import io.nebulacms.app.core.extension.Setting;
+
 import java.util.Map;
 import org.json.JSONException;
 import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
-import io.nebulacms.app.core.extension.Setting;
 
 /**
  * Tests for {@link SettingUtils}.

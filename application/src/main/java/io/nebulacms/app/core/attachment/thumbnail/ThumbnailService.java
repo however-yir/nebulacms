@@ -1,9 +1,10 @@
 package io.nebulacms.app.core.attachment.thumbnail;
 
+import io.nebulacms.app.core.attachment.ThumbnailSize;
+
 import java.net.URI;
 import java.util.Map;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.attachment.ThumbnailSize;
 
 /**
  * Service for managing thumbnails.

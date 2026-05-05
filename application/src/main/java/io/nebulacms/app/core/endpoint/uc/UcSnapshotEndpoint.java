@@ -5,6 +5,15 @@ import static org.springdoc.core.fn.builders.parameter.Builder.parameterBuilder;
 import static org.springdoc.webflux.core.fn.SpringdocRouteBuilder.route;
 import static org.springframework.web.reactive.function.server.RequestPredicates.path;
 
+import io.nebulacms.app.content.PostService;
+import io.nebulacms.app.content.SnapshotService;
+import io.nebulacms.app.core.extension.content.Post;
+import io.nebulacms.app.core.extension.content.Snapshot;
+import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
+import io.nebulacms.app.extension.GroupVersion;
+import io.nebulacms.app.extension.Ref;
+import io.nebulacms.app.infra.exception.NotFoundException;
+
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.ReactiveSecurityContextHolder;
@@ -15,14 +24,6 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.server.ServerWebInputException;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.content.PostService;
-import io.nebulacms.app.content.SnapshotService;
-import io.nebulacms.app.core.extension.content.Post;
-import io.nebulacms.app.core.extension.content.Snapshot;
-import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
-import io.nebulacms.app.extension.GroupVersion;
-import io.nebulacms.app.extension.Ref;
-import io.nebulacms.app.infra.exception.NotFoundException;
 
 @Component
 public class UcSnapshotEndpoint implements CustomEndpoint {

@@ -5,6 +5,13 @@ import static org.springdoc.core.fn.builders.parameter.Builder.parameterBuilder;
 import static org.springdoc.core.fn.builders.requestbody.Builder.requestBodyBuilder;
 import static org.springframework.http.HttpStatus.NO_CONTENT;
 
+import io.nebulacms.app.core.extension.attachment.Policy;
+import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
+import io.nebulacms.app.extension.ConfigMap;
+import io.nebulacms.app.extension.GroupVersion;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import java.util.HashMap;
 import java.util.Objects;
@@ -21,12 +28,6 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.server.ServerWebInputException;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.attachment.Policy;
-import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
-import io.nebulacms.app.extension.ConfigMap;
-import io.nebulacms.app.extension.GroupVersion;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
 import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.json.JsonMapper;
 

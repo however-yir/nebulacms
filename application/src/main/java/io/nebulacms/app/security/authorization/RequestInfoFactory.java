@@ -1,12 +1,13 @@
 package io.nebulacms.app.security.authorization;
 
+import io.nebulacms.app.infra.ui.WebSocketUtils;
+
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.Set;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.server.PathContainer;
 import org.springframework.http.server.reactive.ServerHttpRequest;
-import io.nebulacms.app.infra.ui.WebSocketUtils;
 
 /**
  * Creates {@link RequestInfo} from {@link ServerHttpRequest}.

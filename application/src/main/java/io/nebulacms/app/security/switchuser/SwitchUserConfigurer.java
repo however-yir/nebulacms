@@ -1,13 +1,14 @@
 package io.nebulacms.app.security.switchuser;
 
+import io.nebulacms.app.security.HaloRedirectAuthenticationSuccessHandler;
+import io.nebulacms.app.security.authentication.SecurityConfigurer;
+
 import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.core.userdetails.ReactiveUserDetailsService;
 import org.springframework.security.web.server.authentication.RedirectServerAuthenticationFailureHandler;
 import org.springframework.security.web.server.authentication.SwitchUserWebFilter;
 import org.springframework.stereotype.Component;
-import io.nebulacms.app.security.HaloRedirectAuthenticationSuccessHandler;
-import io.nebulacms.app.security.authentication.SecurityConfigurer;
 
 /**
  * Switch user configurer.

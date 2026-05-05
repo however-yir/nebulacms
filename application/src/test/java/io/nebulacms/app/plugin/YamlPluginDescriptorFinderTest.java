@@ -3,6 +3,9 @@ package io.nebulacms.app.plugin;
 import static java.util.Objects.requireNonNull;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
+import io.nebulacms.app.infra.utils.FileUtils;
+import io.nebulacms.app.infra.utils.JsonUtils;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -16,8 +19,6 @@ import org.pf4j.PluginDescriptor;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.util.ResourceUtils;
-import io.nebulacms.app.infra.utils.FileUtils;
-import io.nebulacms.app.infra.utils.JsonUtils;
 
 /**
  * Tests for {@link YamlPluginDescriptorFinder}.

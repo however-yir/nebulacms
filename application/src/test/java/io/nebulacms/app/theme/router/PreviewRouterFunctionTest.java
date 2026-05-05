@@ -5,6 +5,19 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.content.PostService;
+import io.nebulacms.app.core.extension.content.Post;
+import io.nebulacms.app.core.extension.content.SinglePage;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.infra.AnonymousUserConst;
+import io.nebulacms.app.theme.ViewNameResolver;
+import io.nebulacms.app.theme.finders.PostPublicQueryService;
+import io.nebulacms.app.theme.finders.SinglePageConversionService;
+import io.nebulacms.app.theme.finders.vo.ContributorVo;
+import io.nebulacms.app.theme.finders.vo.PostVo;
+import io.nebulacms.app.theme.finders.vo.SinglePageVo;
+
 import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,18 +35,6 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.result.view.ViewResolver;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.content.PostService;
-import io.nebulacms.app.core.extension.content.Post;
-import io.nebulacms.app.core.extension.content.SinglePage;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.infra.AnonymousUserConst;
-import io.nebulacms.app.theme.ViewNameResolver;
-import io.nebulacms.app.theme.finders.PostPublicQueryService;
-import io.nebulacms.app.theme.finders.SinglePageConversionService;
-import io.nebulacms.app.theme.finders.vo.ContributorVo;
-import io.nebulacms.app.theme.finders.vo.PostVo;
-import io.nebulacms.app.theme.finders.vo.SinglePageVo;
 
 /**
  * Tests for {@link PreviewRouterFunction}.

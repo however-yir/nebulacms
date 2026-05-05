@@ -4,6 +4,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.extension.FakeExtension;
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.ListResult;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.PageRequest;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,12 +24,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Sort;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.extension.FakeExtension;
-import io.nebulacms.app.extension.ListOptions;
-import io.nebulacms.app.extension.ListResult;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.PageRequest;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
 
 @ExtendWith(MockitoExtension.class)
 class ReactiveExtensionPaginatedOperatorImplTest {

@@ -2,17 +2,18 @@ package io.nebulacms.app.extension.router;
 
 import static io.nebulacms.app.extension.router.ExtensionRouterFunctionFactory.PathPatternGenerator.buildExtensionPathPattern;
 
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.Scheme;
+import io.nebulacms.app.extension.Unstructured;
+import io.nebulacms.app.extension.exception.ExtensionConvertException;
+import io.nebulacms.app.extension.router.ExtensionRouterFunctionFactory.CreateHandler;
+
 import java.net.URI;
 import org.springframework.http.MediaType;
 import org.springframework.lang.NonNull;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.Scheme;
-import io.nebulacms.app.extension.Unstructured;
-import io.nebulacms.app.extension.exception.ExtensionConvertException;
-import io.nebulacms.app.extension.router.ExtensionRouterFunctionFactory.CreateHandler;
 
 class ExtensionCreateHandler implements CreateHandler {
 

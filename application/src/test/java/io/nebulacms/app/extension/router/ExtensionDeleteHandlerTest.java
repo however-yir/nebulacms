@@ -1,5 +1,6 @@
 package io.nebulacms.app.extension.router;
 
+import static io.nebulacms.app.extension.GroupVersionKind.fromExtension;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -10,7 +11,13 @@ import static org.mockito.ArgumentMatchers.same;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static io.nebulacms.app.extension.GroupVersionKind.fromExtension;
+
+import io.nebulacms.app.extension.FakeExtension;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.Scheme;
+import io.nebulacms.app.extension.Unstructured;
+import io.nebulacms.app.extension.exception.ExtensionNotFoundException;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -22,12 +29,6 @@ import org.springframework.mock.web.reactive.function.server.MockServerRequest;
 import org.springframework.web.reactive.function.server.EntityResponse;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.extension.FakeExtension;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.Scheme;
-import io.nebulacms.app.extension.Unstructured;
-import io.nebulacms.app.extension.exception.ExtensionNotFoundException;
 
 @ExtendWith(MockitoExtension.class)
 class ExtensionDeleteHandlerTest {

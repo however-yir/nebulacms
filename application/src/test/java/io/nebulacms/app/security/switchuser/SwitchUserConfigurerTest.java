@@ -15,7 +15,6 @@ import org.springframework.test.context.bean.override.mockito.MockitoSpyBean;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;
 
-
 @SpringBootTest
 @AutoConfigureWebTestClient
 class SwitchUserConfigurerTest {

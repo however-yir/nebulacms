@@ -1,8 +1,9 @@
 package io.nebulacms.app.extension.event;
 
+import io.nebulacms.app.extension.Scheme;
+
 import lombok.Getter;
 import org.springframework.context.ApplicationEvent;
-import io.nebulacms.app.extension.Scheme;
 
 /**
  * IndexBuildEvent is fired when index build of a scheme is triggered and completed.

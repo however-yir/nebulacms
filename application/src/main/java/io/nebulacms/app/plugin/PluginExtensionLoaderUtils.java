@@ -1,5 +1,8 @@
 package io.nebulacms.app.plugin;
 
+import io.nebulacms.app.core.extension.Setting;
+import io.nebulacms.app.extension.Unstructured;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URLClassLoader;
@@ -10,8 +13,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.data.util.Predicates;
-import io.nebulacms.app.core.extension.Setting;
-import io.nebulacms.app.extension.Unstructured;
 
 @Slf4j
 public class PluginExtensionLoaderUtils {

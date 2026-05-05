@@ -1,11 +1,12 @@
 package io.nebulacms.app.extension;
 
+import io.nebulacms.app.extension.index.IndexedQueryEngine;
+
 import java.util.Comparator;
 import java.util.function.Predicate;
 import org.springframework.data.domain.Sort;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.extension.index.IndexedQueryEngine;
 
 /**
  * ExtensionClient is an interface which contains some operations on Extension instead of

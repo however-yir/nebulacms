@@ -1,5 +1,7 @@
 package io.nebulacms.app.plugin;
 
+import static io.nebulacms.app.core.extension.Plugin.BUILT_IN_KEEPER_FINALIZER;
+import static io.nebulacms.app.core.extension.Plugin.SYSTEM_RESERVED_LABEL_KEY;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -7,8 +9,12 @@ import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-import static io.nebulacms.app.core.extension.Plugin.BUILT_IN_KEEPER_FINALIZER;
-import static io.nebulacms.app.core.extension.Plugin.SYSTEM_RESERVED_LABEL_KEY;
+
+import io.nebulacms.app.core.extension.Plugin;
+import io.nebulacms.app.extension.ExtensionClient;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.infra.ExtensionInitializedEvent;
+import io.nebulacms.app.infra.exception.PluginAlreadyExistsException;
 
 import java.io.IOException;
 import java.net.URI;
@@ -23,11 +29,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.Plugin;
-import io.nebulacms.app.extension.ExtensionClient;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.infra.ExtensionInitializedEvent;
-import io.nebulacms.app.infra.exception.PluginAlreadyExistsException;
 
 @ExtendWith(MockitoExtension.class)
 class BuiltInPluginsInitializerTest {

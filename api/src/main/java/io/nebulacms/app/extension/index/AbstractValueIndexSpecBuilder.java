@@ -1,7 +1,8 @@
 package io.nebulacms.app.extension.index;
 
-import org.springframework.util.Assert;
 import io.nebulacms.app.extension.Extension;
+
+import org.springframework.util.Assert;
 
 /**
  * Abstract base implementation of {@link IndexSpecBuilder} for value indexes.

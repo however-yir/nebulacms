@@ -2,6 +2,11 @@ package io.nebulacms.app.notification;
 
 import static io.nebulacms.app.extension.MetadataUtil.SYSTEM_FINALIZER;
 
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.Secret;
+import io.nebulacms.app.infra.utils.JsonUtils;
+
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.util.HashMap;
@@ -11,10 +16,6 @@ import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.Secret;
-import io.nebulacms.app.infra.utils.JsonUtils;
 
 /**
  * A default implementation of {@link NotifierConfigStore}.

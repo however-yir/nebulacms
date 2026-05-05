@@ -2,6 +2,10 @@ package io.nebulacms.app.core.extension.content;
 
 import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
 
+import io.nebulacms.app.extension.AbstractExtension;
+import io.nebulacms.app.extension.GVK;
+import io.nebulacms.app.extension.Ref;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.Instant;
 import java.util.LinkedHashSet;
@@ -11,9 +15,6 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.springframework.lang.NonNull;
 import org.springframework.util.Assert;
-import io.nebulacms.app.extension.AbstractExtension;
-import io.nebulacms.app.extension.GVK;
-import io.nebulacms.app.extension.Ref;
 
 /**
  * @author guqing

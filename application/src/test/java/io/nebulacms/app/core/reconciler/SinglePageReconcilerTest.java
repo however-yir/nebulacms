@@ -1,5 +1,6 @@
 package io.nebulacms.app.core.reconciler;
 
+import static io.nebulacms.app.content.TestPost.snapshotV1;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.assertArg;
@@ -8,23 +9,7 @@ import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static io.nebulacms.app.content.TestPost.snapshotV1;
 
-import java.net.URI;
-import java.time.Instant;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.context.ApplicationContext;
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.content.ContentWrapper;
 import io.nebulacms.app.content.ExcerptGenerator;
 import io.nebulacms.app.content.NotificationReasonConst;
@@ -41,6 +26,22 @@ import io.nebulacms.app.extension.controller.Reconciler;
 import io.nebulacms.app.infra.ExternalUrlSupplier;
 import io.nebulacms.app.notification.NotificationCenter;
 import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
+
+import java.net.URI;
+import java.time.Instant;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.context.ApplicationContext;
+import reactor.core.publisher.Mono;
 
 /**
  * Tests for {@link SinglePageReconciler}.
@@ -233,7 +234,6 @@ class SinglePageReconcilerTest {
 
         return page;
     }
-
 
     @Test
     void subscribeNewCommentNotificationTest() {

@@ -9,6 +9,14 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.core.extension.ReverseProxy;
+import io.nebulacms.app.core.reconciler.ReverseProxyReconciler;
+import io.nebulacms.app.extension.ExtensionClient;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.controller.Reconciler;
+import io.nebulacms.app.plugin.PluginConst;
+import io.nebulacms.app.plugin.resources.ReverseProxyRouterFunctionRegistry;
+
 import java.time.Instant;
 import java.util.List;
 import java.util.Map;
@@ -18,13 +26,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import io.nebulacms.app.core.extension.ReverseProxy;
-import io.nebulacms.app.core.reconciler.ReverseProxyReconciler;
-import io.nebulacms.app.extension.ExtensionClient;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.controller.Reconciler;
-import io.nebulacms.app.plugin.PluginConst;
-import io.nebulacms.app.plugin.resources.ReverseProxyRouterFunctionRegistry;
 
 /**
  * Tests for {@link ReverseProxyReconciler}.

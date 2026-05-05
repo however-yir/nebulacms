@@ -1,7 +1,8 @@
 package io.nebulacms.app.extension.index;
 
-import java.util.List;
 import io.nebulacms.app.extension.Extension;
+
+import java.util.List;
 
 /**
  * An interface that defines a collection of {@link IndexSpec}, and provides methods to add,

@@ -1,12 +1,13 @@
 package io.nebulacms.app.security.authentication.login;
 
+import io.nebulacms.app.security.authentication.CryptoService;
+
 import java.util.Base64;
 import lombok.Data;
 import org.springdoc.core.fn.builders.apiresponse.Builder;
 import org.springdoc.webflux.core.fn.SpringdocRouteBuilder;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
-import io.nebulacms.app.security.authentication.CryptoService;
 
 public class PublicKeyRouteBuilder {
 

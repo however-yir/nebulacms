@@ -3,6 +3,11 @@ package io.nebulacms.app.core.extension;
 import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.NOT_REQUIRED;
 import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
 
+import io.nebulacms.app.extension.AbstractExtension;
+import io.nebulacms.app.extension.GVK;
+import io.nebulacms.app.infra.ConditionList;
+import io.nebulacms.app.infra.model.License;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.List;
 import java.util.Objects;
@@ -10,10 +15,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.springframework.util.Assert;
-import io.nebulacms.app.extension.AbstractExtension;
-import io.nebulacms.app.extension.GVK;
-import io.nebulacms.app.infra.ConditionList;
-import io.nebulacms.app.infra.model.License;
 
 /**
  * <p>Theme extension.</p>

@@ -3,11 +3,6 @@ package io.nebulacms.app.search.post;
 import static io.nebulacms.app.search.post.PostHaloDocumentsProvider.POST_DOCUMENT_TYPE;
 import static io.nebulacms.app.search.post.PostHaloDocumentsProvider.convert;
 
-import java.util.List;
-import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.context.event.EventListener;
-import org.springframework.stereotype.Component;
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.content.PostService;
 import io.nebulacms.app.core.extension.content.Post;
 import io.nebulacms.app.event.post.PostDeletedEvent;
@@ -16,6 +11,12 @@ import io.nebulacms.app.extension.ExtensionUtil;
 import io.nebulacms.app.extension.ReactiveExtensionClient;
 import io.nebulacms.app.search.event.HaloDocumentAddRequestEvent;
 import io.nebulacms.app.search.event.HaloDocumentDeleteRequestEvent;
+
+import java.util.List;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.context.event.EventListener;
+import org.springframework.stereotype.Component;
+import reactor.core.publisher.Mono;
 
 @Component
 public class PostEventsListener {

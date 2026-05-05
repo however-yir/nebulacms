@@ -1,9 +1,10 @@
 package io.nebulacms.app.content.comment;
 
-import org.pf4j.ExtensionPoint;
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.extension.Extension;
 import io.nebulacms.app.extension.Ref;
+
+import org.pf4j.ExtensionPoint;
+import reactor.core.publisher.Mono;
 
 /**
  * Comment subject.

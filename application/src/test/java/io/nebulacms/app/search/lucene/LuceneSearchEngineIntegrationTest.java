@@ -1,9 +1,21 @@
 package io.nebulacms.app.search.lucene;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static io.nebulacms.app.core.extension.content.Post.VisibleEnum.PRIVATE;
 import static io.nebulacms.app.core.extension.content.Post.VisibleEnum.PUBLIC;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
+import io.nebulacms.app.content.Content;
+import io.nebulacms.app.content.ContentUpdateParam;
+import io.nebulacms.app.content.PostRequest;
+import io.nebulacms.app.content.PostService;
+import io.nebulacms.app.core.extension.content.Post;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.infra.AnonymousUserConst;
+import io.nebulacms.app.search.SearchEngine;
+import io.nebulacms.app.search.SearchOption;
+import io.nebulacms.app.search.SearchResult;
 
 import java.time.Duration;
 import java.util.List;
@@ -23,17 +35,6 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.test.StepVerifier;
 import reactor.util.retry.Retry;
-import io.nebulacms.app.content.Content;
-import io.nebulacms.app.content.ContentUpdateParam;
-import io.nebulacms.app.content.PostRequest;
-import io.nebulacms.app.content.PostService;
-import io.nebulacms.app.core.extension.content.Post;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.infra.AnonymousUserConst;
-import io.nebulacms.app.search.SearchEngine;
-import io.nebulacms.app.search.SearchOption;
-import io.nebulacms.app.search.SearchResult;
 
 @DirtiesContext
 @SpringBootTest(properties = {

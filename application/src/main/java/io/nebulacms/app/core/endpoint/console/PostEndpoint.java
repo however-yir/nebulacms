@@ -1,10 +1,24 @@
 package io.nebulacms.app.core.endpoint.console;
 
+import static io.nebulacms.app.extension.MetadataUtil.nullSafeLabels;
 import static org.springdoc.core.fn.builders.apiresponse.Builder.responseBuilder;
 import static org.springdoc.core.fn.builders.content.Builder.contentBuilder;
 import static org.springdoc.core.fn.builders.parameter.Builder.parameterBuilder;
 import static org.springdoc.core.fn.builders.requestbody.Builder.requestBodyBuilder;
-import static io.nebulacms.app.extension.MetadataUtil.nullSafeLabels;
+
+import io.nebulacms.app.content.Content;
+import io.nebulacms.app.content.ContentUpdateParam;
+import io.nebulacms.app.content.ContentWrapper;
+import io.nebulacms.app.content.ListedPost;
+import io.nebulacms.app.content.ListedSnapshotDto;
+import io.nebulacms.app.content.PostQuery;
+import io.nebulacms.app.content.PostRequest;
+import io.nebulacms.app.content.PostService;
+import io.nebulacms.app.core.extension.content.Post;
+import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
+import io.nebulacms.app.extension.ListResult;
+import io.nebulacms.app.extension.MetadataUtil;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
 
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -27,19 +41,6 @@ import org.springframework.web.server.ServerWebInputException;
 import reactor.core.Exceptions;
 import reactor.core.publisher.Mono;
 import reactor.util.retry.Retry;
-import io.nebulacms.app.content.Content;
-import io.nebulacms.app.content.ContentUpdateParam;
-import io.nebulacms.app.content.ContentWrapper;
-import io.nebulacms.app.content.ListedPost;
-import io.nebulacms.app.content.ListedSnapshotDto;
-import io.nebulacms.app.content.PostQuery;
-import io.nebulacms.app.content.PostRequest;
-import io.nebulacms.app.content.PostService;
-import io.nebulacms.app.core.extension.content.Post;
-import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
-import io.nebulacms.app.extension.ListResult;
-import io.nebulacms.app.extension.MetadataUtil;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
 
 /**
  * Endpoint for managing posts.

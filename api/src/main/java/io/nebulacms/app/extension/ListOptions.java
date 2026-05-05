@@ -1,15 +1,16 @@
 package io.nebulacms.app.extension;
 
-import java.util.List;
-import java.util.function.Function;
-import lombok.Data;
-import lombok.experimental.Accessors;
-import org.springframework.lang.NonNull;
 import io.nebulacms.app.extension.index.query.Condition;
 import io.nebulacms.app.extension.index.query.LabelCondition;
 import io.nebulacms.app.extension.index.query.Query;
 import io.nebulacms.app.extension.router.selector.FieldSelector;
 import io.nebulacms.app.extension.router.selector.LabelSelector;
+
+import java.util.List;
+import java.util.function.Function;
+import lombok.Data;
+import lombok.experimental.Accessors;
+import org.springframework.lang.NonNull;
 
 @Data
 @Accessors(chain = true)

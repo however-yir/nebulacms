@@ -162,7 +162,6 @@ class QueriesTest {
         assertEquals("(price < 50 OR category = Books)", condition.toString());
     }
 
-
     @Test
     void shouldBuildNotCondition() {
         var condition = Queries.equal("role", "Admin").not();

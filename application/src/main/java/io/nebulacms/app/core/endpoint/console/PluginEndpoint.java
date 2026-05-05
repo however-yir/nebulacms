@@ -1,5 +1,11 @@
 package io.nebulacms.app.core.endpoint.console;
 
+import static io.nebulacms.app.extension.ListResult.generateGenericClass;
+import static io.nebulacms.app.extension.index.query.Queries.contains;
+import static io.nebulacms.app.extension.index.query.Queries.equal;
+import static io.nebulacms.app.extension.index.query.Queries.or;
+import static io.nebulacms.app.extension.router.QueryParamBuildUtil.sortParameter;
+import static io.nebulacms.app.infra.utils.FileUtils.deleteFileSilently;
 import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.NOT_REQUIRED;
 import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
 import static org.springdoc.core.fn.builders.apiresponse.Builder.responseBuilder;
@@ -10,12 +16,19 @@ import static org.springdoc.core.fn.builders.schema.Builder.schemaBuilder;
 import static org.springframework.boot.convert.ApplicationConversionService.getSharedInstance;
 import static org.springframework.core.io.buffer.DataBufferUtils.write;
 import static org.springframework.web.reactive.function.server.RequestPredicates.contentType;
-import static io.nebulacms.app.extension.ListResult.generateGenericClass;
-import static io.nebulacms.app.extension.index.query.Queries.contains;
-import static io.nebulacms.app.extension.index.query.Queries.equal;
-import static io.nebulacms.app.extension.index.query.Queries.or;
-import static io.nebulacms.app.extension.router.QueryParamBuildUtil.sortParameter;
-import static io.nebulacms.app.infra.utils.FileUtils.deleteFileSilently;
+
+import io.nebulacms.app.core.extension.Plugin;
+import io.nebulacms.app.core.extension.Setting;
+import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
+import io.nebulacms.app.core.user.service.SettingConfigService;
+import io.nebulacms.app.extension.ConfigMap;
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.router.IListRequest;
+import io.nebulacms.app.extension.router.SortableRequest;
+import io.nebulacms.app.infra.ReactiveUrlDataBufferFetcher;
+import io.nebulacms.app.infra.utils.SettingUtils;
+import io.nebulacms.app.plugin.PluginService;
 
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -59,18 +72,6 @@ import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Scheduler;
 import reactor.core.scheduler.Schedulers;
 import reactor.util.retry.Retry;
-import io.nebulacms.app.core.extension.Plugin;
-import io.nebulacms.app.core.extension.Setting;
-import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
-import io.nebulacms.app.core.user.service.SettingConfigService;
-import io.nebulacms.app.extension.ConfigMap;
-import io.nebulacms.app.extension.ListOptions;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.router.IListRequest;
-import io.nebulacms.app.extension.router.SortableRequest;
-import io.nebulacms.app.infra.ReactiveUrlDataBufferFetcher;
-import io.nebulacms.app.infra.utils.SettingUtils;
-import io.nebulacms.app.plugin.PluginService;
 import tools.jackson.databind.node.ObjectNode;
 
 @Slf4j
@@ -513,7 +514,6 @@ public class PluginEndpoint implements CustomEndpoint, InitializingBean {
             .retryWhen(Retry.fixedDelay(10, Duration.ofMillis(100))
                 .filter(t -> t instanceof OptimisticLockingFailureException));
     }
-
 
     private Mono<ServerResponse> install(ServerRequest request) {
         return request.multipartData()

@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import io.nebulacms.app.security.authentication.login.InvalidEncryptedMessageException;
+
 import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.JWSAlgorithm;
 import com.nimbusds.jose.jwk.KeyUse;
@@ -33,7 +35,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.util.StringUtils;
 import reactor.core.Exceptions;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.security.authentication.login.InvalidEncryptedMessageException;
 
 @ExtendWith(MockitoExtension.class)
 class RsaKeyServiceTest {

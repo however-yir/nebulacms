@@ -8,6 +8,16 @@ import static org.mockito.ArgumentMatchers.same;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.core.extension.AuthProvider;
+import io.nebulacms.app.core.extension.UserConnection;
+import io.nebulacms.app.extension.ConfigMap;
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.infra.SystemConfigFetcher;
+import io.nebulacms.app.infra.SystemSetting;
+import io.nebulacms.app.infra.utils.JsonUtils;
+
 import java.util.HashMap;
 import org.json.JSONException;
 import org.junit.jupiter.api.BeforeEach;
@@ -25,15 +35,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.core.extension.AuthProvider;
-import io.nebulacms.app.core.extension.UserConnection;
-import io.nebulacms.app.extension.ConfigMap;
-import io.nebulacms.app.extension.ListOptions;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.infra.SystemConfigFetcher;
-import io.nebulacms.app.infra.SystemSetting;
-import io.nebulacms.app.infra.utils.JsonUtils;
 
 /**
  * Tests for {@link AuthProviderServiceImpl}.

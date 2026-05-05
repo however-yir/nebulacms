@@ -1,9 +1,5 @@
 package io.nebulacms.app.core.reconciler;
 
-import java.time.Duration;
-import lombok.RequiredArgsConstructor;
-import org.apache.commons.lang3.BooleanUtils;
-import org.springframework.stereotype.Component;
 import io.nebulacms.app.core.extension.AuthProvider;
 import io.nebulacms.app.extension.ExtensionClient;
 import io.nebulacms.app.extension.MetadataUtil;
@@ -12,6 +8,11 @@ import io.nebulacms.app.extension.controller.ControllerBuilder;
 import io.nebulacms.app.extension.controller.Reconciler;
 import io.nebulacms.app.infra.utils.ReactiveUtils;
 import io.nebulacms.app.security.AuthProviderService;
+
+import java.time.Duration;
+import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.BooleanUtils;
+import org.springframework.stereotype.Component;
 
 /**
  * Reconciler for {@link AuthProvider}.

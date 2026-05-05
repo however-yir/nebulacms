@@ -1,11 +1,12 @@
 package io.nebulacms.app.extension.router.selector;
 
-import java.util.Objects;
-import org.springframework.lang.Nullable;
-import org.springframework.util.Assert;
 import io.nebulacms.app.extension.index.query.Condition;
 import io.nebulacms.app.extension.index.query.Queries;
 import io.nebulacms.app.extension.index.query.Query;
+
+import java.util.Objects;
+import org.springframework.lang.Nullable;
+import org.springframework.util.Assert;
 
 public record FieldSelector(@Nullable Query query) {
 

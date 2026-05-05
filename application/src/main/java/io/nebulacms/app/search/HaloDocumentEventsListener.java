@@ -1,14 +1,15 @@
 package io.nebulacms.app.search;
 
+import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
+import io.nebulacms.app.search.event.HaloDocumentAddRequestEvent;
+import io.nebulacms.app.search.event.HaloDocumentDeleteRequestEvent;
+import io.nebulacms.app.search.event.HaloDocumentRebuildRequestEvent;
+
 import java.time.Duration;
 import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
-import io.nebulacms.app.search.event.HaloDocumentAddRequestEvent;
-import io.nebulacms.app.search.event.HaloDocumentDeleteRequestEvent;
-import io.nebulacms.app.search.event.HaloDocumentRebuildRequestEvent;
 
 @Component
 public class HaloDocumentEventsListener {

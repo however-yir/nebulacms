@@ -1,5 +1,8 @@
 package io.nebulacms.app.core.reconciler;
 
+import static io.nebulacms.app.plugin.PluginConst.PLUGIN_PATH;
+import static io.nebulacms.app.plugin.PluginConst.RELOAD_ANNO;
+import static io.nebulacms.app.plugin.PluginConst.RUNTIME_MODE_ANNO;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -13,9 +16,21 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static io.nebulacms.app.plugin.PluginConst.PLUGIN_PATH;
-import static io.nebulacms.app.plugin.PluginConst.RELOAD_ANNO;
-import static io.nebulacms.app.plugin.PluginConst.RUNTIME_MODE_ANNO;
+
+import io.nebulacms.app.core.extension.Plugin;
+import io.nebulacms.app.core.extension.ReverseProxy;
+import io.nebulacms.app.core.extension.Setting;
+import io.nebulacms.app.extension.ConfigMap;
+import io.nebulacms.app.extension.ExtensionClient;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.controller.Reconciler;
+import io.nebulacms.app.extension.controller.Reconciler.Request;
+import io.nebulacms.app.extension.controller.RequeueException;
+import io.nebulacms.app.infra.Condition;
+import io.nebulacms.app.infra.ConditionStatus;
+import io.nebulacms.app.plugin.PluginProperties;
+import io.nebulacms.app.plugin.PluginService;
+import io.nebulacms.app.plugin.SpringPluginManager;
 
 import java.io.IOException;
 import java.net.URL;
@@ -48,20 +63,6 @@ import org.pf4j.PluginWrapper;
 import org.pf4j.RuntimeMode;
 import org.springframework.core.io.DefaultResourceLoader;
 import reactor.core.scheduler.Schedulers;
-import io.nebulacms.app.core.extension.Plugin;
-import io.nebulacms.app.core.extension.ReverseProxy;
-import io.nebulacms.app.core.extension.Setting;
-import io.nebulacms.app.extension.ConfigMap;
-import io.nebulacms.app.extension.ExtensionClient;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.controller.Reconciler;
-import io.nebulacms.app.extension.controller.Reconciler.Request;
-import io.nebulacms.app.extension.controller.RequeueException;
-import io.nebulacms.app.infra.Condition;
-import io.nebulacms.app.infra.ConditionStatus;
-import io.nebulacms.app.plugin.PluginProperties;
-import io.nebulacms.app.plugin.PluginService;
-import io.nebulacms.app.plugin.SpringPluginManager;
 
 /**
  * Tests for {@link PluginReconciler}.

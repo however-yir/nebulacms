@@ -3,10 +3,11 @@ package io.nebulacms.app.theme.utils;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import io.nebulacms.app.infra.SystemSetting.ThemeRouteRules;
+
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import io.nebulacms.app.infra.SystemSetting.ThemeRouteRules;
 
 class PatternUtilsTest {
 
@@ -61,6 +62,5 @@ class PatternUtilsTest {
         var result = PatternUtils.normalizePostPattern(rules);
         assertEquals(expected, result);
     }
-
 
 }

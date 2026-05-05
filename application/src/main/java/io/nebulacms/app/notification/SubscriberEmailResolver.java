@@ -1,7 +1,8 @@
 package io.nebulacms.app.notification;
 
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.core.extension.notification.Subscription;
+
+import reactor.core.publisher.Mono;
 
 /**
  * <p>{@link SubscriberEmailResolver} used to resolve email from {@link Subscription.Subscriber}

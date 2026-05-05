@@ -2,10 +2,11 @@ package io.nebulacms.app.content;
 
 import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
 
-import io.swagger.v3.oas.annotations.media.Schema;
-import org.springframework.lang.NonNull;
 import io.nebulacms.app.core.extension.content.Post;
 import io.nebulacms.app.extension.Ref;
+
+import io.swagger.v3.oas.annotations.media.Schema;
+import org.springframework.lang.NonNull;
 
 /**
  * Post and content data for creating and updating post.

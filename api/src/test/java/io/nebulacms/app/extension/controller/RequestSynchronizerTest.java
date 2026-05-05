@@ -10,6 +10,11 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.extension.ExtensionClient;
+import io.nebulacms.app.extension.FakeExtension;
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.Watcher;
+
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,10 +22,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Sort;
-import io.nebulacms.app.extension.ExtensionClient;
-import io.nebulacms.app.extension.FakeExtension;
-import io.nebulacms.app.extension.ListOptions;
-import io.nebulacms.app.extension.Watcher;
 
 @ExtendWith(MockitoExtension.class)
 class RequestSynchronizerTest {

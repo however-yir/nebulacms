@@ -3,13 +3,14 @@ package io.nebulacms.app.core.attachment.impl;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.infra.properties.HaloProperties;
+
 import java.nio.file.Path;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import io.nebulacms.app.infra.properties.HaloProperties;
 
 /**
  * Tests for {@link AttachmentRootGetterImpl}.

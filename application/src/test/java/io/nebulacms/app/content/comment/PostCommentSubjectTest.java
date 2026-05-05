@@ -6,13 +6,6 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-import reactor.core.publisher.Mono;
-import reactor.test.StepVerifier;
 import io.nebulacms.app.content.TestPost;
 import io.nebulacms.app.core.extension.content.Constant;
 import io.nebulacms.app.core.extension.content.Post;
@@ -20,6 +13,14 @@ import io.nebulacms.app.extension.FakeExtension;
 import io.nebulacms.app.extension.Metadata;
 import io.nebulacms.app.extension.ReactiveExtensionClient;
 import io.nebulacms.app.extension.Ref;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import reactor.core.publisher.Mono;
+import reactor.test.StepVerifier;
 
 /**
  * Tests for {@link PostCommentSubject}.

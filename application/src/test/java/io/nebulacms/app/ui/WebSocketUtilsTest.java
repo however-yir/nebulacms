@@ -3,10 +3,11 @@ package io.nebulacms.app.ui;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import io.nebulacms.app.infra.ui.WebSocketUtils;
+
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpHeaders;
-import io.nebulacms.app.infra.ui.WebSocketUtils;
 
 class WebSocketUtilsTest {
 

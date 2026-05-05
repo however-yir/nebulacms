@@ -2,8 +2,9 @@ package io.nebulacms.app.notification;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.jupiter.api.Test;
 import io.nebulacms.app.infra.utils.JsonUtils;
+
+import org.junit.jupiter.api.Test;
 
 /**
  * Tests for {@link UserNotificationPreference}.

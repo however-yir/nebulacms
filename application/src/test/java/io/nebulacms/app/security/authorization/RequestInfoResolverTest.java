@@ -96,8 +96,10 @@ public class RequestInfoResolverTest {
     void pluginsScopedAndPluginManage() {
         List<CustomSuccessCase> testCases =
             List.of(
-                new CustomSuccessCase("DELETE", "/apis/api.plugin.nebulacms.io/v1/plugins/other/posts",
-                    "delete", "apis", "api.plugin.nebulacms.io", "v1", "", "plugins", "posts", "", "",
+                new CustomSuccessCase("DELETE",
+                    "/apis/api.plugin.nebulacms.io/v1/plugins/other/posts",
+                    "delete", "apis",
+                    "api.plugin.nebulacms.io", "v1", "", "plugins", "posts", "", "",
                     new String[] {"plugins", "other", "posts"}),
 
                 // api group identification
@@ -126,14 +128,17 @@ public class RequestInfoResolverTest {
 
         List<CustomSuccessCase> pluginScopedCases =
             List.of(
-                new CustomSuccessCase("DELETE", "/apis/api.plugin.nebulacms.io/v1/plugins/other/posts",
+                new CustomSuccessCase("DELETE",
+                    "/apis/api.plugin.nebulacms.io/v1/plugins/other/posts",
                     "delete", "apis", "api.plugin.nebulacms.io", "v1", "", "plugins", "posts",
                     "other", "", new String[] {"plugins", "other", "posts"}),
 
                 // api group identification
                 new CustomSuccessCase("POST",
-                    "/apis/api.plugin.nebulacms.io/v1/plugins/other/posts/some-name", "create", "apis",
-                    "api.plugin.nebulacms.io", "v1", "other", "plugins", "posts", "other", "some-name",
+                    "/apis/api.plugin.nebulacms.io/v1/plugins/other/posts/some-name",
+                    "create", "apis",
+                    "api.plugin.nebulacms.io", "v1",
+                    "other", "plugins", "posts", "other", "some-name",
                     new String[] {"plugins", "other", "posts", "some-name"}));
 
         for (CustomSuccessCase pluginScopedCase : pluginScopedCases) {
@@ -197,7 +202,6 @@ public class RequestInfoResolverTest {
 
     public record ErrorCases(String desc, String url) {
     }
-
 
     public record SuccessCase(String method, String url, String expectedVerb,
                               String expectedAPIPrefix, String expectedAPIGroup,

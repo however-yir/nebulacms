@@ -1,13 +1,14 @@
 package io.nebulacms.app.notification;
 
+import io.nebulacms.app.core.extension.User;
+import io.nebulacms.app.core.extension.notification.Subscription;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.User;
-import io.nebulacms.app.core.extension.notification.Subscription;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
 
 /**
  * <p>Default implementation of {@link SubscriberEmailResolver}.</p>

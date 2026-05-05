@@ -11,6 +11,12 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.withSettings;
 
+import io.nebulacms.app.extension.FakeExtension;
+import io.nebulacms.app.extension.index.Index;
+import io.nebulacms.app.extension.index.Indices;
+import io.nebulacms.app.extension.index.LabelIndexQuery;
+import io.nebulacms.app.extension.index.ValueIndexQuery;
+
 import java.util.List;
 import java.util.Set;
 import org.junit.jupiter.api.Test;
@@ -22,11 +28,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.convert.ApplicationConversionService;
 import org.springframework.core.convert.ConversionFailedException;
 import org.springframework.core.convert.ConversionService;
-import io.nebulacms.app.extension.FakeExtension;
-import io.nebulacms.app.extension.index.Index;
-import io.nebulacms.app.extension.index.Indices;
-import io.nebulacms.app.extension.index.LabelIndexQuery;
-import io.nebulacms.app.extension.index.ValueIndexQuery;
 
 @SuppressWarnings({"unchecked", "rawtypes"})
 @ExtendWith(MockitoExtension.class)

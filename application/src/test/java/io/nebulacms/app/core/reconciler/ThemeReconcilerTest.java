@@ -9,6 +9,19 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.core.extension.AnnotationSetting;
+import io.nebulacms.app.core.extension.Setting;
+import io.nebulacms.app.core.extension.Theme;
+import io.nebulacms.app.extension.ConfigMap;
+import io.nebulacms.app.extension.ExtensionClient;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.controller.Reconciler;
+import io.nebulacms.app.extension.controller.RequeueException;
+import io.nebulacms.app.infra.SystemVersionSupplier;
+import io.nebulacms.app.infra.ThemeRootGetter;
+import io.nebulacms.app.infra.utils.JsonUtils;
+import io.nebulacms.app.theme.TemplateEngineManager;
+
 import com.github.zafarkhaja.semver.Version;
 import java.io.File;
 import java.io.IOException;
@@ -40,18 +53,6 @@ import org.springframework.util.FileSystemUtils;
 import org.springframework.util.ResourceUtils;
 import reactor.core.Exceptions;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.AnnotationSetting;
-import io.nebulacms.app.core.extension.Setting;
-import io.nebulacms.app.core.extension.Theme;
-import io.nebulacms.app.extension.ConfigMap;
-import io.nebulacms.app.extension.ExtensionClient;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.controller.Reconciler;
-import io.nebulacms.app.extension.controller.RequeueException;
-import io.nebulacms.app.infra.SystemVersionSupplier;
-import io.nebulacms.app.infra.ThemeRootGetter;
-import io.nebulacms.app.infra.utils.JsonUtils;
-import io.nebulacms.app.theme.TemplateEngineManager;
 
 /**
  * Tests for {@link ThemeReconciler}.

@@ -2,17 +2,18 @@ package io.nebulacms.app.notification;
 
 import static org.apache.commons.lang3.ObjectUtils.defaultIfNull;
 
+import io.nebulacms.app.core.extension.notification.Reason;
+import io.nebulacms.app.core.extension.notification.ReasonType;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.infra.exception.NotFoundException;
+
 import java.util.List;
 import java.util.function.Consumer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.notification.Reason;
-import io.nebulacms.app.core.extension.notification.ReasonType;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.infra.exception.NotFoundException;
 
 /**
  * A default {@link NotificationReasonEmitter} implementation.

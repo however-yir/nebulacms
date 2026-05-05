@@ -1,8 +1,9 @@
 package io.nebulacms.app.event.post;
 
+import io.nebulacms.app.core.extension.content.Category;
+
 import lombok.Getter;
 import org.springframework.context.ApplicationEvent;
-import io.nebulacms.app.core.extension.content.Category;
 
 /**
  * When the category {@link Category.CategorySpec#isHideFromList()} state changes, this event is

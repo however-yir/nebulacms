@@ -50,7 +50,6 @@ class PluginRequestMappingHandlerMappingTest {
 
     private PluginRequestMappingHandlerMapping handlerMapping;
 
-
     @BeforeEach
     public void setup() {
         handlerMapping = new PluginRequestMappingHandlerMapping();
@@ -134,7 +133,8 @@ class PluginRequestMappingHandlerMappingTest {
         Method expected =
             ResolvableMethod.on(TestController.class).annot(getMapping("/foo").params("p")).build();
 
-        String requestPath = "/apis/api.plugin.nebulacms.io/v1alpha1/plugins/fakePlugin/foo?p=anything";
+        String requestPath = "/apis/api.plugin.nebulacms.io/v1alpha1"
+            + "/plugins/fakePlugin/foo?p=anything";
         ServerWebExchange exchange = MockServerWebExchange.from(get(requestPath));
         HandlerMethod hm = (HandlerMethod) this.handlerMapping.getHandler(exchange).block();
 
@@ -238,11 +238,9 @@ class PluginRequestMappingHandlerMappingTest {
 
         private String[] params;
 
-
         private RequestMappingPredicate(String... path) {
             this.path = path;
         }
-
 
         public RequestMappingPredicate method(RequestMethod... methods) {
             this.method = methods;

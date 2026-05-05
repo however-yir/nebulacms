@@ -1,10 +1,11 @@
 package io.nebulacms.app.security.authorization;
 
+import io.nebulacms.app.core.extension.Role;
+
 import java.util.List;
 import java.util.Objects;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
-import io.nebulacms.app.core.extension.Role;
 
 /**
  * @author guqing

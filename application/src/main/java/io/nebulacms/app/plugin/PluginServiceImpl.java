@@ -1,10 +1,23 @@
 package io.nebulacms.app.plugin;
 
+import static io.nebulacms.app.plugin.PluginConst.RELOAD_ANNO;
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 import static java.nio.file.StandardOpenOption.CREATE;
 import static java.nio.file.StandardOpenOption.TRUNCATE_EXISTING;
 import static org.pf4j.PluginState.STARTED;
-import static io.nebulacms.app.plugin.PluginConst.RELOAD_ANNO;
+
+import io.nebulacms.app.core.extension.Plugin;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.infra.SystemVersionSupplier;
+import io.nebulacms.app.infra.exception.PluginAlreadyExistsException;
+import io.nebulacms.app.infra.exception.PluginDependenciesNotEnabledException;
+import io.nebulacms.app.infra.exception.PluginDependencyException;
+import io.nebulacms.app.infra.exception.PluginDependentsNotDisabledException;
+import io.nebulacms.app.infra.exception.PluginInstallationException;
+import io.nebulacms.app.infra.exception.UnsatisfiedAttributeValueException;
+import io.nebulacms.app.infra.utils.FileUtils;
+import io.nebulacms.app.infra.utils.VersionUtils;
+import io.nebulacms.app.plugin.resources.BundleResourceUtils;
 
 import com.github.zafarkhaja.semver.Version;
 import com.google.common.hash.HashCode;
@@ -52,18 +65,6 @@ import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Scheduler;
 import reactor.core.scheduler.Schedulers;
 import reactor.util.retry.Retry;
-import io.nebulacms.app.core.extension.Plugin;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.infra.SystemVersionSupplier;
-import io.nebulacms.app.infra.exception.PluginAlreadyExistsException;
-import io.nebulacms.app.infra.exception.PluginDependenciesNotEnabledException;
-import io.nebulacms.app.infra.exception.PluginDependencyException;
-import io.nebulacms.app.infra.exception.PluginDependentsNotDisabledException;
-import io.nebulacms.app.infra.exception.PluginInstallationException;
-import io.nebulacms.app.infra.exception.UnsatisfiedAttributeValueException;
-import io.nebulacms.app.infra.utils.FileUtils;
-import io.nebulacms.app.infra.utils.VersionUtils;
-import io.nebulacms.app.plugin.resources.BundleResourceUtils;
 
 @Slf4j
 @Component
@@ -450,7 +451,6 @@ public class PluginServiceImpl implements PluginService, InitializingBean, Dispo
                 "problemDetail.plugin.missingManifest", null)
             );
     }
-
 
     @Override
     public void afterPropertiesSet() throws Exception {

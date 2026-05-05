@@ -1,13 +1,14 @@
 package io.nebulacms.app.extension.index;
 
-import java.util.List;
-import org.springframework.data.domain.Sort;
 import io.nebulacms.app.extension.GroupVersionKind;
 import io.nebulacms.app.extension.ListOptions;
 import io.nebulacms.app.extension.ListResult;
 import io.nebulacms.app.extension.Metadata;
 import io.nebulacms.app.extension.PageRequest;
 import io.nebulacms.app.extension.ReactiveExtensionClient;
+
+import java.util.List;
+import org.springframework.data.domain.Sort;
 
 /**
  * <p>An interface for querying indexed object records from the index store.</p>
@@ -40,7 +41,8 @@ public interface IndexedQueryEngine {
      * Retrieve all the object records by the given {@link GroupVersionKind} and
      * {@link ListOptions}.
      *
-     * @param type the type of the object must exist in {@link io.nebulacms.app.extension.SchemeManager}
+     * @param type the type of the object must exist in
+     *     {@link io.nebulacms.app.extension.SchemeManager}
      * @param options the list options to use for retrieving the object records
      * @param sort the sort to use for retrieving the object records
      * @return a collection of {@link Metadata#getName()}

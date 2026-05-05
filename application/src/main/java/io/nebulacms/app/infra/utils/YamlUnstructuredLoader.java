@@ -1,10 +1,11 @@
 package io.nebulacms.app.infra.utils;
 
+import io.nebulacms.app.extension.Unstructured;
+
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.config.YamlProcessor;
 import org.springframework.core.io.Resource;
-import io.nebulacms.app.extension.Unstructured;
 
 /**
  * <p>Process the content in yaml that matches the {@link DocumentMatcher} and convert it to an

@@ -1,10 +1,19 @@
 package io.nebulacms.app.core.endpoint.console;
 
-import static org.springdoc.core.fn.builders.apiresponse.Builder.responseBuilder;
-import static org.springdoc.core.fn.builders.parameter.Builder.parameterBuilder;
 import static io.nebulacms.app.extension.index.query.Queries.contains;
 import static io.nebulacms.app.extension.index.query.Queries.or;
 import static io.nebulacms.app.extension.router.QueryParamBuildUtil.sortParameter;
+import static org.springdoc.core.fn.builders.apiresponse.Builder.responseBuilder;
+import static org.springdoc.core.fn.builders.parameter.Builder.parameterBuilder;
+
+import io.nebulacms.app.core.extension.content.Tag;
+import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.ListResult;
+import io.nebulacms.app.extension.PageRequestImpl;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.router.IListRequest;
+import io.nebulacms.app.extension.router.SortableRequest;
 
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import java.util.Optional;
@@ -18,14 +27,6 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.content.Tag;
-import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
-import io.nebulacms.app.extension.ListOptions;
-import io.nebulacms.app.extension.ListResult;
-import io.nebulacms.app.extension.PageRequestImpl;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.router.IListRequest;
-import io.nebulacms.app.extension.router.SortableRequest;
 
 /**
  * post tag endpoint.

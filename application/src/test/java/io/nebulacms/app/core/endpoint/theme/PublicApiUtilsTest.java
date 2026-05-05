@@ -2,11 +2,12 @@ package io.nebulacms.app.core.endpoint.theme;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.List;
-import org.junit.jupiter.api.Test;
 import io.nebulacms.app.extension.AbstractExtension;
 import io.nebulacms.app.extension.GVK;
 import io.nebulacms.app.extension.GroupVersion;
+
+import java.util.List;
+import org.junit.jupiter.api.Test;
 
 /**
  * Tests for {@link PublicApiUtils}.

@@ -1,9 +1,10 @@
 package io.nebulacms.app.security;
 
+import io.nebulacms.app.security.authorization.AuthorityUtils;
+
 import lombok.Builder;
 import lombok.Data;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.security.authorization.AuthorityUtils;
 
 /**
  * Super admin initializer.

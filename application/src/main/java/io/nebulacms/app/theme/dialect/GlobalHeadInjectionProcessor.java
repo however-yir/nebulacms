@@ -2,6 +2,8 @@ package io.nebulacms.app.theme.dialect;
 
 import static org.thymeleaf.spring6.context.SpringContextUtils.getApplicationContext;
 
+import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
+
 import java.time.Duration;
 import org.thymeleaf.context.ITemplateContext;
 import org.thymeleaf.model.IModel;
@@ -10,7 +12,6 @@ import org.thymeleaf.processor.element.AbstractElementModelProcessor;
 import org.thymeleaf.processor.element.IElementModelStructureHandler;
 import org.thymeleaf.templatemode.TemplateMode;
 import reactor.core.publisher.Flux;
-import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
 
 /**
  * Global head injection processor.

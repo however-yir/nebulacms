@@ -2,6 +2,21 @@ package io.nebulacms.app.theme.finders.impl;
 
 import static io.nebulacms.app.extension.index.query.Queries.notEqual;
 
+import io.nebulacms.app.content.CategoryService;
+import io.nebulacms.app.core.extension.content.Category;
+import io.nebulacms.app.extension.ExtensionUtil;
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.ListResult;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.PageRequestImpl;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.index.query.Queries;
+import io.nebulacms.app.extension.router.selector.FieldSelector;
+import io.nebulacms.app.theme.finders.CategoryFinder;
+import io.nebulacms.app.theme.finders.Finder;
+import io.nebulacms.app.theme.finders.vo.CategoryTreeVo;
+import io.nebulacms.app.theme.finders.vo.CategoryVo;
+
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -22,20 +37,6 @@ import org.springframework.util.Assert;
 import org.springframework.util.CollectionUtils;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.content.CategoryService;
-import io.nebulacms.app.core.extension.content.Category;
-import io.nebulacms.app.extension.ExtensionUtil;
-import io.nebulacms.app.extension.ListOptions;
-import io.nebulacms.app.extension.ListResult;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.PageRequestImpl;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.index.query.Queries;
-import io.nebulacms.app.extension.router.selector.FieldSelector;
-import io.nebulacms.app.theme.finders.CategoryFinder;
-import io.nebulacms.app.theme.finders.Finder;
-import io.nebulacms.app.theme.finders.vo.CategoryTreeVo;
-import io.nebulacms.app.theme.finders.vo.CategoryVo;
 
 /**
  * A default implementation of {@link CategoryFinder}.

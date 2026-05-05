@@ -1,7 +1,8 @@
 package io.nebulacms.app.plugin.event;
 
-import org.springframework.context.ApplicationEvent;
 import io.nebulacms.app.plugin.SpringPlugin;
+
+import org.springframework.context.ApplicationEvent;
 
 public class SpringPluginStartingEvent extends ApplicationEvent {
 

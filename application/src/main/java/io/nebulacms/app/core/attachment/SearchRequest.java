@@ -1,15 +1,21 @@
 package io.nebulacms.app.core.attachment;
 
-import static org.springdoc.core.fn.builders.arrayschema.Builder.arraySchemaBuilder;
-import static org.springdoc.core.fn.builders.parameter.Builder.parameterBuilder;
-import static org.springdoc.core.fn.builders.schema.Builder.schemaBuilder;
-import static org.springframework.boot.convert.ApplicationConversionService.getSharedInstance;
 import static io.nebulacms.app.extension.index.query.Queries.contains;
 import static io.nebulacms.app.extension.index.query.Queries.in;
 import static io.nebulacms.app.extension.index.query.Queries.isNull;
 import static io.nebulacms.app.extension.index.query.Queries.not;
 import static io.nebulacms.app.extension.index.query.Queries.or;
 import static io.nebulacms.app.extension.index.query.Queries.startsWith;
+import static org.springdoc.core.fn.builders.arrayschema.Builder.arraySchemaBuilder;
+import static org.springdoc.core.fn.builders.parameter.Builder.parameterBuilder;
+import static org.springdoc.core.fn.builders.schema.Builder.schemaBuilder;
+import static org.springframework.boot.convert.ApplicationConversionService.getSharedInstance;
+
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.index.query.Queries;
+import io.nebulacms.app.extension.router.IListRequest;
+import io.nebulacms.app.extension.router.QueryParamBuildUtil;
+import io.nebulacms.app.extension.router.SortableRequest;
 
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import java.util.List;
@@ -18,11 +24,6 @@ import org.springdoc.core.fn.builders.operation.Builder;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.reactive.function.server.ServerRequest;
-import io.nebulacms.app.extension.ListOptions;
-import io.nebulacms.app.extension.index.query.Queries;
-import io.nebulacms.app.extension.router.IListRequest;
-import io.nebulacms.app.extension.router.QueryParamBuildUtil;
-import io.nebulacms.app.extension.router.SortableRequest;
 
 public class SearchRequest extends SortableRequest {
 

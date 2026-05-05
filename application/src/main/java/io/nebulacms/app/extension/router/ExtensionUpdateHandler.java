@@ -2,6 +2,11 @@ package io.nebulacms.app.extension.router;
 
 import static io.nebulacms.app.extension.router.ExtensionRouterFunctionFactory.PathPatternGenerator.buildExtensionPathPattern;
 
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.Scheme;
+import io.nebulacms.app.extension.Unstructured;
+import io.nebulacms.app.extension.router.ExtensionRouterFunctionFactory.UpdateHandler;
+
 import java.util.Objects;
 import org.springframework.http.MediaType;
 import org.springframework.util.StringUtils;
@@ -9,10 +14,6 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.server.ServerWebInputException;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.Scheme;
-import io.nebulacms.app.extension.Unstructured;
-import io.nebulacms.app.extension.router.ExtensionRouterFunctionFactory.UpdateHandler;
 
 class ExtensionUpdateHandler implements UpdateHandler {
 

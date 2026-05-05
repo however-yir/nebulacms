@@ -1,15 +1,16 @@
 package io.nebulacms.app.core.counter;
 
-import java.util.Collection;
-import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.core.extension.Counter;
 import io.nebulacms.app.extension.ExtensionUtil;
 import io.nebulacms.app.extension.ListOptions;
 import io.nebulacms.app.extension.ReactiveExtensionClient;
 import io.nebulacms.app.extension.index.query.Queries;
+
+import java.util.Collection;
+import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 /**
  * Counter service implementation.

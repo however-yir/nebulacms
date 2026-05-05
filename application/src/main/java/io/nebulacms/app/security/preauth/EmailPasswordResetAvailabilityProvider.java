@@ -1,8 +1,9 @@
 package io.nebulacms.app.security.preauth;
 
+import io.nebulacms.app.infra.properties.SecurityProperties;
+
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.infra.properties.SecurityProperties;
 
 /**
  * Email password reset availability provider.

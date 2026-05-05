@@ -1,5 +1,7 @@
 package io.nebulacms.app.core.endpoint;
 
+import io.nebulacms.app.infra.ui.WebSocketUtils;
+
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import java.util.ArrayList;
@@ -19,7 +21,6 @@ import org.springframework.web.reactive.socket.WebSocketHandler;
 import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.util.pattern.PathPattern;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.infra.ui.WebSocketUtils;
 
 public class WebSocketHandlerMapping extends AbstractHandlerMapping
     implements WebSocketEndpointManager, InitializingBean {

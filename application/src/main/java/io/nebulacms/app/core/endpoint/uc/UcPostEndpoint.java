@@ -6,18 +6,6 @@ import static org.springdoc.core.fn.builders.requestbody.Builder.requestBodyBuil
 import static org.springdoc.webflux.core.fn.SpringdocRouteBuilder.route;
 import static org.springframework.web.reactive.function.server.RequestPredicates.path;
 
-import io.swagger.v3.oas.annotations.enums.ParameterIn;
-import java.util.Objects;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.ReactiveSecurityContextHolder;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.stereotype.Component;
-import org.springframework.web.reactive.function.server.RouterFunction;
-import org.springframework.web.reactive.function.server.ServerRequest;
-import org.springframework.web.reactive.function.server.ServerResponse;
-import org.springframework.web.server.ServerWebInputException;
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.content.Content;
 import io.nebulacms.app.content.ContentUpdateParam;
 import io.nebulacms.app.content.ListedPost;
@@ -34,6 +22,19 @@ import io.nebulacms.app.extension.Metadata;
 import io.nebulacms.app.extension.Ref;
 import io.nebulacms.app.infra.exception.NotFoundException;
 import io.nebulacms.app.infra.utils.JsonUtils;
+
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
+import java.util.Objects;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.ReactiveSecurityContextHolder;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.stereotype.Component;
+import org.springframework.web.reactive.function.server.RouterFunction;
+import org.springframework.web.reactive.function.server.ServerRequest;
+import org.springframework.web.reactive.function.server.ServerResponse;
+import org.springframework.web.server.ServerWebInputException;
+import reactor.core.publisher.Mono;
 
 @Component
 public class UcPostEndpoint implements CustomEndpoint {
@@ -72,7 +73,8 @@ public class UcPostEndpoint implements CustomEndpoint {
                         .tag(tag)
                         .description("""
                             Create my post. If you want to create a post with content, please set
-                             annotation: "content.nebulacms.io/content-json" into annotations and refer
+                             annotation: "content.nebulacms.io/content-json" into
+                             annotations and refer
                              to Content for corresponding data type.
                             """)
                         .requestBody(requestBodyBuilder().implementation(Post.class))

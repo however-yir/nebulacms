@@ -8,6 +8,8 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.core.attachment.ThumbnailSize;
+
 import java.io.IOException;
 import java.nio.file.Path;
 import org.junit.jupiter.api.Test;
@@ -21,7 +23,6 @@ import org.springframework.mock.web.server.MockServerWebExchange;
 import org.springframework.web.reactive.resource.ResourceTransformerChain;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.core.attachment.ThumbnailSize;
 
 @ExtendWith(MockitoExtension.class)
 class ThumbnailResourceTransformerTest {

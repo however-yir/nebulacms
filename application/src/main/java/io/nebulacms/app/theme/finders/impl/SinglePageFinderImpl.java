@@ -1,12 +1,5 @@
 package io.nebulacms.app.theme.finders.impl;
 
-import java.security.Principal;
-import java.util.Objects;
-import java.util.function.Predicate;
-import lombok.AllArgsConstructor;
-import org.springframework.security.core.context.ReactiveSecurityContextHolder;
-import org.springframework.security.core.context.SecurityContext;
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.core.extension.content.Post;
 import io.nebulacms.app.core.extension.content.SinglePage;
 import io.nebulacms.app.extension.ListOptions;
@@ -20,6 +13,14 @@ import io.nebulacms.app.theme.finders.SinglePageFinder;
 import io.nebulacms.app.theme.finders.vo.ContentVo;
 import io.nebulacms.app.theme.finders.vo.ListedSinglePageVo;
 import io.nebulacms.app.theme.finders.vo.SinglePageVo;
+
+import java.security.Principal;
+import java.util.Objects;
+import java.util.function.Predicate;
+import lombok.AllArgsConstructor;
+import org.springframework.security.core.context.ReactiveSecurityContextHolder;
+import org.springframework.security.core.context.SecurityContext;
+import reactor.core.publisher.Mono;
 
 /**
  * A default implementation of {@link SinglePage}.

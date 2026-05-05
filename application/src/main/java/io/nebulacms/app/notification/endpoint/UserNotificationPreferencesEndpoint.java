@@ -5,6 +5,20 @@ import static org.springdoc.core.fn.builders.apiresponse.Builder.responseBuilder
 import static org.springdoc.core.fn.builders.parameter.Builder.parameterBuilder;
 import static org.springdoc.core.fn.builders.requestbody.Builder.requestBodyBuilder;
 
+import io.nebulacms.app.core.extension.Role;
+import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
+import io.nebulacms.app.core.extension.notification.NotifierDescriptor;
+import io.nebulacms.app.core.extension.notification.ReasonType;
+import io.nebulacms.app.extension.Comparators;
+import io.nebulacms.app.extension.ExtensionUtil;
+import io.nebulacms.app.extension.GroupVersion;
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.MetadataUtil;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.infra.utils.JsonUtils;
+import io.nebulacms.app.notification.UserNotificationPreference;
+import io.nebulacms.app.notification.UserNotificationPreferenceService;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -28,19 +42,6 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 import reactor.util.function.Tuples;
-import io.nebulacms.app.core.extension.Role;
-import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
-import io.nebulacms.app.core.extension.notification.NotifierDescriptor;
-import io.nebulacms.app.core.extension.notification.ReasonType;
-import io.nebulacms.app.extension.Comparators;
-import io.nebulacms.app.extension.ExtensionUtil;
-import io.nebulacms.app.extension.GroupVersion;
-import io.nebulacms.app.extension.ListOptions;
-import io.nebulacms.app.extension.MetadataUtil;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.infra.utils.JsonUtils;
-import io.nebulacms.app.notification.UserNotificationPreference;
-import io.nebulacms.app.notification.UserNotificationPreferenceService;
 
 /**
  * Endpoint for user notification preferences.

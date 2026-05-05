@@ -1,8 +1,9 @@
 package io.nebulacms.app.extension.index;
 
+import io.nebulacms.app.extension.Extension;
+
 import java.io.Closeable;
 import org.springframework.lang.NonNull;
-import io.nebulacms.app.extension.Extension;
 
 public interface Indices<E extends Extension> extends Closeable {
 

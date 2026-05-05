@@ -4,22 +4,6 @@ import static io.nebulacms.app.extension.ExtensionUtil.addFinalizers;
 import static io.nebulacms.app.extension.ExtensionUtil.isDeleted;
 import static io.nebulacms.app.extension.ExtensionUtil.removeFinalizers;
 
-import java.io.IOException;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
-import lombok.RequiredArgsConstructor;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.core.retry.RetryException;
-import org.springframework.core.retry.RetryPolicy;
-import org.springframework.core.retry.RetryTemplate;
-import org.springframework.stereotype.Component;
-import org.springframework.util.FileSystemUtils;
-import org.springframework.util.backoff.FixedBackOff;
-import reactor.core.Exceptions;
 import io.nebulacms.app.core.extension.AnnotationSetting;
 import io.nebulacms.app.core.extension.Setting;
 import io.nebulacms.app.core.extension.Theme;
@@ -38,6 +22,23 @@ import io.nebulacms.app.infra.utils.ReactiveUtils;
 import io.nebulacms.app.infra.utils.SettingUtils;
 import io.nebulacms.app.infra.utils.VersionUtils;
 import io.nebulacms.app.theme.TemplateEngineManager;
+
+import java.io.IOException;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.core.retry.RetryException;
+import org.springframework.core.retry.RetryPolicy;
+import org.springframework.core.retry.RetryTemplate;
+import org.springframework.stereotype.Component;
+import org.springframework.util.FileSystemUtils;
+import org.springframework.util.backoff.FixedBackOff;
+import reactor.core.Exceptions;
 
 /**
  * Reconciler for theme.

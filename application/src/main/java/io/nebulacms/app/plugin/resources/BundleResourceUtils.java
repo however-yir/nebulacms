@@ -1,5 +1,8 @@
 package io.nebulacms.app.plugin.resources;
 
+import io.nebulacms.app.infra.utils.FileUtils;
+import io.nebulacms.app.infra.utils.PathUtils;
+
 import org.pf4j.PluginManager;
 import org.pf4j.PluginWrapper;
 import org.springframework.core.io.DefaultResourceLoader;
@@ -7,8 +10,6 @@ import org.springframework.core.io.Resource;
 import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
-import io.nebulacms.app.infra.utils.FileUtils;
-import io.nebulacms.app.infra.utils.PathUtils;
 
 /**
  * Plugin bundle resources utils.

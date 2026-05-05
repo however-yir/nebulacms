@@ -2,6 +2,17 @@ package io.nebulacms.app.infra.config;
 
 import static org.springframework.security.web.server.util.matcher.ServerWebExchangeMatchers.pathMatchers;
 
+import io.nebulacms.app.core.user.service.RoleService;
+import io.nebulacms.app.core.user.service.UserService;
+import io.nebulacms.app.infra.AnonymousUserConst;
+import io.nebulacms.app.infra.properties.HaloProperties;
+import io.nebulacms.app.security.DefaultUserDetailService;
+import io.nebulacms.app.security.HaloServerRequestCache;
+import io.nebulacms.app.security.authentication.CryptoService;
+import io.nebulacms.app.security.authentication.SecurityConfigurer;
+import io.nebulacms.app.security.authentication.impl.RsaKeyService;
+import io.nebulacms.app.security.authorization.AuthorityUtils;
+
 import java.util.HashMap;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.ObjectProvider;
@@ -21,16 +32,6 @@ import org.springframework.security.web.server.context.WebSessionServerSecurityC
 import org.springframework.security.web.server.savedrequest.ServerRequestCache;
 import org.springframework.security.web.server.util.matcher.AndServerWebExchangeMatcher;
 import org.springframework.security.web.server.util.matcher.NegatedServerWebExchangeMatcher;
-import io.nebulacms.app.core.user.service.RoleService;
-import io.nebulacms.app.core.user.service.UserService;
-import io.nebulacms.app.infra.AnonymousUserConst;
-import io.nebulacms.app.infra.properties.HaloProperties;
-import io.nebulacms.app.security.DefaultUserDetailService;
-import io.nebulacms.app.security.HaloServerRequestCache;
-import io.nebulacms.app.security.authentication.CryptoService;
-import io.nebulacms.app.security.authentication.SecurityConfigurer;
-import io.nebulacms.app.security.authentication.impl.RsaKeyService;
-import io.nebulacms.app.security.authorization.AuthorityUtils;
 
 /**
  * Security configuration for WebFlux.
@@ -136,6 +137,5 @@ public class WebServerSecurityConfig {
     CryptoService cryptoService(HaloProperties haloProperties) {
         return new RsaKeyService(haloProperties.getWorkDir().resolve("keys"));
     }
-
 
 }

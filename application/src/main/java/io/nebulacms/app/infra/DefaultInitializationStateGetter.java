@@ -1,12 +1,8 @@
 package io.nebulacms.app.infra;
 
-import static org.apache.commons.lang3.BooleanUtils.isTrue;
 import static io.nebulacms.app.extension.index.query.Queries.isNull;
+import static org.apache.commons.lang3.BooleanUtils.isTrue;
 
-import java.util.concurrent.atomic.AtomicBoolean;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.core.extension.User;
 import io.nebulacms.app.extension.ConfigMap;
 import io.nebulacms.app.extension.ListOptions;
@@ -14,6 +10,11 @@ import io.nebulacms.app.extension.PageRequestImpl;
 import io.nebulacms.app.extension.ReactiveExtensionClient;
 import io.nebulacms.app.extension.router.selector.FieldSelector;
 import io.nebulacms.app.extension.router.selector.LabelSelector;
+
+import java.util.concurrent.atomic.AtomicBoolean;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+import reactor.core.publisher.Mono;
 
 /**
  * <p>A cache that caches system setup state.</p>

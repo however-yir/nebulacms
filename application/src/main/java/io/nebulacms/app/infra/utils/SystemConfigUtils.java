@@ -1,5 +1,8 @@
 package io.nebulacms.app.infra.utils;
 
+import io.nebulacms.app.core.extension.content.Constant;
+import io.nebulacms.app.extension.ConfigMap;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -13,8 +16,6 @@ import java.util.Objects;
 import java.util.Optional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.CollectionUtils;
-import io.nebulacms.app.core.extension.content.Constant;
-import io.nebulacms.app.extension.ConfigMap;
 
 /**
  * Utility class for merging configuration maps containing JSON strings.

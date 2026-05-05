@@ -1,5 +1,10 @@
 package io.nebulacms.app.plugin;
 
+import io.nebulacms.app.core.extension.Plugin;
+import io.nebulacms.app.extension.ExtensionClient;
+import io.nebulacms.app.infra.ExtensionInitializedEvent;
+import io.nebulacms.app.infra.exception.PluginAlreadyExistsException;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -12,10 +17,6 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
-import io.nebulacms.app.core.extension.Plugin;
-import io.nebulacms.app.extension.ExtensionClient;
-import io.nebulacms.app.infra.ExtensionInitializedEvent;
-import io.nebulacms.app.infra.exception.PluginAlreadyExistsException;
 
 @Slf4j
 @Component

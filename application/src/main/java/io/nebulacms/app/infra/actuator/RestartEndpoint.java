@@ -1,5 +1,7 @@
 package io.nebulacms.app.infra.actuator;
 
+import io.nebulacms.app.Application;
+
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.Map;
@@ -13,7 +15,6 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.Application;
 
 @WebEndpoint(id = "restart")
 @Component

@@ -3,6 +3,10 @@ package io.nebulacms.app.theme.message;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.infra.InitializationStateGetter;
+import io.nebulacms.app.theme.ThemeContext;
+import io.nebulacms.app.theme.ThemeResolver;
+
 import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -24,9 +28,6 @@ import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.infra.InitializationStateGetter;
-import io.nebulacms.app.theme.ThemeContext;
-import io.nebulacms.app.theme.ThemeResolver;
 
 /**
  * Tests for {@link ThemeMessageResolver}.

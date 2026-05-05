@@ -2,12 +2,13 @@ package io.nebulacms.app.content;
 
 import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
 
+import io.nebulacms.app.core.extension.content.Snapshot;
+import io.nebulacms.app.extension.MetadataOperator;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.Instant;
 import lombok.Data;
 import lombok.experimental.Accessors;
-import io.nebulacms.app.core.extension.content.Snapshot;
-import io.nebulacms.app.extension.MetadataOperator;
 
 @Data
 @Accessors(chain = true)

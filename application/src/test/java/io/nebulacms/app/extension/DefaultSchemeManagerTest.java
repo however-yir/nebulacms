@@ -11,6 +11,12 @@ import static org.mockito.ArgumentMatchers.same;
 import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.verify;
 
+import io.nebulacms.app.extension.event.SchemeAddedEvent;
+import io.nebulacms.app.extension.event.SchemeRemovedEvent;
+import io.nebulacms.app.extension.exception.SchemeNotFoundException;
+import io.nebulacms.app.extension.index.IndexEngine;
+import io.nebulacms.app.extension.index.IndicesManager;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -18,11 +24,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.context.ApplicationEventPublisher;
-import io.nebulacms.app.extension.event.SchemeAddedEvent;
-import io.nebulacms.app.extension.event.SchemeRemovedEvent;
-import io.nebulacms.app.extension.exception.SchemeNotFoundException;
-import io.nebulacms.app.extension.index.IndexEngine;
-import io.nebulacms.app.extension.index.IndicesManager;
 
 @ExtendWith(MockitoExtension.class)
 class DefaultSchemeManagerTest {

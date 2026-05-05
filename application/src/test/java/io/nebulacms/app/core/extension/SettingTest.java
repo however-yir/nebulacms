@@ -3,13 +3,14 @@ package io.nebulacms.app.core.extension;
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import io.nebulacms.app.extension.Unstructured;
+import io.nebulacms.app.infra.utils.JsonUtils;
+import io.nebulacms.app.infra.utils.YamlUnstructuredLoader;
+
 import org.json.JSONException;
 import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.security.util.InMemoryResource;
-import io.nebulacms.app.extension.Unstructured;
-import io.nebulacms.app.infra.utils.JsonUtils;
-import io.nebulacms.app.infra.utils.YamlUnstructuredLoader;
 
 /**
  * Tests for {@link Setting}.

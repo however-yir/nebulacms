@@ -1,5 +1,7 @@
 package io.nebulacms.app.infra;
 
+import io.nebulacms.app.infra.utils.JsonUtils;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.NotBlank;
 import java.util.LinkedHashMap;
@@ -14,7 +16,6 @@ import lombok.experimental.Accessors;
 import org.apache.commons.lang3.StringUtils;
 import org.jspecify.annotations.Nullable;
 import org.springframework.boot.convert.ApplicationConversionService;
-import io.nebulacms.app.infra.utils.JsonUtils;
 
 /**
  * TODO Optimization value acquisition.

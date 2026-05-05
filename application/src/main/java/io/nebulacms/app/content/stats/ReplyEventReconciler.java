@@ -1,20 +1,11 @@
 package io.nebulacms.app.content.stats;
 
-import static org.apache.commons.lang3.ObjectUtils.defaultIfNull;
 import static io.nebulacms.app.extension.index.query.Queries.and;
 import static io.nebulacms.app.extension.index.query.Queries.equal;
 import static io.nebulacms.app.extension.index.query.Queries.greaterThan;
 import static io.nebulacms.app.extension.index.query.Queries.isNull;
+import static org.apache.commons.lang3.ObjectUtils.defaultIfNull;
 
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Optional;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.BooleanUtils;
-import org.springframework.context.SmartLifecycle;
-import org.springframework.context.event.EventListener;
-import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Component;
 import io.nebulacms.app.core.extension.content.Comment;
 import io.nebulacms.app.core.extension.content.Reply;
 import io.nebulacms.app.event.post.CommentUnreadReplyCountChangedEvent;
@@ -31,6 +22,16 @@ import io.nebulacms.app.extension.controller.RequestQueue;
 import io.nebulacms.app.extension.index.query.Condition;
 import io.nebulacms.app.extension.router.selector.FieldSelector;
 import io.nebulacms.app.infra.InitializationPhase;
+
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Optional;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.BooleanUtils;
+import org.springframework.context.SmartLifecycle;
+import org.springframework.context.event.EventListener;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Component;
 
 /**
  * Update the comment status after receiving the reply event.

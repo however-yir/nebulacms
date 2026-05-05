@@ -1,5 +1,7 @@
 package io.nebulacms.app.infra;
 
+import io.nebulacms.app.infra.utils.PathUtils;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Optional;
@@ -9,7 +11,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.reactive.ServerWebExchangeContextFilter;
 import org.springframework.web.util.UriComponentsBuilder;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.infra.utils.PathUtils;
 
 /**
  * Default implementation of {@link ExternalLinkProcessor}.

@@ -3,6 +3,12 @@ package io.nebulacms.app.plugin.resources;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.core.extension.ReverseProxy;
+import io.nebulacms.app.core.extension.ReverseProxy.FileReverseProxyProvider;
+import io.nebulacms.app.core.extension.ReverseProxy.ReverseProxyRule;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.plugin.PluginConst;
+
 import java.io.FileNotFoundException;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -25,11 +31,6 @@ import org.springframework.http.CacheControl;
 import org.springframework.http.HttpHeaders;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.util.ResourceUtils;
-import io.nebulacms.app.core.extension.ReverseProxy;
-import io.nebulacms.app.core.extension.ReverseProxy.FileReverseProxyProvider;
-import io.nebulacms.app.core.extension.ReverseProxy.ReverseProxyRule;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.plugin.PluginConst;
 
 /**
  * Tests for {@link ReverseProxyRouterFunctionFactory}.

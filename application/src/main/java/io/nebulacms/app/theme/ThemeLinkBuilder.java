@@ -1,5 +1,8 @@
 package io.nebulacms.app.theme;
 
+import io.nebulacms.app.infra.ExternalUrlSupplier;
+import io.nebulacms.app.infra.utils.PathUtils;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 import org.apache.commons.lang3.StringUtils;
@@ -7,8 +10,6 @@ import org.springframework.lang.NonNull;
 import org.springframework.web.util.UriComponentsBuilder;
 import org.thymeleaf.context.IExpressionContext;
 import org.thymeleaf.linkbuilder.StandardLinkBuilder;
-import io.nebulacms.app.infra.ExternalUrlSupplier;
-import io.nebulacms.app.infra.utils.PathUtils;
 
 /**
  * @author guqing

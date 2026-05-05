@@ -1,9 +1,9 @@
 package io.nebulacms.app.extension;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static io.nebulacms.app.extension.GroupVersionKind.fromAPIVersionAndKind;
 import static io.nebulacms.app.extension.GroupVersionKind.fromExtension;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 

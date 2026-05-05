@@ -1,13 +1,5 @@
 package io.nebulacms.app.content.comment;
 
-import java.util.Set;
-import lombok.RequiredArgsConstructor;
-import org.jsoup.Jsoup;
-import org.jsoup.safety.Safelist;
-import org.springframework.lang.NonNull;
-import org.springframework.security.core.context.ReactiveSecurityContextHolder;
-import org.springframework.util.Assert;
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.core.counter.CounterService;
 import io.nebulacms.app.core.counter.MeterUtils;
 import io.nebulacms.app.core.extension.User;
@@ -17,6 +9,15 @@ import io.nebulacms.app.core.user.service.RoleService;
 import io.nebulacms.app.core.user.service.UserService;
 import io.nebulacms.app.extension.ReactiveExtensionClient;
 import io.nebulacms.app.security.authorization.AuthorityUtils;
+
+import java.util.Set;
+import lombok.RequiredArgsConstructor;
+import org.jsoup.Jsoup;
+import org.jsoup.safety.Safelist;
+import org.springframework.lang.NonNull;
+import org.springframework.security.core.context.ReactiveSecurityContextHolder;
+import org.springframework.util.Assert;
+import reactor.core.publisher.Mono;
 
 @RequiredArgsConstructor
 public abstract class AbstractCommentService {

@@ -13,6 +13,18 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.reactive.server.WebTestClient.bindToRouterFunction;
 import static org.springframework.web.reactive.function.BodyInserters.fromMultipartData;
 
+import io.nebulacms.app.core.extension.Plugin;
+import io.nebulacms.app.core.extension.Setting;
+import io.nebulacms.app.core.user.service.SettingConfigService;
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.ListResult;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.PageRequest;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.infra.SystemVersionSupplier;
+import io.nebulacms.app.infra.utils.FileUtils;
+import io.nebulacms.app.plugin.PluginService;
+
 import com.github.zafarkhaja.semver.Version;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -43,17 +55,6 @@ import org.springframework.http.client.MultipartBodyBuilder;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.web.server.ServerWebInputException;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.Plugin;
-import io.nebulacms.app.core.extension.Setting;
-import io.nebulacms.app.core.user.service.SettingConfigService;
-import io.nebulacms.app.extension.ListOptions;
-import io.nebulacms.app.extension.ListResult;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.PageRequest;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.infra.SystemVersionSupplier;
-import io.nebulacms.app.infra.utils.FileUtils;
-import io.nebulacms.app.plugin.PluginService;
 
 @Slf4j
 @ExtendWith(MockitoExtension.class)

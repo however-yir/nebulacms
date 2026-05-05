@@ -1,9 +1,10 @@
 package io.nebulacms.app.core.attachment.thumbnail;
 
+import io.nebulacms.app.core.attachment.ThumbnailSize;
+
 import java.nio.file.Path;
 import org.springframework.core.io.Resource;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.attachment.ThumbnailSize;
 
 /**
  * Service for generating and deleting local image thumbnails.

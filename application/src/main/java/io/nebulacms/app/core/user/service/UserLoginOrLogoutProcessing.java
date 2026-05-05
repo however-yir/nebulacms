@@ -1,11 +1,12 @@
 package io.nebulacms.app.core.user.service;
 
+import io.nebulacms.app.event.user.UserLoginEvent;
+import io.nebulacms.app.event.user.UserLogoutEvent;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.event.user.UserLoginEvent;
-import io.nebulacms.app.event.user.UserLogoutEvent;
 
 /**
  * User login or logout processing service.

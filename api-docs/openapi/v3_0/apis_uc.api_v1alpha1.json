@@ -503,7 +503,7 @@
         ]
       },
       "post": {
-        "description": "Create my post. If you want to create a post with content, please set\n annotation: \"content.nebulacms.io/content-json\" into annotations and refer\n to Content for corresponding data type.\n",
+        "description": "Create my post. If you want to create a post with content, please set\n annotation: \"content.nebulacms.io/content-json\" into\n annotations and refer\n to Content for corresponding data type.\n",
         "operationId": "CreateMyPost",
         "requestBody": {
           "content": {

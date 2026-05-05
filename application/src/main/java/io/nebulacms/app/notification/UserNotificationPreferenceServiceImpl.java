@@ -1,14 +1,15 @@
 package io.nebulacms.app.notification;
 
+import io.nebulacms.app.extension.ConfigMap;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.infra.utils.JsonUtils;
+
 import java.util.HashMap;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.extension.ConfigMap;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.infra.utils.JsonUtils;
 
 /**
  * User notification preference service implementation.

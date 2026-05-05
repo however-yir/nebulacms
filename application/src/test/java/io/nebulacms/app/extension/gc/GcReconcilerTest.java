@@ -8,6 +8,16 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.extension.ExtensionClient;
+import io.nebulacms.app.extension.ExtensionConverter;
+import io.nebulacms.app.extension.FakeExtension;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.Scheme;
+import io.nebulacms.app.extension.SchemeManager;
+import io.nebulacms.app.extension.index.IndexEngine;
+import io.nebulacms.app.extension.store.ExtensionStore;
+import io.nebulacms.app.extension.store.ReactiveExtensionStoreClient;
+
 import java.time.Instant;
 import java.util.Optional;
 import java.util.Set;
@@ -20,15 +30,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.transaction.ReactiveTransaction;
 import org.springframework.transaction.ReactiveTransactionManager;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.extension.ExtensionClient;
-import io.nebulacms.app.extension.ExtensionConverter;
-import io.nebulacms.app.extension.FakeExtension;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.Scheme;
-import io.nebulacms.app.extension.SchemeManager;
-import io.nebulacms.app.extension.index.IndexEngine;
-import io.nebulacms.app.extension.store.ExtensionStore;
-import io.nebulacms.app.extension.store.ReactiveExtensionStoreClient;
 
 @ExtendWith(MockitoExtension.class)
 class GcReconcilerTest {

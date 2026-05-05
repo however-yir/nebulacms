@@ -1,5 +1,9 @@
 package io.nebulacms.app.search;
 
+import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
+import io.nebulacms.app.extension.GroupVersion;
+import io.nebulacms.app.search.event.HaloDocumentRebuildRequestEvent;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springdoc.webflux.core.fn.SpringdocRouteBuilder;
 import org.springframework.context.ApplicationEventPublisher;
@@ -8,9 +12,6 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
-import io.nebulacms.app.extension.GroupVersion;
-import io.nebulacms.app.search.event.HaloDocumentRebuildRequestEvent;
 
 @Component
 @Slf4j

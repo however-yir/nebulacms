@@ -11,16 +11,6 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.util.List;
-import java.util.Locale;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
-import reactor.test.StepVerifier;
 import io.nebulacms.app.core.extension.User;
 import io.nebulacms.app.core.extension.notification.Notification;
 import io.nebulacms.app.core.extension.notification.NotificationTemplate;
@@ -32,6 +22,17 @@ import io.nebulacms.app.extension.Metadata;
 import io.nebulacms.app.extension.ReactiveExtensionClient;
 import io.nebulacms.app.infra.SystemConfigFetcher;
 import io.nebulacms.app.infra.SystemSetting;
+
+import java.util.List;
+import java.util.Locale;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+import reactor.test.StepVerifier;
 
 /**
  * Tests for {@link DefaultNotificationCenter}.

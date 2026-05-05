@@ -1,5 +1,11 @@
 package io.nebulacms.app.theme;
 
+import io.nebulacms.app.infra.ExternalUrlSupplier;
+import io.nebulacms.app.theme.dialect.HaloProcessorDialect;
+import io.nebulacms.app.theme.engine.HaloTemplateEngine;
+import io.nebulacms.app.theme.engine.PluginClassloaderTemplateResolver;
+import io.nebulacms.app.theme.message.ThemeMessageResolver;
+
 import lombok.NonNull;
 import org.pf4j.PluginManager;
 import org.springframework.beans.factory.ObjectProvider;
@@ -13,11 +19,6 @@ import org.thymeleaf.standard.expression.IStandardVariableExpressionEvaluator;
 import org.thymeleaf.templateresolver.FileTemplateResolver;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.infra.ExternalUrlSupplier;
-import io.nebulacms.app.theme.dialect.HaloProcessorDialect;
-import io.nebulacms.app.theme.engine.HaloTemplateEngine;
-import io.nebulacms.app.theme.engine.PluginClassloaderTemplateResolver;
-import io.nebulacms.app.theme.message.ThemeMessageResolver;
 
 /**
  * <p>The {@link TemplateEngineManager} uses an {@link ConcurrentLruCache LRU cache} to manage

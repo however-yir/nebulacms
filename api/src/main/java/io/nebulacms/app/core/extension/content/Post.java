@@ -2,6 +2,12 @@ package io.nebulacms.app.core.extension.content;
 
 import static java.lang.Boolean.parseBoolean;
 
+import io.nebulacms.app.extension.AbstractExtension;
+import io.nebulacms.app.extension.GVK;
+import io.nebulacms.app.extension.GroupVersionKind;
+import io.nebulacms.app.extension.MetadataOperator;
+import io.nebulacms.app.infra.ConditionList;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
@@ -12,11 +18,6 @@ import java.util.Objects;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import io.nebulacms.app.extension.AbstractExtension;
-import io.nebulacms.app.extension.GVK;
-import io.nebulacms.app.extension.GroupVersionKind;
-import io.nebulacms.app.extension.MetadataOperator;
-import io.nebulacms.app.infra.ConditionList;
 
 /**
  * <p>Post extension.</p>
@@ -41,7 +42,8 @@ public class Post extends AbstractExtension {
     public static final String CATEGORIES_ANNO = "content.nebulacms.io/categories";
     public static final String LAST_RELEASED_SNAPSHOT_ANNO =
         "content.nebulacms.io/last-released-snapshot";
-    public static final String LAST_ASSOCIATED_TAGS_ANNO = "content.nebulacms.io/last-associated-tags";
+    public static final String LAST_ASSOCIATED_TAGS_ANNO =
+        "content.nebulacms.io/last-associated-tags";
     public static final String LAST_ASSOCIATED_CATEGORIES_ANNO =
         "content.nebulacms.io/last-associated-categories";
 

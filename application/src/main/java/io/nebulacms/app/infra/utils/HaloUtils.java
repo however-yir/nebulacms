@@ -1,5 +1,7 @@
 package io.nebulacms.app.infra.utils;
 
+import io.nebulacms.app.theme.router.ModelConst;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
@@ -19,7 +21,6 @@ import org.springframework.web.util.InvalidUrlException;
 import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.web.util.UriComponentsBuilder.ParserType;
 import org.springframework.web.util.UriUtils;
-import io.nebulacms.app.theme.router.ModelConst;
 
 /**
  * Halo utilities.

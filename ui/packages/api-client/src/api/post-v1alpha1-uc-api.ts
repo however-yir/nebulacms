@@ -33,7 +33,7 @@ import type { Snapshot } from '../models';
 export const PostV1alpha1UcApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Create my post. If you want to create a post with content, please set  annotation: \"content.nebulacms.io/content-json\" into annotations and refer  to Content for corresponding data type. 
+         * Create my post. If you want to create a post with content, please set  annotation: \"content.nebulacms.io/content-json\" into  annotations and refer  to Content for corresponding data type. 
          * @param {Post} [post] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -460,7 +460,7 @@ export const PostV1alpha1UcApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = PostV1alpha1UcApiAxiosParamCreator(configuration)
     return {
         /**
-         * Create my post. If you want to create a post with content, please set  annotation: \"content.nebulacms.io/content-json\" into annotations and refer  to Content for corresponding data type. 
+         * Create my post. If you want to create a post with content, please set  annotation: \"content.nebulacms.io/content-json\" into  annotations and refer  to Content for corresponding data type. 
          * @param {Post} [post] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -587,7 +587,7 @@ export const PostV1alpha1UcApiFactory = function (configuration?: Configuration,
     const localVarFp = PostV1alpha1UcApiFp(configuration)
     return {
         /**
-         * Create my post. If you want to create a post with content, please set  annotation: \"content.nebulacms.io/content-json\" into annotations and refer  to Content for corresponding data type. 
+         * Create my post. If you want to create a post with content, please set  annotation: \"content.nebulacms.io/content-json\" into  annotations and refer  to Content for corresponding data type. 
          * @param {PostV1alpha1UcApiCreateMyPostRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -806,7 +806,7 @@ export interface PostV1alpha1UcApiUpdateMyPostDraftRequest {
  */
 export class PostV1alpha1UcApi extends BaseAPI {
     /**
-     * Create my post. If you want to create a post with content, please set  annotation: \"content.nebulacms.io/content-json\" into annotations and refer  to Content for corresponding data type. 
+     * Create my post. If you want to create a post with content, please set  annotation: \"content.nebulacms.io/content-json\" into  annotations and refer  to Content for corresponding data type. 
      * @param {PostV1alpha1UcApiCreateMyPostRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}

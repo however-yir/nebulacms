@@ -1,12 +1,13 @@
 package io.nebulacms.app.theme.finders.vo;
 
+import io.nebulacms.app.core.extension.content.Post;
+
 import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 import org.springframework.util.Assert;
-import io.nebulacms.app.core.extension.content.Post;
 
 /**
  * A value object for {@link Post}.

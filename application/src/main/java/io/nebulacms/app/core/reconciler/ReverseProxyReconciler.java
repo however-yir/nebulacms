@@ -1,10 +1,5 @@
 package io.nebulacms.app.core.reconciler;
 
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import org.springframework.stereotype.Component;
 import io.nebulacms.app.core.extension.ReverseProxy;
 import io.nebulacms.app.extension.ExtensionClient;
 import io.nebulacms.app.extension.controller.Controller;
@@ -12,6 +7,12 @@ import io.nebulacms.app.extension.controller.ControllerBuilder;
 import io.nebulacms.app.extension.controller.Reconciler;
 import io.nebulacms.app.plugin.PluginConst;
 import io.nebulacms.app.plugin.resources.ReverseProxyRouterFunctionRegistry;
+
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import org.springframework.stereotype.Component;
 
 /**
  * Reconciler for {@link ReverseProxy}.

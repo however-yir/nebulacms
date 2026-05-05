@@ -6,6 +6,16 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.extension.GroupVersion;
+import io.nebulacms.app.extension.ListResult;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.PageRequest;
+import io.nebulacms.app.theme.finders.PostFinder;
+import io.nebulacms.app.theme.finders.PostPublicQueryService;
+import io.nebulacms.app.theme.finders.vo.ListedPostVo;
+import io.nebulacms.app.theme.finders.vo.NavigationPostVo;
+import io.nebulacms.app.theme.finders.vo.PostVo;
+
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,15 +26,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.extension.GroupVersion;
-import io.nebulacms.app.extension.ListResult;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.PageRequest;
-import io.nebulacms.app.theme.finders.PostFinder;
-import io.nebulacms.app.theme.finders.PostPublicQueryService;
-import io.nebulacms.app.theme.finders.vo.ListedPostVo;
-import io.nebulacms.app.theme.finders.vo.NavigationPostVo;
-import io.nebulacms.app.theme.finders.vo.PostVo;
 
 /**
  * Tests for {@link PostQueryEndpoint}.

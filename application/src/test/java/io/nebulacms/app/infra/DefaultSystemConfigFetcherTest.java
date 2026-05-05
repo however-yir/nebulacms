@@ -6,6 +6,9 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.extension.ConfigMap;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -19,8 +22,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.core.convert.ConversionService;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.extension.ConfigMap;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
 import tools.jackson.databind.json.JsonMapper;
 
 /**

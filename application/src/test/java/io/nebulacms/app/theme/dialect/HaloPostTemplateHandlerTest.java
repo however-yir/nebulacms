@@ -6,6 +6,8 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.thymeleaf.spring6.expression.ThymeleafEvaluationContext.THYMELEAF_EVALUATION_CONTEXT_CONTEXT_VARIABLE_NAME;
 
+import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
+
 import java.util.List;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,7 +25,6 @@ import org.thymeleaf.model.IOpenElementTag;
 import org.thymeleaf.model.IStandaloneElementTag;
 import org.thymeleaf.spring6.expression.ThymeleafEvaluationContext;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
 
 @ExtendWith(MockitoExtension.class)
 class HaloPostTemplateHandlerTest {
@@ -50,7 +51,6 @@ class HaloPostTemplateHandlerTest {
 
     @Mock
     ExtensionGetter extensionGetter;
-
 
     @BeforeEach
     void setUp() {

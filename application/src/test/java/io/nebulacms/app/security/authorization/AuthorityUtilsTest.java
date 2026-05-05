@@ -1,10 +1,10 @@
 package io.nebulacms.app.security.authorization;
 
+import static io.nebulacms.app.security.authorization.AuthorityUtils.authoritiesToRoles;
+import static io.nebulacms.app.security.authorization.AuthorityUtils.containsSuperRole;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static io.nebulacms.app.security.authorization.AuthorityUtils.authoritiesToRoles;
-import static io.nebulacms.app.security.authorization.AuthorityUtils.containsSuperRole;
 
 import java.util.List;
 import java.util.Set;

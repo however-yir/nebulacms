@@ -1,5 +1,11 @@
 package io.nebulacms.app.extension.index;
 
+import io.nebulacms.app.extension.Extension;
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.ListResult;
+import io.nebulacms.app.extension.PageRequest;
+import io.nebulacms.app.extension.index.query.QueryVisitor;
+
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
@@ -10,11 +16,6 @@ import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import org.springframework.util.CollectionUtils;
-import io.nebulacms.app.extension.Extension;
-import io.nebulacms.app.extension.ListOptions;
-import io.nebulacms.app.extension.ListResult;
-import io.nebulacms.app.extension.PageRequest;
-import io.nebulacms.app.extension.index.query.QueryVisitor;
 
 /**
  * Default implementation of {@link IndexEngine}.
@@ -137,7 +138,6 @@ class DefaultIndexEngine implements IndexEngine, DisposableBean {
             page.getPageNumber(), page.getPageSize(), total, finalResult
         );
     }
-
 
     @Override
     public <E extends Extension> Iterable<String> retrieveAll(

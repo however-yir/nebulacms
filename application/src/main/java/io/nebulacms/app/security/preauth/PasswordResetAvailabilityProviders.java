@@ -1,7 +1,8 @@
 package io.nebulacms.app.security.preauth;
 
-import reactor.core.publisher.Flux;
 import io.nebulacms.app.infra.properties.SecurityProperties.PasswordResetMethod;
+
+import reactor.core.publisher.Flux;
 
 /**
  * Password reset availability providers.

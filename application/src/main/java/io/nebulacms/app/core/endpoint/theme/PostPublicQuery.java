@@ -1,8 +1,9 @@
 package io.nebulacms.app.core.endpoint.theme;
 
+import io.nebulacms.app.extension.router.SortableRequest;
+
 import org.springdoc.core.fn.builders.operation.Builder;
 import org.springframework.web.server.ServerWebExchange;
-import io.nebulacms.app.extension.router.SortableRequest;
 
 /**
  * Query parameters for post public APIs.

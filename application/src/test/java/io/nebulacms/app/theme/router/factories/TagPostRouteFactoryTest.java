@@ -4,14 +4,6 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
-import java.util.List;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.test.web.reactive.server.WebTestClient;
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.core.extension.content.Tag;
 import io.nebulacms.app.extension.ListResult;
 import io.nebulacms.app.extension.Metadata;
@@ -20,6 +12,15 @@ import io.nebulacms.app.extension.ReactiveExtensionClient;
 import io.nebulacms.app.theme.finders.PostFinder;
 import io.nebulacms.app.theme.finders.TagFinder;
 import io.nebulacms.app.theme.finders.vo.TagVo;
+
+import java.util.List;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.test.web.reactive.server.WebTestClient;
+import reactor.core.publisher.Mono;
 
 /**
  * Tests for @link TagPostRouteFactory}.

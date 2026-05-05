@@ -4,13 +4,6 @@ import static io.nebulacms.app.extension.ExtensionUtil.addFinalizers;
 import static io.nebulacms.app.extension.ExtensionUtil.removeFinalizers;
 import static io.nebulacms.app.extension.MetadataUtil.nullSafeAnnotations;
 
-import java.time.Duration;
-import java.util.Set;
-import lombok.AllArgsConstructor;
-import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Component;
-import org.springframework.util.CollectionUtils;
 import io.nebulacms.app.content.CategoryService;
 import io.nebulacms.app.content.permalinks.CategoryPermalinkPolicy;
 import io.nebulacms.app.core.extension.content.Category;
@@ -25,6 +18,14 @@ import io.nebulacms.app.extension.controller.ControllerBuilder;
 import io.nebulacms.app.extension.controller.Reconciler;
 import io.nebulacms.app.extension.index.query.Queries;
 import io.nebulacms.app.infra.utils.ReactiveUtils;
+
+import java.time.Duration;
+import java.util.Set;
+import lombok.AllArgsConstructor;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 
 /**
  * Reconciler for {@link Category}.

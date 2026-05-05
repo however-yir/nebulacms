@@ -1,20 +1,5 @@
 package io.nebulacms.app.content.impl;
 
-import java.time.Duration;
-import java.time.Instant;
-import java.util.List;
-import java.util.Objects;
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.dao.OptimisticLockingFailureException;
-import org.springframework.stereotype.Service;
-import org.springframework.util.Assert;
-import org.springframework.web.server.ServerWebInputException;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
-import reactor.util.retry.Retry;
 import io.nebulacms.app.content.AbstractContentService;
 import io.nebulacms.app.content.ContentRequest;
 import io.nebulacms.app.content.ContentWrapper;
@@ -36,6 +21,22 @@ import io.nebulacms.app.extension.ReactiveExtensionClient;
 import io.nebulacms.app.extension.Ref;
 import io.nebulacms.app.infra.Condition;
 import io.nebulacms.app.infra.ConditionStatus;
+
+import java.time.Duration;
+import java.time.Instant;
+import java.util.List;
+import java.util.Objects;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.dao.OptimisticLockingFailureException;
+import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
+import org.springframework.web.server.ServerWebInputException;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+import reactor.util.retry.Retry;
 
 /**
  * Single page service implementation.

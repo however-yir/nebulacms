@@ -1,5 +1,7 @@
 package io.nebulacms.app.security.jackson2;
 
+import io.nebulacms.app.security.authentication.oauth2.HaloOAuth2AuthenticationToken;
+
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -7,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
-import io.nebulacms.app.security.authentication.oauth2.HaloOAuth2AuthenticationToken;
 
 /**
  * Mixin for {@link HaloOAuth2AuthenticationToken}.

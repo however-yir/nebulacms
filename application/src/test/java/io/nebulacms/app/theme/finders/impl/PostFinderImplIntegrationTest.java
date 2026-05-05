@@ -5,6 +5,10 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.extension.ListResult;
+import io.nebulacms.app.theme.ReactiveSpelVariableExpressionEvaluator;
+import io.nebulacms.app.theme.finders.PostPublicQueryService;
+
 import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,9 +26,6 @@ import org.thymeleaf.templateresolver.StringTemplateResolver;
 import org.thymeleaf.templateresource.ITemplateResource;
 import org.thymeleaf.templateresource.StringTemplateResource;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.extension.ListResult;
-import io.nebulacms.app.theme.ReactiveSpelVariableExpressionEvaluator;
-import io.nebulacms.app.theme.finders.PostPublicQueryService;
 
 /**
  * Tests for {@link PostFinderImpl}.

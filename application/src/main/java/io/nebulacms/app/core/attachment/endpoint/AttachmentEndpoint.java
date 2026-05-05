@@ -1,12 +1,18 @@
 package io.nebulacms.app.core.attachment.endpoint;
 
+import static io.nebulacms.app.extension.ListResult.generateGenericClass;
 import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
 import static org.springdoc.core.fn.builders.apiresponse.Builder.responseBuilder;
 import static org.springdoc.core.fn.builders.content.Builder.contentBuilder;
 import static org.springdoc.core.fn.builders.requestbody.Builder.requestBodyBuilder;
 import static org.springdoc.core.fn.builders.schema.Builder.schemaBuilder;
 import static org.springframework.web.reactive.function.server.RequestPredicates.contentType;
-import static io.nebulacms.app.extension.ListResult.generateGenericClass;
+
+import io.nebulacms.app.core.attachment.AttachmentLister;
+import io.nebulacms.app.core.attachment.SearchRequest;
+import io.nebulacms.app.core.extension.attachment.Attachment;
+import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
+import io.nebulacms.app.core.extension.service.AttachmentService;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.net.URL;
@@ -27,11 +33,6 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.server.ServerWebInputException;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.attachment.AttachmentLister;
-import io.nebulacms.app.core.attachment.SearchRequest;
-import io.nebulacms.app.core.extension.attachment.Attachment;
-import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
-import io.nebulacms.app.core.extension.service.AttachmentService;
 
 @Slf4j
 @Component

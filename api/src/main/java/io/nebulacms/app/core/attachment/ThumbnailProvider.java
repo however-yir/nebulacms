@@ -1,12 +1,13 @@
 package io.nebulacms.app.core.attachment;
 
+import io.nebulacms.app.core.extension.attachment.endpoint.AttachmentHandler;
+
 import java.net.URI;
 import java.net.URL;
 import lombok.Builder;
 import lombok.Data;
 import org.pf4j.ExtensionPoint;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.attachment.endpoint.AttachmentHandler;
 
 /**
  * Thumbnail provider extension.

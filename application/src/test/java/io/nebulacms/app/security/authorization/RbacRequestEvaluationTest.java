@@ -2,8 +2,9 @@ package io.nebulacms.app.security.authorization;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-import org.junit.jupiter.api.Test;
 import io.nebulacms.app.core.extension.Role;
+
+import org.junit.jupiter.api.Test;
 
 /**
  * Tests for {@link RbacRequestEvaluation}.

@@ -4,6 +4,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 
+import io.nebulacms.app.core.extension.Menu;
+import io.nebulacms.app.core.extension.MenuItem;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.theme.finders.vo.MenuVo;
+
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -16,11 +22,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import reactor.core.publisher.Flux;
 import reactor.util.function.Tuple2;
 import reactor.util.function.Tuples;
-import io.nebulacms.app.core.extension.Menu;
-import io.nebulacms.app.core.extension.MenuItem;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.theme.finders.vo.MenuVo;
 
 /**
  * Tests for {@link MenuFinderImpl}.

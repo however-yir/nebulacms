@@ -1,7 +1,7 @@
 package io.nebulacms.app.extension;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static io.nebulacms.app.extension.index.query.Queries.equal;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

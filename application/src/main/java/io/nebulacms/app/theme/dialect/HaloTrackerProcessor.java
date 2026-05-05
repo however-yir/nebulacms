@@ -1,5 +1,9 @@
 package io.nebulacms.app.theme.dialect;
 
+import io.nebulacms.app.extension.GroupVersionKind;
+import io.nebulacms.app.infra.ExternalUrlSupplier;
+import io.nebulacms.app.infra.utils.PathUtils;
+
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
@@ -8,9 +12,6 @@ import org.thymeleaf.model.IModel;
 import org.thymeleaf.model.IModelFactory;
 import org.thymeleaf.processor.element.IElementModelStructureHandler;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.extension.GroupVersionKind;
-import io.nebulacms.app.infra.ExternalUrlSupplier;
-import io.nebulacms.app.infra.utils.PathUtils;
 
 /**
  * Get {@link GroupVersionKind} and {@code plural} from the view model to construct tracker

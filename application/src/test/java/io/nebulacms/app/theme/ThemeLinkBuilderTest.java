@@ -3,6 +3,8 @@ package io.nebulacms.app.theme;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.lenient;
 
+import io.nebulacms.app.infra.ExternalUrlSupplier;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Paths;
@@ -11,7 +13,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import io.nebulacms.app.infra.ExternalUrlSupplier;
 
 /**
  * Tests for {@link ThemeLinkBuilder}.

@@ -7,6 +7,11 @@ import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.core.attachment.AttachmentRootGetter;
+import io.nebulacms.app.core.attachment.ThumbnailSize;
+import io.nebulacms.app.infra.properties.AttachmentProperties;
+import io.nebulacms.app.infra.properties.HaloProperties;
+
 import com.google.common.util.concurrent.MoreExecutors;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -20,10 +25,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.util.ResourceUtils;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.core.attachment.AttachmentRootGetter;
-import io.nebulacms.app.core.attachment.ThumbnailSize;
-import io.nebulacms.app.infra.properties.AttachmentProperties;
-import io.nebulacms.app.infra.properties.HaloProperties;
 
 @ExtendWith(MockitoExtension.class)
 class DefaultLocalThumbnailServiceTest {

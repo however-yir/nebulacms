@@ -1,8 +1,9 @@
 package io.nebulacms.app.infra;
 
+import io.nebulacms.app.infra.properties.HaloProperties;
+
 import java.nio.file.Path;
 import org.springframework.stereotype.Component;
-import io.nebulacms.app.infra.properties.HaloProperties;
 
 @Component
 public class DefaultThemeRootGetter implements ThemeRootGetter {

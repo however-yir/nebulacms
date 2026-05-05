@@ -1,9 +1,10 @@
 package io.nebulacms.app.security.authorization;
 
+import io.nebulacms.app.core.extension.Role;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import io.nebulacms.app.core.extension.Role;
 
 /**
  * @author guqing

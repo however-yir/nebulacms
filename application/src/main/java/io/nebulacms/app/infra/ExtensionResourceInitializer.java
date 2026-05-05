@@ -1,5 +1,11 @@
 package io.nebulacms.app.infra;
 
+import io.nebulacms.app.extension.ExtensionUtil;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.Unstructured;
+import io.nebulacms.app.infra.properties.HaloProperties;
+import io.nebulacms.app.infra.utils.YamlUnstructuredLoader;
+
 import java.io.IOException;
 import java.time.Duration;
 import java.util.HashSet;
@@ -14,11 +20,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.extension.ExtensionUtil;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.Unstructured;
-import io.nebulacms.app.infra.properties.HaloProperties;
-import io.nebulacms.app.infra.utils.YamlUnstructuredLoader;
 
 /**
  * <p>Extension resources initializer.</p>
@@ -111,7 +112,6 @@ public class ExtensionResourceInitializer implements SmartLifecycle {
     public int getPhase() {
         return InitializationPhase.EXTENSION_RESOURCES.getPhase();
     }
-
 
     private Mono<Unstructured> createOrUpdate(Unstructured extension) {
         return Mono.just(extension)

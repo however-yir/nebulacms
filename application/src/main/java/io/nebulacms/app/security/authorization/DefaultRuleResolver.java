@@ -1,5 +1,7 @@
 package io.nebulacms.app.security.authorization;
 
+import io.nebulacms.app.core.user.service.RoleService;
+
 import java.util.concurrent.atomic.AtomicBoolean;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -7,7 +9,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.core.Authentication;
 import org.springframework.util.CollectionUtils;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.user.service.RoleService;
 
 /**
  * @author guqing

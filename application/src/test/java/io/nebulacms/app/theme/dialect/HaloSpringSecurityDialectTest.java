@@ -41,7 +41,6 @@ class HaloSpringSecurityDialectTest {
     @Autowired
     ObjectProvider<MethodSecurityExpressionHandler> expressionHandler;
 
-
     @BeforeEach
     void setUp() {
         var haloSpringSecurityDialect =

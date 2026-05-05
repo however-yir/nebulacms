@@ -1,10 +1,11 @@
 package io.nebulacms.app.theme.finders.vo;
 
+import io.nebulacms.app.extension.ListResult;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import org.springframework.beans.BeanUtils;
-import io.nebulacms.app.extension.ListResult;
 
 /**
  * <p>A value object for comment with reply.</p>

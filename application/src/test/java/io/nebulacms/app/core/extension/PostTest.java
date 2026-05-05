@@ -3,12 +3,13 @@ package io.nebulacms.app.core.extension;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.core.extension.content.Post;
+import io.nebulacms.app.extension.MetadataOperator;
+
 import java.util.Map;
 import java.util.function.Function;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import io.nebulacms.app.core.extension.content.Post;
-import io.nebulacms.app.extension.MetadataOperator;
 
 class PostTest {
 

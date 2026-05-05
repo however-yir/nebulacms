@@ -6,14 +6,15 @@ import static org.springdoc.core.fn.builders.requestbody.Builder.requestBodyBuil
 import static org.springdoc.webflux.core.fn.SpringdocRouteBuilder.route;
 import static org.springframework.web.reactive.function.server.RequestPredicates.path;
 
-import io.swagger.v3.oas.annotations.enums.ParameterIn;
-import org.springframework.stereotype.Component;
-import org.springframework.web.reactive.function.server.RouterFunction;
-import org.springframework.web.reactive.function.server.ServerResponse;
 import io.nebulacms.app.core.extension.endpoint.CustomEndpoint;
 import io.nebulacms.app.core.user.service.UserScopedPatHandler;
 import io.nebulacms.app.extension.GroupVersion;
 import io.nebulacms.app.security.PersonalAccessToken;
+
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
+import org.springframework.stereotype.Component;
+import org.springframework.web.reactive.function.server.RouterFunction;
+import org.springframework.web.reactive.function.server.ServerResponse;
 
 @Component
 class PatEndpoint implements CustomEndpoint {

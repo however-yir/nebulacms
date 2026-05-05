@@ -2,6 +2,13 @@ package io.nebulacms.app.infra.utils;
 
 import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 
+import io.nebulacms.app.core.extension.Setting;
+import io.nebulacms.app.extension.ConfigMap;
+import io.nebulacms.app.extension.ExtensionClient;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.controller.Reconciler.Result;
+import io.nebulacms.app.extension.controller.RequeueException;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.github.fge.jsonpatch.JsonPatchException;
 import com.github.fge.jsonpatch.mergepatch.JsonMergePatch;
@@ -14,12 +21,6 @@ import java.util.stream.Collectors;
 import org.springframework.lang.NonNull;
 import org.springframework.util.Assert;
 import org.springframework.util.CollectionUtils;
-import io.nebulacms.app.core.extension.Setting;
-import io.nebulacms.app.extension.ConfigMap;
-import io.nebulacms.app.extension.ExtensionClient;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.controller.Reconciler.Result;
-import io.nebulacms.app.extension.controller.RequeueException;
 import tools.jackson.core.JacksonException;
 import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.json.JsonMapper;

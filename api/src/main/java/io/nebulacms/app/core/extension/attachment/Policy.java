@@ -1,14 +1,15 @@
 package io.nebulacms.app.core.extension.attachment;
 
-import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
 import static io.nebulacms.app.core.extension.attachment.Policy.KIND;
+import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
+
+import io.nebulacms.app.extension.AbstractExtension;
+import io.nebulacms.app.extension.GVK;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import io.nebulacms.app.extension.AbstractExtension;
-import io.nebulacms.app.extension.GVK;
 
 @Data
 @ToString(callSuper = true)

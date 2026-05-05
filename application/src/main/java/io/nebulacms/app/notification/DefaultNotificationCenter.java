@@ -2,15 +2,6 @@ package io.nebulacms.app.notification;
 
 import static org.apache.commons.lang3.StringUtils.defaultString;
 
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Optional;
-import lombok.Builder;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.core.extension.User;
 import io.nebulacms.app.core.extension.notification.Notification;
 import io.nebulacms.app.core.extension.notification.NotifierDescriptor;
@@ -22,6 +13,16 @@ import io.nebulacms.app.extension.ReactiveExtensionClient;
 import io.nebulacms.app.infra.SystemConfigFetcher;
 import io.nebulacms.app.infra.SystemSetting;
 import io.nebulacms.app.notification.endpoint.SubscriptionRouter;
+
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Optional;
+import lombok.Builder;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 /**
  * A default implementation of {@link NotificationCenter}.

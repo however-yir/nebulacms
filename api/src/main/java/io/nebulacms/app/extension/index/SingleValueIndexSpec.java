@@ -1,7 +1,8 @@
 package io.nebulacms.app.extension.index;
 
-import org.springframework.lang.Nullable;
 import io.nebulacms.app.extension.Extension;
+
+import org.springframework.lang.Nullable;
 
 /**
  * Single value index specification.

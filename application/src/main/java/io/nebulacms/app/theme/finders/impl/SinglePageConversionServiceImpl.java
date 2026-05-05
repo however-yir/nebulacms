@@ -1,22 +1,12 @@
 package io.nebulacms.app.theme.finders.impl;
 
-import static org.springframework.data.domain.Sort.Order.asc;
-import static org.springframework.data.domain.Sort.Order.desc;
 import static io.nebulacms.app.core.extension.content.Post.VisibleEnum.PUBLIC;
 import static io.nebulacms.app.core.extension.content.SinglePage.PUBLISHED_LABEL;
 import static io.nebulacms.app.extension.ExtensionUtil.notDeleting;
 import static io.nebulacms.app.extension.index.query.Queries.equal;
+import static org.springframework.data.domain.Sort.Order.asc;
+import static org.springframework.data.domain.Sort.Order.desc;
 
-import java.util.List;
-import java.util.function.Function;
-import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Sort;
-import org.springframework.lang.NonNull;
-import org.springframework.stereotype.Component;
-import org.springframework.util.Assert;
-import org.springframework.util.CollectionUtils;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 import io.nebulacms.app.content.ContentWrapper;
 import io.nebulacms.app.content.SinglePageService;
 import io.nebulacms.app.core.counter.CounterService;
@@ -36,6 +26,17 @@ import io.nebulacms.app.theme.finders.vo.ContentVo;
 import io.nebulacms.app.theme.finders.vo.ListedSinglePageVo;
 import io.nebulacms.app.theme.finders.vo.SinglePageVo;
 import io.nebulacms.app.theme.finders.vo.StatsVo;
+
+import java.util.List;
+import java.util.function.Function;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
+import org.springframework.lang.NonNull;
+import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
+import org.springframework.util.CollectionUtils;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 /**
  * Default implementation of {@link SinglePageConversionService}.
@@ -147,7 +148,6 @@ public class SinglePageConversionServiceImpl implements SinglePageConversionServ
                 )
             );
     }
-
 
     Mono<SinglePageVo> convert(SinglePage singlePage, String snapshotName) {
         Assert.notNull(singlePage, "Single page must not be null");

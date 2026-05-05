@@ -1,10 +1,11 @@
 package io.nebulacms.app.content;
 
+import io.nebulacms.app.core.extension.content.Snapshot;
+
 import lombok.Builder;
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.Assert;
-import io.nebulacms.app.core.extension.content.Snapshot;
 
 /**
  * @author guqing

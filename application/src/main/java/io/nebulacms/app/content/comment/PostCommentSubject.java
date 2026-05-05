@@ -1,14 +1,15 @@
 package io.nebulacms.app.content.comment;
 
+import io.nebulacms.app.core.extension.content.Post;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.Ref;
+import io.nebulacms.app.infra.ExternalLinkProcessor;
+
 import java.util.Objects;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.content.Post;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.Ref;
-import io.nebulacms.app.infra.ExternalLinkProcessor;
 
 /**
  * Comment subject for post.

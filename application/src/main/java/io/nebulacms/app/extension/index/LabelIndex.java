@@ -2,6 +2,8 @@ package io.nebulacms.app.extension.index;
 
 import static java.util.stream.Collectors.toUnmodifiableMap;
 
+import io.nebulacms.app.extension.Extension;
+
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Comparator;
@@ -18,7 +20,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.lang.NonNull;
 import org.springframework.util.CollectionUtils;
-import io.nebulacms.app.extension.Extension;
 
 /**
  * Label index implementation.
@@ -248,7 +249,6 @@ class LabelIndex<E extends Extension> implements LabelIndexQuery, Index<E, Strin
             addLabels(primaryKey, previousLabels);
         }
     }
-
 
     private void removeLabels(String primaryKey, Map<String, String> labels) {
         if (CollectionUtils.isEmpty(labels)) {

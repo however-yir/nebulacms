@@ -16,6 +16,13 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.core.io.buffer.DefaultDataBufferFactory.sharedInstance;
 
+import io.nebulacms.app.core.extension.Plugin;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.infra.SystemVersionSupplier;
+import io.nebulacms.app.infra.exception.PluginAlreadyExistsException;
+import io.nebulacms.app.infra.utils.FileUtils;
+
 import com.github.zafarkhaja.semver.Version;
 import com.google.common.hash.Hashing;
 import java.io.IOException;
@@ -51,12 +58,6 @@ import org.springframework.web.server.ServerWebInputException;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 import reactor.test.publisher.PublisherProbe;
-import io.nebulacms.app.core.extension.Plugin;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.infra.SystemVersionSupplier;
-import io.nebulacms.app.infra.exception.PluginAlreadyExistsException;
-import io.nebulacms.app.infra.utils.FileUtils;
 
 @ExtendWith(MockitoExtension.class)
 class PluginServiceImplTest {

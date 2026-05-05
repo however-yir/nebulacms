@@ -5,6 +5,13 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.same;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.content.ContentWrapper;
+import io.nebulacms.app.content.PostService;
+import io.nebulacms.app.core.extension.content.Post;
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.infra.ReactiveExtensionPaginatedOperator;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -13,12 +20,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.content.ContentWrapper;
-import io.nebulacms.app.content.PostService;
-import io.nebulacms.app.core.extension.content.Post;
-import io.nebulacms.app.extension.ListOptions;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.infra.ReactiveExtensionPaginatedOperator;
 
 @ExtendWith(MockitoExtension.class)
 class PostHaloDocumentsProviderTest {

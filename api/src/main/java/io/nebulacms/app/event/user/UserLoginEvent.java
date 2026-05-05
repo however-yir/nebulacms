@@ -1,9 +1,10 @@
 package io.nebulacms.app.event.user;
 
-import lombok.Getter;
-import org.springframework.context.ApplicationEvent;
 import io.nebulacms.app.core.extension.User;
 import io.nebulacms.app.plugin.SharedEvent;
+
+import lombok.Getter;
+import org.springframework.context.ApplicationEvent;
 
 /**
  * User login event.

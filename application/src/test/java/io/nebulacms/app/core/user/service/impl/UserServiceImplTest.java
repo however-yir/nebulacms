@@ -1,5 +1,6 @@
 package io.nebulacms.app.core.user.service.impl;
 
+import static io.nebulacms.app.extension.GroupVersionKind.fromExtension;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
@@ -19,7 +20,29 @@ import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static io.nebulacms.app.extension.GroupVersionKind.fromExtension;
+
+import io.nebulacms.app.core.extension.Role;
+import io.nebulacms.app.core.extension.RoleBinding;
+import io.nebulacms.app.core.extension.RoleBinding.Subject;
+import io.nebulacms.app.core.extension.User;
+import io.nebulacms.app.core.user.service.EmailVerificationService;
+import io.nebulacms.app.core.user.service.RoleService;
+import io.nebulacms.app.core.user.service.SignUpData;
+import io.nebulacms.app.core.user.service.UserPostCreatingHandler;
+import io.nebulacms.app.core.user.service.UserPreCreatingHandler;
+import io.nebulacms.app.core.user.service.UserService;
+import io.nebulacms.app.event.user.PasswordChangedEvent;
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.exception.ExtensionNotFoundException;
+import io.nebulacms.app.infra.SystemConfigFetcher;
+import io.nebulacms.app.infra.SystemSetting;
+import io.nebulacms.app.infra.exception.DuplicateNameException;
+import io.nebulacms.app.infra.exception.EmailAlreadyTakenException;
+import io.nebulacms.app.infra.exception.UnsatisfiedAttributeValueException;
+import io.nebulacms.app.infra.exception.UserNotFoundException;
+import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
 
 import java.util.HashMap;
 import java.util.List;
@@ -43,28 +66,6 @@ import org.springframework.web.server.ServerWebInputException;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-import io.nebulacms.app.core.extension.Role;
-import io.nebulacms.app.core.extension.RoleBinding;
-import io.nebulacms.app.core.extension.RoleBinding.Subject;
-import io.nebulacms.app.core.extension.User;
-import io.nebulacms.app.core.user.service.EmailVerificationService;
-import io.nebulacms.app.core.user.service.RoleService;
-import io.nebulacms.app.core.user.service.SignUpData;
-import io.nebulacms.app.core.user.service.UserPostCreatingHandler;
-import io.nebulacms.app.core.user.service.UserPreCreatingHandler;
-import io.nebulacms.app.core.user.service.UserService;
-import io.nebulacms.app.event.user.PasswordChangedEvent;
-import io.nebulacms.app.extension.ListOptions;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.exception.ExtensionNotFoundException;
-import io.nebulacms.app.infra.SystemConfigFetcher;
-import io.nebulacms.app.infra.SystemSetting;
-import io.nebulacms.app.infra.exception.DuplicateNameException;
-import io.nebulacms.app.infra.exception.EmailAlreadyTakenException;
-import io.nebulacms.app.infra.exception.UnsatisfiedAttributeValueException;
-import io.nebulacms.app.infra.exception.UserNotFoundException;
-import io.nebulacms.app.plugin.extensionpoint.ExtensionGetter;
 
 @ExtendWith(MockitoExtension.class)
 class UserServiceImplTest {
@@ -390,7 +391,6 @@ class UserServiceImplTest {
             verify(client).update(notProvidedRoleBinding);
         }
     }
-
 
     @Nested
     class SignUpTest {

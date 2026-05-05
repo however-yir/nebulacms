@@ -2,6 +2,9 @@ package io.nebulacms.app.notification;
 
 import static org.apache.commons.lang3.ObjectUtils.defaultIfNull;
 
+import io.nebulacms.app.core.extension.notification.Reason;
+import io.nebulacms.app.core.extension.notification.Subscription;
+
 import com.google.common.base.Throwables;
 import java.util.Collections;
 import java.util.HashMap;
@@ -24,8 +27,6 @@ import org.springframework.integration.json.JsonPropertyAccessor;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import reactor.core.publisher.Flux;
-import io.nebulacms.app.core.extension.notification.Reason;
-import io.nebulacms.app.core.extension.notification.Subscription;
 
 @Slf4j
 @Component

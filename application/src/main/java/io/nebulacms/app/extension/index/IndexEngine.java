@@ -1,12 +1,13 @@
 package io.nebulacms.app.extension.index;
 
-import org.springframework.data.domain.Sort;
-import org.springframework.lang.NonNull;
-import org.springframework.lang.Nullable;
 import io.nebulacms.app.extension.Extension;
 import io.nebulacms.app.extension.ListOptions;
 import io.nebulacms.app.extension.ListResult;
 import io.nebulacms.app.extension.PageRequest;
+
+import org.springframework.data.domain.Sort;
+import org.springframework.lang.NonNull;
+import org.springframework.lang.Nullable;
 
 /**
  * Index engine for managing extension indices.

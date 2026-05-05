@@ -3,6 +3,8 @@ package io.nebulacms.app.plugin;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.infra.SystemVersionSupplier;
+
 import com.github.zafarkhaja.semver.Version;
 import java.nio.file.Path;
 import org.junit.jupiter.api.Test;
@@ -13,7 +15,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.pf4j.RuntimeMode;
 import org.springframework.context.ApplicationContext;
-import io.nebulacms.app.infra.SystemVersionSupplier;
 
 @ExtendWith(MockitoExtension.class)
 class HaloPluginManagerTest {
@@ -58,6 +59,5 @@ class HaloPluginManagerTest {
         var dependents = pluginManager.getDependents("fake-plugin");
         assertTrue(dependents.isEmpty());
     }
-
 
 }

@@ -1,18 +1,5 @@
 package io.nebulacms.app.extension.gc;
 
-import java.time.Duration;
-import java.time.Instant;
-import java.util.List;
-import java.util.function.Predicate;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.event.EventListener;
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.ReactiveTransactionManager;
-import org.springframework.transaction.reactive.TransactionalOperator;
-import org.springframework.util.CollectionUtils;
-import reactor.core.publisher.Mono;
-import reactor.core.scheduler.Scheduler;
-import reactor.core.scheduler.Schedulers;
 import io.nebulacms.app.extension.Extension;
 import io.nebulacms.app.extension.ExtensionClient;
 import io.nebulacms.app.extension.ExtensionConverter;
@@ -26,6 +13,20 @@ import io.nebulacms.app.extension.controller.RequestQueue;
 import io.nebulacms.app.extension.event.SchemeAddedEvent;
 import io.nebulacms.app.extension.index.IndexEngine;
 import io.nebulacms.app.extension.store.ReactiveExtensionStoreClient;
+
+import java.time.Duration;
+import java.time.Instant;
+import java.util.List;
+import java.util.function.Predicate;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.event.EventListener;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.ReactiveTransactionManager;
+import org.springframework.transaction.reactive.TransactionalOperator;
+import org.springframework.util.CollectionUtils;
+import reactor.core.publisher.Mono;
+import reactor.core.scheduler.Scheduler;
+import reactor.core.scheduler.Schedulers;
 
 @Slf4j
 @Component

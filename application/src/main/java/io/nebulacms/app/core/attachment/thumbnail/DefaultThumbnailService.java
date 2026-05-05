@@ -1,5 +1,14 @@
 package io.nebulacms.app.core.attachment.thumbnail;
 
+import io.nebulacms.app.core.attachment.AttachmentChangedEvent;
+import io.nebulacms.app.core.attachment.ThumbnailSize;
+import io.nebulacms.app.core.extension.attachment.Attachment;
+import io.nebulacms.app.extension.ExtensionUtil;
+import io.nebulacms.app.extension.ListOptions;
+import io.nebulacms.app.extension.ReactiveExtensionClient;
+import io.nebulacms.app.extension.index.query.Queries;
+import io.nebulacms.app.infra.ExternalUrlSupplier;
+
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import java.net.URI;
@@ -14,14 +23,6 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.reactive.ServerWebExchangeContextFilter;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.attachment.AttachmentChangedEvent;
-import io.nebulacms.app.core.attachment.ThumbnailSize;
-import io.nebulacms.app.core.extension.attachment.Attachment;
-import io.nebulacms.app.extension.ExtensionUtil;
-import io.nebulacms.app.extension.ListOptions;
-import io.nebulacms.app.extension.ReactiveExtensionClient;
-import io.nebulacms.app.extension.index.query.Queries;
-import io.nebulacms.app.infra.ExternalUrlSupplier;
 
 /**
  * Implementation of {@link ThumbnailService}.

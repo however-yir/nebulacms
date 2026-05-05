@@ -1,5 +1,7 @@
 package io.nebulacms.app.extension.controller;
 
+import io.nebulacms.app.extension.controller.RequestQueue.DelayedEntry;
+
 import java.time.Duration;
 import java.time.Instant;
 import java.util.concurrent.Executor;
@@ -14,7 +16,6 @@ import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
 import org.springframework.util.StopWatch;
-import io.nebulacms.app.extension.controller.RequestQueue.DelayedEntry;
 
 @Slf4j
 public class DefaultController<R> implements Controller {

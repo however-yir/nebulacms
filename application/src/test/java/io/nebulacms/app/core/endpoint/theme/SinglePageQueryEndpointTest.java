@@ -5,6 +5,12 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.nebulacms.app.core.extension.content.SinglePage;
+import io.nebulacms.app.extension.GroupVersion;
+import io.nebulacms.app.extension.Metadata;
+import io.nebulacms.app.theme.finders.SinglePageFinder;
+import io.nebulacms.app.theme.finders.vo.SinglePageVo;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,11 +20,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;
-import io.nebulacms.app.core.extension.content.SinglePage;
-import io.nebulacms.app.extension.GroupVersion;
-import io.nebulacms.app.extension.Metadata;
-import io.nebulacms.app.theme.finders.SinglePageFinder;
-import io.nebulacms.app.theme.finders.vo.SinglePageVo;
 
 /**
  * Tests for {@link SinglePageQueryEndpoint}.

@@ -1,9 +1,16 @@
 package io.nebulacms.app.theme.service;
 
-import static org.springframework.util.FileSystemUtils.copyRecursively;
 import static io.nebulacms.app.infra.utils.FileUtils.createTempDir;
 import static io.nebulacms.app.infra.utils.FileUtils.deleteRecursivelyAndSilently;
 import static io.nebulacms.app.infra.utils.FileUtils.unzip;
+import static org.springframework.util.FileSystemUtils.copyRecursively;
+
+import io.nebulacms.app.core.extension.Theme;
+import io.nebulacms.app.extension.Unstructured;
+import io.nebulacms.app.infra.exception.ThemeAlreadyExistsException;
+import io.nebulacms.app.infra.exception.ThemeInstallationException;
+import io.nebulacms.app.infra.utils.FileUtils;
+import io.nebulacms.app.infra.utils.YamlUnstructuredLoader;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -31,12 +38,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Scheduler;
 import reactor.core.scheduler.Schedulers;
-import io.nebulacms.app.core.extension.Theme;
-import io.nebulacms.app.extension.Unstructured;
-import io.nebulacms.app.infra.exception.ThemeAlreadyExistsException;
-import io.nebulacms.app.infra.exception.ThemeInstallationException;
-import io.nebulacms.app.infra.utils.FileUtils;
-import io.nebulacms.app.infra.utils.YamlUnstructuredLoader;
 
 @Slf4j
 @UtilityClass

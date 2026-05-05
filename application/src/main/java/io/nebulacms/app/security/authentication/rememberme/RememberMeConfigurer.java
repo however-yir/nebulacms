@@ -2,6 +2,8 @@ package io.nebulacms.app.security.authentication.rememberme;
 
 import static org.springframework.security.web.server.util.matcher.ServerWebExchangeMatcher.MatchResult;
 
+import io.nebulacms.app.security.authentication.SecurityConfigurer;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
@@ -10,7 +12,6 @@ import org.springframework.security.core.context.ReactiveSecurityContextHolder;
 import org.springframework.security.web.server.authentication.AuthenticationWebFilter;
 import org.springframework.security.web.server.context.ServerSecurityContextRepository;
 import org.springframework.stereotype.Component;
-import io.nebulacms.app.security.authentication.SecurityConfigurer;
 
 @Component
 @RequiredArgsConstructor

@@ -2,10 +2,11 @@ package io.nebulacms.app.infra;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import io.nebulacms.app.extension.ConfigMap;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
-import io.nebulacms.app.extension.ConfigMap;
 
 /**
  * Tests for {@link SystemState}.
