@@ -5,6 +5,10 @@ plugins {
   alias(libs.plugins.openapi.generator)
 }
 
+node {
+  pnpmVersion = '10.30.3'
+}
+
 idea {
   module {
     excludeDirs += file('node_modules/')

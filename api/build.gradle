@@ -71,6 +71,8 @@ dependencies {
 
     api 'io.micrometer:context-propagation'
 
+    api 'org.jetbrains:annotations:26.0.2'
+
     // Cache
     api "org.springframework.boot:spring-boot-starter-cache"
     api "com.github.ben-manes.caffeine:caffeine"
