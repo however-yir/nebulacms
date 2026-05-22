@@ -29,7 +29,7 @@ Vulnerability has been observed in...
   - Docker? [n/y]:
     if yes for the question above,
     - `docker -v`:
-    - `docker images nebulalabs/nebulacms`:
+    - `docker images however-yir/nebulacms`:
 
   - by `java -jar nebulacms.jar`? [n/y]:
     if yes for the question above,

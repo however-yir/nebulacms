@@ -2,9 +2,9 @@
   "name": "@nebula-labs/api-client",
   "version": "2.24.0",
   "description": "API client for NebulaCMS 2.x",
-  "homepage": "https://github.com/nebula-labs/nebulacms/tree/main/ui/packages/api-client#readme",
+  "homepage": "https://github.com/however-yir/nebulacms/tree/main/ui/packages/api-client#readme",
   "bugs": {
-    "url": "https://github.com/nebula-labs/nebulacms/issues"
+    "url": "https://github.com/however-yir/nebulacms/issues"
   },
   "license": "GPL-3.0",
   "author": "@nebula-labs",
@@ -16,7 +16,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/nebula-labs/nebulacms.git",
+    "url": "https://github.com/however-yir/nebulacms.git",
     "directory": "ui/packages/api-client"
   },
   "files": [

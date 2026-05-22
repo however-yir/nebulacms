@@ -295,7 +295,7 @@ const handleDownloadLogfile = () => {
               :label="$t('core.overview.fields.version')"
             >
               <a
-                :href="`https://github.com/nebula-labs/nebulacms/releases/tag/v${info.build.version}`"
+                :href="`https://github.com/however-yir/nebulacms/releases/tag/v${info.build.version}`"
                 class="hover:text-gray-600"
                 target="_blank"
               >
@@ -309,7 +309,7 @@ const handleDownloadLogfile = () => {
             />
             <VDescriptionItem v-if="info.git" label="Git Commit">
               <a
-                :href="`https://github.com/nebula-labs/nebulacms/commit/${info.git.commit.id}`"
+                :href="`https://github.com/however-yir/nebulacms/commit/${info.git.commit.id}`"
                 class="hover:text-gray-600"
                 target="_blank"
               >

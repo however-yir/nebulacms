@@ -125,7 +125,7 @@ spec:
   相同的一类事件。
 - `spec.expression`：根据表达式匹配感兴趣的事件，例如 `props.owner == "guqing"` 表示只有当事件的属性（reason attributes）的
   owner 等于 guqing 时才会触发通知。表达式符合 SpEL
-  表达式语法，但结果只能是布尔值。参考：[增强 Subscription 模型以支持表达式匹配](https://github.com/nebula-labs/nebulacms/issues/5632)
+  表达式语法，但结果只能是布尔值。参考：[增强 Subscription 模型以支持表达式匹配](https://github.com/however-yir/nebulacms/issues/5632)
 
 > 当 `spec.expression` 和 `spec.reason.subject` 同时存在时，以 `spec.reason.subject` 的结果为准，不建议同时使用。
 

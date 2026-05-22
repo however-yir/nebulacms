@@ -7,9 +7,9 @@ body:
       label: Prerequisites
       description: Hello! Thank you for submitting a new feature suggestion for NebulaCMS. Before we begin, we highly recommend reading through the [Open Source Guides](https://opensource.guide/), which will greatly improve our mutual efficiency.
       options:
-        - label: I have searched for related issues in the [Issues](https://github.com/nebula-labs/nebulacms/issues) list.
+        - label: I have searched for related issues in the [Issues](https://github.com/however-yir/nebulacms/issues) list.
           required: true
-        - label: This is a feature related to NebulaCMS. If it is not an issue with the project itself, it is recommended to submit it in the [Discussions](https://github.com/nebula-labs/nebulacms/discussions).
+        - label: This is a feature related to NebulaCMS. If it is not an issue with the project itself, it is recommended to submit it in the [Discussions](https://github.com/however-yir/nebulacms/discussions).
           required: true
         - label: If it is a feature suggestion for plugins and themes, please submit it in the respective plugin and theme repositories.
           required: true

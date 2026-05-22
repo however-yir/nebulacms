@@ -1,7 +1,7 @@
 repository:
   name: nebulacms
   description: "NebulaCMS - independent plugin-first CMS distribution with engineered namespace, branding, and delivery pipeline."
-  homepage: "https://github.com/nebula-labs/nebulacms"
+  homepage: "https://github.com/however-yir/nebulacms"
   topics:
     - nebulacms
     - cms

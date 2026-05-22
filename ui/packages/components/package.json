@@ -4,13 +4,13 @@
   "description": "",
   "keywords": [
     "@nebula-labs/components",
+    "nebula-labs",
     "nebulacms",
-    "nebulacms-components",
-    "nebula-labs"
+    "nebulacms-components"
   ],
-  "homepage": "https://github.com/nebula-labs/nebulacms/tree/main/ui/packages/components#readme",
+  "homepage": "https://github.com/however-yir/nebulacms/tree/main/ui/packages/components#readme",
   "bugs": {
-    "url": "https://github.com/nebula-labs/nebulacms/issues"
+    "url": "https://github.com/however-yir/nebulacms/issues"
   },
   "license": "MIT",
   "author": {
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/nebula-labs/nebulacms.git",
+    "url": "https://github.com/however-yir/nebulacms.git",
     "directory": "ui/packages/components"
   },
   "files": [

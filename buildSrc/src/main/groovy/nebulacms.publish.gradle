@@ -8,7 +8,7 @@ def internalRepo = layout.buildDirectory.dir('repos/internal')
 publishing {
     publications.register('mavenJava', MavenPublication) {
         pom {
-            url = 'https://github.com/nebula-labs/nebulacms'
+            url = 'https://github.com/however-yir/nebulacms'
             licenses {
                 license {
                     name = 'The GNU General Public License v3.0'
@@ -17,15 +17,15 @@ publishing {
             }
             developers {
                 developer {
-                    id = 'nebula-labs'
-                    name = 'Nebula Labs'
+                    id = 'however-yir'
+                    name = 'however-yir'
                     email = 'opensource@nebulacms.io'
                 }
             }
             scm {
-                connection = 'scm:git:https://github.com/nebula-labs/nebulacms.git'
-                developerConnection = 'scm:git:ssh://git@github.com:nebula-labs/nebulacms.git'
-                url = 'https://github.com/nebula-labs/nebulacms'
+                connection = 'scm:git:https://github.com/however-yir/nebulacms.git'
+                developerConnection = 'scm:git:ssh://git@github.com:however-yir/nebulacms.git'
+                url = 'https://github.com/however-yir/nebulacms'
             }
         }
     }

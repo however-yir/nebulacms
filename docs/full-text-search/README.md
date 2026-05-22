@@ -1,7 +1,7 @@
 # 在 Halo 中实践全文搜索
 
 主题端需全文搜索接口用于模糊搜索文章，且对效率要求极高。已经有对应的 Issue
-提出，可参考：<https://github.com/nebula-labs/nebulacms/issues/2637>。
+提出，可参考：<https://github.com/however-yir/nebulacms/issues/2637>。
 
 实现全文搜索的本地方案最好的就是 Apache 旗下开源的 [Lucene](https://lucene.apache.org/)
 ，不过 [Hibernate Search](https://hibernate.org/search/) 也基于 Lucene 实现了全文搜索。Halo 2.0 的自定义模型并不是直接在

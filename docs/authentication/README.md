@@ -7,7 +7,7 @@
 
 计划支持的认证方式有：
 
-- [个人令牌认证（Personal Access Token）](https://github.com/nebula-labs/nebulacms/issues/1309)
+- [个人令牌认证（Personal Access Token）](https://github.com/however-yir/nebulacms/issues/1309)
 - [OAuth2](https://oauth.net/2/)
 
 ## 基本认证

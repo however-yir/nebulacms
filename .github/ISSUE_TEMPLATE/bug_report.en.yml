@@ -8,9 +8,9 @@ body:
       label: Prerequisites
       description: Thank you for taking the time to fill out this issue report! Before we begin, we highly recommend reading through the [Open Source Guides](https://opensource.guide/), which will greatly improve our mutual efficiency.
       options:
-        - label: I have searched for related issues in the [issues](https://github.com/nebula-labs/nebulacms/issues) list.
+        - label: I have searched for related issues in the [issues](https://github.com/however-yir/nebulacms/issues) list.
           required: true
-        - label: "This is an issue with the NebulaCMS project itself. If it is not an issue with the project itself(For example: Installation and deployment issues.), it is recommended to submit it in the [Discussions](https://github.com/nebula-labs/nebulacms/discussions)."
+        - label: "This is an issue with the NebulaCMS project itself. If it is not an issue with the project itself(For example: Installation and deployment issues.), it is recommended to submit it in the [Discussions](https://github.com/however-yir/nebulacms/discussions)."
           required: true
         - label: I have tried disabling all plugins to rule out plugins as the cause of the problem.
           required: true

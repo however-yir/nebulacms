@@ -2,7 +2,7 @@
 
 ## 背景
 
-> https://github.com/nebula-labs/nebulacms/issues/5285
+> https://github.com/however-yir/nebulacms/issues/5285
 
 越来越多的开发者在开发插件过程中需要及时高效获取某些资源的最新状态，但是因为在插件中不支持 WebSocket，故只能选择定时轮训的方式来解决。
 

@@ -323,11 +323,11 @@ GPL-3.0
 
 ## Contributing
 
-Issues and Pull Requests are welcome! Please check our [Contributing Guide](https://github.com/nebula-labs/nebulacms/blob/main/CONTRIBUTING.md) for more information.
+Issues and Pull Requests are welcome! Please check our [Contributing Guide](https://github.com/however-yir/nebulacms/blob/main/CONTRIBUTING.md) for more information.
 
 ## Related Links
 
 - [Halo Website](https://www.nebulacms.io/)
 - [Halo Documentation](https://docs.nebulacms.io/)
-- [GitHub Repository](https://github.com/nebula-labs/nebulacms)
+- [GitHub Repository](https://github.com/however-yir/nebulacms)
 - [Plugin Development Guide](https://docs.nebulacms.io/category/ui)

@@ -38,7 +38,7 @@ cd {REPOSITORY}
 ### 2. Add Upstream Remote
 
 ```bash
-git remote add upstream https://github.com/nebula-labs/nebulacms.git
+git remote add upstream https://github.com/however-yir/nebulacms.git
 git fetch upstream
 ```
 

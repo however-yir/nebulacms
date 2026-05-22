@@ -10,7 +10,7 @@ services:
       nebulacms:
         condition: service_healthy
   nebulacms:
-    image: ghcr.io/nebula-labs/nebulacms-dev:${TAG:-main}
+    image: ghcr.io/however-yir/nebulacms-dev:${TAG:-main}
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8090/actuator/health/readiness"]
       interval: 30s

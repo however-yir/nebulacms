@@ -52,9 +52,9 @@ onMounted(() => {
 
 ## Links
 
-- [Halo](https://github.com/nebula-labs/nebulacms)
+- [Halo](https://github.com/however-yir/nebulacms)
 - [Documentation](https://docs.nebulacms.io)
-- [Report Issues](https://github.com/nebula-labs/nebulacms/issues)
+- [Report Issues](https://github.com/however-yir/nebulacms/issues)
 
 ## License
 

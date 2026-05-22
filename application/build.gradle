@@ -219,10 +219,10 @@ tasks.register('publishToGhcr', BootBuildImage) {
 
     group = 'publishing'
     description = 'Build and publish the Docker image to GitHub Container Registry.'
-    imageName = "ghcr.io/nebula-labs/${repoProvider.get()}:${tagProvider.get()}"
+    imageName = "ghcr.io/however-yir/${repoProvider.get()}:${tagProvider.get()}"
     publish = ghcrTokenProvider.map { StringUtils.hasText(it) }.orElse(false)
     if (!isRelease) {
-        tags.add("ghcr.io/nebula-labs/${repoProvider.get()}:${branchTagProvider.get()}")
+        tags.add("ghcr.io/however-yir/${repoProvider.get()}:${branchTagProvider.get()}")
     }
     docker {
         publishRegistry {
