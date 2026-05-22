@@ -4358,7 +4358,8 @@
         "properties": {
           "email": {
             "type": "string",
-            "format": "email"
+            "format": "email",
+            "minLength": 1
           }
         }
       },
