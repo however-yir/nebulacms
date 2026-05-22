@@ -21,11 +21,11 @@ kind: Tag
 metadata:
   name: c33ceabb-d8f1-4711-8991-bb8f5c92ad7c
 spec:
-  displayName: Halo
-  slug: halo
+  displayName: NebulaCMS
+  slug: nebulacms
   cover: ""
 status:
-  permalink: "/tags/halo"
+  permalink: "/tags/nebulacms"
 
 ---
 # 文章关联的内容
@@ -42,9 +42,9 @@ spec:
     kind: Post
     name: 5152aea5-c2e8-4717-8bba-2263d46e19d5
   rawType: HTML
-  rawPatch: <h2 id="hello-halo"><strong>Hello
-    Halo</strong></h2><p>如果你看到了这一篇文章，那么证明你已经安装成功了，感谢使用 <a target="_blank"
-    rel="noopener noreferrer nofollow" href="https://www.nebulacms.io/">Halo</a>
+  rawPatch: <h2 id="hello-nebulacms"><strong>Hello
+    NebulaCMS</strong></h2><p>如果你看到了这一篇文章，那么证明你已经安装成功了，感谢使用 <a target="_blank"
+    rel="noopener noreferrer nofollow" href="https://www.nebulacms.io/">NebulaCMS</a>
     进行创作，希望能够使用愉快。</p><h2
     id="%E7%9B%B8%E5%85%B3%E9%93%BE%E6%8E%A5"><strong>相关链接</strong></h2><ul><li><p>官网：<a
     target="_blank" rel="noopener noreferrer nofollow"
@@ -57,9 +57,9 @@ spec:
     href="https://www.nebulacms.io/store/apps">https://www.nebulacms.io/store/apps</a></p></li><li><p>开源地址：<a
     target="_blank" rel="noopener noreferrer nofollow"
     href="https://github.com/nebula-labs/nebulacms">https://github.com/nebula-labs/nebulacms</a></p></li></ul><p>在使用过程中，有任何问题都可以通过以上链接找寻答案，或者联系我们。</p><blockquote><p>这是一篇自动生成的文章，请删除这篇文章之后开始你的创作吧！</p></blockquote>
-  contentPatch: <h2 id="hello-halo"><strong>Hello
-    Halo</strong></h2><p>如果你看到了这一篇文章，那么证明你已经安装成功了，感谢使用 <a target="_blank"
-    rel="noopener noreferrer nofollow" href="https://www.nebulacms.io/">Halo</a>
+  contentPatch: <h2 id="hello-nebulacms"><strong>Hello
+    NebulaCMS</strong></h2><p>如果你看到了这一篇文章，那么证明你已经安装成功了，感谢使用 <a target="_blank"
+    rel="noopener noreferrer nofollow" href="https://www.nebulacms.io/">NebulaCMS</a>
     进行创作，希望能够使用愉快。</p><h2
     id="%E7%9B%B8%E5%85%B3%E9%93%BE%E6%8E%A5"><strong>相关链接</strong></h2><ul><li><p>官网：<a
     target="_blank" rel="noopener noreferrer nofollow"
@@ -84,8 +84,8 @@ kind: Post
 metadata:
   name: 5152aea5-c2e8-4717-8bba-2263d46e19d5
 spec:
-  title: Hello Halo
-  slug: hello-halo
+  title: Hello NebulaCMS
+  slug: hello-nebulacms
   releaseSnapshot: fb5cd6bd-998d-4ccc-984d-5cc23b0a09f9
   headSnapshot: fb5cd6bd-998d-4ccc-984d-5cc23b0a09f9
   baseSnapshot: fb5cd6bd-998d-4ccc-984d-5cc23b0a09f9
@@ -101,14 +101,14 @@ spec:
   priority: 0
   excerpt:
     autoGenerate: false
-    raw: 如果你看到了这一篇文章，那么证明你已经安装成功了，感谢使用 Halo 进行创作，希望能够使用愉快。
+    raw: 如果你看到了这一篇文章，那么证明你已经安装成功了，感谢使用 NebulaCMS 进行创作，希望能够使用愉快。
   categories:
     - 76514a40-6ef1-4ed9-b58a-e26945bde3ca
   tags:
     - c33ceabb-d8f1-4711-8991-bb8f5c92ad7c
   htmlMetas: [ ]
 status:
-  permalink: /archives/hello-halo
+  permalink: /archives/hello-nebulacms
 
 ---
 # 自定义页面关联的内容
@@ -183,8 +183,8 @@ kind: MenuItem
 metadata:
   name: c4c814d1-0c2c-456b-8c96-4864965fee94
 spec:
-  displayName: "Hello Halo"
-  href: "/archives/hello-halo"
+  displayName: "Hello NebulaCMS"
+  href: "/archives/hello-nebulacms"
   children: [ ]
   priority: 1
   targetRef:
@@ -199,8 +199,8 @@ kind: MenuItem
 metadata:
   name: 35869bd3-33b5-448b-91ee-cf6517a59644
 spec:
-  displayName: "Halo"
-  href: "/tags/halo"
+  displayName: "NebulaCMS"
+  href: "/tags/nebulacms"
   children: [ ]
   priority: 2
   targetRef:

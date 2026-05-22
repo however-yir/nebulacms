@@ -174,7 +174,7 @@ spec:
         时间：[(${loginTime})]
         IP 地址：[(${ipAddress})] 
         如果你知悉上述信息，请忽略此电子邮件。
-        如果你最近没有使用你的 Halo 账号登录并相信有人可能访问了你的账户，请尽快重设你的密码。
+        如果你最近没有使用你的 NebulaCMS 账号登录并相信有人可能访问了你的账户，请尽快重设你的密码。
     htmlBody: |
       <div class="notification-content">
         <div class="head">

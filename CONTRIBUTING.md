@@ -1,6 +1,6 @@
 # Contributing Guide
 
-Thank you for your interest in contributing to Halo.
+Thank you for your interest in contributing to NebulaCMS.
 
 This document explains the recommended workflow for submitting high-quality contributions, including code, tests, and documentation updates.
 
@@ -130,4 +130,4 @@ git push origin main
 - Open an issue for confirmed bugs and feature proposals.
 - Use Discussions for general questions and usage/deployment topics.
 
-Thanks again for helping improve Halo.
+Thanks again for helping improve NebulaCMS.

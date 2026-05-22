@@ -1,4 +1,4 @@
-## TODO: Currently, Halo does not support i18n for configuration file descriptions
+## TODO: Currently, NebulaCMS does not support i18n for configuration file descriptions
 ## So Simplified Chinese is temporarily used as the default description language.
 
 apiVersion: plugin.nebulacms.io/v1alpha1
@@ -45,7 +45,7 @@ spec:
   className: io.nebulacms.app.search.lucene.LuceneSearchEngine
   extensionPointName: search-engine
   displayName: "Lucene 搜索引擎"
-  description: "Halo 自带的本地搜索引擎"
+  description: "NebulaCMS 自带的本地搜索引擎"
   icon: /images/extension-points/lucene.png
 ---
 apiVersion: plugin.nebulacms.io/v1alpha1

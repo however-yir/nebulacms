@@ -1,6 +1,6 @@
 repository:
   name: nebulacms
-  description: "NebulaCMS - plugin-first open source content platform forked from Halo with independent namespace, branding, and deployment pipeline."
+  description: "NebulaCMS - independent plugin-first CMS distribution with engineered namespace, branding, and delivery pipeline."
   homepage: "https://github.com/nebula-labs/nebulacms"
   topics:
     - nebulacms

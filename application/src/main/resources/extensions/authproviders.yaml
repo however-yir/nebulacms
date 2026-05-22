@@ -9,7 +9,7 @@ metadata:
     - system-protection
 spec:
   displayName: Local
-  description: Built-in authentication for Halo.
+  description: Built-in authentication for NebulaCMS.
   logo: /images/login-methods/login-with-credentials.svg
   website: https://www.nebulacms.io
   authenticationUrl: /login
