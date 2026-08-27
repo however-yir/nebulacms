@@ -113,7 +113,15 @@ jobs:
 
   github-release:
     runs-on: ubuntu-latest
-    if: always() && needs.build.result == 'success' && github.event_name == 'release'
+    if: |
+      always() &&
+      needs.build.result == 'success' &&
+      (
+        github.event_name == 'release' ||
+        (github.event_name == 'push' &&
+          github.ref == 'refs/heads/main' &&
+          github.repository != 'nebula-labs/nebulacms')
+      )
     needs: build
     steps:
       - uses: actions/checkout@v4
@@ -122,15 +130,30 @@ jobs:
         with:
           name: nebulacms-artifacts
           path: application/build/libs
-      - name: Upload Artifacts
-        if: github.repository == 'nebula-labs/nebulacms'
+      - name: Upload or validate release artifacts
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release upload ${{ github.event.release.tag_name }} application/build/libs/*
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        shell: bash
+        run: |
+          if [ "$GITHUB_REPOSITORY" = "nebula-labs/nebulacms" ] && [ "$GITHUB_EVENT_NAME" = "release" ]; then
+            gh release upload "$RELEASE_TAG" application/build/libs/*
+          else
+            test -n "$(find application/build/libs -maxdepth 1 -type f -print -quit)"
+            echo "Release upload is intentionally disabled for this repository; artifacts are present."
+          fi
 
   build-and-publish-container-image-with-buildpacks:
     needs: build
-    if: always() && needs.build.result == 'success' && (github.event_name == 'push' || github.event_name == 'release') && github.repository == 'nebula-labs/nebulacms'
+    if: |
+      always() &&
+      needs.build.result == 'success' &&
+      (
+        github.event_name == 'release' ||
+        (github.event_name == 'push' &&
+          github.ref == 'refs/heads/main' &&
+          github.repository != 'nebula-labs/nebulacms')
+      )
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -144,7 +167,7 @@ jobs:
           version=${{ github.event.release.tag_name }}
           version=${version#v}
           sed -i "s/version=.*-SNAPSHOT$/version=$version/1" gradle.properties
-      - name: Publish To Container Registries
+      - name: Publish or validate container publication
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
@@ -153,7 +176,12 @@ jobs:
           GHCR_USERNAME: ${{ github.repository_owner }}
           GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run:
-          ./gradlew publishToAllRegistries -Prelease=${{ github.event_name == 'release' && 'true' || 'false' }}
+          if [ "$GITHUB_REPOSITORY" = "nebula-labs/nebulacms" ]; then
+            ./gradlew publishToAllRegistries -Prelease=${{ github.event_name == 'release' && 'true' || 'false' }}
+          else
+            ./gradlew help --task publishToAllRegistries --console=plain
+            echo "Container publication is intentionally disabled for this repository; task configuration is valid."
+          fi
 
   docker-build-and-push:
     if: always() && needs.build.result == 'success' && (github.event_name == 'push' || github.event_name == 'release')
