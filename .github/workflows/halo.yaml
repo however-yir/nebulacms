@@ -175,7 +175,7 @@ jobs:
           F2C_TOKEN: ${{ secrets.F2C_REGISTRY_TOKEN }}
           GHCR_USERNAME: ${{ github.repository_owner }}
           GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run:
+        run: |
           if [ "$GITHUB_REPOSITORY" = "nebula-labs/nebulacms" ]; then
             ./gradlew publishToAllRegistries -Prelease=${{ github.event_name == 'release' && 'true' || 'false' }}
           else
